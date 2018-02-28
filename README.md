@@ -4,8 +4,8 @@ Voyage-4
 
 # Team Members:
 
-@oyage-4
-@collin
+@collin  
 @sipofwater  
 @tiffanydevine  
-@zealousAnemone (Veronica)
+@zealousAnemone (Veronica)  
+@mfarazahmad
