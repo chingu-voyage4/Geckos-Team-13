@@ -71,4 +71,3 @@ Only members of Chingu4 can contribute to this repository
 * **mfarazahmad** - [mfarazahmad](https://github.com/mfarazahmad)
 
 See also the list of [contributors](https://github.com/chingu-voyage4/Geckos-Team-13/contributors) who participated in this project.
-
