@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
+.navbar {
+    padding: 10px;
+    background-color: #458131;
+    margin-top: 0;
+}
+
+li {
+    list-style: none;
+    display: inline;
+
+}
+
+.brand {
+    font-size: 1.6em;
+    font-family: 'Lobster', cursive;
+    color: rgba(224, 224, 223, 0.7);
+}
+
+.search {
+    position: relative;
+}
+
+.search .fa-search {
+    position: absolute;
+    right: 10px;
+    top: 3px;
+    color: #E0E0DF;
+}
+
+.userbadge {
+    border-radius: 50%;
+}
+button, input {
+    border-radius: 5px;
+    margin-left: 10px;
+    padding: 10px;
+    background-color: hsla(0, 0%, 100%, .3);
+    color: #E0E0DF;
+    border-style: none;
+}
+.leftbar {
+    float: left;
+}
+
+.rightbar {
+    float: right;
+}
