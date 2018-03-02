@@ -6,9 +6,9 @@ export default class extends Component {
 
     this.state = {
       outComponentSelected: true,
-      listTitle: 'The Gecko-13s first list',
+      listTitle: 'You can edit this',
       cardName: '',
-      cardTitles: ['card1', 'card2']
+      cardTitles: ['Card Component #1', 'This component still needs styling', 'I also want to make the input for the title auto expand vertically']
     }
 
     this.setWrapperRef = this.setWrapperRef.bind(this)
@@ -72,7 +72,7 @@ export default class extends Component {
 
   handleKeyPress(event) {
     console.log(event.key)
-    if (event.key == 'Enter') {
+    if (event.key === 'Enter') {
       this.confirmAddCard(event)
     }
   }
@@ -110,11 +110,11 @@ export default class extends Component {
           className='list__add-cards-full'
           style={{ display: this.state.outComponentSelected ? 'none' : 'block' }}
         >
-          <div className="form-container">
+          <div className='form-container'>
             <textarea value={this.state.cardName} onChange={this.addCardTitle} onKeyPress={this.handleKeyPress} />
-            <div className="form-btn-container">
-              <button type="submit" className='btn--add'>Add</button>
-              <button className='btn--cancel'><img src="../close-round.png" onClick={this.cancelExpansion} alt="" /></button>
+            <div className='form-btn-container'>
+              <button type='submit' className='btn--add'>Add</button>
+              <button className='btn--cancel'><img src='../close-round.png' className='cancel' onClick={this.cancelExpansion} alt='' /></button>
             </div>
           </div>
         </form>

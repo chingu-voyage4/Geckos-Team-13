@@ -37,6 +37,7 @@ textarea {
   box-shadow: none;
   resize: none;
   color: #333;
+  font-size: 14px;
   line-height: 18px;
   font-weight: 400;
   padding: 6px 6px 2px 8px
@@ -54,7 +55,7 @@ textarea {
 }
 
 .list__header-title {
-  padding: 8px 34px 8px 2px; 
+ margin-bottom: 8px;
 }
 
 .form-container {
@@ -113,4 +114,16 @@ textarea {
   font-size:16px; 
   line-height: 18px;
   font-weight: 700;
+  padding: 8px 34px 8px 2px; 
+}
+
+input:focus {
+  background-color: #FFFFFF;
+  border: #0099CC solid 1px;
+  border-radius: 3px;
+}
+
+.cancel {
+  height:25px;
+  margin: 2px 0px 0px 8px
 }
