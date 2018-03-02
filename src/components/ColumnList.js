@@ -69,7 +69,11 @@ export default class extends Component {
   }
 
   renderCardList() {
-
+    return (
+      this.state.cardTitles.map(title => {
+        return <li key={title} className="card-preview">{title}</li>
+      })
+    )
   }
 
   render() {
@@ -84,7 +88,7 @@ export default class extends Component {
         <div className='card-container'>
           <ul className='cards'>
             <li className='card-preview'>Card component 1</li>
-            <li className='card-preview'>Card component 2</li>
+            <li className='card-pr  eview'>Card component 2</li>
             <li className='card-preview'>Card component 3</li>
           </ul>
         </div>
