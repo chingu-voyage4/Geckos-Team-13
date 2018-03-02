@@ -65,9 +65,11 @@ export default class extends Component {
         cardName: "",
         outComponentSelected: true
       })
-      console.log(this.state.cardTitles)
-
     }
+  }
+
+  renderCardList() {
+
   }
 
   render() {
