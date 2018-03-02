@@ -1,36 +1,48 @@
 import React, { Component } from 'react'
 
 export default class extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
-    this.state = { componentSelected: false }
+    this.state = { outComponentSelected: true }
 
     this.setWrapperRef = this.setWrapperRef.bind(this)
     this.handleClickOutside = this.handleClickOutside.bind(this)
+    this.handleClick = this.handleClick.bind(this)
+    this.cancelExpansion = this.cancelExpansion.bind(this)
   }
 
-  componentDidMount () {
+  componentDidMount() {
     document.addEventListener('mousedown', this.handleClickOutside)
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     document.removeEventListener('mousedown', this.handleClickOutside)
   }
 
-  setWrapperRef (node) {
+  setWrapperRef(node) {
     console.log(node)
     this.wrapperRef = node
   }
 
-  handleClickOutside (event) {
+  handleClickOutside(event) {
     // this.wrapperRef (the react component)
     // event.target (element clicked)
-    if (this.wrapperRef && this.wrapperRef.contains(event.target)) {
-      this.setState({ componentSelected: true })
+    if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+      this.setState({ outComponentSelected: true })
     }
   }
-  render () {
+
+  handleClick(event) {
+    this.setState({ outComponentSelected: false })
+  }
+
+  cancelExpansion(event) {
+    console.log(this.state.outComponentSelected)
+    this.setState({ outComponentSelected: true })
+  }
+
+  render() {
     return (
       <div className='list__container'>
         {this.props.children}
@@ -46,14 +58,12 @@ export default class extends Component {
             <li className='card-preview' />
           </ul>
         </div>
-        <div className='list__add-cards-full' style={{ display: this.state.componentSelected ? 'block' : 'none' }}><button className='btn--add'>ADD</button></div>
-        <a href='' className='btn--cancel'>
-          X
-        </a>
-        <div ref={this.setWrapperRef} className='list__add-cards-short' style={{ display: this.state.componentSelected ? 'none' : 'block' }}>
-          Add a card...
-        </div >
-      </div >
+        <div ref={this.setWrapperRef} className='list__add-cards-full' style={{ display: this.state.outComponentSelected ? 'none' : 'block' }}>
+          <button className='btn--add'>ADD</button>
+          <button onClick={this.cancelExpansion} className='btn--cancel'>X</button>
+        </div>
+        <button onClick={this.handleClick} className="list__add-cards-short" style={{ display: this.state.outComponentSelected ? 'block' : 'none' }}>Add a card...</button>
+      </div>
     )
   }
 }
