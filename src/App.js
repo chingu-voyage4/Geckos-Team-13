@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import ColumnList from './components/ColumnList'
+import List from './components/List'
 
 class App extends Component {
-  render () {
+  render() {
     return (
       <div>
-        <ColumnList />
+        <List />
       </div>
     )
   }
