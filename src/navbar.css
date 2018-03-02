@@ -4,6 +4,44 @@
     padding: 10px;
     background-color: #458131;
     margin-top: 0;
+    text-align: center;
+    box-shadow: 0 1px 1px rgba(0,0,0,.1);
+}
+
+.red-header {
+    background-color: #963C2B;
+}
+
+.orange-header {
+  background-color: #B37B2C;
+}
+
+.pink-header {
+  background-color: #AE4D7B;
+}
+
+.ltblue-header {
+  background-color: #0094AE;
+}
+
+.blue-header {
+  background-color: #0067A3;
+}
+
+.green-header {
+  background-color: #458131;
+}
+
+.purple-header {
+  background-color: #755286;
+}
+
+.ltgreen-header {
+  background-color: #40A35B;
+}
+
+.grey-header {
+  background-color: #6F777B;
 }
 
 li {
@@ -29,10 +67,20 @@ li {
     color: #E0E0DF;
 }
 
+.boards {
+    font-weight: 700;
+}
+
+.boards i {
+    font-size: 1.3em;
+    margin-right: 5px;
+    font-weight: 500;
+}
+
 .userbadge {
     border-radius: 50%;
 }
-button, input {
+.navbar button, input {
     border-radius: 5px;
     margin-left: 10px;
     padding: 10px;
