@@ -6,13 +6,17 @@ export default class extends Component {
 
     this.state = {
       outComponentSelected: true,
-      listTitle: "The Gecko-13s first list"
+      listTitle: "The Gecko-13s first list",
+      cardName: "",
+      cardTitles: ['card1', 'card2']
     }
 
     this.setWrapperRef = this.setWrapperRef.bind(this)
     this.handleClickOutside = this.handleClickOutside.bind(this)
     this.handleClick = this.handleClick.bind(this)
     this.cancelExpansion = this.cancelExpansion.bind(this)
+    this.addCardTitle = this.addCardTitle.bind(this)
+    this.confirmAddCard = this.confirmAddCard.bind(this)
   }
 
   componentDidMount() {
@@ -43,7 +47,27 @@ export default class extends Component {
 
   cancelExpansion(event) {
     console.log(this.state.outComponentSelected)
-    this.setState({ outComponentSelected: true })
+    this.setState({
+      outComponentSelected: true,
+      cardName: ""
+    })
+
+  }
+
+  addCardTitle(event) {
+    this.setState({ cardName: event.target.value })
+  }
+
+  confirmAddCard(event) {
+    if (this.state.cardName) {
+      this.setState({
+        cardTitles: [...this.state.cardTitles, this.state.cardName],
+        cardName: "",
+        outComponentSelected: true
+      })
+      console.log(this.state.cardTitles)
+
+    }
   }
 
   render() {
@@ -62,9 +86,14 @@ export default class extends Component {
             <li className='card-preview'>Card component 3</li>
           </ul>
         </div>
-        <form ref={this.setWrapperRef} className='list__add-cards-full' style={{ display: this.state.outComponentSelected ? 'none' : 'block' }}>
-          <textarea name="card-title" id="" cols="30" rows="10"></textarea>
-          <button className='btn--add'>ADD</button>
+        <form
+          onSubmit={this.handleSubmit}
+          ref={this.setWrapperRef}
+          className='list__add-cards-full'
+          style={{ display: this.state.outComponentSelected ? 'none' : 'block' }}
+        >
+          <textarea value={this.state.cardName} onChange={this.addCardTitle} cols="30" rows="10"></textarea>
+          <button onClick={this.confirmAddCard} className='btn--add'>ADD</button>
           <button onClick={this.cancelExpansion} className='btn--cancel'>X</button>
         </form>
         <button onClick={this.handleClick} className="list__add-cards-short" style={{ display: this.state.outComponentSelected ? 'block' : 'none' }}>Add a card...</button>
