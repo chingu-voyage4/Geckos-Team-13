@@ -2,4 +2,115 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  font-size: 14px;
+}
+ 
+ul {
+  padding: 0px; 
+  margin: 0px;
+}
+
+li { 
+  list-style: none;
+}
+
+button {
+  border: none;
+  box-shadow: 0 1px 0 #959da1;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 700;
+  line-height: 22px;
+  margin: 0px 4px 0 0;
+  padding: 5px 16px;
+  text-align: center;
+}
+
+button:focus {
+  outline:none;
+}
+
+textarea {
+  border: none;
+  overflow: auto;
+  outline: none;
+  box-shadow: none;
+  resize: none;
+  color: #333;
+  line-height: 18px;
+  font-weight: 400;
+  padding: 6px 6px 2px 8px
+
+}
+
+/* column list */
+
+.list__container {
+  margin: 100px; 
+  width: 270px;
+  background-color: #E3E4E6; 
+  border-radius: 3px;
+  padding: 8px; 
+}
+
+.list__header-title {
+  padding: 8px 34px 8px 2px; 
+}
+
+.form-container {
+  display: flex; 
+  flex-direction: column; 
+}
+
+.list__add-cards-short {
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  font-size: 14px;
+  font-weight: 400; 
+  color: #838c91;
+
+  background: transparent;
+}
+
+.list__add-cards-short:active {
+  outline: none;
+}
+
+.card-preview {
+  background-color: #FFFFFF;
+  padding: 8px; 
+  margin-bottom: 6px;
+  border-radius: 3px;
+}
+
+.form-btn-container {
+  margin-top: 8px; 
+  display: flex;
+  align-items: center;  
+}
+
+.btn--add {
+  background-color: #59ac44;
+  color: #FFFFFF;
+  border-radius: 3px; 
+  font-size: 16px; 
+}
+
+.btn--cancel {
+  padding: 0; 
+  height: 25px; 
+  box-shadow: none;
+  background-color: transparent;
+}
+
+.list-title__edit {
+  background-color: transparent;
+  border-style: none;
+  color: #333;
+  font-size:16px; 
+  line-height: 18px;
+  font-weight: 700;
 }

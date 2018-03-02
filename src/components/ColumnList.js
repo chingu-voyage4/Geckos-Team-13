@@ -90,12 +90,13 @@ export default class extends Component {
   }
 
   render() {
+    console.log(this.state.listTitle)
     return (
       <div className='list__container'>
         {this.props.children}
         <div className='list__header'>
           <div className='list__header-title'>
-            <input onChange={this.changeListTitle} value={this.state.listTitle} type='text' />
+            <input className='list-title__edit' onChange={this.changeListTitle} value={this.state.listTitle} type='text' />
           </div>
         </div>
         <div className='card-container'>
@@ -107,11 +108,15 @@ export default class extends Component {
           onSubmit={this.confirmAddCard}
           ref={this.setWrapperRef}
           className='list__add-cards-full'
-          style={{ display: this.state.outComponentSelected ? 'none' : 'inline-block' }}
+          style={{ display: this.state.outComponentSelected ? 'none' : 'block' }}
         >
-          <textarea value={this.state.cardName} onChange={this.addCardTitle} onKeyPress={this.handleKeyPress} cols='30' rows='10' />
-          <button type="submit" className='btn--add'>ADD</button>
-          <button onClick={this.cancelExpansion} className='btn--cancel'>X</button>
+          <div className="form-container">
+            <textarea value={this.state.cardName} onChange={this.addCardTitle} onKeyPress={this.handleKeyPress} />
+            <div className="form-btn-container">
+              <button type="submit" className='btn--add'>Add</button>
+              <button className='btn--cancel'><img src="../close-round.png" onClick={this.cancelExpansion} alt="" /></button>
+            </div>
+          </div>
         </form>
         <button onClick={this.handleClick} className='list__add-cards-short' style={{ display: this.state.outComponentSelected ? 'block' : 'none' }}>Add a card...</button>
       </div>
