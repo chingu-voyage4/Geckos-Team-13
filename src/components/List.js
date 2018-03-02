@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 export default class extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     this.state = {
@@ -21,20 +21,20 @@ export default class extends Component {
     this.handleKeyPress = this.handleKeyPress.bind(this)
   }
 
-  componentDidMount() {
+  componentDidMount () {
     document.addEventListener('mousedown', this.handleClickOutside)
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     document.removeEventListener('mousedown', this.handleClickOutside)
   }
 
-  setWrapperRef(node) {
+  setWrapperRef (node) {
     console.log(node)
     this.wrapperRef = node
   }
 
-  handleClickOutside(event) {
+  handleClickOutside (event) {
     // this.wrapperRef (the react component)
     // event.target (element clicked)
     if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
@@ -42,12 +42,12 @@ export default class extends Component {
     }
   }
 
-  handleClick(event) {
+  handleClick (event) {
     console.log(this.state.listTitle)
     this.setState({ outComponentSelected: false })
   }
 
-  cancelExpansion(event) {
+  cancelExpansion (event) {
     console.log(this.state.outComponentSelected)
     this.setState({
       outComponentSelected: true,
@@ -55,11 +55,11 @@ export default class extends Component {
     })
   }
 
-  addCardTitle(event) {
+  addCardTitle (event) {
     this.setState({ cardName: event.target.value })
   }
 
-  confirmAddCard(event) {
+  confirmAddCard (event) {
     event.preventDefault()
     if (this.state.cardName) {
       this.setState({
@@ -70,18 +70,18 @@ export default class extends Component {
     }
   }
 
-  handleKeyPress(event) {
+  handleKeyPress (event) {
     console.log(event.key)
     if (event.key === 'Enter') {
       this.confirmAddCard(event)
     }
   }
 
-  changeListTitle(event) {
+  changeListTitle (event) {
     this.setState({ listTitle: event.target.value })
   }
 
-  renderCardList() {
+  renderCardList () {
     return (
       this.state.cardTitles.map(title => {
         return <li key={title} className='card-preview'>{title}</li>
@@ -89,7 +89,7 @@ export default class extends Component {
     )
   }
 
-  render() {
+  render () {
     console.log(this.state.listTitle)
     return (
       <div className='list__container'>
