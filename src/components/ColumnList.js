@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 export default class extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = {
@@ -17,22 +17,23 @@ export default class extends Component {
     this.cancelExpansion = this.cancelExpansion.bind(this)
     this.addCardTitle = this.addCardTitle.bind(this)
     this.confirmAddCard = this.confirmAddCard.bind(this)
+    this.changeListTitle = this.changeListTitle.bind(this)
   }
 
-  componentDidMount () {
+  componentDidMount() {
     document.addEventListener('mousedown', this.handleClickOutside)
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     document.removeEventListener('mousedown', this.handleClickOutside)
   }
 
-  setWrapperRef (node) {
+  setWrapperRef(node) {
     console.log(node)
     this.wrapperRef = node
   }
 
-  handleClickOutside (event) {
+  handleClickOutside(event) {
     // this.wrapperRef (the react component)
     // event.target (element clicked)
     if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
@@ -40,12 +41,12 @@ export default class extends Component {
     }
   }
 
-  handleClick (event) {
+  handleClick(event) {
     console.log(this.state.listTitle)
     this.setState({ outComponentSelected: false })
   }
 
-  cancelExpansion (event) {
+  cancelExpansion(event) {
     console.log(this.state.outComponentSelected)
     this.setState({
       outComponentSelected: true,
@@ -53,11 +54,12 @@ export default class extends Component {
     })
   }
 
-  addCardTitle (event) {
+  addCardTitle(event) {
     this.setState({ cardName: event.target.value })
   }
 
-  confirmAddCard (event) {
+  confirmAddCard(event) {
+    event.preventDefault()
     if (this.state.cardName) {
       this.setState({
         cardTitles: [...this.state.cardTitles, this.state.cardName],
@@ -67,7 +69,10 @@ export default class extends Component {
     }
   }
 
-  renderCardList () {
+  changeListTitle(event) {
+    this.setState({ listTitle: event.target.value })
+  }
+  renderCardList() {
     return (
       this.state.cardTitles.map(title => {
         return <li key={title} className='card-preview'>{title}</li>
@@ -75,13 +80,13 @@ export default class extends Component {
     )
   }
 
-  render () {
+  render() {
     return (
       <div className='list__container'>
         {this.props.children}
         <div className='list__header'>
           <div className='list__header-title'>
-            <input type='text' />
+            <input onChange={this.changeListTitle} value={this.state.listTitle} type='text' />
           </div>
         </div>
         <div className='card-container'>
@@ -90,13 +95,13 @@ export default class extends Component {
           </ul>
         </div>
         <form
-          onSubmit={this.handleSubmit}
+          onSubmit={this.confirmAddCard}
           ref={this.setWrapperRef}
           className='list__add-cards-full'
-          style={{ display: this.state.outComponentSelected ? 'none' : 'block' }}
+          style={{ display: this.state.outComponentSelected ? 'none' : 'inline-block' }}
         >
           <textarea value={this.state.cardName} onChange={this.addCardTitle} cols='30' rows='10' />
-          <button onClick={this.confirmAddCard} className='btn--add'>ADD</button>
+          <button type="submit" className='btn--add'>ADD</button>
           <button onClick={this.cancelExpansion} className='btn--cancel'>X</button>
         </form>
         <button onClick={this.handleClick} className='list__add-cards-short' style={{ display: this.state.outComponentSelected ? 'block' : 'none' }}>Add a card...</button>
