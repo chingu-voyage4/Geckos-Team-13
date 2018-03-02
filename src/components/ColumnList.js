@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 export default class extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     this.state = { componentSelected: false }
@@ -10,27 +10,27 @@ export default class extends Component {
     this.handleClickOutside = this.handleClickOutside.bind(this)
   }
 
-  componentDidMount() {
+  componentDidMount () {
     document.addEventListener('mousedown', this.handleClickOutside)
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     document.removeEventListener('mousedown', this.handleClickOutside)
   }
 
-  setWrapperRef(node) {
+  setWrapperRef (node) {
     console.log(node)
     this.wrapperRef = node
   }
 
-  handleClickOutside(event) {
+  handleClickOutside (event) {
     // this.wrapperRef (the react component)
     // event.target (element clicked)
     if (this.wrapperRef && this.wrapperRef.contains(event.target)) {
       this.setState({ componentSelected: true })
     }
   }
-  render() {
+  render () {
     return (
       <div className='list__container'>
         {this.props.children}
@@ -50,7 +50,7 @@ export default class extends Component {
         <a href='' className='btn--cancel'>
           X
         </a>
-        <div ref={this.setWrapperRef} className="list__add-cards-short" style={{ display: this.state.componentSelected ? 'none' : 'block' }}>
+        <div ref={this.setWrapperRef} className='list__add-cards-short' style={{ display: this.state.componentSelected ? 'none' : 'block' }}>
           Add a card...
         </div >
       </div >
