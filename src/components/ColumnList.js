@@ -18,6 +18,7 @@ export default class extends Component {
     this.addCardTitle = this.addCardTitle.bind(this)
     this.confirmAddCard = this.confirmAddCard.bind(this)
     this.changeListTitle = this.changeListTitle.bind(this)
+    this.handleKeyPress = this.handleKeyPress.bind(this)
   }
 
   componentDidMount() {
@@ -69,9 +70,17 @@ export default class extends Component {
     }
   }
 
+  handleKeyPress(event) {
+    console.log(event.key)
+    if (event.key == 'Enter') {
+      this.confirmAddCard(event)
+    }
+  }
+
   changeListTitle(event) {
     this.setState({ listTitle: event.target.value })
   }
+
   renderCardList() {
     return (
       this.state.cardTitles.map(title => {
@@ -100,7 +109,7 @@ export default class extends Component {
           className='list__add-cards-full'
           style={{ display: this.state.outComponentSelected ? 'none' : 'inline-block' }}
         >
-          <textarea value={this.state.cardName} onChange={this.addCardTitle} cols='30' rows='10' />
+          <textarea value={this.state.cardName} onChange={this.addCardTitle} onKeyPress={this.handleKeyPress} cols='30' rows='10' />
           <button type="submit" className='btn--add'>ADD</button>
           <button onClick={this.cancelExpansion} className='btn--cancel'>X</button>
         </form>
