@@ -87,9 +87,7 @@ export default class extends Component {
         </div>
         <div className='card-container'>
           <ul className='cards'>
-            <li className='card-preview'>Card component 1</li>
-            <li className='card-pr  eview'>Card component 2</li>
-            <li className='card-preview'>Card component 3</li>
+            {this.renderCardList()}
           </ul>
         </div>
         <form
