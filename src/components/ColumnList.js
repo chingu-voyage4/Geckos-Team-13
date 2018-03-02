@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
 export default class extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     this.state = {
       outComponentSelected: true,
-      listTitle: "The Gecko-13s first list",
-      cardName: "",
+      listTitle: 'The Gecko-13s first list',
+      cardName: '',
       cardTitles: ['card1', 'card2']
     }
 
@@ -19,20 +19,20 @@ export default class extends Component {
     this.confirmAddCard = this.confirmAddCard.bind(this)
   }
 
-  componentDidMount() {
+  componentDidMount () {
     document.addEventListener('mousedown', this.handleClickOutside)
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     document.removeEventListener('mousedown', this.handleClickOutside)
   }
 
-  setWrapperRef(node) {
+  setWrapperRef (node) {
     console.log(node)
     this.wrapperRef = node
   }
 
-  handleClickOutside(event) {
+  handleClickOutside (event) {
     // this.wrapperRef (the react component)
     // event.target (element clicked)
     if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
@@ -40,49 +40,48 @@ export default class extends Component {
     }
   }
 
-  handleClick(event) {
+  handleClick (event) {
     console.log(this.state.listTitle)
     this.setState({ outComponentSelected: false })
   }
 
-  cancelExpansion(event) {
+  cancelExpansion (event) {
     console.log(this.state.outComponentSelected)
     this.setState({
       outComponentSelected: true,
-      cardName: ""
+      cardName: ''
     })
-
   }
 
-  addCardTitle(event) {
+  addCardTitle (event) {
     this.setState({ cardName: event.target.value })
   }
 
-  confirmAddCard(event) {
+  confirmAddCard (event) {
     if (this.state.cardName) {
       this.setState({
         cardTitles: [...this.state.cardTitles, this.state.cardName],
-        cardName: "",
+        cardName: '',
         outComponentSelected: true
       })
     }
   }
 
-  renderCardList() {
+  renderCardList () {
     return (
       this.state.cardTitles.map(title => {
-        return <li key={title} className="card-preview">{title}</li>
+        return <li key={title} className='card-preview'>{title}</li>
       })
     )
   }
 
-  render() {
+  render () {
     return (
       <div className='list__container'>
         {this.props.children}
         <div className='list__header'>
           <div className='list__header-title'>
-            <input type="text" />
+            <input type='text' />
           </div>
         </div>
         <div className='card-container'>
@@ -96,11 +95,11 @@ export default class extends Component {
           className='list__add-cards-full'
           style={{ display: this.state.outComponentSelected ? 'none' : 'block' }}
         >
-          <textarea value={this.state.cardName} onChange={this.addCardTitle} cols="30" rows="10"></textarea>
+          <textarea value={this.state.cardName} onChange={this.addCardTitle} cols='30' rows='10' />
           <button onClick={this.confirmAddCard} className='btn--add'>ADD</button>
           <button onClick={this.cancelExpansion} className='btn--cancel'>X</button>
         </form>
-        <button onClick={this.handleClick} className="list__add-cards-short" style={{ display: this.state.outComponentSelected ? 'block' : 'none' }}>Add a card...</button>
+        <button onClick={this.handleClick} className='list__add-cards-short' style={{ display: this.state.outComponentSelected ? 'block' : 'none' }}>Add a card...</button>
       </div>
     )
   }
