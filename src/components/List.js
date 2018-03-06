@@ -111,7 +111,7 @@ export default class extends Component {
           style={{ display: this.state.outComponentSelected ? 'none' : 'block' }}
         >
           <div className='form-container'>
-            <textarea value={this.state.cardName} onChange={this.addCardTitle} onKeyPress={this.handleKeyPress} />
+            <textarea className='form-card-description' value={this.state.cardName} onChange={this.addCardTitle} onKeyPress={this.handleKeyPress} />
             <div className='form-btn-container'>
               <button type='submit' className='btn--add'>Add</button>
               <button className='btn--cancel'><img src='../close-round.png' className='cancel' onClick={this.cancelExpansion} alt='' /></button>
