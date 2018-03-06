@@ -11,6 +11,7 @@ class App extends Component {
         <NavbarTop />
         <NavbarBottom />
         <List />
+        <Card />
       </div>
     )
   }
