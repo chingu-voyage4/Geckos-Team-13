@@ -1,0 +1,9 @@
+body {
+  background-color: #0079BF;
+}
+
+#root {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
