@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import './navbarTop.css';
+import '../styles/navbarTop.css';
 
 class NavbarTop extends Component {
     render() {
         return (
-            <ul className = "navbar blue-header">
-                <span className = "leftbar">
+            <ul className="navbar blue-header">
+                <span className="leftbar">
                     <li><button className="boards"><i className="fab fa-trello"></i> Boards</button></li>
                     <span className="search">
                         <li><input type="text"></input></li>
@@ -13,7 +13,7 @@ class NavbarTop extends Component {
                     </span>
                 </span>
                 <li className="brand"><i className="fab fa-trello"></i> Trello</li>
-                <span className = "rightbar">
+                <span className="rightbar">
                     <li><button className="create"><i className="fas fa-plus"></i>
 
                     </button></li>
@@ -22,7 +22,7 @@ class NavbarTop extends Component {
                     <li><button className="userbadge"><i className="fas fa-user"></i></button></li>
                 </span>
             </ul>
-            
+
         );
     }
 }
