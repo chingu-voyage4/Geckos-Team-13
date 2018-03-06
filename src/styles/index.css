@@ -5,16 +5,20 @@ body {
   font-size: 14px;
 }
  
-ul {
+
+/*Styling for the List Component*/
+.cards {
+  display: flex;
+  flex-direction: column;
   padding: 0px; 
   margin: 0px;
 }
 
-li { 
+.card-preview li { 
   list-style: none;
 }
 
-button {
+.btn--add, .btn--cancel, .list__add-cards-short {
   border: none;
   box-shadow: 0 1px 0 #959da1;
   cursor: pointer;
@@ -30,7 +34,7 @@ button:focus {
   outline:none;
 }
 
-textarea {
+.form-card-description {
   border: none;
   overflow: auto;
   outline: none;
@@ -43,8 +47,6 @@ textarea {
   padding: 6px 6px 2px 8px
 
 }
-
-/* column list */
 
 .list__container {
   margin: 100px; 
@@ -127,3 +129,5 @@ input:focus {
   height:25px;
   margin: 2px 0px 0px 8px
 }
+
+/* DONE styling list component*/
