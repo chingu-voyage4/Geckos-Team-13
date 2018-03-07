@@ -3,6 +3,7 @@ import '../styles/App.css'
 import NavbarTop from './NavbarTop.js'
 import NavbarBottom from './NavbarBottom.js'
 import List from './List'
+import Card from './Card'
 
 class App extends Component {
   render () {
@@ -11,6 +12,7 @@ class App extends Component {
         <NavbarTop />
         <NavbarBottom />
         <List />
+        <Card />
       </div>
     )
   }
