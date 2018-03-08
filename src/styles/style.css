@@ -1,14 +1,14 @@
 /* All styles for Trello Clone live here */
 
 /* Index:
-    1. Card Styles
-    2. List Styles
-    3. Navbar Top Styles
-    4. Navbar Bottom Styles
+    1. Card Component Styles
+    2. List Component Styles
+    3. Navbar Top Component Styles
+    4. Navbar Bottom Component Styles
 */
 
 
-/* Card styles */
+/* Card Component Styles */
 .BackgroundBox {
     position: relative;
     padding: 40px 350px 80px 350px;
@@ -322,8 +322,9 @@
     flex-direction: column;
     margin: 0px 0px 0px 0px;
 }
+/*DONE styling Card Component*/
 
-/*Styling for the List Component*/
+/*List Component Styles*/
 .cards {
     display: flex;
     flex-direction: column;
@@ -448,3 +449,4 @@ input:focus {
 }
 
 /* DONE styling list component*/
+
