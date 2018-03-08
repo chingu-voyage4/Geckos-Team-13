@@ -514,3 +514,22 @@ li {
     float: right;
 }
 /*DONE styling NavbarTop Component */
+
+
+/* NavbarBottom Component Styles */
+
+button {
+    color: #E0E0DF;
+    background-color: transparent;
+    border: none;
+}
+
+.nav-two {
+    margin: 10px 15px 30px 0;
+    padding-left: 25px;
+}
+
+.nav-two li button {
+    font-size: 1em;
+}
+
