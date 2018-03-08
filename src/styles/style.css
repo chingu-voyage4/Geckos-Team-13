@@ -1,12 +1,18 @@
 /* All styles for Trello Clone live here */
 
 /* Index:
-    1. Card Component Styles
-    2. List Component Styles
-    3. Navbar Top Component Styles
-    4. Navbar Bottom Component Styles
+    1. General Styles
+    2. Card Component Styles
+    3. List Component Styles
+    4. Navbar Top Component Styles
+    5. Navbar Bottom Component Styles
 */
 
+/* General Styles */
+li {
+    list-style: none;
+}
+    
 
 /* Card Component Styles */
 .BackgroundBox {
@@ -462,10 +468,8 @@ input:focus {
     box-shadow: 0 1px 1px rgba(0,0,0,.1);
 }
 
-li {
-    list-style: none;
+.nav-list li {
     display: inline;
-
 }
 
 .brand {
@@ -498,7 +502,7 @@ li {
 .userbadge {
     border-radius: 50%;
 }
-.navbar button, input {
+.navbar button, .navbar input {
     border-radius: 5px;
     margin-left: 10px;
     padding: 10px;
