@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import '../styles/navbarTop.css'
 
 class NavbarTop extends Component {
   render () {
