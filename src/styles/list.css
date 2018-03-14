@@ -41,7 +41,7 @@ button:focus {
 }
 
 .list__container {
-    margin: 100px;
+    margin: 10px;
     width: 270px;
     background-color: #E3E4E6;
     border-radius: 3px;
