@@ -35,7 +35,6 @@ class List extends Component {
   }
 
   setWrapperRef(node) {
-    console.log(node);
     this.wrapperRef = node;
   }
 
@@ -48,12 +47,10 @@ class List extends Component {
   }
 
   handleClick() {
-    console.log(this.state.listTitle);
     this.setState({ outComponentSelected: false });
   }
 
   cancelExpansion() {
-    console.log(this.state.outComponentSelected);
     this.setState({
       outComponentSelected: true,
       cardName: ""
@@ -76,7 +73,6 @@ class List extends Component {
   }
 
   handleKeyPress(event) {
-    console.log(event.key);
     if (event.key === "Enter") {
       this.confirmAddCard(event);
     }
@@ -95,7 +91,6 @@ class List extends Component {
   }
 
   render() {
-    console.log(this.state.listTitle);
     return (
       <div className="list__container">
         {this.props.children}
