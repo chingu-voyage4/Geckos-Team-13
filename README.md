@@ -17,57 +17,37 @@ npm run start
 
 Software required for project Tech Stack:
 
-* [Live Server](https://www.npmjs.com/package/live-server) - web daemon
 * [GitHub](https://github.com) - version control & workflow
 * [npm](https://www.npmjs.com) - package manager
 * [ESLint](https://www.npmjs.com/package/eslint) - linter
-
-
-
-
-
-### Installing
-
-A step by step guide to get a development environment running
-
-
-```
-install git  
-install npm  
-install live-server
-```
-
-
 
 
 ## Running Tests
 
 ### Unit Testing:
 
-
-* [ESLint Rules](https://eslint.org/docs/rules/)
-
 `not yet implemented (jest?) `
 
 ### Linting (coding style)
+
 Linting ensures a consistent style within the codebase
 
-`npm test` or `npm run test`
+`npm run lint` or `npm run lint:watch`
+
+
+* [ESLint Rules](https://eslint.org/docs/rules/)
+
+Followed:  [Use ESLint Like a Pro with ES6 and React](http://www.zsoltnagy.eu/use-eslint-like-a-pro-with-es6-and-react/)
 
 
 ## Deployment
+
 `not yet implemented`
 
 ## Contributing
 
 Only members of Chingu4 can contribute to this repository
 
-## Authors from Voyage-4 - Geckos-Team-13
+## Authors
 
-* **Jake Atchison** - (Project Manager) - [sipofwater](https://github.com/sipofwater)
-* **tiffanydevine** - [tiffanydevine](https://github.com/tiffanydevine)
-* **zealousAnemone** - [zealousAnemone](https://github.com/zealousAnemone)
-* **collinperkins** - [collinperkins](https://github.com/collinperkins)
-* **mfarazahmad** - [mfarazahmad](https://github.com/mfarazahmad)
-
-See also the list of [contributors](https://github.com/chingu-voyage4/Geckos-Team-13/contributors) who participated in this project.
+See the list of [contributors](https://github.com/chingu-voyage4/Geckos-Team-13/contributors) who participated on this project.
