@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import "../styles/App.css";
-import '../styles/style.css';
+import "../styles/style.css";
 import NavbarTop from "./NavbarTop.js";
 import NavbarBottom from "./NavbarBottom.js";
 import List from "./List";

@@ -1,18 +1,26 @@
 /* All styles for Trello Clone live here */
 
 /* Index:
-    1. General Styles
-    2. Card Component Styles
-    3. List Component Styles
-    4. Navbar Top Component Styles
-    5. Navbar Bottom Component Styles
+    1. General Styles - line 11
+    2. Card Component Styles - line 25
+    3. List Component Styles - line 341
+    4. Navbar Top Component Styles - line 467
+    5. Navbar Bottom Component Styles - line 533
 */
 
 /* General Styles */
 li {
     list-style: none;
 }
-    
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  font-size: 14px;
+  width: 100vw;
+}
+
 
 /* Card Component Styles */
 .BackgroundBox {
@@ -495,17 +503,19 @@ input:focus {
 
 .boards i {
     font-size: 1.3em;
-    margin-right: 5px;
+    margin: 2px 5px 2px 2px;
     font-weight: 500;
+    
 }
 
-.userbadge {
-    border-radius: 50%;
+.navbar button {
+    font-size: 1.1em;
 }
+
 .navbar button, .navbar input {
     border-radius: 5px;
     margin-left: 10px;
-    padding: 10px;
+    padding: 7px;
     background-color: hsla(0, 0%, 100%, .3);
     color: #E0E0DF;
     border-style: none;
@@ -522,7 +532,7 @@ input:focus {
 
 /* NavbarBottom Component Styles */
 
-button {
+.nav-two button {
     color: #E0E0DF;
     background-color: transparent;
     border: none;
