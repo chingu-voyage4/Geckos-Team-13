@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import "../styles/navbarTop.css";
 
 class NavbarTop extends Component {
     render() {
         return (
-            <ul className="navbar blue-header">
+            <ul className="navbar nav-list blue-header">
                 <span className="leftbar">
                     <li>
                         <button className="boards"><i className="fab fa-trello" /> Boards</button>
