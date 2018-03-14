@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import '../styles/App.css'
-import NavbarTop from './NavbarTop.js'
-import NavbarBottom from './NavbarBottom.js'
-import Board from './Board'
+import React, { Component } from "react";
+import "../styles/App.css";
+import NavbarTop from "./NavbarTop.js";
+import NavbarBottom from "./NavbarBottom.js";
+import List from "./List";
 
 class App extends Component {
   render() {
@@ -10,10 +10,10 @@ class App extends Component {
       <div className='App'>
         <NavbarTop />
         <NavbarBottom />
-        <Board />
+        <List />
       </div>
-    )
+    );
   }
 }
 
-export default App
+export default App;
