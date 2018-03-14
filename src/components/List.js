@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import '../styles/list.css'
 
 export default class extends Component {
   constructor (props) {
