@@ -1,6 +1,6 @@
 /* eslint-disable indent */
-import React, { Component } from 'react';
-import '../styles/card.css';
+import React, { Component } from "react";
+import "../styles/card.css";
 
 class Card extends Component {
     constructor(props) {

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import '../styles/list.css';
+import React, { Component } from "react";
+import "../styles/list.css";
 
 class List extends Component {
     constructor(props) {
@@ -7,12 +7,12 @@ class List extends Component {
 
         this.state = {
             outComponentSelected: true,
-            listTitle: 'You can edit this',
-            cardName: '',
+            listTitle: "You can edit this",
+            cardName: "",
             cardTitles: [
-                'Card Component #1',
-                'This component still needs styling',
-                'I also want to make the input for the title auto expand vertically'
+                "Card Component #1",
+                "This component still needs styling",
+                "I also want to make the input for the title auto expand vertically"
             ]
         };
 
@@ -27,11 +27,11 @@ class List extends Component {
     }
 
     componentDidMount() {
-        document.addEventListener('mousedown', this.handleClickOutside);
+        document.addEventListener("mousedown", this.handleClickOutside);
     }
 
     componentWillUnmount() {
-        document.removeEventListener('mousedown', this.handleClickOutside);
+        document.removeEventListener("mousedown", this.handleClickOutside);
     }
 
     setWrapperRef(node) {
@@ -56,7 +56,7 @@ class List extends Component {
         console.log(this.state.outComponentSelected);
         this.setState({
             outComponentSelected: true,
-            cardName: ''
+            cardName: ""
         });
     }
 
@@ -69,7 +69,7 @@ class List extends Component {
         if (this.state.cardName) {
         this.setState({
             cardTitles: [...this.state.cardTitles, this.state.cardName],
-            cardName: '',
+            cardName: "",
             outComponentSelected: true
         });
         }
@@ -77,7 +77,7 @@ class List extends Component {
 
     handleKeyPress(event) {
         console.log(event.key);
-        if (event.key === 'Enter') {
+        if (event.key === "Enter") {
         this.confirmAddCard(event);
         }
     }
@@ -89,7 +89,7 @@ class List extends Component {
     renderCardList() {
         return(
             this.state.cardTitles.map(title => {
-                return <li key={title} className='card-preview'>{title}</li>;
+                return <li key={title} className="card-preview">{title}</li>;
             })
         );
     }
@@ -97,37 +97,37 @@ class List extends Component {
     render() {
         console.log(this.state.listTitle);
         return (
-            <div className='list__container'>
+            <div className="list__container">
                 {this.props.children}
-                <div className='list__header'>
-                    <div className='list__header-title'>
-                        <input className='list-title__edit'
+                <div className="list__header">
+                    <div className="list__header-title">
+                        <input className="list-title__edit"
                             onChange={this.changeListTitle}
-                            value={this.state.listTitle} type='text'
+                            value={this.state.listTitle} type="text"
                         />
                     </div>
                 </div>
-                <div className='card-container'>
-                    <ul className='cards'>
+                <div className="card-container">
+                    <ul className="cards">
                         {this.renderCardList()}
                     </ul>
                 </div>
                 <form
                     onSubmit={this.confirmAddCard}
                     ref={this.setWrapperRef}
-                    className='list__add-cards-full'
-                    style={{ display: this.state.outComponentSelected ? 'none' : 'block' }}
+                    className="list__add-cards-full"
+                    style={{ display: this.state.outComponentSelected ? "none" : "block" }}
                 >
-                <div className='form-container'>
+                <div className="form-container">
                     <textarea value={this.state.cardName}
                         onChange={this.addCardTitle}
                         onKeyPress={this.handleKeyPress}
                     />
-                    <div className='form-btn-container'>
-                        <button type='submit' className='btn--add'>Add</button>
-                        <button className='btn--cancel'>
-                            <img src='../close-round.png' className='cancel'
-                                onClick={this.cancelExpansion} alt=''
+                    <div className="form-btn-container">
+                        <button type="submit" className="btn--add">Add</button>
+                        <button className="btn--cancel">
+                            <img src="../close-round.png" className="cancel"
+                                onClick={this.cancelExpansion} alt=""
                             />
                         </button>
                     </div>
@@ -135,8 +135,8 @@ class List extends Component {
                 </form>
                 <button
                     onClick={this.handleClick}
-                    className='list__add-cards-short'
-                    style={{ display: this.state.outComponentSelected ? 'block' : 'none' }}
+                    className="list__add-cards-short"
+                    style={{ display: this.state.outComponentSelected ? "block" : "none" }}
                 >Add a card...
                 </button>
             </div>

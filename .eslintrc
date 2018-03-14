@@ -38,7 +38,7 @@
         "no-undef":           2,
         "no-undefined":       2,
         "comma-dangle":       [ 2, "never" ],
-        "quotes":             [ 2, "single" ],
+        "quotes":             [ 2, "double" ],
         "semi":               [ 2, "always" ],        
         "guard-for-in":       2,
         "no-eval":            2,
