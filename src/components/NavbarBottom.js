@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class NavbarBottom extends Component {
     render() {
         return (
-            <ul className='nav-two'>
+            <ul className='nav-two nav-list'>
                 <span className='leftbar'>
                     <li><button>Board Name</button></li>
                     <li><button className='star'><i className='far fa-star' /></button></li>

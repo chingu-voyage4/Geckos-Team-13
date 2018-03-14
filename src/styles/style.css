@@ -2,10 +2,10 @@
 
 /* Index:
     1. General Styles - line 11
-    2. Card Component Styles - line 25
-    3. List Component Styles - line 341
-    4. Navbar Top Component Styles - line 467
-    5. Navbar Bottom Component Styles - line 533
+    2. Card Component Styles - line 31
+    3. List Component Styles - line 347
+    4. Navbar Top Component Styles - line 473
+    5. Navbar Bottom Component Styles - line 539
 */
 
 /* General Styles */
@@ -14,13 +14,19 @@ li {
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  font-size: 14px;
-  width: 100vw;
+background-color: #0079BF;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    font-size: 14px;
+    width: 100vw;
 }
 
+#root {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+}
 
 /* Card Component Styles */
 .BackgroundBox {
