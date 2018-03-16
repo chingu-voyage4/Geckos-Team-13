@@ -1,0 +1,54 @@
+.list-menu {
+  z-index: 1;
+  width: 280px;
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 3px;
+}
+
+.follow, .sort, .archive-cards {
+  border-bottom: 1px solid #d6dadc;
+}
+
+.list-menu li {
+  width: 280px;
+  list-style: none;
+  padding: 6px 10px;
+   margin: 0;
+}
+
+.list-menu-title {
+  margin: 0 10px;
+  color: #838c91;
+  border-bottom: 1px solid #d6dadc;
+  text-align: center;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  right: 0;
+  top: 0; 
+}
+
+.close img {
+    width: 15px;
+}
+.list-menu-options {
+  font-weight: 700;
+ 
+}
+
+.list-menu li:hover {
+  background-color: #298fca;
+  color: #fff;
+}
+
+.list-menu ul {
+  padding: 5px;
+}
+
+a {
+  color: #444;
+  text-decoration: none;
+}
