@@ -30,6 +30,7 @@ background-color: #0079BF;
 
 /* Card Component Styles */
 .BackgroundBox {
+    display: none;
     position: relative;
     padding: 40px 350px 80px 350px;
 }
