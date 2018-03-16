@@ -387,7 +387,7 @@ button:focus {
 }
 
 .list__container {
-    margin: 100px;
+    margin: 10px;
     width: 270px;
     background-color: #E3E4E6;
     border-radius: 3px;
@@ -553,3 +553,46 @@ input:focus {
     font-size: 1em;
 }
 
+/* Board Component Styles */
+
+.board__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  
+  .board__list-container {
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .App {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .board__button-addList {
+    display: block;
+    border:none; 
+    border-radius: 3px;
+    padding: 10px;
+    color: hsla(0,0%,100%,.7);
+    transition: color 85ms ease-in;
+    background: rgba(0,0,0,.12);
+    font-size: 14px;
+    line-height: 20px;
+    width: 270px;
+    margin: 10px 5px;
+    text-align:left;
+  }
+  
+  .board__button-addList:hover {
+    background: rgba(0,0,0,.35);
+  }
+  
+  .board__add-list-full {
+    width: 270px;
+    margin:10px 5px;
+  }
+  
+  /*DONE styling Board Component */

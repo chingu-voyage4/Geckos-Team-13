@@ -1,0 +1,44 @@
+body {
+  background-color: #519839;
+}
+
+#root {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+.red-body {
+  background-color: #B04632;
+}
+
+.orange-body {
+  background-color: #D29034;
+}
+
+.pink-body {
+  background-color: #CD5A91;
+}
+
+.ltblue-body {
+  background-color: #00AECC;
+}
+
+.blue-body {
+  background-color: #0079BF;
+}
+
+.green-body {
+  background-color: #519839;
+}
+
+.purple-body {
+  background-color: #89609E;
+}
+
+.ltgreen-body {
+  background-color: #4BBF6B;
+}
+
+.grey-body {
+  background-color: #838C91;
+}

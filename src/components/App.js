@@ -2,17 +2,15 @@ import React, { Component } from "react";
 import "../styles/style.css";
 import NavbarTop from "./NavbarTop.js";
 import NavbarBottom from "./NavbarBottom.js";
-import List from "./List";
-import Card from "./Card";
+import Board from "./Board";
 
 class App extends Component {
     render() {
         return (
-            <div className='App'>
+            <div className="App">
                 <NavbarTop />
                 <NavbarBottom />
-                <List />
-                <Card />
+                <Board />
             </div>
         );
     }
