@@ -608,6 +608,83 @@ input:focus {
     margin:10px 5px;
   }
   
-  /*DONE styling Board Component */
+/*DONE styling Board Component */
+
+/* styling Quick Edit Menu */
 
 
+.quick-edit__screen {
+    background: rgba(0, 0, 0, 0.6);
+    bottom: 0;
+    color: #fff;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 10;
+  }
+  
+  
+  .quick-edit__container {
+    display: flex;
+    position: absolute;
+  }
+  
+  
+  .text-button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  
+  .quick-edit__text-box {
+    border: none;
+    padding: 6px 6px 2px 8px;
+    border-radius: 3px;
+    width: 256px;
+    height: 112px;
+    resize: none;
+    margin-bottom: 14px;
+  }
+  
+  
+  .quick-edit__menu {
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+  
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  
+  
+  .quick-edit__text-box:focus {
+    outline: none;
+  }
+  
+  .menu-button {
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 3px;
+    clear: both;
+    color: #e6e6e6;
+    display: block;
+    float: left;
+    margin: 0 0 4px 8px;
+    padding: 6px 12px 6px 8px;
+    text-decoration: none;
+    -webkit-transition: -webkit-transform 85ms ease-in;
+    transition: -webkit-transform 85ms ease-in;
+    transition: transform 85ms ease-in;
+    transition: transform 85ms ease-in, -webkit-transform 85ms ease-in;
+  }
+  
+  .menu-button:hover {
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    -webkit-transform: translateX(5px);
+    transform: translateX(5px);
+  }
+
+/* Done styling Quick Edit component */
