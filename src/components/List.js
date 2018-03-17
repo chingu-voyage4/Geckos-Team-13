@@ -27,14 +27,17 @@ class List extends Component {
         this.handleKeyPress = this.handleKeyPress.bind(this);
         this.divClicked = this.divClicked.bind(this);
         this.enterTitle = this.enterTitle.bind(this);
+        this.handleClickOutsideTitle = this.handleClickOutsideTitle.bind(this);
     }
 
     componentDidMount() {
         document.addEventListener("mousedown", this.handleClickOutside);
+        document.addEventListener("mousedown", this.handleClickOutsideTitle);
     }
 
     componentWillUnmount() {
         document.removeEventListener("mousedown", this.handleClickOutside);
+        document.removeEventListener("mousedown", this.handleClickOutsideTitle);
     }
 
     setWrapperRef(node) {
@@ -86,7 +89,7 @@ class List extends Component {
     }
 
     enterTitle(event) {
-        if (event.key == "Enter") {
+        if (event.key === "Enter") {
             this.setState({ inputOpen: false });
         }
     }
