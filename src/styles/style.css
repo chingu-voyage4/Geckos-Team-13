@@ -447,6 +447,7 @@ button:focus {
     background-color: transparent;
 }
 
+
 .list-title__edit {
     background-color: transparent;
     border-style: none;
@@ -457,11 +458,23 @@ button:focus {
     padding: 8px 34px 8px 2px;
 }
 
-input:focus {
+.list-title__edit--input {
+    background-color: transparent;
+    border-style: none;
+    color: #333;
+    font-size:16px;
+    line-height: 18px;
+    font-weight: 700;
+    padding: 8px 34px 8px 2px;
     background-color: #FFFFFF;
-    border: #0099CC solid 1px;
+    border: #0099CC solid 2px;
     border-radius: 3px;
 }
+
+input:focus {
+    outline: none;
+}
+
 
 .cancel {
     height:25px;
@@ -596,3 +609,5 @@ input:focus {
   }
   
   /*DONE styling Board Component */
+
+
