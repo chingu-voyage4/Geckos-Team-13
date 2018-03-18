@@ -572,19 +572,19 @@ input:focus {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-  }
+}
   
-  .board__list-container {
+.board__list-container {
     display: flex;
     align-items: flex-start;
-  }
+}
   
-  .App {
+.App {
     display: flex;
     flex-direction: column;
-  }
+}
   
-  .board__button-addList {
+.board__button-addList {
     display: block;
     border:none; 
     border-radius: 3px;
@@ -597,21 +597,20 @@ input:focus {
     width: 270px;
     margin: 10px 5px;
     text-align:left;
-  }
+}
   
-  .board__button-addList:hover {
+.board__button-addList:hover {
     background: rgba(0,0,0,.35);
-  }
+}
   
-  .board__add-list-full {
+.board__add-list-full {
     width: 270px;
     margin:10px 5px;
-  }
+}
   
 /*DONE styling Board Component */
 
 /* styling Quick Edit Menu */
-
 
 .quick-edit__screen {
     background: rgba(0, 0, 0, 0.6);
@@ -622,23 +621,21 @@ input:focus {
     right: 0;
     top: 0;
     z-index: 10;
-  }
-  
+}
   
   .quick-edit__container {
     display: flex;
     position: absolute;
-  }
+}
   
-  
-  .text-button-container {
+.text-button-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-  }
+    margin-top: 14px;
+}
   
-  
-  .quick-edit__text-box {
+.quick-edit__text-box {
     border: none;
     padding: 6px 6px 2px 8px;
     border-radius: 3px;
@@ -646,10 +643,10 @@ input:focus {
     height: 112px;
     resize: none;
     margin-bottom: 14px;
-  }
+}
   
   
-  .quick-edit__menu {
+.quick-edit__menu {
     display: flex;
     flex-direction: column;
     padding: 0px;
@@ -657,14 +654,13 @@ input:focus {
     opacity: 1;
     -webkit-transform: translateX(0);
     transform: translateX(0);
-  }
-  
+}
   
   .quick-edit__text-box:focus {
     outline: none;
-  }
-  
-  .menu-button {
+}
+
+.menu-button {
     background: rgba(0, 0, 0, 0.6);
     border-radius: 3px;
     clear: both;
@@ -678,13 +674,13 @@ input:focus {
     transition: -webkit-transform 85ms ease-in;
     transition: transform 85ms ease-in;
     transition: transform 85ms ease-in, -webkit-transform 85ms ease-in;
-  }
+}
   
-  .menu-button:hover {
+.menu-button:hover {
     background: rgba(0, 0, 0, 0.8);
     color: #fff;
     -webkit-transform: translateX(5px);
     transform: translateX(5px);
-  }
+}
 
 /* Done styling Quick Edit component */
