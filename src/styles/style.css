@@ -192,7 +192,7 @@ background-color: #0079BF;
     font-size: 20px;
 }
 
-.fa-user{
+.AddBox .fa-user{
     margin-right: 5px;
     font-size: 20px;
 }
@@ -488,7 +488,8 @@ input:focus {
 @import url('https://fonts.googleapis.com/css?family=Lobster');
 
 .navbar {
-    padding: 10px;
+    height: 32px;
+    padding: 5px 8px;
     background-color: #0067A3;
     margin-top: 0;
     text-align: center;
@@ -496,10 +497,15 @@ input:focus {
 }
 
 .nav-list li {
-    display: inline;
+    display: inline-block;
 }
 
 .brand {
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
     font-size: 1.6em;
     font-family: 'Lobster', cursive;
     color: rgba(224, 224, 223, 0.7);
@@ -521,14 +527,9 @@ input:focus {
 }
 
 .boards i {
-    font-size: 1.3em;
+    font-size: 12px;
     margin: 2px 5px 2px 2px;
-    font-weight: 500;
-    
-}
-
-.navbar button {
-    font-size: 1.1em;
+    font-weight: 400;
 }
 
 .navbar button, .navbar input {
