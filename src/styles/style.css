@@ -468,6 +468,7 @@ button:focus {
     right: 0;
     top: 0;
     font-size: 18px;
+    cursor: pointer;
 }
 
 .list__header-title {

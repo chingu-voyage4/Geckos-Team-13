@@ -48,28 +48,29 @@ class ListMenu extends React.Component {
     render() {
         if (this.state.menu === "main") {
         return (
+            // Main List Action menu
             <div className="list-menu">
                 <div className="list-menu-title"><p>List Actions</p>
                     <span className="close" onClick={this.closeMenu}><img src="../close-round.png" alt="close" /></span>
                 </div>
-                <div className="list-menu-options"><ul>
-                    <a href="#"><li>Add Card...</li></a>
-                    <a href="#"><li>Copy List...</li></a>
-                    <a href="#"><li>Move List...</li></a>
-                    <a href="#"><li className="follow" onClick={this.toggleFollow}>
-                        {this.state.follow ? "Unfollow" : "Follow"}</li></a>
-                    <a href="#"><li className="sort" onClick={this.toggleSort}>Sort By...</li></a>
-                    <a href="#"> <li>Move All Cards in This List...</li></a>
-                    <a href="#">
+                <div className="list-menu-options">
+                    <ul>
+                        <li>Add Card...</li>
+                        <li>Copy List...</li>
+                        <li>Move List...</li>
+                        <li className="follow" onClick={this.toggleFollow}>
+                            {this.state.follow ? "Unfollow" : "Follow"}</li>
+                        <li className="sort" onClick={this.toggleSort}>Sort By...</li>
+                        <li>Move All Cards in This List...</li>
                         <li className="archive-cards" onClick={this.toggleArchiveAll}>
-                        Archive All Cards in This List...</li></a>
-                    <a href="#"><li>Archive This List</li></a>
-                </ul>
-
+                            Archive All Cards in This List...</li>
+                        <li>Archive This List</li>
+                    </ul>
                 </div>
             </div>
         );
     } else if (this.state.menu === "sortMenu") {
+        // "Sort By" List submenu
         return (
             <div className="list-menu">
                 <div className="list-menu-title"><span className="back" onClick={this.toggleSort}>
@@ -77,12 +78,13 @@ class ListMenu extends React.Component {
                 <span className="close" onClick={this.closeMenu}><img src="../close-round.png" alt="close" /></span>
                 </div>
             <div className="list-menu-options"><ul>
-            <a href="#"><li>Date Created (Newest First)</li></a>
-            <a href="#"><li>Date Created (Oldest First)</li></a>
+            <li>Date Created (Newest First)</li>
+            <li>Date Created (Oldest First)</li>
             </ul></div>
             </div>
         );
     } else if (this.state.menu === "archiveAllMenu") {
+        // Archive all Cards List Submenu
         return (
             <div className="list-menu">
                 <div className="list-menu-title"><span className="back" onClick={this.toggleArchiveAll}>
