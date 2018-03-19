@@ -139,7 +139,7 @@ class List extends Component {
             <div className="list__container">
                 {this.props.children}
                 <div className="list__header">
-                    <div className="list__header-title">{this.renderTitle()}</div>
+                    <div className="list__header-title">{this.renderTitle()}</div><span className="openListMenu">...</span>
                 </div>
                 <div className="card-container">
                     <ul className="cards">{this.renderCardList()}</ul>

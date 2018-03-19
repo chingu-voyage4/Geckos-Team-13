@@ -8,6 +8,7 @@ class ListMenu extends React.Component {
         this.toggleFollow = this.toggleFollow.bind(this);
         this.toggleSort = this.toggleSort.bind(this);
         this.toggleArchiveAll = this.toggleArchiveAll.bind(this);
+        this.closeMenu = this.closeMenu.bind(this);
         this.state = {follow: false};
         this.state = {menu: "main"};
     }
@@ -39,12 +40,17 @@ class ListMenu extends React.Component {
         }
     }
 
+    closeMenu(e) {
+        e.preventDefault();
+        this.setState({menu: "none"});
+    }
+
     render() {
         if (this.state.menu === "main") {
         return (
             <div className="list-menu">
                 <div className="list-menu-title"><p>List Actions</p>
-                    <span className="close"><img src="../close-round.png" alt="close" /></span>
+                    <span className="close" onClick={this.closeMenu}><img src="../close-round.png" alt="close" /></span>
                 </div>
                 <div className="list-menu-options"><ul>
                     <a href="#"><li>Add Card...</li></a>
@@ -55,7 +61,8 @@ class ListMenu extends React.Component {
                     <a href="#"><li className="sort" onClick={this.toggleSort}>Sort By...</li></a>
                     <a href="#"> <li>Move All Cards in This List...</li></a>
                     <a href="#">
-                        <li className="archive-cards" onClick={this.toggleArchiveAll}>Archive All Cards in This List...</li></a>
+                        <li className="archive-cards" onClick={this.toggleArchiveAll}>
+                        Archive All Cards in This List...</li></a>
                     <a href="#"><li>Archive This List</li></a>
                 </ul>
 
@@ -65,8 +72,9 @@ class ListMenu extends React.Component {
     } else if (this.state.menu === "sortMenu") {
         return (
             <div className="list-menu">
-                <div className="list-menu-title"><span className="back" onClick={this.toggleSort}><i className="fas fa-arrow-left"></i></span><p>Sort List</p>
-                <span className="close"><img src="../close-round.png" alt="close" /></span>
+                <div className="list-menu-title"><span className="back" onClick={this.toggleSort}>
+                <i className="fas fa-arrow-left"></i></span><p>Sort List</p>
+                <span className="close" onClick={this.closeMenu}><img src="../close-round.png" alt="close" /></span>
                 </div>
             <div className="list-menu-options"><ul>
             <a href="#"><li>Date Created (Newest First)</li></a>
@@ -79,7 +87,7 @@ class ListMenu extends React.Component {
             <div className="list-menu">
                 <div className="list-menu-title"><span className="back" onClick={this.toggleArchiveAll}>
                 <i className="fas fa-arrow-left"></i></span><p>Archive All Cards in this List?</p>
-                    <span className="close"><img src="../close-round.png" alt="close" /></span></div>
+                    <span className="close" onClick={this.closeMenu}><img src="../close-round.png" alt="close" /></span></div>
                 <div className="list-menu-text">
                 <p>This will remove all the cards in this list from the board.
                 To view archived cards and bring them back to the board, click "Menu" >
@@ -88,15 +96,9 @@ class ListMenu extends React.Component {
                 </div>
                 </div>
         );
+    } else {
+        return <div></div>;
     }
-    }
-}
-
-class defaultList extends Component {
-    render() {
-        return (
-         <div></div>
-        );
     }
 }
 

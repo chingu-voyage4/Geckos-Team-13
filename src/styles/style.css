@@ -459,6 +459,17 @@ button:focus {
     padding: 8px;
 }
 
+.list__header {
+    position: relative;
+}
+
+.openListMenu {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 18px;
+}
+
 .list__header-title {
     margin-bottom: 8px;
 }
