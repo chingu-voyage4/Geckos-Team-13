@@ -21,6 +21,7 @@ background-color: #0079BF;
     font-family: sans-serif;
     font-size: 14px;
     width: 100vw;
+    color: #333;
 }
 
 #root {
@@ -29,6 +30,23 @@ background-color: #0079BF;
     padding: 0;
 }
 
+.danger-button {
+    background-color: #eb5a46;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 3px;
+    border-style: none;
+    padding: 5px 16px;
+    display: block;
+    width: 260px;
+    margin: 8px 0;
+    line-height: 22px;
+    cursor: pointer;
+}
+
+.danger-button:hover {
+    background-color: #b04632;
+}
 
 /* Board Component Styles */
 

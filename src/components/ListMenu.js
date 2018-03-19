@@ -7,6 +7,7 @@ class ListMenu extends React.Component {
         super(props);
         this.toggleFollow = this.toggleFollow.bind(this);
         this.toggleSort = this.toggleSort.bind(this);
+        this.toggleArchiveAll = this.toggleArchiveAll.bind(this);
         this.state = {follow: false};
         this.state = {menu: "main"};
     }
@@ -29,6 +30,15 @@ class ListMenu extends React.Component {
         }
     }
 
+    toggleArchiveAll(e) {
+        e.preventDefault();
+        if (this.state.menu === "main") {
+            this.setState({menu: "archiveAllMenu"});
+        } else {
+            this.setState({menu: "main"});
+        }
+    }
+
     render() {
         if (this.state.menu === "main") {
         return (
@@ -45,14 +55,14 @@ class ListMenu extends React.Component {
                     <a href="#"><li className="sort" onClick={this.toggleSort}>Sort By...</li></a>
                     <a href="#"> <li>Move All Cards in This List...</li></a>
                     <a href="#">
-                        <li className="archive-cards">Archive All Cards in This List...</li></a>
+                        <li className="archive-cards" onClick={this.toggleArchiveAll}>Archive All Cards in This List...</li></a>
                     <a href="#"><li>Archive This List</li></a>
                 </ul>
 
                 </div>
             </div>
         );
-    } else {
+    } else if (this.state.menu === "sortMenu") {
         return (
             <div className="list-menu">
                 <div className="list-menu-title"><span className="back" onClick={this.toggleSort}><i className="fas fa-arrow-left"></i></span><p>Sort List</p>
@@ -63,6 +73,20 @@ class ListMenu extends React.Component {
             <a href="#"><li>Date Created (Oldest First)</li></a>
             </ul></div>
             </div>
+        );
+    } else if (this.state.menu === "archiveAllMenu") {
+        return (
+            <div className="list-menu">
+                <div className="list-menu-title"><span className="back" onClick={this.toggleArchiveAll}>
+                <i className="fas fa-arrow-left"></i></span><p>Archive All Cards in this List?</p>
+                    <span className="close"><img src="../close-round.png" alt="close" /></span></div>
+                <div className="list-menu-text">
+                <p>This will remove all the cards in this list from the board.
+                To view archived cards and bring them back to the board, click "Menu" >
+                "Archived Items."</p>
+                <button className="archive-all danger-button">Archive All</button>
+                </div>
+                </div>
         );
     }
     }

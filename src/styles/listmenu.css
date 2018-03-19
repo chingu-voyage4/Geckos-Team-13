@@ -46,6 +46,10 @@
  
 }
 
+.list-menu-text {
+  padding: 0 10px;
+}
+
 .list-menu li:hover {
   background-color: #298fca;
   color: #fff;
