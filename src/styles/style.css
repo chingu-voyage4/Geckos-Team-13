@@ -2,10 +2,11 @@
 
 /* Index:
     1. General Styles - line 11
-    2. Card Component Styles - line 31
-    3. List Component Styles - line 347
-    4. Navbar Top Component Styles - line 473
-    5. Navbar Bottom Component Styles - line 539
+    2. Board Component Styles - line 32
+    3. Card Component Styles - line 78
+    4. List Component Styles - line 394
+    5. Navbar Top Component Styles - line 533
+    6. Navbar Bottom Component Styles - line 600
 */
 
 /* General Styles */
@@ -27,6 +28,52 @@ background-color: #0079BF;
     margin: 0;
     padding: 0;
 }
+
+
+/* Board Component Styles */
+
+.board__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  
+  .board__list-container {
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .App {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .board__button-addList {
+    display: block;
+    border:none; 
+    border-radius: 3px;
+    padding: 10px;
+    color: hsla(0,0%,100%,.7);
+    transition: color 85ms ease-in;
+    background: rgba(0,0,0,.12);
+    font-size: 14px;
+    line-height: 20px;
+    width: 270px;
+    margin: 10px 5px;
+    text-align:left;
+  }
+  
+  .board__button-addList:hover {
+    background: rgba(0,0,0,.35);
+  }
+  
+  .board__add-list-full {
+    width: 270px;
+    margin:10px 5px;
+  }
+  
+  /*DONE styling Board Component */
+
 
 /* Card Component Styles */
 .BackgroundBox {
@@ -192,7 +239,7 @@ background-color: #0079BF;
     font-size: 20px;
 }
 
-.fa-user{
+.AddBox .fa-user{
     margin-right: 5px;
     font-size: 20px;
 }
@@ -447,6 +494,7 @@ button:focus {
     background-color: transparent;
 }
 
+
 .list-title__edit {
     background-color: transparent;
     border-style: none;
@@ -457,11 +505,23 @@ button:focus {
     padding: 8px 34px 8px 2px;
 }
 
-input:focus {
+.list-title__edit--input {
+    background-color: transparent;
+    border-style: none;
+    color: #333;
+    font-size:16px;
+    line-height: 18px;
+    font-weight: 700;
+    padding: 8px 34px 8px 2px;
     background-color: #FFFFFF;
-    border: #0099CC solid 1px;
+    border: #0099CC solid 2px;
     border-radius: 3px;
 }
+
+input:focus {
+    outline: none;
+}
+
 
 .cancel {
     height:25px;
@@ -475,7 +535,8 @@ input:focus {
 @import url('https://fonts.googleapis.com/css?family=Lobster');
 
 .navbar {
-    padding: 10px;
+    height: 32px;
+    padding: 5px 8px;
     background-color: #0067A3;
     margin-top: 0;
     text-align: center;
@@ -483,10 +544,15 @@ input:focus {
 }
 
 .nav-list li {
-    display: inline;
+    display: inline-block;
 }
 
 .brand {
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: -3px;
+    bottom: 0;
     font-size: 1.6em;
     font-family: 'Lobster', cursive;
     color: rgba(224, 224, 223, 0.7);
@@ -508,14 +574,9 @@ input:focus {
 }
 
 .boards i {
-    font-size: 1.3em;
+    font-size: 12px;
     margin: 2px 5px 2px 2px;
-    font-weight: 500;
-    
-}
-
-.navbar button {
-    font-size: 1.1em;
+    font-weight: 400;
 }
 
 .navbar button, .navbar input {
@@ -552,47 +613,3 @@ input:focus {
 .nav-two li button {
     font-size: 1em;
 }
-
-/* Board Component Styles */
-
-.board__container {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-  }
-  
-  .board__list-container {
-    display: flex;
-    align-items: flex-start;
-  }
-  
-  .App {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .board__button-addList {
-    display: block;
-    border:none; 
-    border-radius: 3px;
-    padding: 10px;
-    color: hsla(0,0%,100%,.7);
-    transition: color 85ms ease-in;
-    background: rgba(0,0,0,.12);
-    font-size: 14px;
-    line-height: 20px;
-    width: 270px;
-    margin: 10px 5px;
-    text-align:left;
-  }
-  
-  .board__button-addList:hover {
-    background: rgba(0,0,0,.35);
-  }
-  
-  .board__add-list-full {
-    width: 270px;
-    margin:10px 5px;
-  }
-  
-  /*DONE styling Board Component */

@@ -11,7 +11,7 @@
     "react-scripts": "1.1.1"
   },
   "scripts": {
-    "clean": "sudo rm -R node_modules & npm install",
+    "clean": "sudo rm -R node_modules && npm install",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
