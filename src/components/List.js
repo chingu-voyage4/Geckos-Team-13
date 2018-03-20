@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import ListMenu from "./ListMenu";
 
 class List extends Component {
     constructor(props) {
-		super(props);
+        super(props);
 
         this.state = {
             outComponentSelected: true,
@@ -27,7 +28,8 @@ class List extends Component {
         this.handleKeyPress = this.handleKeyPress.bind(this);
         this.divClicked = this.divClicked.bind(this);
         this.enterTitle = this.enterTitle.bind(this);
-		this.handleClickOutsideTitle = this.handleClickOutsideTitle.bind(this);
+        this.handleClickOutsideTitle = this.handleClickOutsideTitle.bind(this);
+        this.showMenu = this.showMenu.bind(this);
     }
 
     componentDidMount() {
@@ -110,8 +112,15 @@ class List extends Component {
     }
 
     divClicked() {
+        console.log("here");
         this.setState({ inputOpen: true });
-	}
+    }
+
+    showMenu() {
+        if (this.state.inputOpen) {
+            return <ListMenu />;
+        }
+    }
 
     renderTitle() {
         if (this.state.inputOpen) {
@@ -136,11 +145,14 @@ class List extends Component {
 
     render() {
         return (
-			<div className="list__container">
+            <div className="list__container">
                 {this.props.children}
                 <div className="list__header">
-					<div className="list__header-title">{this.renderTitle()}</div>
-					<span className="openListMenu">...</span>
+                    <div className="list__header-title">{this.renderTitle()}</div>
+                    <span onClick={this.divClicked} className="openListMenu">
+                        ...
+                    </span>
+                    {this.showMenu()}
                 </div>
                 <div className="card-container">
                     <ul className="cards">{this.renderCardList()}</ul>
