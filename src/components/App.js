@@ -3,6 +3,7 @@ import "../styles/style.css";
 import NavbarTop from "./NavbarTop.js";
 import NavbarBottom from "./NavbarBottom.js";
 import Board from "./Board";
+import QuickEditMenu from "./QuickEditCard";
 
 class App extends Component {
     render() {
@@ -11,6 +12,7 @@ class App extends Component {
                 <NavbarTop />
                 <NavbarBottom />
                 <Board />
+                <QuickEditMenu />
             </div>
         );
     }
