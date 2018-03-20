@@ -45,6 +45,19 @@ background-color: #0079BF;
     cursor: pointer;
 }
 
+.confirm-button {
+    background-color: #5aac44;
+    box-shadow: 0 1px 0 #519839;
+    color: #fff;
+    padding: 5px 30px;
+    border-style: none;
+    cursor: pointer;
+    line-height: 22px;
+    border-radius: 3px;
+    font-weight: 700;
+    margin: 8px 0;
+}
+
 .danger-button:hover {
     background-color: #b04632;
 }
@@ -615,11 +628,43 @@ input:focus {
 }
 .list-menu-options {
   font-weight: 700;
- 
 }
 
 .list-menu-text {
   padding: 0 10px;
+}
+
+.list-menu-buttons {
+    padding: 10px;
+    overflow: hidden;
+}
+
+.list-menu-buttons .moveBtn {
+    text-align: left;
+    box-sizing: border-box;
+    display: block;
+    margin-bottom: 10px;
+    padding: 20px 7px;
+    height: 50px;
+    background-color: #e2e4e6;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 3px;
+    position: relative;
+    font-size: 1.2em;
+    font-weight: 700;
+}
+
+.moveBtn .btnLabel {
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    color: #838C91;
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 700;
+    display: block;
 }
 
 .list-menu li:hover {
