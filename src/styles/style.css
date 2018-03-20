@@ -1,12 +1,13 @@
 /* All styles for Trello Clone live here */
 
 /* Index:
-    1. General Styles - line 11
-    2. Board Component Styles - line 32
-    3. Card Component Styles - line 78
-    4. List Component Styles - line 394
-    5. Navbar Top Component Styles - line 533
-    6. Navbar Bottom Component Styles - line 600
+    1. General Styles - line 12
+    2. Board Component Styles - line 52
+    3. Card Component Styles - line 97
+    4. List Component Styles - line 413
+    5. List Menu Component Styles - line 564
+    6. Navbar Top Component Styles - line 635
+    7. Navbar Bottom Component Styles - line 702
 */
 
 /* General Styles */
@@ -560,7 +561,78 @@ input:focus {
 
 /* DONE styling List Component*/
 
-/*NavbarTop Component Styles*/
+/* ListMenu Component Styles */
+.list-menu {
+  z-index: 1;
+  width: 280px;
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 3px;
+  position: absolute;
+}
+
+.follow, .sort, .archive-cards {
+  border-bottom: 1px solid #d6dadc;
+}
+
+.list-menu li {
+  width: 280px;
+  list-style: none;
+  padding: 6px 10px;
+  margin: 0;
+  color: #444;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.list-menu-title {
+  margin: 0 10px;
+  color: #838c91;
+  border-bottom: 1px solid #d6dadc;
+  text-align: center;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  right: 0;
+  top: 0; 
+  cursor: pointer;
+}
+
+.back {
+  position: absolute;
+  left: 0;
+  top: 0;
+  cursor: pointer;
+}
+
+.back:hover {
+  color: #4d4d4d;
+}
+.close img {
+    width: 15px;
+}
+.list-menu-options {
+  font-weight: 700;
+ 
+}
+
+.list-menu-text {
+  padding: 0 10px;
+}
+
+.list-menu li:hover {
+  background-color: #298fca;
+  color: #fff;
+}
+
+.list-menu ul {
+  padding: 5px;
+}
+/* DONE styling ListMenu COmponent */
+
+/* NavbarTop Component Styles*/
 
 @import url('https://fonts.googleapis.com/css?family=Lobster');
 

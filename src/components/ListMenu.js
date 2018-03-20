@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "../styles/style.css";
-import "../styles/listmenu.css";
 
 class ListMenu extends React.Component {
     constructor(props) {
