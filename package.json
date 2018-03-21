@@ -8,7 +8,10 @@
     "babel": "^6.23.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-scripts": "1.1.1"
+    "react-scripts": "1.1.1",
+    "moment": "^2.21.0",
+    "react-redux": "^5.0.7",
+    "redux": "^3.7.2"
   },
   "scripts": {
     "clean": "sudo rm -R node_modules && npm install",

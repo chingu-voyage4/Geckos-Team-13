@@ -30,7 +30,6 @@ function addCard(state, action) {
     // Insert the new Comment object into the updated lookup table
     return {
         ...state,
-
         [cardId]: card
     };
 }

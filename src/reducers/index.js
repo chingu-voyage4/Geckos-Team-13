@@ -1,5 +1,4 @@
 import { combineReducers } from "redux";
-// import listReducer from './listReducer'
 import cardReducer from "./cardReducer";
 import cardArrayReducer from "./cardArrayReducer";
 import listReducer from "./listReducer";
@@ -11,7 +10,5 @@ const rootReducer = combineReducers({
     cards: cardReducer,
     listArray: listArrayReducer
 });
-
-console.log(rootReducer);
 
 export default rootReducer;

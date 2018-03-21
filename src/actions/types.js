@@ -11,7 +11,6 @@ const constants = {
 };
 
 export default constants;
-
 /* To be implemented 
 
 EDIT_LABELS: "EDIT_LABELS",
