@@ -151,7 +151,9 @@ class List extends Component {
                 {this.props.children}
                 <div className="list__header">
 					<div className="list__header-title">{this.renderTitle()}</div>
-                    <span className="openListMenu" onClick={this.toggleMenu}><button className="expandMenu"><i className="fas fa-ellipsis-h"></i></button></span>
+                    <span className="openListMenu" onClick={this.toggleMenu}>
+                    <button className="expandMenu">
+                    <i className="fas fa-ellipsis-h"></i></button></span>
                     {this.state.menuDisplay && <ListMenu />}
                 </div>
                 <div className="card-container">

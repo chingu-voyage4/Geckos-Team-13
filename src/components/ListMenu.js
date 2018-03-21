@@ -85,7 +85,8 @@ class ListMenu extends React.Component {
             <div className="list-menu">
                 <div className="list-menu-title"><span className="back" onClick={this.toggleSort}>
                 <i className="fas fa-arrow-left"></i></span><p>Sort List</p>
-                <span className="close" onClick={this.closeMenu}><img src="../close-round.png" alt="close" /></span>
+                <span className="close" onClick={this.closeMenu}>
+                <img src="../close-round.png" alt="close" /></span>
                 </div>
             <div className="list-menu-options"><ul>
             <li>Date Created (Newest First)</li>
@@ -97,9 +98,12 @@ class ListMenu extends React.Component {
         // Archive all Cards List Submenu
         return (
             <div className="list-menu">
-                <div className="list-menu-title"><span className="back" onClick={this.toggleArchiveAll}>
-                <i className="fas fa-arrow-left"></i></span><p>Archive All Cards in this List?</p>
-                    <span className="close" onClick={this.closeMenu}><img src="../close-round.png" alt="close" /></span></div>
+                <div className="list-menu-title">
+                <span className="back" onClick={this.toggleArchiveAll}>
+                <i className="fas fa-arrow-left"></i></span>
+                <p>Archive All Cards in this List?</p>
+                    <span className="close" onClick={this.closeMenu}>
+                    <img src="../close-round.png" alt="close" /></span></div>
                 <div className="list-menu-text">
                 <p>This will remove all the cards in this list from the board.
                 To view archived cards and bring them back to the board, click "Menu" >
@@ -114,12 +118,14 @@ class ListMenu extends React.Component {
 
         return (
             <div className="list-menu">
-                <div className="list-menu-title"><span className="back" onClick={this.toggleMoveList}>
+                <div className="list-menu-title">
+                <span className="back" onClick={this.toggleMoveList}>
                 <i className = "fas fa-arrow-left"></i></span><p>Move List</p>
                     <span className="close" onClick={this.closeMenu}>
                     <img src="../close-round.png" alt="close" /></span></div>
             <div className="list-menu-buttons">
-            <button className="moveBtn"><span className="btnLabel">Board</span>{placeholderBoard}</button>
+            <button className="moveBtn">
+            <span className="btnLabel">Board</span>{placeholderBoard}</button>
             <button className="moveBtn"><span className="btnLabel">Position</span>3</button>
             <button className="confirm-button">Move</button>
             </div>
