@@ -572,6 +572,23 @@ input:focus {
     margin: 2px 0px 0px 8px
 }
 
+.expandMenu {
+    color: #999;
+    cursor: pointer;
+    font-size: 12px;
+    border-style: none;
+    height: 24px;
+    width: 24px;
+    text-align: center;
+    padding: 0;
+    background: #e2e4e6;
+    border-radius: 3px;
+}
+
+.expandMenu:hover {
+    background: rgb(205,210,212);
+    color: #111;
+}
 /* DONE styling List Component*/
 
 /* ListMenu Component Styles */
