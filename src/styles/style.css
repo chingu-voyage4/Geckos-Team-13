@@ -1,13 +1,14 @@
 /* All styles for Trello Clone live here */
 
 /* Index:
-    1. General Styles - line 13
-    2. Board Component Styles - line 65
-    3. Card Component Styles - line 110
-    4. List Component Styles - line 426
-    5. Navbar Top Component Styles - line 697
-    6. Navbar Bottom Component Styles - line 764
-    7. Quick Edit Menu Styles - line 783
+    1. General Styles - line 14
+    2. Board Component Styles - line 66
+    3. Card Component Styles - line 111
+    4. List Component Styles - line 427
+    5. ListMenu Styles - line 596
+    6. NavbarTop Component Styles - line 702
+    7. NavbarBottom Component Styles - line 769
+    8. Quick Edit Menu Styles - line 788
 */
 
 /* General Styles */
@@ -591,6 +592,7 @@ input:focus {
 }
 /* DONE styling List Component*/
 
+
 /* ListMenu Component Styles */
 .list-menu {
   z-index: 1;
@@ -599,6 +601,9 @@ input:focus {
   background-color: #fff;
   border-radius: 3px;
   position: absolute;
+  top: 30px;
+  left: 245px;
+  border: 1px solid #d6dadc;
 }
 
 .follow, .sort, .archive-cards {

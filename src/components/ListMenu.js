@@ -4,13 +4,15 @@ import "../styles/style.css";
 class ListMenu extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            follow: false,
+            menu: "main"
+        };
         this.toggleFollow = this.toggleFollow.bind(this);
         this.toggleSort = this.toggleSort.bind(this);
         this.toggleArchiveAll = this.toggleArchiveAll.bind(this);
         this.closeMenu = this.closeMenu.bind(this);
         this.toggleMoveList = this.toggleMoveList.bind(this);
-        this.state = {follow: false};
-        this.state = {menu: "main"};
     }
 
     toggleFollow(e) {
@@ -61,7 +63,7 @@ class ListMenu extends React.Component {
             <div className="list-menu">
                 <div className="list-menu-title"><p>List Actions</p>
                     <span className="close" onClick={this.closeMenu}>
-                    <img src="../close-round.png" alt="close" /></span>
+                        <img src="../close-round.png" alt="close" /></span>
                 </div>
                 <div className="list-menu-options">
                     <ul>
