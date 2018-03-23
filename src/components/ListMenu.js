@@ -1,23 +1,26 @@
 import React, { Component } from "react";
 import "../styles/style.css";
+import SortBySubmenu from "./SortBySubmenu.js";
+import ArchiveAllSubmenu from "./ArchiveAllSubmenu.js";
+import MoveListSubmenu from "./MoveListSubmenu.js";
 
 class ListMenu extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             follow: false,
-            menu: "main"
+            menu: "main",
+            listTitle: "List Actions"
         };
         this.showMainMenu = this.showMainMenu.bind(this);
         this.showSubmenu = this.showSubmenu.bind(this);
         this.toggleFollow = this.toggleFollow.bind(this);
         this.closeMenu = this.closeMenu.bind(this);
-        this.renderMenu = this.renderMenu.bind(this);
     }
 
     showMainMenu(e) {
         e.preventDefault();
-        this.setState({menu: "main"});
+        this.setState({menu: "main", listTitle: "List Actions"});
     }
 
     showSubmenu(e) {
@@ -25,9 +28,9 @@ class ListMenu extends React.Component {
         if (e.target.className === "move-list") {
             this.setState({menu: "moveListMenu"});
         } else if (e.target.className === "sort") {
-            this.setState({menu: "sortMenu"});
+            this.setState({menu: "sortMenu", listTitle: "Sort List"});
         } else if (e.target.className === "archive-cards") {
-            this.setState({menu: "archiveAllMenu"});
+            this.setState({menu: "archiveAllMenu", listTitle: "Archive All Cards in this List?"});
         }
     }
 
@@ -45,11 +48,13 @@ class ListMenu extends React.Component {
         this.setState({menu: "none"});
     }
 
-    renderMenu() {
-        if (this.state.menu === "main") {
+
+    render() {
+
+            if (this.state.menu === "main") {
             return (
                 <div className="list-menu">
-                    <div className="list-menu-title"><p>List Actions</p>
+                    <div className="list-menu-title"><p>{this.state.listTitle}</p>
                         <span className="close" onClick={this.closeMenu}>
                             <img src="../close-round.png" alt="close" /></span>
                     </div>
@@ -69,73 +74,24 @@ class ListMenu extends React.Component {
                     </div>
                 </div>
             );
-        } else if (this.state.menu === "sortMenu") {
-            // "Sort By" List submenu
+        } else if (this.state.menu === "none") {
+            return <div></div>;
+            } else {
             return (
                 <div className="list-menu">
                     <div className="list-menu-title"><span className="back" onClick={this.showMainMenu}>
-                        <i className="fas fa-arrow-left"></i></span><p>Sort List</p>
+                        <i className="fas fa-arrow-left"></i></span><p>{this.state.listTitle}</p>
                         <span className="close" onClick={this.closeMenu}>
                             <img src="../close-round.png" alt="close" /></span>
                     </div>
-                    <div className="list-menu-options"><ul>
-                        <li>Date Created (Newest First)</li>
-                        <li>Date Created (Oldest First)</li>
-                    </ul></div>
-                </div>
-            );
-        } else if (this.state.menu === "archiveAllMenu") {
-            // Archive all Cards List Submenu
-            return (
-                <div className="list-menu">
-                    <div className="list-menu-title">
-                        <span className="back" onClick={this.showMainMenu}>
-                            <i className="fas fa-arrow-left"></i></span>
-                        <p>Archive All Cards in this List?</p>
-                        <span className="close" onClick={this.closeMenu}>
-                            <img src="../close-round.png" alt="close" /></span></div>
-                    <div className="list-menu-text">
-                        <p>This will remove all the cards in this list from the board.
-                        To view archived cards and bring them back to the board, click "Menu" >
-                "Archived Items."</p>
-                        <button className="archive-all danger-button">Archive All</button>
+                    {this.state.menu === "sortMenu" && <SortBySubmenu />}
+                    {this.state.menu === "archiveAllMenu" && <ArchiveAllSubmenu />}
+                    {this.state.menu === "moveListMenu" && <MoveListSubmenu />}
                     </div>
-                </div>
             );
-        } else if (this.state.menu === "moveListMenu") {
-
-            const placeholderBoard = "Placeholder Board";
-
-            return (
-                <div className="list-menu">
-                    <div className="list-menu-title">
-                        <span className="back" onClick={this.showMainMenu}>
-                            <i className="fas fa-arrow-left"></i></span><p>Move List</p>
-                        <span className="close" onClick={this.closeMenu}>
-                            <img src="../close-round.png" alt="close" /></span></div>
-                    <div className="list-menu-buttons">
-                        <button className="moveBtn">
-                            <span className="btnLabel">Board</span>{placeholderBoard}</button>
-                        <button className="moveBtn"><span className="btnLabel">Position</span>3</button>
-                        <button className="confirm-button">Move</button>
-                    </div>
-                </div>
-            );
-        } else {
-            return <div></div>;
         }
 
-    }
-
-    render() {
-
-        return (
-            <div>
-            {this.renderMenu()}
-            </div>
-        );
-
-    }
+        }
 }
 
 export default ListMenu;
