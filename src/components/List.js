@@ -3,7 +3,7 @@ import ListMenu from "./ListMenu.js";
 
 class List extends Component {
     constructor(props) {
-		super(props);
+        super(props);
 
         this.state = {
             outComponentSelected: true,
@@ -113,8 +113,15 @@ class List extends Component {
     }
 
     divClicked() {
+        console.log("here");
         this.setState({ inputOpen: true });
-	}
+    }
+
+    showMenu() {
+        if (this.state.inputOpen) {
+            return <ListMenu />;
+        }
+    }
 
     renderTitle() {
         if (this.state.inputOpen) {
@@ -139,21 +146,23 @@ class List extends Component {
 
     toggleMenu() {
         if (this.state.menuDisplay === false) {
-            this.setState({menuDisplay: true});
+            this.setState({ menuDisplay: true });
         } else {
-            this.setState({menuDisplay: false});
+            this.setState({ menuDisplay: false });
         }
     }
 
     render() {
         return (
-			<div className="list__container">
+            <div className="list__container">
                 {this.props.children}
                 <div className="list__header">
-					<div className="list__header-title">{this.renderTitle()}</div>
+                    <div className="list__header-title">{this.renderTitle()}</div>
                     <span className="openListMenu" onClick={this.toggleMenu}>
-                    <button className="expandMenu">
-                    <i className="fas fa-ellipsis-h"></i></button></span>
+                        <button className="expandMenu">
+                            <i className="fas fa-ellipsis-h" />
+                        </button>
+                    </span>
                     {this.state.menuDisplay && <ListMenu />}
                 </div>
                 <div className="card-container">
