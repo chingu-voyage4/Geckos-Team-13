@@ -725,6 +725,7 @@ input:focus {
     font-size: 1.6em;
     font-family: 'Lobster', cursive;
     color: rgba(224, 224, 223, 0.7);
+    height:50px;
 }
 
 .search {
