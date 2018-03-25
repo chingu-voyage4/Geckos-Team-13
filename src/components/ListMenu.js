@@ -15,7 +15,6 @@ class ListMenu extends React.Component {
         this.showMainMenu = this.showMainMenu.bind(this);
         this.showSubmenu = this.showSubmenu.bind(this);
         this.toggleFollow = this.toggleFollow.bind(this);
-        this.closeMenu = this.closeMenu.bind(this);
     }
 
     showMainMenu(e) {
@@ -43,19 +42,13 @@ class ListMenu extends React.Component {
         }
     }
 
-    closeMenu(e) {
-        e.preventDefault();
-        this.setState({menu: "none"});
-    }
-
-
     render() {
 
             if (this.state.menu === "main") {
             return (
                 <div className="list-menu">
                     <div className="list-menu-title"><p>{this.state.listTitle}</p>
-                        <span className="close" onClick={this.closeMenu}>
+                        <span className="close" onClick={this.props.toggleMenu}>
                             <img src="../close-round.png" alt="close" /></span>
                     </div>
                     <div className="list-menu-options">
@@ -74,14 +67,13 @@ class ListMenu extends React.Component {
                     </div>
                 </div>
             );
-        } else if (this.state.menu === "none") {
-            return <div></div>;
-            } else {
+        } else {
             return (
                 <div className="list-menu">
-                    <div className="list-menu-title"><span className="back" onClick={this.showMainMenu}>
+                    <div className="list-menu-title"><span className="back"
+                    onClick={this.showMainMenu}>
                         <i className="fas fa-arrow-left"></i></span><p>{this.state.listTitle}</p>
-                        <span className="close" onClick={this.closeMenu}>
+                        <span className="close" onClick={this.props.toggleMenu}>
                             <img src="../close-round.png" alt="close" /></span>
                     </div>
                     {this.state.menu === "sortMenu" && <SortBySubmenu />}

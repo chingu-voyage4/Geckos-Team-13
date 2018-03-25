@@ -163,7 +163,7 @@ class List extends Component {
                             <i className="fas fa-ellipsis-h" />
                         </button>
                     </span>
-                    {this.state.menuDisplay && <ListMenu />}
+                    {this.state.menuDisplay && <ListMenu toggleMenu={this.toggleMenu} />}
                 </div>
                 <div className="card-container">
                     <ul className="cards">{this.renderCardList()}</ul>
