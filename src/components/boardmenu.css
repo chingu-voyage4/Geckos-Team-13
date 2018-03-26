@@ -37,8 +37,10 @@
     margin: 10px 0;
     display: block;
 }
-.invite {
+.board-members .invite {
+    color: #444;
     border-style: none;
+    border-radius: 2px;
     background-color: #e2e4e6;
     display: block;
     width: 100%;
@@ -49,9 +51,14 @@
     cursor: pointer;
 }
 
+.board-members .invite:hover {
+    background-color: #cdd2d4;
+    color: #4c4c4c;
+}
+
 .board-menu i {
     color: #999;
-    margin-right: 7px;
+    margin-right: 10px;
 }
 
 .board-menu-title h3 {
@@ -68,6 +75,14 @@
     padding: 10px 0;
 }
 
+.current-color {
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    background-color: #0079BF;
+    display: inline-block;
+    margin-right: 5px;
+}
 .board-activity {
     padding: 10px 0;
 }
@@ -85,3 +100,31 @@
     border-radius: 3px;
 }
 
+.menu-body {
+    margin: 10px 5px;
+    text-align: center;
+}
+
+.menu-body .color-button {
+    width: 45%;
+    height: 112px;
+    border-radius: 10px;
+    margin: 5px;
+    display: inline-block;
+}
+
+.menu-body .blue {
+    background-color: #0079BF;
+}
+
+.menu-body .orange {
+    background-color: #D29034;
+}
+
+.menu-body .green {
+    background-color: #519839;
+}
+
+.menu-body .red {
+    background-color: #B04632;
+}
