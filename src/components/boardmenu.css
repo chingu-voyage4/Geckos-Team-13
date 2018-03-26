@@ -1,0 +1,87 @@
+@keyframes slide {
+    100% { right: 0; }
+}
+
+.board-menu {
+    background-color: #edeff0;
+    color: #333;
+    width: 340px;
+    box-shadow: 0 0 6px rgba(0,0,0, .4);
+    padding: 10px;
+    z-index: 5;
+    position: absolute;
+    right: -340px;
+    top: -20px;
+    animation: slide 0.5s forwards;
+}
+
+.board-menu-title {
+    position: relative;
+    text-align: center;
+    font-weight: 700;
+    border-bottom: 2px solid #d6dadc;
+    padding: 5px;
+}
+
+.board-member {
+    background-color: #e2e4e6;
+    padding: 3px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 30px;
+    text-align: center;
+    width: 30px;
+    border-radius: 100%;
+    height: 30px;
+    margin: 10px 0;
+    display: block;
+}
+.invite {
+    border-style: none;
+    background-color: #e2e4e6;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    box-shadow: 0 1px 0 0 #c4c9cc;
+    font-weight: 700;
+    text-align: left;
+    cursor: pointer;
+}
+
+.board-menu i {
+    color: #999;
+    margin-right: 7px;
+}
+
+.board-menu-title h3 {
+    margin: 0;
+}
+
+.board-members {
+    border-bottom: 1px solid #d6dadc;
+    padding-bottom: 15px;
+}
+
+.board-options {
+    border-bottom: 1px solid #d6dadc;
+    padding: 10px 0;
+}
+
+.board-activity {
+    padding: 10px 0;
+}
+
+.board-options li, .board-activity li {
+    font-weight: 700;
+    padding: 8px;
+    cursor: pointer;
+    display: block;
+}
+
+.board-options li:hover {
+    color: #111;
+    background-color: #d6dadc;
+    border-radius: 3px;
+}
+
