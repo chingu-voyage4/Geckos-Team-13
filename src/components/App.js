@@ -33,7 +33,7 @@ class App extends Component {
         return (
             <div className="App" style={{backgroundColor: this.state.color}}>
                 <NavbarTop color={this.state.navbarColor} />
-                <NavbarBottom changeColor={this.changeColor}/>
+                <NavbarBottom changeColor={this.changeColor} color={this.state.color}/>
                 <Board />
             </div>
         );

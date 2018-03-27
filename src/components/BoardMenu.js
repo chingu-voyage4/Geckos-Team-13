@@ -35,7 +35,7 @@ class BoardMenu extends React.Component {
                     <button className="invite"><i className="fas fa-user-plus"></i>Invite...</button>
                 </div>
                 <div className = "board-options">
-                    <li className = "change-background" onClick={this.showSubmenu}><span className = "current-color"></span>Change Background</li>
+                    <li className = "change-background" onClick={this.showSubmenu}><span className = "current-color" style={{backgroundColor: this.props.color}}></span>Change Background</li>
                     <li><i className="fas fa-filter"></i>Filter Cards</li>
                     <li><i className="fas fa-rocket"></i>Power-Ups</li>
                     <li><i className="far fa-sticky-note"></i>Stickers</li>
