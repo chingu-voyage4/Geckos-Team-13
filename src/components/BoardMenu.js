@@ -54,7 +54,7 @@ class BoardMenu extends React.Component {
                     <i className="fas fa-arrow-left"></i></span><h3>{this.state.menuTitle}</h3><span className="close" onClick={this.props.toggleBoardMenu}>
                     <img src="../close-round.png" alt="close" /></span>
                 </div>
-                { this.state.menu === "colorMenu" && <ColorMenu /> }
+                { this.state.menu === "colorMenu" && <ColorMenu changeColor={this.props.changeColor}/> }
                 </div>
         );
     }
