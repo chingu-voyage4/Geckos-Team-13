@@ -1,13 +1,17 @@
 import React, { Component } from "react";
 
-class MoveListSubmenu extends React.Component {
+class MoveListSubmenu extends Component {
     render() {
         const placeholderBoard = "Placeholder Board";
         return (
             <div className="list-menu-buttons">
                 <button className="moveBtn">
-                    <span className="btnLabel">Board</span>{placeholderBoard}</button>
-                <button className="moveBtn"><span className="btnLabel">Position</span>3</button>
+                    <span className="btnLabel">Board</span>
+                    {placeholderBoard}
+                </button>
+                <button className="moveBtn">
+                    <span className="btnLabel">Position</span>3
+                </button>
                 <button className="confirm-button">Move</button>
             </div>
         );
