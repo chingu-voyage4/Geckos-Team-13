@@ -22,6 +22,10 @@ class App extends Component {
             this.setState({ color: "#B04632", navbarColor: "#963C2B"});
         } else if (e.target.className === "color-button orange") {
             this.setState({ color: "#D29034", navbarColor: "#B37B2C"});
+        } else if (e.target.className === "color-button purple") {
+            this.setState({ color: "#89609E", navbarColor: "#755286"});
+        } else if (e.target.className === "color-button pink") {
+            this.setState({ color: "#CD5A91", navbarColor: "#AE4D7B"});
         }
     }
 
