@@ -12,7 +12,7 @@
     position: absolute;
     right: -340px;
     top: -20px;
-    animation: slide 0.5s forwards;
+    animation: slide 0.4s forwards;
 }
 
 .board-menu-title {
@@ -103,6 +103,7 @@
 .menu-body {
     margin: 10px 5px;
     text-align: center;
+    width: 100%;
 }
 
 .menu-body .color-button {
@@ -111,6 +112,11 @@
     border-radius: 10px;
     margin: 5px;
     display: inline-block;
+    cursor: pointer;
+}
+
+.nav-two .menu-body .color-button:hover {
+    opacity: .8;
 }
 
 .menu-body .blue {
@@ -135,3 +141,21 @@
 .menu-body .pink {
     background-color: #CD5A91;
 }
+
+.color-menu, .photo-menu {
+    display: inline-block;
+    width: 40%;
+    overflow: hidden;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.color-menu:hover, .photo-menu:hover {
+    opacity: .8;
+}
+
+.color-menu img, .photo-menu img {
+    height: 100px;
+    border-radius: 10px;
+}
+

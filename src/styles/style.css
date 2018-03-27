@@ -774,15 +774,22 @@ input:focus {
 
 /* NavbarBottom Component Styles */
 
-.nav-two button {
+.nav-two li button {
     color: #E0E0DF;
     background-color: transparent;
     border: none;
     cursor: pointer;
+    padding: 8px;
+    border-radius: 3px;
+    
+}
+
+.nav-two li button:hover {
+    background-color: rgba(0,0,0,.3);
 }
 
 .nav-two {
-    margin: 10px 15px 30px 0;
+    margin: 5px 15px 30px 0;
     padding-left: 25px;
     position: relative;
 }

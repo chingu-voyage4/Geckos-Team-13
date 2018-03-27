@@ -1,5 +1,6 @@
 import React from "react";
 import "./boardmenu.css";
+import BackgroundMenu from "./BackgroundMenu.js";
 import ColorMenu from "./ColorMenu.js";
 
 class BoardMenu extends React.Component {
@@ -7,6 +8,7 @@ class BoardMenu extends React.Component {
         super(props);
         this.state = { menu: "main",
                        menuTitle: "Menu"};
+
         this.showSubmenu = this.showSubmenu.bind(this);
         this.showMainMenu = this.showMainMenu.bind(this);
     }
@@ -19,7 +21,8 @@ class BoardMenu extends React.Component {
     showSubmenu(e) {
         e.preventDefault();
         if (e.target.className === "change-background") {
-            this.setState({menu: "colorMenu", menuTitle: "Colors"});
+            this.setState({menu: "backgroundMenu", menuTitle: "Change Background",
+            lastMenu: "backgroundMenu"});
         }
     }
 
@@ -48,15 +51,12 @@ class BoardMenu extends React.Component {
         );
     } else {
         return (
-            <div className = "board-menu">
-                <div className="board-menu-title"><span className="back"
-                    onClick={this.showMainMenu}>
-                    <i className="fas fa-arrow-left"></i></span><h3>{this.state.menuTitle}</h3><span className="close" onClick={this.props.toggleBoardMenu}>
-                    <img src="../close-round.png" alt="close" /></span>
-                </div>
-                { this.state.menu === "colorMenu" && <ColorMenu changeColor={this.props.changeColor}/> }
-                </div>
-        );
+            <div>
+                { this.state.menu === "backgroundMenu" &&
+                <BackgroundMenu toggleBoardMenu={this.props.toggleBoardMenu} showMainMenu={this.showMainMenu}
+                menu={this.state.menu} menuTitle={this.state.menuTitle} changeColor={this.props.changeColor}/> }
+            </div>
+            );
     }
     }
 }
