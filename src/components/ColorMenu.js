@@ -8,9 +8,9 @@ class ColorMenu extends React.Component {
     render() {
         return (
             <div className="board-menu">
-                <div className="board-menu-title"><span className="back"
-                    onClick={this.props.showMainMenu}>
-                    <i className="fas fa-arrow-left"></i></span><h3>{this.props.menuTitle}</h3>
+                <div className="board-menu-title"><span className= "back"
+                    onClick={this.props.showBackgroundMenu}>
+                    <i className="fas fa-arrow-left back"></i></span><h3>{this.props.menuTitle}</h3>
                     <span className="close" onClick={this.props.toggleBoardMenu}>
                         <img src="../close-round.png" alt="close" /></span>
                 </div>

@@ -1,7 +1,6 @@
 import React from "react";
 import "./boardmenu.css";
 import BackgroundMenu from "./BackgroundMenu.js";
-import ColorMenu from "./ColorMenu.js";
 
 class BoardMenu extends React.Component {
     constructor(props) {
@@ -21,8 +20,7 @@ class BoardMenu extends React.Component {
     showSubmenu(e) {
         e.preventDefault();
         if (e.target.className === "change-background") {
-            this.setState({menu: "backgroundMenu", menuTitle: "Change Background",
-            lastMenu: "backgroundMenu"});
+            this.setState({menu: "backgroundMenu", menuTitle: "Change Background"});
         }
     }
 
