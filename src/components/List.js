@@ -9,7 +9,7 @@ class List extends Component {
 
     this.state = {
       outComponentSelected: true,
-      listTitle: "",
+      listTitle: this.props.listDetails.title,
       titleSelected: true,
       inputOpen: false,
       cardName: "",
@@ -209,4 +209,10 @@ class List extends Component {
   }
 }
 
-export default List;
+function mapStateToProps(state) {
+  return {
+    allLists: state.lists
+  };
+}
+
+export default connect(mapStateToProps, actions)(List);
