@@ -13,6 +13,7 @@ class Board extends Component {
     };
 
     this.createList = this.createList.bind(this);
+    this.renderLists = this.renderLists.bind(this);
     this.changeListTitle = this.changeListTitle.bind(this);
     this.cancelExpansion = this.cancelExpansion.bind(this);
     this.setWrapperRef = this.setWrapperRef.bind(this);
@@ -67,12 +68,26 @@ class Board extends Component {
     }
   }
 
+  renderLists() {
+    if (this.props.listArray) {
+      return this.props.listArray.map((listId, index) => {
+        const list = this.props.allLists[listId];
+        return (
+          <List
+            key={listId}
+            listDetails={list}
+            listId={listId}
+            position={index}
+          />
+        );
+      });
+    }
+  }
+
   render() {
     return (
       <div className="board__container">
-        <div className="board__list-container">
-          <List />
-        </div>
+        <div className="board__list-container">{this.renderLists()}</div>
         <div className="board__button-container">
           <button
             className="board__button-addList"
