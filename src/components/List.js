@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import ListMenu from "./ListMenu.js";
+import { connect } from "react-redux";
+import * as actions from "../actions";
 
 class List extends Component {
     constructor(props) {
@@ -7,15 +9,11 @@ class List extends Component {
 
         this.state = {
             outComponentSelected: true,
-            listTitle: "You can edit this",
+            listTitle: this.props.listDetails.title,
             titleSelected: true,
             inputOpen: false,
             cardName: "",
-            cardTitles: [
-                "Card Component #1",
-                "This component still needs styling",
-                "I also want to make the input for the title auto expand vertically"
-            ],
+            cardTitles: [],
             menuDisplay: false
         };
 
@@ -113,7 +111,6 @@ class List extends Component {
     }
 
     divClicked() {
-        console.log("here");
         this.setState({ inputOpen: true });
     }
 
@@ -171,6 +168,7 @@ class List extends Component {
                 <form
                     onSubmit={this.confirmAddCard}
                     ref={this.setWrapperRef}
+                    onKeyPress={this.handleKeyPress}
                     className="list__add-cards-full"
                     style={{
                         display: this.state.outComponentSelected ? "none" : "block"
@@ -211,4 +209,10 @@ class List extends Component {
     }
 }
 
-export default List;
+function mapStateToProps(state) {
+    return {
+        allLists: state.lists
+    };
+}
+
+export default connect(mapStateToProps, actions)(List);
