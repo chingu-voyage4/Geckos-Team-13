@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 class SortBySubmenu extends React.Component {
     render() {

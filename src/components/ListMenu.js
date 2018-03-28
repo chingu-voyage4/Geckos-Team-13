@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "../styles/style.css";
 import SortBySubmenu from "./SortBySubmenu.js";
 import ArchiveAllSubmenu from "./ArchiveAllSubmenu.js";
