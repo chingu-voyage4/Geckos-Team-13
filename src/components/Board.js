@@ -55,7 +55,6 @@ class Board extends Component {
     }
 
     handleKeyPress(event) {
-        //console.log(e);
         if (event.key === "Enter") {
             this.createList(event);
         }
