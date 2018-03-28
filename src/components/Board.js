@@ -12,7 +12,7 @@ class Board extends Component {
       expandForm: false
     };
 
-    // this.createList = this.createList.bind(this)
+    this.createList = this.createList.bind(this);
     this.changeListTitle = this.changeListTitle.bind(this);
     this.cancelExpansion = this.cancelExpansion.bind(this);
     this.setWrapperRef = this.setWrapperRef.bind(this);
@@ -52,6 +52,21 @@ class Board extends Component {
     this.setState({ expandForm: true });
   }
 
+  createList(event) {
+    event.preventDefault();
+    this.setState({ expandForm: false });
+
+    if (this.state.listName) {
+      const position = Object.keys(this.props.allLists).length;
+      const uniq = Date.now();
+      const listId = `list${uniq}`;
+      const title = this.state.listName;
+      const cards = [];
+      this.props.addList(listId, title, cards, position);
+      this.setState({ listName: "" });
+    }
+  }
+
   render() {
     return (
       <div className="board__container">
@@ -71,6 +86,7 @@ class Board extends Component {
           </button>
         </div>
         <form
+          onSubmit={this.createList}
           ref={this.setWrapperRef}
           className="board__add-list-full"
           style={{
