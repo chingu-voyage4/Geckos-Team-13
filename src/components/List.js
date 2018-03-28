@@ -168,6 +168,7 @@ class List extends Component {
                 <form
                     onSubmit={this.confirmAddCard}
                     ref={this.setWrapperRef}
+                    onKeyPress={this.handleKeyPress}
                     className="list__add-cards-full"
                     style={{
                         display: this.state.outComponentSelected ? "none" : "block"
