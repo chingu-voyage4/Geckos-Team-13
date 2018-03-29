@@ -87,7 +87,9 @@ class QuickEditCard extends Component {
 }
 
 function mapStateToProps(state) {
-    return state;
+    return {
+        cards: state.cards
+    };
 }
 
 export default connect(mapStateToProps, actions)(QuickEditCard);
