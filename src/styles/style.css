@@ -307,12 +307,27 @@ body {
 }
 
 .OuterCardBox {
+    position: absolute;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -ms-flex-pack: center;
     justify-content: center;
-    background-color: lightgray;
-    padding: 0px 20px;
-    width: 98%;
+    background-color: #edeff0;
+    padding: 0px 15px;
+    margin: 50px 0px;
+    margin-top: 50px;
+    margin-right: 0px;
+    margin-bottom: 50px;
+    margin-left: 0px;
+    min-width: 756px;
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    border-radius: 3px;
 
   }
 
