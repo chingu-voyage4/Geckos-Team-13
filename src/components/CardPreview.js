@@ -9,12 +9,17 @@ export default class extends Component {
         super(props);
 
         state: {
+            cardPopUpOpen: false;
         }
 
         this.openCard = this.openCard.bind(this);
     }
 
-    openCard() {}
+    openCard() {
+        this.setState({
+            cardPopUpOpen: true
+        });
+    }
 
     render() {
         return (
