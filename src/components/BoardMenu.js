@@ -1,5 +1,4 @@
 import React from "react";
-import "./boardmenu.css";
 import BackgroundMenu from "./BackgroundMenu.js";
 
 class BoardMenu extends React.Component {
