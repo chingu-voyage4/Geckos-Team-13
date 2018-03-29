@@ -122,13 +122,21 @@ class List extends Component {
     }
 
     renderCardList() {
-        return this.state.cardTitles.map(title => {
-            return (
-                <li key={title} className="card-preview">
-                    {title}
-                </li>
-            );
-        });
+        const allCardsInThisList = this.props.allLists[this.props.listId].cards;
+        if (allCardsInThisList) {
+            return allCardsInThisList.map((cardId, index) => {
+                const card = this.props.cards[cardId];
+                return (
+                    <CardPreview
+                        key={cardId}
+                        Id={cardId}
+                        listId={this.props.listId}
+                        title={card.title}
+                        position={index}
+                    />
+                );
+            });
+        }
     }
 
     divClicked() {
