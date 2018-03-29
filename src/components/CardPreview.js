@@ -48,7 +48,6 @@ export default class extends Component {
 
     handleClickOutside(event) {
         if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
-            console.log("outside!!");
             this.setState({ quickEditOpen: false, cardPopUpOpen: false });
         }
     }

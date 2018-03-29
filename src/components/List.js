@@ -205,7 +205,7 @@ class List extends Component {
                     <div className="form-container">
                         <textarea
                             className="form-card-description"
-                            value={this.state.cardName}
+                            value={this.state.cardTitle}
                             onChange={this.addCardTitle}
                             onKeyPress={this.handleKeyPress}
                         />
