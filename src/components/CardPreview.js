@@ -21,6 +21,7 @@ export default class extends Component {
         this.closeQuickEdit = this.closeQuickEdit.bind(this);
         this.openQuickEdit = this.openQuickEdit.bind(this);
         this.recalculateOffset = this.recalculateOffset.bind(this);
+        this.handleClickOutside = this.handleClickOutside.bind(this);
     }
 
     componentDidMount() {
