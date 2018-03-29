@@ -6,26 +6,6 @@ class Card extends Component {
         super(props);
 
         this.state = {};
-
-        this.handleClickOutside = this.handleClickOutside.bind(this);
-    }
-
-    componentDidMount() {
-        document.addEventListener("mousedown", this.handleClickOutside);
-    }
-
-    componentWillUnmount() {
-        document.removeEventListener("mousedown", this.handleClickOutside);
-    }
-
-    setWrapperRef(node) {
-        this.wrapper = node;
-    }
-
-    handleClickOutside(event) {
-        if (this.wrapper && !this.wrapper.contains(event.target)) {
-            this.setState({ descriptionVisible: false });
-        }
     }
 
     render() {
