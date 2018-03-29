@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ListMenu from "./ListMenu.js";
 import { connect } from "react-redux";
 import * as actions from "../actions";
+import CardPreview from "./CardPreview";
 
 class List extends Component {
     constructor(props) {
@@ -74,12 +75,31 @@ class List extends Component {
 
     confirmAddCard(event) {
         event.preventDefault();
-        if (this.state.cardName) {
-            this.setState({
-                cardTitles: [...this.state.cardTitles, this.state.cardName],
-                cardName: "",
-                outComponentSelected: true
-            });
+
+        if (this.state.cardTitle) {
+            const uniq = Date.now();
+            const position = Object.keys(this.props.cards).length;
+            const cardId = `card${uniq + position}`;
+            const title = this.state.cardTitle;
+            const description = "";
+            const members = [];
+            const labels = [];
+            const dueDate = "";
+            const comments = [];
+            const listId = this.props.listId;
+
+            this.props.addCard(
+                cardId,
+                position,
+                title,
+                description,
+                members,
+                labels,
+                dueDate,
+                comments,
+                listId
+            );
+            this.setState({ cardTitle: "" });
         }
     }
 
