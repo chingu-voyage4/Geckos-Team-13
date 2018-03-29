@@ -1,11 +1,15 @@
-/* eslint-disable indent */
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as actions from "../actions";
 
 class Card extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {};
+        this.state = {
+            comment: {},
+            commentText: ""
+        };
     }
 
     render() {
@@ -128,4 +132,11 @@ class Card extends Component {
     }
 }
 
-export default Card;
+function mapStateToProps(state) {
+    return {
+        cards: state.cards,
+        lists: state.lists
+    };
+}
+
+export default connect(mapStateToProps, actions)(Card);
