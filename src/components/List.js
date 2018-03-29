@@ -207,7 +207,6 @@ class List extends Component {
                             className="form-card-description"
                             value={this.state.cardTitle}
                             onChange={this.addCardTitle}
-                            onKeyPress={this.handleKeyPress}
                         />
                         <div className="form-btn-container">
                             <button type="submit" className="btn--add">
