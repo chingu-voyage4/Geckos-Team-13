@@ -8,15 +8,14 @@ export default class extends Component {
     constructor(props) {
         super(props);
 
-        state: {
+        this.state = {
             quickEditOpen: false,
             cardPopUpOpen: false
-        }
+        };
 
         this.openCard = this.openCard.bind(this);
         this.closeQuickEdit = this.closeQuickEdit.bind(this);
-        this.openQuickEdit = this.openQuickEdit.bind(this); 
-
+        this.openQuickEdit = this.openQuickEdit.bind(this);
     }
 
     openCard() {
@@ -28,31 +27,48 @@ export default class extends Component {
     openQuickEdit(event) {
         this.recalculateOffset();
         this.setState({
-          quickEditOpen: true
+            quickEditOpen: true
         });
-      }
-    
-      closeQuickEdit() {
+    }
+
+    closeQuickEdit() {
         this.setState({
-          quickEditOpen: false
+            quickEditOpen: false
         });
-      }
+    }
 
     render() {
-
         let showCard = null;
         const cardOpened = this.state.cardPopUpOpen;
         if (cardOpened) {
-          showCard = (
-            <Card
-              cardId={this.props.Id}
-              listId={this.props.listId}
-              closeQuickEdit={this.closeQuickEdit}
-              setWrapperRef={this.setWrapperRef}
-              position={this.props.position}
-            />
-          );
+            showCard = (
+                <Card
+                    cardId={this.props.Id}
+                    listId={this.props.listId}
+                    closeQuickEdit={this.closeQuickEdit}
+                    setWrapperRef={this.setWrapperRef}
+                    position={this.props.position}
+                />
+            );
         }
+
+        const isOpened = this.state.quickEditOpen;
+        let showMenu = null;
+        if (isOpened) {
+            showMenu = (
+                <QuickEditCard
+                    cardId={this.props.Id}
+                    listId={this.props.listId}
+                    style={style}
+                    title={this.props.title}
+                    position={this.props.position}
+                    setWrapperRef={this.setWrapperRef}
+                    closeQuickEdit={this.closeQuickEdit}
+                    recalculateOffset={this.recalculateOffset}
+                />
+            );
+        }
+
         return (
             <li className="card-preview">
                 <div onClick={this.openCard} className="card-preview__text">
