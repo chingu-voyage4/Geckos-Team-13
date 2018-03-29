@@ -6,6 +6,8 @@ class Card extends Component {
         super(props);
 
         this.state = {};
+
+        this.handleClickOutside = this.handleClickOutside.bind(this);
     }
 
     componentDidMount() {
