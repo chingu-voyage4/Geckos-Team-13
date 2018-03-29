@@ -13,8 +13,7 @@ class List extends Component {
             listTitle: this.props.listDetails.title,
             titleSelected: true,
             inputOpen: false,
-            cardName: "",
-            cardTitles: [],
+            cardTitle: "",
             menuDisplay: false
         };
 
@@ -65,12 +64,12 @@ class List extends Component {
     cancelExpansion() {
         this.setState({
             outComponentSelected: true,
-            cardName: ""
+            cardTitle: ""
         });
     }
 
     addCardTitle(event) {
-        this.setState({ cardName: event.target.value });
+        this.setState({ cardTitle: event.target.value });
     }
 
     confirmAddCard(event) {
@@ -240,7 +239,8 @@ class List extends Component {
 
 function mapStateToProps(state) {
     return {
-        allLists: state.lists
+        allLists: state.lists,
+        cards: state.cards
     };
 }
 
