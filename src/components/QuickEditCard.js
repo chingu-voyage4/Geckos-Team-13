@@ -42,7 +42,9 @@ class QuickEditCard extends Component {
                             value={this.state.cardTitle}
                             onChange={this.changeCardTitle}
                         />
-                        <button className="btn--add">Save</button>
+                        <button className="btn--add" onClick={this.submitTitleChange}>
+                            Save
+                        </button>
                     </div>
                     <ul className="quick-edit__menu">
                         <li className="menu-item">
