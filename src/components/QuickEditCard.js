@@ -22,7 +22,7 @@ class QuickEditCard extends Component {
                         <li className="menu-item">
                             <a className="menu-button">
                                 {" "}
-                                <i class="far fa-user" /> Change Members
+                                <i className="far fa-user" /> Change Members
                             </a>
                         </li>
                         <li className="menu-item">
