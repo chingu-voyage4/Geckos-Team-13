@@ -33,3 +33,9 @@
 .card-preview:hover .fas.fa-pencil-alt {
     visibility: visible;
 }
+
+.quick-edit-popout {
+    color: #E0E0DF;
+    background-color: transparent;
+    border: none;
+}

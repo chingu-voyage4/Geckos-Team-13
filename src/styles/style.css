@@ -697,13 +697,6 @@ button:focus {
     outline: none;
 }
 
-.card-preview {
-    background-color: #FFFFFF;
-    padding: 8px;
-    margin-bottom: 6px;
-    border-radius: 3px;
-}
-
 .form-btn-container {
     margin-top: 8px;
     display: flex;
