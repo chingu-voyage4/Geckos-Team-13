@@ -1,23 +1,31 @@
 /* All styles for Trello Clone live here */
 
 /* Index:
-    1. General Styles - line 14
-    2. Board Component Styles - line 66
-    3. Card Component Styles - line 111
-    4. List Component Styles - line 427
-    5. ListMenu Styles - line 596
-    6. NavbarTop Component Styles - line 702
-    7. NavbarBottom Component Styles - line 769
-    8. Quick Edit Menu Styles - line 788
+    1. General Styles - line 15
+    2. Board Component Styles - line 74
+    3. BoardMenu Component (& submenu component) Styles - line 119
+    4. Card Component Styles - line 296
+    5. List Component Styles - line 612
+    6. ListMenu Styles - line 781
+    7. NavbarTop Component Styles - line 887
+    8. NavbarBottom Component Styles - line 955
+    9. Quick Edit Menu Styles - line 983
 */
 
 /* General Styles */
+
+.App {
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
 li {
     list-style: none;
 }
 
 body {
-background-color: #0079BF;
+    
     margin: 0;
     padding: 0;
     font-family: sans-serif;
@@ -106,6 +114,183 @@ background-color: #0079BF;
   }
   
   /*DONE styling Board Component */
+
+
+/*BoardMenu Component Styles */
+@keyframes slide {
+    100% { right: -15px; }
+}
+
+.board-menu {
+    background-color: #edeff0;
+    color: #333;
+    width: 340px;
+    box-shadow: 0 0 6px rgba(0,0,0, .4);
+    padding: 10px;
+    z-index: 5;
+    position: absolute;
+    right: -340px;
+    top: -17px;
+    animation: slide 0.4s forwards;
+}
+
+.board-menu li {
+    display: block !important;
+}
+
+.board-menu-title {
+    position: relative;
+    text-align: center;
+    font-weight: 700;
+    border-bottom: 2px solid #d6dadc;
+    padding: 5px;
+}
+
+.board-member {
+    background-color: #e2e4e6;
+    padding: 3px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 30px;
+    text-align: center;
+    width: 30px;
+    border-radius: 100%;
+    height: 30px;
+    margin: 10px 0;
+    display: block;
+}
+.board-members .invite {
+    color: #444;
+    border-style: none;
+    border-radius: 2px;
+    background-color: #e2e4e6;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    box-shadow: 0 1px 0 0 #c4c9cc;
+    font-weight: 700;
+    text-align: left;
+    cursor: pointer;
+}
+
+.board-members .invite:hover {
+    background-color: #cdd2d4;
+    color: #4c4c4c;
+}
+
+.board-menu i {
+    color: #999;
+    margin-right: 10px;
+}
+
+.board-menu-title h3 {
+    margin: 0;
+}
+
+.board-members {
+    border-bottom: 1px solid #d6dadc;
+    padding-bottom: 15px;
+}
+
+.board-options {
+    border-bottom: 1px solid #d6dadc;
+    padding: 10px 0;
+}
+
+.current-color {
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-right: 5px;
+}
+.board-activity {
+    padding: 10px 0;
+}
+
+.board-options li, .board-activity li {
+    font-weight: 700;
+    padding: 8px;
+    cursor: pointer;
+    display: block;
+}
+
+.board-options li:hover {
+    color: #111;
+    background-color: #d6dadc;
+    border-radius: 3px;
+}
+
+.menu-body {
+    margin: 10px 5px;
+    text-align: center;
+    width: 100%;
+}
+
+.menu-body .color-button {
+    width: 45%;
+    height: 112px;
+    border-radius: 10px;
+    margin: 5px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.nav-two .menu-body .color-button:hover {
+    opacity: .8;
+}
+
+.menu-body .blue {
+    background-color: #0079BF;
+}
+
+.menu-body .orange {
+    background-color: #D29034;
+}
+
+.menu-body .green {
+    background-color: #519839;
+}
+
+.menu-body .red {
+    background-color: #B04632;
+}
+
+.menu-body .purple {
+    background-color: #89609E;
+}
+.menu-body .pink {
+    background-color: #CD5A91;
+}
+
+.color-menu, .photo-menu {
+    display: inline-block;
+    width: 40%;
+    overflow: hidden;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.color-menu:hover, .photo-menu:hover, .photo-button:hover {
+    opacity: .8;
+}
+
+.color-menu img, .photo-menu img{
+    height: 100px;
+    border-radius: 10px;
+}
+
+.photo-button {
+    height: 100px;
+    padding: 0 4px 8px;
+    border-radius: 15px;
+    width: 40%;
+    cursor: pointer;
+}
+
+
+/* DONE styling BoardMenu Component */
 
 
 /* Card Component Styles */
@@ -706,7 +891,7 @@ input:focus {
 .navbar {
     height: 32px;
     padding: 5px 8px;
-    background-color: #0067A3;
+    background-color: rgba(0, 0, 0, .15);
     margin-top: 0;
     text-align: center;
     box-shadow: 0 1px 1px rgba(0,0,0,.1);
@@ -769,15 +954,24 @@ input:focus {
 
 /* NavbarBottom Component Styles */
 
-.nav-two button {
+.nav-two li button {
     color: #E0E0DF;
     background-color: transparent;
     border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 3px;
+    
+}
+
+.nav-two li button:hover {
+    background-color: rgba(0,0,0,.3);
 }
 
 .nav-two {
-    margin: 10px 15px 30px 0;
+    margin: 5px 15px 30px 0;
     padding-left: 25px;
+    position: relative;
 }
 
 .nav-two li button {
