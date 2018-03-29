@@ -15,22 +15,38 @@ class QuickEditCard extends Component {
                     </div>
                     <ul className="quick-edit__menu">
                         <li className="menu-item">
-                            <a className="menu-button">Edit Labels</a>
+                            <a className="menu-button">
+                                <i class="fas fa-tag" /> Edit Labels
+                            </a>
                         </li>
                         <li className="menu-item">
-                            <a className="menu-button">Change Members</a>
+                            <a className="menu-button">
+                                {" "}
+                                <i class="far fa-user" /> Change Members
+                            </a>
                         </li>
                         <li className="menu-item">
-                            <a className="menu-button">Move</a>
+                            <a className="menu-button">
+                                {" "}
+                                <i class="fas fa-arrow-right" /> Move
+                            </a>
                         </li>
                         <li className="menu-item">
-                            <a className="menu-button">Copy</a>
+                            <a className="menu-button">
+                                {" "}
+                                <i class="far fa-copy" /> Copy
+                            </a>
                         </li>
                         <li className="menu-item">
-                            <a className="menu-button">Change Due Date</a>
+                            <a className="menu-button">
+                                {" "}
+                                <i class="far fa-calendar-alt" /> Change Due Date
+                            </a>
                         </li>
                         <li className="menu-item">
-                            <a className="menu-button">Archive</a>
+                            <a className="menu-button">
+                                <i class="fas fa-archive" /> Archive
+                            </a>
                         </li>
                     </ul>
                 </div>

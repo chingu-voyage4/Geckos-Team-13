@@ -1059,4 +1059,11 @@ input:focus {
     transform: translateX(5px);
   }
 
+  .fa-tag, .fa-user, .fa-arrow-right, .fa-copy, .fa-calendar-alt, .fa-archive{
+    margin-right: 5px;
+    font-size: 13px;
+  }
+
+
+
 /* Done styling Quick Edit component */
