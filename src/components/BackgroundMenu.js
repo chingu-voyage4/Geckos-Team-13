@@ -15,7 +15,8 @@ class BackgroundMenu extends React.Component {
             this.setState({background: "colors"});
         } else if (e.target.className === "fas fa-arrow-left back") {
             this.setState({background: "none"});
-        } else if (e.target.className === "photo-menu" || e.target.className === "photo-menu-element") {
+        } else if (e.target.className === "photo-menu" ||
+        e.target.className === "photo-menu-element") {
             this.setState({background: "photos"});
         }
     }
@@ -50,7 +51,8 @@ class BackgroundMenu extends React.Component {
     } else if (this.state.background === "photos") {
         return (
             <PhotoMenu menuTitle="Photos by Unsplash" showBackgroundMenu={this.showBackgroundMenu}
-            toggleBoardMenu={this.props.toggleBoardMenu} />
+            toggleBoardMenu={this.props.toggleBoardMenu}
+            changeBackground={this.props.changeBackground} />
         );
     }
     }

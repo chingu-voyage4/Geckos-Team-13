@@ -28,15 +28,19 @@ class BoardMenu extends React.Component {
         if (this.state.menu === "main") {
         return (
             <div className="board-menu">
-                <div className="board-menu-title"><h3>{this.state.menuTitle}</h3><span className="close" onClick={this.props.toggleBoardMenu}>
+                <div className="board-menu-title"><h3>{this.state.menuTitle}</h3>
+                <span className="close" onClick={this.props.toggleBoardMenu}>
                 <img src="../close-round.png" alt="close" />
                 </span></div>
                 <div className = "board-members">
                 <span className = "board-member">PP</span>
-                    <button className="invite"><i className="fas fa-user-plus"></i>Invite...</button>
+                    <button className="invite"><i className="fas fa-user-plus"></i>
+                    Invite...</button>
                 </div>
                 <div className = "board-options">
-                    <li className = "change-background" onClick={this.showSubmenu}><span className = "current-color" style={{backgroundColor: this.props.color}}></span>Change Background</li>
+                    <li className = "change-background" onClick={this.showSubmenu}>
+                    <span className = "current-color" style={{backgroundColor: this.props.color}}>
+                    </span>Change Background</li>
                     <li><i className="fas fa-filter"></i>Filter Cards</li>
                     <li><i className="fas fa-rocket"></i>Power-Ups</li>
                     <li><i className="far fa-sticky-note"></i>Stickers</li>
@@ -51,8 +55,11 @@ class BoardMenu extends React.Component {
         return (
             <div>
                 { this.state.menu === "backgroundMenu" &&
-                <BackgroundMenu toggleBoardMenu={this.props.toggleBoardMenu} showMainMenu={this.showMainMenu}
-                menu={this.state.menu} menuTitle={this.state.menuTitle} changeColor={this.props.changeColor}/> }
+                <BackgroundMenu toggleBoardMenu={this.props.toggleBoardMenu}
+                showMainMenu={this.showMainMenu}
+                menu={this.state.menu} menuTitle={this.state.menuTitle}
+                changeColor={this.props.changeColor}
+                changeBackground={this.props.changeBackground} /> }
             </div>
             );
     }

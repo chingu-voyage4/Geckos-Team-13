@@ -15,6 +15,8 @@
 
 .App {
     height: 100vh;
+    background-repeat: no-repeat;
+    background-size: 100%;
 }
 
 li {

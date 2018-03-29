@@ -30,7 +30,8 @@ class NavbarBottom extends Component {
                     <li><button onClick={this.toggleBoardMenu}>... Show Menu</button></li>
                 </span>
                 {this.state.boardMenuDisplay && <BoardMenu color={this.props.color}
-                toggleBoardMenu={this.toggleBoardMenu} changeColor={this.props.changeColor} />}
+                toggleBoardMenu={this.toggleBoardMenu} changeColor={this.props.changeColor}
+                changeBackground={this.props.changeBackground} />}
             </ul>
         );
     }
