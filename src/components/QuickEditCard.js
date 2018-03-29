@@ -4,7 +4,11 @@ class QuickEditCard extends Component {
     render() {
         return (
             <div className="quick-edit__screen">
-                <div className="quick-edit__container">
+                <div
+                    className="quick-edit__container"
+                    style={this.props.style}
+                    ref={this.props.setWrapperRef}
+                >
                     <div className="text-button-container">
                         <textarea className="quick-edit__text-box" />
                         <button className="btn--add">Save</button>
