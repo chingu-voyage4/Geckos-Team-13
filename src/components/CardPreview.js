@@ -9,10 +9,14 @@ export default class extends Component {
         super(props);
 
         state: {
-            cardPopUpOpen: false;
+            quickEditOpen: false,
+            cardPopUpOpen: false
         }
 
         this.openCard = this.openCard.bind(this);
+        this.closeQuickEdit = this.closeQuickEdit.bind(this);
+        this.openQuickEdit = this.openQuickEdit.bind(this); 
+
     }
 
     openCard() {
@@ -21,7 +25,34 @@ export default class extends Component {
         });
     }
 
+    openQuickEdit(event) {
+        this.recalculateOffset();
+        this.setState({
+          quickEditOpen: true
+        });
+      }
+    
+      closeQuickEdit() {
+        this.setState({
+          quickEditOpen: false
+        });
+      }
+
     render() {
+
+        let showCard = null;
+        const cardOpened = this.state.cardPopUpOpen;
+        if (cardOpened) {
+          showCard = (
+            <Card
+              cardId={this.props.Id}
+              listId={this.props.listId}
+              closeQuickEdit={this.closeQuickEdit}
+              setWrapperRef={this.setWrapperRef}
+              position={this.props.position}
+            />
+          );
+        }
         return (
             <li className="card-preview">
                 <div onClick={this.openCard} className="card-preview__text">
