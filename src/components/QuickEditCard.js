@@ -16,7 +16,7 @@ class QuickEditCard extends Component {
                     <ul className="quick-edit__menu">
                         <li className="menu-item">
                             <a className="menu-button">
-                                <i class="fas fa-tag" /> Edit Labels
+                                <i className="fas fa-tag" /> Edit Labels
                             </a>
                         </li>
                         <li className="menu-item">
@@ -28,24 +28,24 @@ class QuickEditCard extends Component {
                         <li className="menu-item">
                             <a className="menu-button">
                                 {" "}
-                                <i class="fas fa-arrow-right" /> Move
+                                <i className="fas fa-arrow-right" /> Move
                             </a>
                         </li>
                         <li className="menu-item">
                             <a className="menu-button">
                                 {" "}
-                                <i class="far fa-copy" /> Copy
+                                <i className="far fa-copy" /> Copy
                             </a>
                         </li>
                         <li className="menu-item">
                             <a className="menu-button">
                                 {" "}
-                                <i class="far fa-calendar-alt" /> Change Due Date
+                                <i className="far fa-calendar-alt" /> Change Due Date
                             </a>
                         </li>
                         <li className="menu-item">
                             <a className="menu-button">
-                                <i class="fas fa-archive" /> Archive
+                                <i className="fas fa-archive" /> Archive
                             </a>
                         </li>
                     </ul>
