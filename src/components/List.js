@@ -118,6 +118,7 @@ class List extends Component {
     changeListTitle(event) {
         event.preventDefault();
         this.setState({ listTitle: event.target.value });
+        this.props.editListTitle(event.target.value, this.props.listId);
     }
 
     renderCardList() {
