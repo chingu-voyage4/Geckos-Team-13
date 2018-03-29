@@ -31,7 +31,7 @@ class Card extends Component {
     render() {
         return (
             <div className="BackgroundBox">
-                <div className="OuterCardBox">
+                <div className="OuterCardBox" ref={this.props.setWrapperRef}>
                     <div className="TitleOuter">
                         <div className="TitleBox">
                             <i className="fab fa-trello" />
@@ -121,12 +121,6 @@ class Card extends Component {
                                 </button>
                                 <button>
                                     <i className="fas fa-paperclip" />Attachment
-                                </button>
-                            </div>
-                            <div className="PowerUpBox">
-                                <button>
-                                    <i className="fab fa-github" />
-                                    <p>Github</p>
                                 </button>
                             </div>
                             <div className="ActionBox">
