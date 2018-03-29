@@ -100,7 +100,7 @@ body {
     font-size: 14px;
     line-height: 20px;
     width: 270px;
-    margin: 10px 5px;
+    margin: 10px 10px;
     text-align:left;
   }
   
@@ -110,7 +110,7 @@ body {
   
   .board__add-list-full {
     width: 270px;
-    margin:10px 5px;
+    margin:10px;
   }
   
   /*DONE styling Board Component */
@@ -652,7 +652,7 @@ button:focus {
 }
 
 .list__container {
-    margin: 10px;
+    margin: 10px 0px 10px 10px;
     width: 270px;
     background-color: #E3E4E6;
     border-radius: 3px;
@@ -729,7 +729,7 @@ button:focus {
     background-color: transparent;
     border-style: none;
     color: #333;
-    font-size:16px;
+    font-size:14px;
     line-height: 18px;
     font-weight: 700;
     padding: 8px 34px 8px 2px;
