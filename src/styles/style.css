@@ -295,20 +295,15 @@ body {
 
 /* Card Component Styles */
 .BackgroundBox {
-    position: relative;
-    padding: 40px 350px 80px 350px;
-}
-
-.BackgroundBox::before {
-    position: absolute;
-    top: 0;
-    left: 0;
+    background: rgba(0, 0, 0, 0.6);
     bottom: 0;
+    color: #fff;
+    left: 0;
+    position: fixed;
     right: 0;
-    background-color: black;
-    opacity: .40;
-    content: "";
-    z-index: -1;
+    top: 0;
+    z-index: 10;
+    overflow-y: scroll;
 }
 
 .OuterCardBox {
