@@ -109,7 +109,7 @@ export default class extends Component {
                 <div onClick={this.openCard} className="card-preview__text">
                     {this.props.title}
                 </div>
-                <button className="quick-edit-popout" onClick={this.openQuickEdit.bind(this)}>
+                <button className="quick-edit-popout" onClick={this.openQuickEdit}>
                     <i className="fas fa-pencil-alt quick-edit-popout" />
                 </button>
                 {showMenu}
