@@ -1,6 +1,22 @@
 import React, { Component } from "react";
 
 class QuickEditCard extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            cardTitle: ""
+        };
+
+        this.changeCardTitle = this.changeCardTitle.bind(this);
+    }
+
+    changeCardTitle(event) {
+        this.setState({
+            cardTitle: event.target.value
+        });
+    }
+
     render() {
         return (
             <div className="quick-edit__screen">
@@ -10,7 +26,11 @@ class QuickEditCard extends Component {
                     ref={this.props.setWrapperRef}
                 >
                     <div className="text-button-container">
-                        <textarea className="quick-edit__text-box" />
+                        <textarea
+                            className="quick-edit__text-box"
+                            value={this.state.cardTitle}
+                            onChange={this.changeCardTitle}
+                        />
                         <button className="btn--add">Save</button>
                     </div>
                     <ul className="quick-edit__menu">
