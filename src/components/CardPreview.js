@@ -9,13 +9,46 @@ export default class extends Component {
         super(props);
 
         this.state = {
+            top: "",
+            left: "",
+            width: "",
             quickEditOpen: false,
             cardPopUpOpen: false
         };
 
+        this.setWrapperRef = this.setWrapperRef.bind(this);
         this.openCard = this.openCard.bind(this);
         this.closeQuickEdit = this.closeQuickEdit.bind(this);
         this.openQuickEdit = this.openQuickEdit.bind(this);
+        this.recalculateOffset = this.recalculateOffset.bind(this);
+    }
+
+    componentDidMount() {
+        document.addEventListener("mousedown", this.handleClickOutside);
+        this.recalculateOffset();
+    }
+
+    recalculateOffset() {
+        var rect = ReactDOM.findDOMNode(this).getBoundingClientRect();
+        this.setState({
+            top: rect.top,
+            left: rect.left,
+            width: rect.width
+        });
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener("mousedown", this.handleClickOutside);
+    }
+
+    setWrapperRef(node) {
+        this.wrapperRef = node;
+    }
+
+    handleClickOutside(event) {
+        if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+            this.setState({ quickEditOpen: false, cardPopUpOpen: false });
+        }
     }
 
     openCard() {
@@ -38,6 +71,8 @@ export default class extends Component {
     }
 
     render() {
+        const style = { top: this.state.top, left: this.state.left };
+
         let showCard = null;
         const cardOpened = this.state.cardPopUpOpen;
         if (cardOpened) {
@@ -77,6 +112,8 @@ export default class extends Component {
                 <button className="quick-edit-popout" onClick={this.openQuickEdit.bind(this)}>
                     <i className="fas fa-pencil-alt quick-edit-popout" />
                 </button>
+                {showMenu}
+                {showCard}
             </li>
         );
     }
