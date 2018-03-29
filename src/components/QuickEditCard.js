@@ -1,20 +1,31 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as actions from "../actions";
 
 class QuickEditCard extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            cardTitle: ""
+            cardTitle: this.props.title
         };
 
         this.changeCardTitle = this.changeCardTitle.bind(this);
+        this.submitTitleChange = this.submitTitleChange.bind(this);
     }
 
     changeCardTitle(event) {
         this.setState({
             cardTitle: event.target.value
         });
+    }
+
+    submitTitleChange() {
+        this.props.editCardTitle(this.state.cardTitle, this.props.cardId);
+        this.setState({
+            cardTitle: ""
+        });
+        this.props.closeQuickEdit();
     }
 
     render() {
@@ -75,4 +86,8 @@ class QuickEditCard extends Component {
     }
 }
 
-export default QuickEditCard;
+function mapStateToProps(state) {
+    return state;
+}
+
+export default connect(mapStateToProps, actions)(QuickEditCard);
