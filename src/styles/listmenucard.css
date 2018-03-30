@@ -18,3 +18,11 @@
 .top {
     z-index: 20;
 }
+
+.moveBtn-left {
+    flex: 0 1 auto; 
+}
+
+..moveBtn-right {
+    flex: 0 2 auto;
+}
