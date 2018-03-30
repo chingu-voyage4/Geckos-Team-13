@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import moment from "moment";
+import "../styles/extendCard.css";
 
 class Card extends Component {
     constructor(props) {
@@ -29,6 +30,32 @@ class Card extends Component {
         const text = event.target.value;
         const commentId = `comment${Date.now()}`;
         this.setState({ comment: { time, text, commentId }, commentText: text });
+    }
+
+    renderCommments() {
+        const commentArray = this.props.cards[this.props.cardId].comments;
+        return commentArray.map(comment => {
+            const id = comment.commentId;
+            return (
+                <li key={id} className="UserActivity">
+                    <div className="card-edit__user">
+                        <i className="fas fa-user-circle" />
+                        <p className="card-edit__user-name">Tiffany DeVine</p>
+                    </div>
+                    <div className="card-edit__comment-text">{comment.text}</div>
+                    <div className="card-edit__date-options-container">
+                        <div className="card-edit__comment-date">{comment.time}</div>
+                        <a>Edit</a>
+                        <button
+                            className="card-edit__delete-comment-btn"
+                            onClick={() => this.deleteComment(id)}
+                        >
+                            Delete
+                        </button>
+                    </div>
+                </li>
+            );
+        });
     }
 
     render() {
