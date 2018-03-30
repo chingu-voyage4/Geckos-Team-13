@@ -20,10 +20,12 @@ class Card extends Component {
 
     addComment(event) {
         event.preventDefault();
-        this.props.addComment(this.state.comment, this.props.cardId);
-        this.setState({
-            commentText: ""
-        });
+        if (this.state.commentText) {
+            this.props.addComment(this.state.comment, this.props.cardId);
+            this.setState({
+                commentText: ""
+            });
+        }
     }
 
     typeComment(event) {
