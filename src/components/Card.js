@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../actions";
+import moment from "moment";
 
 class Card extends Component {
     constructor(props) {
@@ -97,7 +98,6 @@ class Card extends Component {
                                         <i className="fab fa-trello" />
                                     </a>
                                 </div>
-                                <button>Save</button>
                             </div>
                             <div className="ActivityBox">
                                 <div className="ActivityLabel">
