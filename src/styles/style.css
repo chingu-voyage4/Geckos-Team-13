@@ -5,11 +5,12 @@
     2. Board Component Styles - line 74
     3. BoardMenu Component (& submenu component) Styles - line 119
     4. Card Component Styles - line 296
-    5. List Component Styles - line 612
-    6. ListMenu Styles - line 781
-    7. NavbarTop Component Styles - line 887
-    8. NavbarBottom Component Styles - line 955
-    9. Quick Edit Menu Styles - line 983
+    5. List Component Styles - line 696
+    6. ListMenu Styles - line 856
+    7. NavbarTop Component Styles - line 964
+    8. NavbarBottom Component Styles - line 1032
+    9. Quick Edit Menu Styles - line 1060
+    10. CardPreview Component Styles - 1145
 */
 
 /* General Styles */
@@ -626,6 +627,70 @@ body {
     flex-direction: column;
     margin: 0px 0px 0px 0px;
 }
+
+.btn__comment-save--light {
+    border: none;
+    box-shadow: 0 1px 0 #959da1;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 700;
+    line-height: 22px;
+    margin: 0px 4px 0 20px;
+    padding: 5px 16px;
+    text-align: center;
+    background-color: #d6dadc;
+    color: #ffffff;
+    border-radius: 3px;
+    font-size: 16px;
+  }
+
+.card-edit__comment-list {
+    padding: 0px;
+    color: black;
+}
+
+.card-edit__user {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.card-edit__user-name {
+    margin: 0px 0px 0px 10px;
+}
+
+.card-edit__comment-text {
+    font-size: 14px;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.23);
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 6px 2px 6px 36px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    padding: 9px 11px;
+}
+
+.card-edit__date-options-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 36px;
+    color: #838c91;
+    align-items: center;
+}
+
+.card-edit__comment-date {
+    margin-right: 10px;
+}
+
+.card-edit__delete-comment-btn {
+    color: black;
+    font-size: 14px;
+    background-color: transparent;
+    border: none;
+}
 /*DONE styling Card Component*/
 
 /*List Component Styles*/
@@ -1076,3 +1141,48 @@ input:focus {
 
 
 /* Done styling Quick Edit component */
+
+/*  CardPreview Component Styles */
+.card-preview {
+    background-color: #ffffff;
+    margin-bottom: 6px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: space-between;
+}
+  
+.card-preview:hover {
+    background-color: #edeff0;
+}
+
+.card-preview__text {
+    flex-grow: 1;
+    margin: 8px;
+}
+
+.quick-edit-popout:hover {
+    background-color: #e3e4e6;
+    margin: -5px 0;
+    border-radius: 3px;
+}
+  
+.quick-edit-popout:hover .fas.fa-pencil-alt {
+    color: #4d4d4d;
+}
+.fas.fa-pencil-alt {
+    color: #999999;
+    font-size: 11px;
+    visibility: hidden;
+}
+  
+.card-preview:hover .fas.fa-pencil-alt {
+    visibility: visible;
+}
+
+.quick-edit-popout {
+    color: #E0E0DF;
+    background-color: transparent;
+    border: none;
+}
+
+/*  Done styling CardPreview Component Styles */

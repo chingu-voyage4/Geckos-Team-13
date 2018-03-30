@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import QuickEditCard from "./QuickEditCard";
 import Card from "./Card";
-import "../styles/cardpreview.css";
 
 export default class extends Component {
     constructor(props) {
