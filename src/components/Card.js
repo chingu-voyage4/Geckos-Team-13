@@ -45,7 +45,7 @@ class Card extends Component {
                 <li key={id} className="UserActivity">
                     <div className="card-edit__user">
                         <i className="fas fa-user-circle" />
-                        <p className="card-edit__user-name">Tiffany DeVine</p>
+                        <p className="card-edit__user-name">User Name</p>
                     </div>
                     <div className="card-edit__comment-text">{comment.text}</div>
                     <div className="card-edit__date-options-container">
@@ -137,15 +137,11 @@ class Card extends Component {
                                     <h3>Activity</h3>
                                     <a href="">Show Details</a>
                                 </div>
-                                <div className="Activities">
-                                    <i className="fas fa-user-circle" />
-                                    <div className="UserActivity">
-                                        <p className="UserName">Faraz Ahmad</p>
-                                        <div className="CardUserComment">First comment wooooh!</div>
-                                        <div className="CardUserCommentDate">Feb 12 at 7:56 PM</div>
-                                        <a href="">Edit</a>
-                                        <a href="">Reply</a>
-                                        <a href="">Delete</a>
+                                <div className="comment-container">
+                                    <div className="Activities">
+                                        <ul className="card-edit__comment-list">
+                                            {this.renderCommments()}
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
