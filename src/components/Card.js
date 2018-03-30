@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ReactDOM from "react-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import moment from "moment";
@@ -9,6 +10,9 @@ class Card extends Component {
         super(props);
 
         this.state = {
+            top: "",
+            left: "",
+            width: "",
             comment: {},
             commentText: "",
             showMoveCard: false
@@ -17,8 +21,26 @@ class Card extends Component {
         this.addComment = this.addComment.bind(this);
         this.typeComment = this.typeComment.bind(this);
         this.deleteComment = this.deleteComment.bind(this);
-        this.showMoveCardSubmenu = this.showMoveCardSubmenu.bind(this);
         this.openMoveSub = this.openMoveSub.bind(this);
+        this.recalculateOffset = this.recalculateOffset.bind(this);
+        this.setWrapperRef = this.setWrapperRef.bind(this);
+    }
+
+    componentDidMount() {
+        this.recalculateOffset();
+    }
+
+    setWrapperRef(node) {
+        this.wrapperRef = node;
+    }
+
+    recalculateOffset() {
+        var rect = ReactDOM.findDOMNode(this.wrapperRef).getBoundingClientRect();
+        this.setState({
+            top: rect.top,
+            left: rect.left,
+            width: rect.width
+        });
     }
 
     addComment(event) {
@@ -72,15 +94,24 @@ class Card extends Component {
         this.setState({ showMoveCard: true });
     }
 
-    showMoveCardSubmenu() {
-        if (this.state.showMoveCard) {
-            return <MoveCardSubmenu cardId={this.props.cardId} listId={this.props.listId} />;
-        }
-    }
-
     render() {
         const card = this.props.cards[this.props.cardId];
         const list = this.props.lists[this.props.listId];
+
+        const style = { top: this.state.top, left: this.state.left };
+
+        let showMoveCard = null;
+        const moveCardOpened = this.state.showMoveCard;
+        if (moveCardOpened) {
+            showMoveCard = (
+                <MoveCardSubmenu
+                    style={style}
+                    cardId={this.props.cardId}
+                    listId={this.props.listId}
+                />
+            );
+        }
+
         return (
             <div className="outer-container">
                 <div className="BackgroundBox">
@@ -95,6 +126,7 @@ class Card extends Component {
                                     in list
                                     <span> </span>
                                     <button
+                                        ref={this.setWrapperRef}
                                         onClick={this.openMoveSub}
                                         className="card-list__move-list-link"
                                     >
@@ -214,7 +246,7 @@ class Card extends Component {
                         </div>
                     </div>
                 </div>
-                {this.showMoveCardSubmenu()}
+                {showMoveCard}
             </div>
         );
     }
