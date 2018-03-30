@@ -15,6 +15,7 @@ class Card extends Component {
 
         this.addComment = this.addComment.bind(this);
         this.typeComment = this.typeComment.bind(this);
+        this.deleteComment = this.deleteComment.bind(this);
     }
 
     addComment(event) {
@@ -30,6 +31,10 @@ class Card extends Component {
         const text = event.target.value;
         const commentId = `comment${Date.now()}`;
         this.setState({ comment: { time, text, commentId }, commentText: text });
+    }
+
+    deleteComment(commentId) {
+        this.props.deleteComment(commentId, this.props.cardId);
     }
 
     renderCommments() {
