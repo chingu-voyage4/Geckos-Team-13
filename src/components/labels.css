@@ -1,0 +1,41 @@
+.label-menu {
+    background-color: #fff;
+    width: 300px;
+    border: 1px solid #d6dadc;
+    box-shadow: 0 1px 6px rgba(0,0,0,.15);
+    z-index: 10;
+    padding: 8px;
+    position: relative;
+    border-radius: 3px;
+}
+
+.label-menu-title {
+    position: relative;
+    text-align: center;
+    font-weight: 700;
+    border-bottom: 2px solid #d6dadc;
+    padding: 5px;
+    margin-bottom: 15px;
+}
+.label {
+    width: 250px;
+    height: 30px;
+    margin: 0 0 4px;
+    border-radius: 3px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.label-edit {
+    position: relative;
+}
+
+.edit-button {
+    cursor: pointer;
+    border-style: none;
+    background: transparent;
+    margin-left: 10px;
+    position: absolute;
+    top: 5px;
+    color: #999;
+}
