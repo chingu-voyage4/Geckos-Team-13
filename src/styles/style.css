@@ -905,12 +905,17 @@ input:focus {
     position: absolute;
     right: 0;
     left: 0;
-    top: -3px;
+    top: 5px;
     bottom: 0;
     font-size: 1.6em;
     font-family: 'Lobster', cursive;
-    color: rgba(224, 224, 223, 0.7);
+    color: rgb(224, 224, 223);
+    opacity: .7;
     height:50px;
+}
+
+.brand img {
+    width: 22px;
 }
 
 .search {
