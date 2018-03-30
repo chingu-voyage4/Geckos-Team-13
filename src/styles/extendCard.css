@@ -14,22 +14,22 @@
     font-size: 16px;
   }
 
-  .card-edit__comment-list {
+.card-edit__comment-list {
     padding: 0px;
     color: black;
-  }
+}
 
-  .card-edit__user {
+.card-edit__user {
     display: flex;
     align-items: center;
     margin-top: 20px;
-  }
+}
 
-  .card-edit__user-name {
+.card-edit__user-name {
     margin: 0px 0px 0px 10px;
-  }
+}
 
-  .card-edit__comment-text {
+.card-edit__comment-text {
     font-size: 14px;
     background-color: #fff;
     border-radius: 3px;
@@ -41,23 +41,23 @@
     text-overflow: ellipsis;
     max-width: 100%;
     padding: 9px 11px;
-  }
+}
 
-  .card-edit__date-options-container {
+.card-edit__date-options-container {
     display: flex;
     justify-content: flex-start;
     margin-left: 36px;
     color: #838c91;
     align-items: center;
-  }
+}
 
-  .card-edit__comment-date {
+.card-edit__comment-date {
     margin-right: 10px;
-  }
-
+}
 
 .card-edit__delete-comment-btn {
     color: black;
     font-size: 14px;
-  }
-  
+    background-color: transparent;
+    border: none;
+}
