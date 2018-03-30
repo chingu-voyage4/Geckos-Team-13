@@ -99,7 +99,6 @@ export default class extends Component {
                     position={this.props.position}
                     setWrapperRef={this.setWrapperRef}
                     closeQuickEdit={this.closeQuickEdit}
-                    recalculateOffset={this.recalculateOffset}
                 />
             );
         }
