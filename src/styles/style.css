@@ -946,6 +946,9 @@ input:focus {
     position: relative;
     font-size: 1.2em;
     font-weight: 700;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .moveBtn .btnLabel {
