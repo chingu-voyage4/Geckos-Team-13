@@ -1,3 +1,15 @@
 .btn__comment-save--light {
-    
-}
+    border: none;
+    box-shadow: 0 1px 0 #959da1;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 700;
+    line-height: 22px;
+    margin: 0px 4px 0 20px;
+    padding: 5px 16px;
+    text-align: center;
+    background-color: #d6dadc;
+    color: #ffffff;
+    border-radius: 3px;
+    font-size: 16px;
+  }
