@@ -10,12 +10,15 @@ class Card extends Component {
 
         this.state = {
             comment: {},
-            commentText: ""
+            commentText: "",
+            showMoveCard: false
         };
 
         this.addComment = this.addComment.bind(this);
         this.typeComment = this.typeComment.bind(this);
         this.deleteComment = this.deleteComment.bind(this);
+        this.showMoveCardSubmenu = this.showMoveCardSubmenu.bind(this);
+        this.openMoveSub = this.openMoveSub.bind(this);
     }
 
     addComment(event) {
@@ -65,6 +68,16 @@ class Card extends Component {
         });
     }
 
+    openMoveSub() {
+        this.setState({ showMoveCard: true });
+    }
+
+    showMoveCardSubmenu() {
+        if (this.state.showMoveCard) {
+            return <MoveCardSubmenu cardId={this.props.cardId} listId={this.props.listId} />;
+        }
+    }
+
     render() {
         const card = this.props.cards[this.props.cardId];
         const list = this.props.lists[this.props.listId];
@@ -81,7 +94,10 @@ class Card extends Component {
                                 <p>
                                     in list
                                     <span> </span>
-                                    <button className="card-list__move-list-link">
+                                    <button
+                                        onClick={this.openMoveSub}
+                                        className="card-list__move-list-link"
+                                    >
                                         {list.title}
                                     </button>
                                 </p>
@@ -159,7 +175,6 @@ class Card extends Component {
                                     </div>
                                 </div>
                             </div>
-
                             <div className="InnerButtonBox">
                                 <div className="AddBox">
                                     <button>
@@ -199,7 +214,7 @@ class Card extends Component {
                         </div>
                     </div>
                 </div>
-                <MoveCardSubmenu />
+                {this.showMoveCardSubmenu()}
             </div>
         );
     }
