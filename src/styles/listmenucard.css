@@ -12,17 +12,20 @@
 
 .bottom-row-container { 
     display: flex;
-    flex-direction: row;
 }
 
 .top {
     z-index: 20;
 }
 
-.moveBtn-left {
-    flex: 0 1 auto; 
+.bottom:not(:last-child) {
+    margin-right: 4px;
 }
-
-..moveBtn-right {
+  
+.left {
+    flex: 0 1 auto;
+}
+  
+.right {
     flex: 0 2 auto;
 }
