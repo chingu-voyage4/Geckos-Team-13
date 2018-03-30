@@ -1,0 +1,20 @@
+.list-menu-buttons-card {
+    z-index: 10;
+    width: 280px;
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: 3px;
+    position: absolute;
+    top: 30px;
+    left: 245px;
+    border: 1px solid #d6dadc;
+}
+
+.bottom-row-container { 
+    display: flex;
+    flex-direction: row;
+}
+
+.top {
+    z-index: 20;
+}
