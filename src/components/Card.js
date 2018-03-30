@@ -10,6 +10,16 @@ class Card extends Component {
             comment: {},
             commentText: ""
         };
+
+        this.addComment = this.addComment.bind(this);
+    }
+
+    addComment(event) {
+        event.preventDefault();
+        this.props.addComment(this.state.comment, this.props.cardId);
+        this.setState({
+            commentText: ""
+        });
     }
 
     render() {
@@ -48,12 +58,23 @@ class Card extends Component {
                                     </div>
                                 </div>
                             </div>
+
                             <div className="CommentBox">
                                 <div className="AddLabel">
                                     <i className="far fa-comment" />
                                     <h3>Add Comment</h3>
                                 </div>
-                                <textarea placeholder="Write a comment..." />
+                                <textarea
+                                    value={this.state.commentText}
+                                    onChange={this.typeComment}
+                                    placeholder="Write a comment..."
+                                />
+                                <button
+                                    className="btn__comment-save--light"
+                                    onClick={this.addComment}
+                                >
+                                    Save
+                                </button>
                                 <div className="CommentButtons">
                                     <a href="">
                                         <i className="fas fa-paperclip" />
@@ -89,6 +110,7 @@ class Card extends Component {
                                 </div>
                             </div>
                         </div>
+
                         <div className="InnerButtonBox">
                             <div className="AddBox">
                                 <button>
