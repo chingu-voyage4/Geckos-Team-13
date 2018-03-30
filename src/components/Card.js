@@ -12,6 +12,7 @@ class Card extends Component {
         };
 
         this.addComment = this.addComment.bind(this);
+        this.typeComment = this.typeComment.bind(this);
     }
 
     addComment(event) {
@@ -20,6 +21,13 @@ class Card extends Component {
         this.setState({
             commentText: ""
         });
+    }
+
+    typeComment(event) {
+        const time = moment().format("MMMM Do YYYY, h:mm:ss a");
+        const text = event.target.value;
+        const commentId = `comment${Date.now()}`;
+        this.setState({ comment: { time, text, commentId }, commentText: text });
     }
 
     render() {
