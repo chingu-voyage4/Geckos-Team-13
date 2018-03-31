@@ -295,29 +295,39 @@ body {
 
 /* Card Component Styles */
 .BackgroundBox {
-    position: relative;
-    padding: 40px 350px 80px 350px;
-}
-
-.BackgroundBox::before {
-    position: absolute;
-    top: 0;
-    left: 0;
+    background: rgba(0, 0, 0, 0.6);
     bottom: 0;
+    color: #fff;
+    left: 0;
+    position: fixed;
     right: 0;
-    background-color: black;
-    opacity: .40;
-    content: "";
-    z-index: -1;
+    top: 0;
+    z-index: 10;
+    overflow-y: scroll;
 }
 
 .OuterCardBox {
+    position: absolute;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -ms-flex-pack: center;
     justify-content: center;
-    background-color: lightgray;
-    padding: 0px 20px;
-    width: 98%;
+    background-color: #edeff0;
+    padding: 0px 15px;
+    margin: 50px 0px;
+    margin-top: 50px;
+    margin-right: 0px;
+    margin-bottom: 50px;
+    margin-left: 0px;
+    min-width: 756px;
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    border-radius: 3px;
 
   }
 
@@ -648,7 +658,6 @@ button:focus {
     line-height: 18px;
     font-weight: 400;
     padding: 6px 6px 2px 8px
-
 }
 
 .list__container {
@@ -695,13 +704,6 @@ button:focus {
 
 .list__add-cards-short:active {
     outline: none;
-}
-
-.card-preview {
-    background-color: #FFFFFF;
-    padding: 8px;
-    margin-bottom: 6px;
-    border-radius: 3px;
 }
 
 .form-btn-container {
@@ -1061,5 +1063,12 @@ input:focus {
     -webkit-transform: translateX(5px);
     transform: translateX(5px);
   }
+
+  .fa-tag, .fa-user, .fa-arrow-right, .fa-copy, .fa-calendar-alt, .fa-archive{
+    margin-right: 5px;
+    font-size: 13px;
+  }
+
+
 
 /* Done styling Quick Edit component */

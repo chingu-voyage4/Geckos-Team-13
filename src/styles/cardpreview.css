@@ -1,0 +1,41 @@
+.card-preview {
+    background-color: #ffffff;
+    margin-bottom: 6px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: space-between;
+}
+  
+.card-preview:hover {
+    background-color: #edeff0;
+}
+
+.card-preview__text {
+    flex-grow: 1;
+    margin: 8px;
+}
+
+.quick-edit-popout:hover {
+    background-color: #e3e4e6;
+    margin: -5px 0;
+    border-radius: 3px;
+}
+  
+.quick-edit-popout:hover .fas.fa-pencil-alt {
+    color: #4d4d4d;
+}
+.fas.fa-pencil-alt {
+    color: #999999;
+    font-size: 11px;
+    visibility: hidden;
+}
+  
+.card-preview:hover .fas.fa-pencil-alt {
+    visibility: visible;
+}
+
+.quick-edit-popout {
+    color: #E0E0DF;
+    background-color: transparent;
+    border: none;
+}
