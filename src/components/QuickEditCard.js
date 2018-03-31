@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Labels from "./Labels.js";
 
 class QuickEditCard extends Component {
     render() {

@@ -5,7 +5,7 @@ class Label extends Component {
     render() {
         const style = {backgroundColor: this.props.color};
         return (
-            <div className="label" style={style}></div>
+            <div className="label" id={this.props.color} style={style}></div>
         );
     }
 }

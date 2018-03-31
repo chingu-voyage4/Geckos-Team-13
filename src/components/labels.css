@@ -19,11 +19,15 @@
 }
 .label {
     width: 250px;
-    height: 30px;
+    height: 32px;
     margin: 0 0 4px;
     border-radius: 3px;
     display: inline-block;
     cursor: pointer;
+}
+
+.label:hover {
+    opacity: .7;
 }
 
 .label-edit {
@@ -36,6 +40,25 @@
     background: transparent;
     margin-left: 10px;
     position: absolute;
-    top: 5px;
+    top: 0;
     color: #999;
+    padding: 8px;
+    border-radius: 3px;
+}
+
+.edit-button:hover {
+   background-color: #d6dadc;
+}
+
+.label-edit-menu {
+    background-color: #fff;
+    width: 300px;
+}
+
+.label-button {
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    border-radius: 3px;
+    border-style: none;
 }
