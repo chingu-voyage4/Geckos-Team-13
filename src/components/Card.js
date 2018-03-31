@@ -24,7 +24,6 @@ class Card extends Component {
         this.openMoveSub = this.openMoveSub.bind(this);
         this.recalculateOffset = this.recalculateOffset.bind(this);
         this.setButtonRef = this.setButtonRef.bind(this);
-        this.setSubMenuRef = this.setSubMenuRef.bind(this);
         this.handleClickOutside = this.handleClickOutside.bind(this);
     }
 
@@ -41,11 +40,8 @@ class Card extends Component {
         this.buttonRef = node;
     }
 
-    setSubMenuRef(node) {
-        this.subref = node;
-    }
-
     handleClickOutside(event) {
+        this.subref = this.props.menuNode;
         if (this.subref && !this.subref.contains(event.target)) {
             this.setState({ showMoveCard: false });
         }
@@ -130,7 +126,6 @@ class Card extends Component {
                     cardId={this.props.cardId}
                     listId={this.props.listId}
                     setSubRef={this.props.setSubRef}
-                    setSubMenuRef={this.setSubMenuRef}
                 />
             );
         }

@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 
 class MoveCardSubmenu extends Component {
+    //set subRef comes all the way from card preivew
+    // setSubMenuRef comes from Card
     render() {
         const card = this.props.cards[this.props.cardId];
         const list = this.props.lists[this.props.listId];
@@ -12,7 +14,6 @@ class MoveCardSubmenu extends Component {
                 className="list-menu-buttons list-menu-buttons-card"
                 style={this.props.style}
                 ref={this.props.setSubRef}
-                ref={this.props.setSubMenuRef}
             >
                 <button className="moveBtn">
                     <span className="btnLabel">Board</span>

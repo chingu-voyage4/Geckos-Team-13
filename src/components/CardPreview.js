@@ -49,7 +49,6 @@ export default class extends Component {
     }
 
     setSubRef(node) {
-        console.log("|| !this.subRef.contains(event.target)");
         this.subRef = node;
     }
 
@@ -99,6 +98,7 @@ export default class extends Component {
                     setWrapperRef={this.setWrapperRef}
                     position={this.props.position}
                     setSubRef={this.setSubRef}
+                    menuNode={this.subRef}
                 />
             );
         }
