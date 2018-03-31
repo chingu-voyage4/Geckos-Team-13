@@ -23,19 +23,36 @@ class Card extends Component {
         this.deleteComment = this.deleteComment.bind(this);
         this.openMoveSub = this.openMoveSub.bind(this);
         this.recalculateOffset = this.recalculateOffset.bind(this);
-        this.setWrapperRef = this.setWrapperRef.bind(this);
+        this.setButtonRef = this.setButtonRef.bind(this);
+        this.setSubMenuRef = this.setSubMenuRef.bind(this);
+        this.handleClickOutside = this.handleClickOutside.bind(this);
     }
 
     componentDidMount() {
+        document.addEventListener("mousedown", this.handleClickOutside);
         this.recalculateOffset();
     }
 
-    setWrapperRef(node) {
-        this.wrapperRef = node;
+    componentWillUnmount() {
+        document.removeEventListener("mousedown", this.handleClickOutside);
+    }
+
+    setButtonRef(node) {
+        this.buttonRef = node;
+    }
+
+    setSubMenuRef(node) {
+        this.subref = node;
+    }
+
+    handleClickOutside(event) {
+        if (this.subref && !this.subref.contains(event.target)) {
+            this.setState({ showMoveCard: false });
+        }
     }
 
     recalculateOffset() {
-        var rect = ReactDOM.findDOMNode(this.wrapperRef).getBoundingClientRect();
+        var rect = ReactDOM.findDOMNode(this.buttonRef).getBoundingClientRect();
         this.setState({
             top: rect.top,
             left: rect.left,
@@ -94,11 +111,15 @@ class Card extends Component {
         this.setState({ showMoveCard: true });
     }
 
+    closeMoveSub() {
+        this.setState({ showMoveCard: false });
+    }
+
     render() {
         const card = this.props.cards[this.props.cardId];
         const list = this.props.lists[this.props.listId];
 
-        const style = { top: this.state.top, left: this.state.left };
+        const style = { top: this.state.top + 30, left: this.state.left };
 
         let showMoveCard = null;
         const moveCardOpened = this.state.showMoveCard;
@@ -108,6 +129,8 @@ class Card extends Component {
                     style={style}
                     cardId={this.props.cardId}
                     listId={this.props.listId}
+                    setSubRef={this.props.setSubRef}
+                    setSubMenuRef={this.setSubMenuRef}
                 />
             );
         }
@@ -126,7 +149,7 @@ class Card extends Component {
                                     in list
                                     <span> </span>
                                     <button
-                                        ref={this.setWrapperRef}
+                                        ref={this.setButtonRef}
                                         onClick={this.openMoveSub}
                                         className="card-list__move-list-link"
                                     >

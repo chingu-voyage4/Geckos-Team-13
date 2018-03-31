@@ -8,7 +8,12 @@ class MoveCardSubmenu extends Component {
         const card = this.props.cards[this.props.cardId];
         const list = this.props.lists[this.props.listId];
         return (
-            <div className="list-menu-buttons list-menu-buttons-card" style={this.props.style}>
+            <div
+                className="list-menu-buttons list-menu-buttons-card"
+                style={this.props.style}
+                ref={this.props.setSubRef}
+                ref={this.props.setSubMenuRef}
+            >
                 <button className="moveBtn">
                     <span className="btnLabel">Board</span>
                     Board Name
