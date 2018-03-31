@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ListMenu from "./ListMenu.js";
 import { connect } from "react-redux";
 import * as actions from "../actions";
+import CardPreview from "./CardPreview";
 
 class List extends Component {
     constructor(props) {
@@ -12,8 +13,7 @@ class List extends Component {
             listTitle: this.props.listDetails.title,
             titleSelected: true,
             inputOpen: false,
-            cardName: "",
-            cardTitles: [],
+            cardTitle: "",
             menuDisplay: false
         };
 
@@ -64,22 +64,41 @@ class List extends Component {
     cancelExpansion() {
         this.setState({
             outComponentSelected: true,
-            cardName: ""
+            cardTitle: ""
         });
     }
 
     addCardTitle(event) {
-        this.setState({ cardName: event.target.value });
+        this.setState({ cardTitle: event.target.value });
     }
 
     confirmAddCard(event) {
         event.preventDefault();
-        if (this.state.cardName) {
-            this.setState({
-                cardTitles: [...this.state.cardTitles, this.state.cardName],
-                cardName: "",
-                outComponentSelected: true
-            });
+
+        if (this.state.cardTitle) {
+            const uniq = Date.now();
+            const position = Object.keys(this.props.cards).length;
+            const cardId = `card${uniq + position}`;
+            const title = this.state.cardTitle;
+            const description = "";
+            const members = [];
+            const labels = [];
+            const dueDate = "";
+            const comments = [];
+            const listId = this.props.listId;
+
+            this.props.addCard(
+                cardId,
+                position,
+                title,
+                description,
+                members,
+                labels,
+                dueDate,
+                comments,
+                listId
+            );
+            this.setState({ cardTitle: "" });
         }
     }
 
@@ -98,16 +117,25 @@ class List extends Component {
     changeListTitle(event) {
         event.preventDefault();
         this.setState({ listTitle: event.target.value });
+        this.props.editListTitle(event.target.value, this.props.listId);
     }
 
     renderCardList() {
-        return this.state.cardTitles.map(title => {
-            return (
-                <li key={title} className="card-preview">
-                    {title}
-                </li>
-            );
-        });
+        const allCardsInThisList = this.props.allLists[this.props.listId].cards;
+        if (allCardsInThisList) {
+            return allCardsInThisList.map((cardId, index) => {
+                const card = this.props.cards[cardId];
+                return (
+                    <CardPreview
+                        key={cardId}
+                        Id={cardId}
+                        listId={this.props.listId}
+                        title={card.title}
+                        position={index}
+                    />
+                );
+            });
+        }
     }
 
     divClicked() {
@@ -176,9 +204,9 @@ class List extends Component {
                 >
                     <div className="form-container">
                         <textarea
-                            value={this.state.cardName}
+                            className="form-card-description"
+                            value={this.state.cardTitle}
                             onChange={this.addCardTitle}
-                            onKeyPress={this.handleKeyPress}
                         />
                         <div className="form-btn-container">
                             <button type="submit" className="btn--add">
@@ -211,7 +239,8 @@ class List extends Component {
 
 function mapStateToProps(state) {
     return {
-        allLists: state.lists
+        allLists: state.lists,
+        cards: state.cards
     };
 }
 
