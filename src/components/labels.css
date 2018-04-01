@@ -3,9 +3,11 @@
     width: 300px;
     border: 1px solid #d6dadc;
     box-shadow: 0 1px 6px rgba(0,0,0,.15);
-    z-index: 10;
+    z-index: 15 !important;
     padding: 8px;
-    position: relative;
+    position: absolute;
+    left: 635px;
+    bottom: 210px;
     border-radius: 3px;
 }
 
@@ -16,6 +18,11 @@
     border-bottom: 2px solid #d6dadc;
     padding: 5px;
     margin-bottom: 15px;
+    color: #999;
+}
+
+.label-list {
+    text-align: left;
 }
 .label {
     width: 250px;
@@ -37,13 +44,19 @@
 .edit-button {
     cursor: pointer;
     border-style: none;
-    background: transparent;
+    background: #fff;
     margin-left: 10px;
     position: absolute;
-    top: 0;
-    color: #999;
+    top: -3px;
+    right: 3px;
     padding: 8px;
     border-radius: 3px;
+}
+
+.edit-button i {
+    color: #999;
+    visibility: visible !important;
+    margin-right: 0 !important;
 }
 
 .edit-button:hover {
@@ -53,11 +66,14 @@
 .label-edit-menu {
     background-color: #fff;
     width: 300px;
+    font-weight: 700;
+    color: #000;
 }
 
 .label-button {
-    width: 30px;
-    height: 30px;
+    display: inline-block !important;
+    width: 40px;
+    height: 40px;
     margin: 5px;
     border-radius: 3px;
     border-style: none;

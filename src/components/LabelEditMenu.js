@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import LabelButton from "./LabelButton.js";
 
 class LabelEditMenu extends Component {
     render() {
         const labels = ["#61BD4F", "#F2D600", "#FFAB4A", "#EB5A46", "#C377E0", "#0079BF"];
-        const labelButtons = labels.map((label) => <button key={label} color={label} className="label-button"></button>);
+        const labelButtons = labels.map((label) => <LabelButton key={label} color={label} />);
 
         return (
             <div className="label-edit-menu">

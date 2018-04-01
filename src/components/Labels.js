@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./labels.css";
 import LabelEditMenu from "./LabelEditMenu.js";
 import Label from "./Label.js";
+import LabelEditButton from "./LabelEditButton.js";
 
 class Labels extends Component {
 
@@ -26,14 +27,14 @@ class Labels extends Component {
         const labels = ["#61BD4F", "#F2D600", "#FFAB4A", "#EB5A46", "#C377E0", "#0079BF"];
         const labelDivs = labels.map((label) => (
             <div className="label-edit" key={label}>
-                <Label key={label} color={label} /><button className="edit-button"
-                key={label} onClick={this.toggleLabelEdit} >
-                <i className="fas fa-pencil-alt"></i></button>
+                <Label key={label} color={label} /><LabelEditButton
+                key={label} toggleLabelEdit={this.toggleLabelEdit} />
             </div>
         ));
         return (
             <div className = "label-menu">
-                <div className="label-menu-title">{ this.state.title }<span className="close">
+                <div className="label-menu-title">{ this.state.title }<span className="close" id="closed"
+                onClick={this.props.toggleCardAction}>
                     <img src="../close-round.png" alt="close" />
                 </span>
             </div>

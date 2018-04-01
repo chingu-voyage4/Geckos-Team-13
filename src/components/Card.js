@@ -1,11 +1,18 @@
 /* eslint-disable indent */
 import React, { Component } from "react";
+import Labels from "./Labels.js";
 
 class Card extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {};
+        this.state = {cardAction: "closed"};
+        this.toggleCardAction = this.toggleCardAction.bind(this);
+    }
+
+    toggleCardAction(e) {
+        e.preventDefault();
+        this.setState({cardAction: e.target.id});
     }
 
     render() {
@@ -90,9 +97,10 @@ class Card extends Component {
                                 <button>
                                     <i className="fas fa-user" />Members
                                 </button>
-                                <button>
+                                <button id="labelAction" onClick={this.toggleCardAction}>
                                     <i className="fas fa-tag" />Labels
                                 </button>
+                                {this.state.cardAction === "labelAction" && <Labels toggleCardAction={this.toggleCardAction}/>}
                                 <button>
                                     <i className="fas fa-check-square" />Checklist
                                 </button>

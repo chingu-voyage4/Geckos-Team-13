@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "../styles/style.css";
 import NavbarTop from "./NavbarTop.js";
 import NavbarBottom from "./NavbarBottom.js";
-import Labels from "./Labels.js";
 import Board from "./Board";
 
 class App extends Component {
@@ -44,7 +43,6 @@ class App extends Component {
                 <NavbarTop />
                 <NavbarBottom changeBackground={this.changeBackground}
                 changeColor={this.changeColor} color={this.state.color}/>
-                <Labels />
                 <Board />
             </div>
         );
