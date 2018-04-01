@@ -26,11 +26,16 @@
 }
 .label {
     width: 250px;
-    height: 32px;
+    height: 20px;
     margin: 0 0 4px;
     border-radius: 3px;
     display: inline-block;
     cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 80%;
+    padding: 8px;
 }
 
 .label:hover {
@@ -44,7 +49,7 @@
 .edit-button {
     cursor: pointer;
     border-style: none;
-    background: #fff;
+    background: #fff !important;
     margin-left: 10px;
     position: absolute;
     top: -3px;
@@ -60,7 +65,7 @@
 }
 
 .edit-button:hover {
-   background-color: #d6dadc;
+   background-color: #d6dadc !important;
 }
 
 .label-edit-menu {
@@ -68,6 +73,16 @@
     width: 300px;
     font-weight: 700;
     color: #000;
+    text-align: left;
+}
+
+.label-name-field {
+    display: block;
+    margin: 4px 0 12px;
+    width: 90%;
+    border: 1px solid #cdd2d4;
+    border-radius: 3px;
+    padding: 7px;
 }
 
 .label-button {
@@ -77,4 +92,42 @@
     margin: 5px;
     border-radius: 3px;
     border-style: none;
+}
+
+.label-button-area {
+    margin: 15px 0;
+}
+
+.label-button-area p {
+    margin: 5px 0;
+}
+
+.label-edit-menu .mini-danger-button {
+    background-color: #eb5a46;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 3px;
+    border-style: none;
+    padding: 5px 16px;
+    display: block;
+    width: 80px;
+    margin: 8px 0;
+    line-height: 22px;
+    cursor: pointer;
+    float: right;
+}
+
+.label-edit-menu .mini-confirm-button {
+    float: left;
+    background-color: #5aac44;
+    box-shadow: 0 1px 0 #519839;
+    color: #fff;
+    width: 80px;
+    padding: 5px 25px;
+    border-style: none;
+    cursor: pointer;
+    line-height: 22px;
+    border-radius: 3px;
+    font-weight: 700;
+    margin: 8px 0;
 }
