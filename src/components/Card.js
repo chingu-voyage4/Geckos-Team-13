@@ -7,15 +7,15 @@ class Card extends Component {
     constructor(props) {
         super(props);
 
-        this.state = { cardAction: "closed", labels: [{ color: "#61BD4F", labelText: "Test" }]};
+        this.state = { cardAction: "closed", labels: []};
         this.toggleCardAction = this.toggleCardAction.bind(this);
         this.addCardLabel = this.addCardLabel.bind(this);
     }
 
-    addCardLabel(e) {
+    addCardLabel(color, e) {
         e.preventDefault();
         this.setState({
-            labels: [...this.state.labels, { color: "blue", labelText: "Cats are great" }]});
+            labels: [...this.state.labels, { color: color }]});
     }
 
     toggleCardAction(e) {
@@ -25,7 +25,8 @@ class Card extends Component {
 
     render() {
         const cardLabels = this.state.labels.map((label) => (
-            <Label key={label.color} color={label.color} labelText={label.labelText} width="40px" height="20px" className="card-label" />
+            <Label key={label.color} color={label.color} labelText={label.labelText}
+            width="40px" height="20px" className="card-label"  />
         ));
         return (
             <div className="BackgroundBox">
@@ -116,7 +117,7 @@ class Card extends Component {
                                 <button className="labelAction" onClick={this.toggleCardAction}>
                                     <i className="fas fa-tag" />Labels
                                 </button>
-                                {this.state.cardAction === "labelAction" && <Labels toggleCardAction={this.toggleCardAction}/>}
+                                {this.state.cardAction === "labelAction" && <Labels addCardLabel={this.addCardLabel} toggleCardAction={this.toggleCardAction}/>}
                                 <button>
                                     <i className="fas fa-check-square" />Checklist
                                 </button>

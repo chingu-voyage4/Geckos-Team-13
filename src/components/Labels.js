@@ -28,8 +28,9 @@ class Labels extends Component {
     render() {
         const labelDivs = this.state.labels.map((label) => (
             <div className="label-edit" key={label.color}>
-                <Label key={label.color} width="250px" height="20px" color={label.color} labelText={label.labelText}
-                toggleLabelEdit={this.toggleLabelEdit}/>
+                <Label key={label.color} width="250px" height="20px" color={label.color}
+                    addCardLabel={this.props.addCardLabel.bind(this, label.color)}
+                    labelText={label.labelText} toggleLabelEdit={this.toggleLabelEdit}/>
             </div>
         ));
         return (
@@ -44,7 +45,7 @@ class Labels extends Component {
             { labelDivs }
             <a href="#create-label">Create a new label</a>
             </div> }
-                {this.state.showLabelEdit && < LabelEditMenu />}
+                {this.state.showLabelEdit && < LabelEditMenu addCardLabel={this.props.addCardLabel} />}
             </div>
         );
     }

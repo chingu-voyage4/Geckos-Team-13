@@ -3,8 +3,11 @@ import LabelButton from "./LabelButton.js";
 
 class LabelEditMenu extends Component {
     render() {
-        const labels = ["#61BD4F", "#F2D600", "#FFAB4A", "#EB5A46", "#C377E0", "#0079BF"];
-        const labelButtons = labels.map((label) => <LabelButton key={label} color={label} />);
+        const labels = [{ color: "#61BD4F", labelText: "Test" }, { color: "#F2D600", labelText: "" },
+        { color: "#FFAB4A", labelText: "" }, { color: "#EB5A46", labelText: "" }, { color: "#C377E0", labelText: "" },
+        { color: "#0079BF", labelText: "" }];
+        const labelButtons = labels.map((label) => <LabelButton addCardLabel={this.props.addCardLabel}
+        onClick={this.props.addCardLabel.bind(this, label.color)} key={label.color} color={label.color} />);
 
         return (
             <div className="label-edit-menu">
