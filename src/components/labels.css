@@ -1,3 +1,15 @@
+#add-label {
+    width: 25px;
+    height: 25px;
+    color: #999;
+    background-color: #E2E4E6;
+    border-radius: 3px;
+    border-style: none;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
 .label-menu {
     background-color: #fff;
     width: 300px;
@@ -25,8 +37,8 @@
     text-align: left;
 }
 .label {
-    width: 250px;
-    height: 20px;
+    text-align: center;
+    color: #fff;
     margin: 0 0 4px;
     border-radius: 3px;
     display: inline-block;
@@ -36,6 +48,11 @@
     white-space: nowrap;
     max-width: 80%;
     padding: 8px;
+}
+
+.label-list .label-button {
+    width: 40px !important;
+
 }
 
 .label:hover {

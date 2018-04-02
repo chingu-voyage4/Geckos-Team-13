@@ -1,21 +1,32 @@
 /* eslint-disable indent */
 import React, { Component } from "react";
 import Labels from "./Labels.js";
+import Label from "./Label.js";
 
 class Card extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {cardAction: "closed"};
+        this.state = { cardAction: "closed", labels: [{ color: "#61BD4F", labelText: "Test" }]};
         this.toggleCardAction = this.toggleCardAction.bind(this);
+        this.addCardLabel = this.addCardLabel.bind(this);
+    }
+
+    addCardLabel(e) {
+        e.preventDefault();
+        this.setState({
+            labels: [...this.state.labels, { color: "blue", labelText: "Cats are great" }]});
     }
 
     toggleCardAction(e) {
         e.preventDefault();
-        this.setState({cardAction: e.target.id});
+        this.setState({cardAction: e.target.className});
     }
 
     render() {
+        const cardLabels = this.state.labels.map((label) => (
+            <Label key={label.color} color={label.color} labelText={label.labelText} width="40px" height="20px" className="card-label" />
+        ));
         return (
             <div className="BackgroundBox">
                 <div className="OuterCardBox" ref={this.props.setWrapperRef}>
@@ -34,6 +45,11 @@ class Card extends Component {
                                     <i className="fas fa-user-circle" />
                                     <i className="fas fa-plus-square" />
                                 </div>
+                            </div>
+                            <div className="label-list">
+                            Labels
+                            {cardLabels}
+                            <button id="add-label" className="labelAction" onClick={this.toggleCardAction}>+</button>
                             </div>
                             <div className="CardDescription">
                                 <p>Description</p>
@@ -97,7 +113,7 @@ class Card extends Component {
                                 <button>
                                     <i className="fas fa-user" />Members
                                 </button>
-                                <button id="labelAction" onClick={this.toggleCardAction}>
+                                <button className="labelAction" onClick={this.toggleCardAction}>
                                     <i className="fas fa-tag" />Labels
                                 </button>
                                 {this.state.cardAction === "labelAction" && <Labels toggleCardAction={this.toggleCardAction}/>}

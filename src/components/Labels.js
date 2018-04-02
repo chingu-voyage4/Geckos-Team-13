@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./labels.css";
 import LabelEditMenu from "./LabelEditMenu.js";
 import Label from "./Label.js";
-import LabelEditButton from "./LabelEditButton.js";
 
 class Labels extends Component {
 
@@ -29,7 +28,7 @@ class Labels extends Component {
     render() {
         const labelDivs = this.state.labels.map((label) => (
             <div className="label-edit" key={label.color}>
-                <Label key={label.color} color={label.color} labelText={label.labelText}
+                <Label key={label.color} width="250px" height="20px" color={label.color} labelText={label.labelText}
                 toggleLabelEdit={this.toggleLabelEdit}/>
             </div>
         ));

@@ -5,14 +5,13 @@ class Label extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {color: this.props.color, labelText: this.props.labelText};
     }
 
     render() {
-        const style = {backgroundColor: this.state.color};
+        const style = {backgroundColor: this.props.color, width: this.props.width, height: this.props.height};
         return (
             <div>
-            <div className="label" id={this.state.color} style={style}>{this.state.labelText}</div>
+                <div className="label" id={this.props.color} style={style}>{this.props.labelText}</div>
             <LabelEditButton toggleLabelEdit={this.props.toggleLabelEdit} />
                 </div>
         );
