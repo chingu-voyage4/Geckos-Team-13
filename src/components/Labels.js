@@ -29,7 +29,7 @@ class Labels extends Component {
         const labelDivs = this.state.labels.map((label) => (
             <div className="label-edit" key={label.color}>
                 <Label key={label.color} width="250px" height="20px" color={label.color}
-                    addCardLabel={this.props.addCardLabel.bind(this, label.color)}
+                    addCardLabel={this.props.addCardLabel.bind(this, label.color, label.labelText)}
                     labelText={label.labelText} toggleLabelEdit={this.toggleLabelEdit}/>
             </div>
         ));

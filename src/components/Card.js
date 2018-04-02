@@ -12,10 +12,10 @@ class Card extends Component {
         this.addCardLabel = this.addCardLabel.bind(this);
     }
 
-    addCardLabel(color, e) {
+    addCardLabel(color, text, e) {
         e.preventDefault();
         this.setState({
-            labels: [...this.state.labels, { color: color }]});
+            labels: [...this.state.labels, { color: color, labelText: text }]});
     }
 
     toggleCardAction(e) {
