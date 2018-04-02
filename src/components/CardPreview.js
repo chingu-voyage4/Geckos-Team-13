@@ -53,6 +53,7 @@ export default class extends Component {
     }
 
     handleClickOutside(event) {
+        console.log(event.target);
         const cardSelected = this.wrapperRef && this.wrapperRef.contains(event.target);
         const subMenuSelected = this.subRef && this.subRef.contains(event.target);
 

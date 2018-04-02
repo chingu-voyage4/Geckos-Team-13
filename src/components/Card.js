@@ -104,6 +104,7 @@ class Card extends Component {
     }
 
     openMoveSub() {
+        this.recalculateOffset();
         this.setState({ showMoveCard: true });
     }
 
