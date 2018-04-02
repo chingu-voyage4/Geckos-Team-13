@@ -8,7 +8,7 @@ class App extends Component {
     constructor(props) {
         super(props);
 
-        this.state = { color: "#0079bf", backgroundImage: "" };
+        this.state = { color: "#8E6F44", backgroundImage: "" };
         this.changeBackground = this.changeBackground.bind(this);
         this.changeColor = this.changeColor.bind(this);
     }

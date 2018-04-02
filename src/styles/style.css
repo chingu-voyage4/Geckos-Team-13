@@ -29,7 +29,7 @@ body {
     
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
     font-size: 14px;
     width: 100vw;
     color: #333;
@@ -41,6 +41,10 @@ body {
     padding: 0;
 }
 
+textarea {
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    padding: 9px 11px;
+}
 .danger-button {
     background-color: #eb5a46;
     color: #fff;
@@ -298,9 +302,9 @@ body {
 .BackgroundBox {
     background: rgba(0, 0, 0, 0.6);
     bottom: 0;
-    color: #fff;
+    color: #838c91;
     left: 0;
-    position: fixed;
+    position: absolute;
     right: 0;
     top: 0;
     z-index: 10;
@@ -332,17 +336,13 @@ body {
 
   }
 
-.OuterCardBox i {
-    font-size: 30px;
-
-}
-
 .TitleOuter {
+    color: #333;
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin: 0px 0px 20px 0px;
-    width: 100%
+    width: 100%;
 }
 
 .TitleBox {
@@ -413,94 +413,11 @@ body {
     flex-direction: row;
 }
 
-.fa-comment {
-     margin-top: 15px;
-     font-size: 20px;
- }
-
-.fa-at {
-    margin-top: 15px;
-    font-size: 20px;
-}
-
-.fa-smile {
-    margin-top: 15px;
-    font-size: 20px;
-}
-
-.fa-trello {
-     margin-top: 15px;
-     font-size: 20px;
- }
-
-
 .fa-user-circle {
     margin-top: 15px;
     margin-right: 10px;
     font-size: 30px;
     color: red;
-}
-
-.fa-plus-square {
-    margin-top: 20px;
-    font-size: 20px;
-}
-
-
-.fa-trello {
-    margin-top: 15px;
-    font-size: 20px;
-}
-
-.fa-github {
-    margin-top: 10px;
-    margin-right: 5px;
-    font-size: 20px;
-}
-
-.fa-clock{
-    margin-right: 5px;
-    font-size: 20px;
-}
-
-.fa-paperclip{
-    margin-right: 5px;
-    font-size: 20px;
-}
-
-.AddBox .fa-user{
-    margin-right: 5px;
-    font-size: 20px;
-}
-
-.fa-tag{
-    margin-right: 5px;
-    font-size: 20px;
-}
-
-.fa-check-square{
-    margin-right: 5px;
-    font-size: 20px;
-}
-
-.fa-arrow-right {
-    margin-right: 5px;
-    font-size: 20px;
-}
-
-.fa-copy{
-    margin-right: 5px;
-    font-size: 20px;
-}
-
-.fa-eye{
-    margin-right: 5px;
-    font-size: 20px;
-}
-
-.fa-archive{
-    margin-right: 5px;
-    font-size: 20px;
 }
 
 .ShareandMore {
@@ -572,12 +489,6 @@ body {
     margin-left: 65%;
 }
 
-.fa-list-alt {
-    margin-right: 10px;
-    margin-top: 10px;
-    font-size: 30px;
-}
-
 .Activities {
     display: flex;
     flex-direction: row;
@@ -599,15 +510,25 @@ body {
   }
 
 .InnerButtonBox button {
-    display: flex;
-    flex-direction: row;
-     background-color: #acb3b7;
-     padding: 10px 10px 10px 10px;
-     margin: 3px;
+    border-radius: 3px;
+    font-weight: 700;
+    background: #e2e4e6;
+    box-shadow: 0 1px 0 0 #c4c9cc;
+    cursor: pointer;
+    margin-top: 8px;
+    max-width: 300px;
+    padding: 7px 7px 7px 11px;
+    text-decoration: none;
  }
 
+ .InnerButtonBox button:hover {
+     background-color: #cdd2d4;
+     box-shadow: 0 1px 0 0 #a5acb0;
+     color: #4c4c4c
+ }
 .InnerButtonBox button i{
     margin-right: 15px;
+    color: #999;
 }
 
 .AddBox {
