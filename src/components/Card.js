@@ -1,11 +1,67 @@
-/* eslint-disable indent */
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as actions from "../actions";
+import moment from "moment";
 
 class Card extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {};
+        this.state = {
+            comment: {},
+            commentText: ""
+        };
+
+        this.addComment = this.addComment.bind(this);
+        this.typeComment = this.typeComment.bind(this);
+        this.deleteComment = this.deleteComment.bind(this);
+    }
+
+    addComment(event) {
+        event.preventDefault();
+        if (this.state.commentText) {
+            this.props.addComment(this.state.comment, this.props.cardId);
+            this.setState({
+                commentText: ""
+            });
+        }
+    }
+
+    typeComment(event) {
+        const time = moment().format("MMMM Do YYYY, h:mm:ss a");
+        const text = event.target.value;
+        const commentId = `comment${Date.now()}`;
+        this.setState({ comment: { time, text, commentId }, commentText: text });
+    }
+
+    deleteComment(commentId) {
+        this.props.deleteComment(commentId, this.props.cardId);
+    }
+
+    renderCommments() {
+        const commentArray = this.props.cards[this.props.cardId].comments;
+        return commentArray.map(comment => {
+            const id = comment.commentId;
+            return (
+                <li key={id} className="UserActivity">
+                    <div className="card-edit__user">
+                        <i className="fas fa-user-circle" />
+                        <p className="card-edit__user-name">User Name</p>
+                    </div>
+                    <div className="card-edit__comment-text">{comment.text}</div>
+                    <div className="card-edit__date-options-container">
+                        <div className="card-edit__comment-date">{comment.time}</div>
+                        <a>Edit</a>
+                        <button
+                            className="card-edit__delete-comment-btn"
+                            onClick={() => this.deleteComment(id)}
+                        >
+                            Delete
+                        </button>
+                    </div>
+                </li>
+            );
+        });
     }
 
     render() {
@@ -44,12 +100,23 @@ class Card extends Component {
                                     </div>
                                 </div>
                             </div>
+
                             <div className="CommentBox">
                                 <div className="AddLabel">
                                     <i className="far fa-comment" />
                                     <h3>Add Comment</h3>
                                 </div>
-                                <textarea placeholder="Write a comment..." />
+                                <textarea
+                                    value={this.state.commentText}
+                                    onChange={this.typeComment}
+                                    placeholder="Write a comment..."
+                                />
+                                <button
+                                    className="btn__comment-save--light"
+                                    onClick={this.addComment}
+                                >
+                                    Save
+                                </button>
                                 <div className="CommentButtons">
                                     <a href="">
                                         <i className="fas fa-paperclip" />
@@ -64,7 +131,6 @@ class Card extends Component {
                                         <i className="fab fa-trello" />
                                     </a>
                                 </div>
-                                <button>Save</button>
                             </div>
                             <div className="ActivityBox">
                                 <div className="ActivityLabel">
@@ -72,19 +138,16 @@ class Card extends Component {
                                     <h3>Activity</h3>
                                     <a href="">Show Details</a>
                                 </div>
-                                <div className="Activities">
-                                    <i className="fas fa-user-circle" />
-                                    <div className="UserActivity">
-                                        <p className="UserName">Faraz Ahmad</p>
-                                        <div className="CardUserComment">First comment wooooh!</div>
-                                        <div className="CardUserCommentDate">Feb 12 at 7:56 PM</div>
-                                        <a href="">Edit</a>
-                                        <a href="">Reply</a>
-                                        <a href="">Delete</a>
+                                <div className="comment-container">
+                                    <div className="Activities">
+                                        <ul className="card-edit__comment-list">
+                                            {this.renderCommments()}
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                         <div className="InnerButtonBox">
                             <div className="AddBox">
                                 <button>
@@ -128,4 +191,11 @@ class Card extends Component {
     }
 }
 
-export default Card;
+function mapStateToProps(state) {
+    return {
+        cards: state.cards,
+        lists: state.lists
+    };
+}
+
+export default connect(mapStateToProps, actions)(Card);
