@@ -978,9 +978,6 @@ input:focus {
 }
 
 .brand {
-    position: absolute;
-    right: 0;
-    left: 0;
     top: 5px;
     bottom: 0;
     font-size: 1.6em;
