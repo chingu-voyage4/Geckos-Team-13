@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../actions";
+import MoveCardSubmenu from "./MoveCardSubmenu";
 
 class QuickEditCard extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            cardTitle: this.props.title
+            cardTitle: this.props.title,
+            moveClicked: false
         };
 
         this.changeCardTitle = this.changeCardTitle.bind(this);
@@ -29,6 +31,18 @@ class QuickEditCard extends Component {
     }
 
     render() {
+        let showMoveMenu = null;
+        const moveOpened = this.state.moveClicked;
+        if (moveOpened) {
+            showMoveMenu = (
+                <MoveCardSubmenu
+                    cardId={this.props.cardId}
+                    listId={this.props.listId}
+                    position={this.props.position}
+                    closeQuickEdit={this.props.closeQuickEdit}
+                />
+            );
+        }
         return (
             <div className="quick-edit__screen">
                 <div
@@ -59,10 +73,12 @@ class QuickEditCard extends Component {
                             </a>
                         </li>
                         <li className="menu-item">
-                            <a className="menu-button">
+                            <a className="menu-button" onClick={this.moveClicked}>
                                 {" "}
-                                <i className="fas fa-arrow-right" /> Move
+                                <i className="fas fa-arrow-right" />
+                                Move
                             </a>
+                            {showMoveMenu}
                         </li>
                         <li className="menu-item">
                             <a className="menu-button">
