@@ -43,6 +43,7 @@ class ListMenu extends Component {
     }
 
     render() {
+        console.log("??", this.props);
         if (this.state.menu === "main") {
             return (
                 <div className="list-menu">
@@ -92,6 +93,7 @@ class ListMenu extends Component {
                         <MoveListSubmenu
                             position={this.props.position}
                             listId={this.props.listId}
+                            closeMoveSub={this.props.toggleMenu}
                         />
                     )}
                 </div>
