@@ -45,6 +45,7 @@ class QuickEditCard extends Component {
                     listId={this.props.listId}
                     position={this.props.position}
                     closeQuickEdit={this.props.closeQuickEdit}
+                    style={{ top: 91, left: 15 }}
                 />
             );
         }
