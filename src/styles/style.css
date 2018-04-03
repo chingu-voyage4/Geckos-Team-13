@@ -332,7 +332,6 @@ textarea {
     -ms-transform: translateX(-50%);
     transform: translateX(-50%);
     border-radius: 3px;
-    overflow-y: scroll;
     z-index: 15;
   }
 
@@ -350,6 +349,10 @@ textarea {
 .TitleBox {
     justify-content: left;
     margin: 20px 0px 8px 0px;
+}
+
+.TitleBox img {
+    margin-right: 10px;
 }
 
 .MainContent {
@@ -371,7 +374,7 @@ textarea {
 
 .CardList {
     color: #0099CC;
-    margin-left: 30px;
+    margin-left: 38px;
 }
 
 .CardDescription {
@@ -499,11 +502,12 @@ textarea {
     box-shadow: 0 1px 0 0 #c4c9cc;
     cursor: pointer;
     margin-top: 8px;
-    width: 168px;
+    width: 150px;
     height: 32px;
     border-style: none;
     padding: 7px 7px 7px 11px;
     text-decoration: none;
+    text-align: left;
  }
 
  .InnerButtonBox button:disabled {

@@ -132,21 +132,13 @@ class Card extends Component {
         }
 
         return (
-<<<<<<< HEAD
-            <div className="BackgroundBox">
-                <div className="OuterCardBox" ref={this.props.setWrapperRef}>
-                    <div className="TitleOuter">
-                        <div className="TitleBox">
-                            <img src = "../marshmallow-toasted.png" />
-                            <span className="CardTitle">Availability</span>
-=======
             <div className="outer-container">
                 <div className="BackgroundBox">
                     <div className="OuterCardBox" ref={this.props.setWrapperRef}>
                         <div className="TitleOuter">
                             <div className="TitleBox">
-                                <i className="fab fa-trello" />
-                                <div className="CardTitle">{card.title}</div>
+                                <img src="../marshmallow-toasted.png" />
+                                <span className="CardTitle">{card.title}</span>
                             </div>
                             <div className="CardList">
                                 <p>
@@ -161,33 +153,21 @@ class Card extends Component {
                                     </button>
                                 </p>
                             </div>
->>>>>>> develop
                         </div>
                         <div className="MainContent">
                             <div className="MainInfo">
                                 <div className="CardMemberList">
-                                    Members
+                                   <p> Members</p>
                                     <div>
                                         <i className="fas fa-user-circle" />
                                         <i className="fas fa-plus-square" />
                                     </div>
                                 </div>
-<<<<<<< HEAD
-                            </div>
-                            <div className="CardDescription">
-                                <i className="fas fa-align-right"></i>
-                                <h3>Description</h3>
-                                <div className="Editable">
-                                    <textarea>
-                                        Please note your availability in the comments below.
-                                    </textarea>
-                                    <div className="DescriptionButtons">
-                                        <button>Save</button>
-                                        <button>X</button>
-=======
+
                                 <div className="CardDescription">
-                                    <p>Description</p>
-                                    <a href="">Edit</a>
+                                    <i className="fas fa-align-right"></i>
+                                    <h3>Description</h3>
+
                                     <div className="Editable">
                                         <textarea>
                                             Please note your availability in the comments below.
@@ -199,34 +179,11 @@ class Card extends Component {
                                                 <a href="">Formatting Help</a>
                                             </div>
                                         </div>
->>>>>>> develop
                                     </div>
                                 </div>
 
-<<<<<<< HEAD
-                            <div className="CommentBox">
-                                <div className="AddComment">
-                                    <i className="far fa-comment" />
-                                    <h3>Add Comment</h3>
-                                </div>
-                                <textarea
-                                    value={this.state.commentText}
-                                    onChange={this.typeComment}
-                                    placeholder="Write a comment..."
-                                />
-                                <div className="CommentButtons">
-                                    <a href="">
-                                        <i className="fas fa-paperclip" />
-                                    </a>
-                                    <a href="">
-                                        <i className="fas fa-at" />
-                                    </a>
-                                    <a href="">
-                                        <i className="fas fa-smile" />
-                                    </a>
-=======
                                 <div className="CommentBox">
-                                    <div className="AddLabel">
+                                    <div className="AddComment">
                                         <i className="far fa-comment" />
                                         <h3>Add Comment</h3>
                                     </div>
@@ -269,51 +226,8 @@ class Card extends Component {
                                             </ul>
                                         </div>
                                     </div>
->>>>>>> develop
                                 </div>
-                                <button
-                                    className="btn__comment-save--light"
-                                    onClick={this.addComment}
-                                >
-                                    Save
-                                </button>
-                            </div>
-                            <div className="InnerButtonBox">
-                                <div className="AddBox">
-                                    <button>
-                                        <i className="fas fa-user" />Members
-                                    </button>
-                                    <button>
-                                        <i className="fas fa-tag" />Labels
-                                    </button>
-                                    <button>
-                                        <i className="fas fa-check-square" />Checklist
-                                    </button>
-                                    <button>
-                                        <i className="fas fa-clock" />Due Date
-                                    </button>
-                                    <button>
-                                        <i className="fas fa-paperclip" />Attachment
-                                    </button>
-                                </div>
-                                <div className="ActionBox">
-                                    <button>
-                                        <i className="fas fa-arrow-right" />Move
-                                    </button>
-                                    <button>
-                                        <i className="fas fa-copy" />Copy
-                                    </button>
-                                    <button>
-                                        <i className="fas fa-eye" />Subscribe
-                                    </button>
-                                    <button>
-                                        <i className="fas fa-archive" />Archive
-                                    </button>
-                                </div>
-                                <div className="ShareandMore">
-                                    <a href="">Share and more...</a>
-                                </div>
-<<<<<<< HEAD
+
                             </div>
                         </div>
 
@@ -351,14 +265,12 @@ class Card extends Component {
                             </div>
                             <div className="ShareandMore">
                                 <a href="">Share and more...</a>
-=======
->>>>>>> develop
                             </div>
                         </div>
                     </div>
                 </div>
                 {showMoveCard}
-            </div>
+                </div>
         );
     }
 }
