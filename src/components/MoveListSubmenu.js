@@ -30,9 +30,9 @@ class MoveListSubmenu extends Component {
             const oldpos = this.state.oldpos;
 
             this.props.moveList(this.props.listId, newPosition, oldpos);
-            //close everything
+            this.props.closeMoveSub();
         }
-        //close everything
+        this.props.closeMoveSub();
     }
 
     renderPositions() {
@@ -54,7 +54,6 @@ class MoveListSubmenu extends Component {
                     <span className="btnLabel">Board</span>
                     {placeholderBoard}
                 </button>
-
                 <button className="moveBtn">
                     <span className="btnLabel">
                         Position{" "}
