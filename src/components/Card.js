@@ -136,8 +136,8 @@ class Card extends Component {
                 <div className="BackgroundBox">
                     <div className="OuterCardBox" ref={this.props.setWrapperRef}>
                         <div className="TitleOuter">
+                            <img src="../marshmallow-toasted.png" />
                             <div className="TitleBox">
-                                <img src="../marshmallow-toasted.png" />
                                 <span className="CardTitle">{card.title}</span>
                             </div>
                             <div className="CardList">

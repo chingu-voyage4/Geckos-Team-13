@@ -344,15 +344,16 @@ textarea {
     justify-content: center;
     margin: 0px 0px 20px 0px;
     width: 100%;
+    position: relative;
 }
 
 .TitleBox {
     justify-content: left;
-    margin: 20px 0px 8px 0px;
+    margin: 20px 0px 8px 32px;
 }
 
-.TitleBox img {
-    margin-right: 10px;
+.TitleOuter img {
+    position: absolute;
 }
 
 .MainContent {
@@ -462,6 +463,10 @@ textarea {
     justify-content: left;
     margin-bottom: 0px;
     margin-left: 32px;
+}
+
+.CardMemberList p {
+    margin: 0;
 }
 
 
@@ -866,7 +871,7 @@ input:focus {
 
 /* NavbarTop Component Styles*/
 
-@import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url('https://fonts.googleapis.com/css?family=Chicle');
 
 .navbar {
     height: 32px;
@@ -884,15 +889,15 @@ input:focus {
 .brand {
     top: 5px;
     bottom: 0;
-    font-size: 1.6em;
-    font-family: 'Lobster', cursive;
+    font-size: 26px;
+    font-family: 'Chicle', cursive;
     color: rgb(224, 224, 223);
     opacity: .7;
     height:50px;
 }
 
 .brand img {
-    width: 22px;
+    height: 22px;
 }
 
 .search {
