@@ -15,6 +15,28 @@ class ListMenu extends Component {
         this.showMainMenu = this.showMainMenu.bind(this);
         this.showSubmenu = this.showSubmenu.bind(this);
         this.toggleFollow = this.toggleFollow.bind(this);
+        this.setWrapperRef = this.setWrapperRef.bind(this);
+        this.handleClickOutside = this.handleClickOutside.bind(this);
+    }
+
+    componentDidMount() {
+        document.addEventListener("mousedown", this.handleClickOutside);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener("mousedown", this.handleClickOutside);
+    }
+
+    setWrapperRef(node) {
+        console.log(node);
+        this.wrapperRef = node;
+    }
+
+    handleClickOutside(event) {
+        if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+            console.log("here");
+            this.props.toggleMenu();
+        }
     }
 
     showMainMenu(e) {
@@ -43,10 +65,9 @@ class ListMenu extends Component {
     }
 
     render() {
-        console.log("??", this.props);
         if (this.state.menu === "main") {
             return (
-                <div className="list-menu">
+                <div className="list-menu" ref={this.setWrapperRef}>
                     <div className="list-menu-title">
                         <p>{this.state.listTitle}</p>
                         <span className="close" onClick={this.props.toggleMenu}>
