@@ -82,6 +82,7 @@ class MoveCardSubmenu extends Component {
                                 {this.renderPositions()}
                             </select>
                         </span>
+                        {this.state.position}
                     </button>
                 </div>
                 <button onClick={this.positionChange} className="confirm-button">
