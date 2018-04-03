@@ -298,7 +298,7 @@ body {
 .BackgroundBox {
     background: rgba(0, 0, 0, 0.6);
     bottom: 0;
-    color: #fff;
+    color: #838c91;
     left: 0;
     position: fixed;
     right: 0;
@@ -322,7 +322,7 @@ body {
     margin-right: 0px;
     margin-bottom: 50px;
     margin-left: 0px;
-    min-width: 756px;
+    min-width: 726px;
     position: absolute;
     left: 50%;
     -webkit-transform: translateX(-50%);
@@ -691,6 +691,15 @@ body {
     background-color: transparent;
     border: none;
 }
+.card-list__move-list-link {
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    border-bottom: solid 1px;
+    padding: 0px;
+    color:#838c91;
+}
 /*DONE styling Card Component*/
 
 /*List Component Styles*/
@@ -937,6 +946,9 @@ input:focus {
     position: relative;
     font-size: 1.2em;
     font-weight: 700;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .moveBtn .btnLabel {
