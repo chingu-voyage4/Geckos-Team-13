@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as actions from "../actions";
 
 class MoveListSubmenu extends Component {
     render() {
@@ -18,4 +20,8 @@ class MoveListSubmenu extends Component {
     }
 }
 
-export default MoveListSubmenu;
+function mapStateToProps(state) {
+    return { listArray: state.listArray };
+}
+
+export default connect(mapStateToProps, actions)(MoveListSubmenu);
