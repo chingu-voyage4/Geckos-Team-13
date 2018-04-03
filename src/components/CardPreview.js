@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import QuickEditCard from "./QuickEditCard";
 import Card from "./Card";
 
-export default class extends Component {
+export default class CardPreview extends Component {
     constructor(props) {
         super(props);
 
@@ -72,7 +72,7 @@ export default class extends Component {
         });
     }
 
-    openQuickEdit(event) {
+    openQuickEdit() {
         this.recalculateOffset();
         this.setState({
             quickEditOpen: true

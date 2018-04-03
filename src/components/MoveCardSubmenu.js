@@ -4,8 +4,6 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 
 class MoveCardSubmenu extends Component {
-    //set subRef comes all the way from card preivew
-    // setSubMenuRef comes from Card
     render() {
         const card = this.props.cards[this.props.cardId];
         const list = this.props.lists[this.props.listId];
