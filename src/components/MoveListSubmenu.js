@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../actions";
+//import
 
 class MoveListSubmenu extends Component {
     //needs listId & position to be passed down from list.
@@ -14,6 +15,13 @@ class MoveListSubmenu extends Component {
         };
 
         this.positionChange = this.positionChange.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(event) {
+        const pos = parseInt(event.target.value);
+        const oldpos = this.state.position;
+        this.setState({ position: pos, oldpos });
     }
 
     positionChange() {
@@ -27,6 +35,17 @@ class MoveListSubmenu extends Component {
         //close everything
     }
 
+    renderPositions() {
+        const listArr = this.props.listArray;
+        return listArr.map((id, index) => {
+            return (
+                <option key={id} value={index}>
+                    {index}
+                </option>
+            );
+        });
+    }
+
     render() {
         const placeholderBoard = "Placeholder Board";
         return (
@@ -37,7 +56,17 @@ class MoveListSubmenu extends Component {
                 </button>
 
                 <button className="moveBtn">
-                    <span className="btnLabel">Position</span>3
+                    <span className="btnLabel">
+                        Position{" "}
+                        <select
+                            className="position-select__full"
+                            onChange={this.handleChange}
+                            value={this.state.position}
+                        >
+                            {this.renderPositions()}
+                        </select>
+                    </span>
+                    {this.state.position}
                 </button>
 
                 <button className="confirm-button" onClick={this.positionChange}>
