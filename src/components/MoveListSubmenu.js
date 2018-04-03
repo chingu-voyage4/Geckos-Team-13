@@ -14,6 +14,27 @@ class MoveListSubmenu extends Component {
 
         this.positionChange = this.positionChange.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.setWrapperRef = this.setWrapperRef.bind(this);
+        this.handleClickOutside = this.handleClickOutside.bind(this);
+    }
+
+    componentDidMount() {
+        document.addEventListener("mousedown", this.handleClickOutside);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener("mousedown", this.handleClickOutside);
+    }
+
+    setWrapperRef(node) {
+        this.wrapperRef = node;
+    }
+
+    handleClickOutside(event) {
+        if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+            console.log("here");
+            this.props.closeMoveSub();
+        }
     }
 
     handleChange(event) {
@@ -47,7 +68,7 @@ class MoveListSubmenu extends Component {
     render() {
         const placeholderBoard = "Placeholder Board";
         return (
-            <div className="list-menu-buttons">
+            <div className="list-menu-buttons" ref={this.setWrapperRef}>
                 <button className="moveBtn">
                     <span className="btnLabel">Board</span>
                     {placeholderBoard}
