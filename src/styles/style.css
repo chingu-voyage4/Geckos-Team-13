@@ -978,7 +978,12 @@ input:focus {
     opacity: 0;
     height: 352%;
     width: 531%;
-  }
+}
+
+.position-select {
+    position: absolute;
+}
+
 /* DONE styling ListMenu COmponent */
 
 /* NavbarTop Component Styles*/
