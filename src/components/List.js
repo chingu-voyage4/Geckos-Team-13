@@ -144,7 +144,7 @@ class List extends Component {
 
     showMenu() {
         if (this.state.inputOpen) {
-            return <ListMenu />;
+            return <ListMenu listId={this.props.listId} />;
         }
     }
 
