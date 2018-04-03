@@ -35,10 +35,14 @@ class MoveListSubmenu extends Component {
                     <span className="btnLabel">Board</span>
                     {placeholderBoard}
                 </button>
+
                 <button className="moveBtn">
                     <span className="btnLabel">Position</span>3
                 </button>
-                <button className="confirm-button">Move</button>
+
+                <button className="confirm-button" onClick={this.positionChange}>
+                    Move
+                </button>
             </div>
         );
     }
