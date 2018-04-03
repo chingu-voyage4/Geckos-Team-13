@@ -98,3 +98,15 @@ export function moveList(listId, newPosition) {
         }
     };
 }
+
+export function moveCard(oldpos, cardId, listId, newPosition) {
+    return {
+        type: C.MOVE_CARD,
+        payload: {
+            oldpos,
+            cardId,
+            listId,
+            newPosition
+        }
+    };
+}
