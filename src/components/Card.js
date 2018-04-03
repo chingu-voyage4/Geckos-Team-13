@@ -93,7 +93,11 @@ class Card extends Component {
                         <a>Edit</a>
                         <button
                             className="card-edit__delete-comment-btn"
-                            onClick={() => this.deleteComment(id)}
+                            onClick={() => {
+                                if(window.confirm('Are you sure you want to delete this comment?')) {
+                                    this.deleteComment(id)};
+                                }
+                            }
                         >
                             Delete
                         </button>
