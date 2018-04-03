@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../actions";
-//import
 
 class MoveListSubmenu extends Component {
-    //needs listId & position to be passed down from list.
     constructor(props) {
         super(props);
 
