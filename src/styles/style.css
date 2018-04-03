@@ -303,16 +303,19 @@ textarea {
     background: rgba(0, 0, 0, 0.6);
     bottom: 0;
     color: #838c91;
+    position: fixed;
     left: 0;
-    position: absolute;
     right: 0;
     top: 0;
     z-index: 10;
-    overflow-y: scroll;
+    overflow-y: auto;
+    height: 100%;
+    align-items: flex-start;
 }
 
 .OuterCardBox {
-    position: absolute;
+    overflow: hidden;
+    position: relative;
     justify-content: center;
     background-color: #edeff0;
     padding: 0px 15px;
@@ -328,7 +331,12 @@ textarea {
     -ms-transform: translateX(-50%);
     transform: translateX(-50%);
     border-radius: 3px;
+    overflow-y: scroll;
+    z-index: 15;
+  }
 
+  .OuterCardBox h3 {
+      color: #333;
   }
 
 .TitleOuter {
@@ -366,44 +374,62 @@ textarea {
 }
 
 .CardDescription {
-    display:none;
+    position: relative;
+}
+
+.CardDescription i {
+    position: absolute;
+    left: -40px;
+    font-size: 22px;
 }
 
 .Editable textarea {
-    margin-top: 5px;
+    background: #E6E8E8;
     width: 100%;
     height: 60px;
+    border-radius: 3px;
+    box-shadow: inset 0 1px 6px rgba(0, 0, 0, .1);
+    color: #838c91;
+    margin: 4px 0px 12px 0;
+    border: 1px solid #cdd2d4;
 }
 
 .DescriptionButtons {
     margin-top: 10px;
+    display: none;
 }
 
-.FormattingHelp {
-   padding-left: 55%;
-}
 
-.fa-user-circle {
+.fa-user-circle, .fa-plus-square {
     margin-top: 15px;
     margin-right: 10px;
     font-size: 30px;
-    color: red;
+    color: #CDD2DF;
 }
 
 .ShareandMore {
     margin-top: 20px;
 }
 
+.AddComment {
+    position: relative;
+}
+.AddComment i {
+    position: absolute;
+    left: -40px;
+    font-size: 22px;
+}
 
-.AddLabel h3{
-    margin-left: 10px;
+.CommentBox {
+    position: relative;
+    margin-left: 32px;
 }
 
 .CommentBox textarea {
     background-color: #fff;
     border-radius: 3px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.23);
-    margin: 4px 0px 12px 20px;
+    margin: 4px 0px 12px 0;
     border: 0;
     border-bottom: 30px solid transparent;
     min-height: 60px;
@@ -418,12 +444,20 @@ textarea {
 }
 
 .CommentButtons{
-    text-align: right;
+    position: absolute;
+    right: -10px;
+    top: 110px;
+}
+
+.CommentButtons a {
+    color: #cdd2df;
+    margin-right: 10px;
 }
 
 .CardMemberList {
     justify-content: left;
     margin-bottom: 0px;
+    margin-left: 32px;
 }
 
 
@@ -432,16 +466,23 @@ textarea {
 }
 
 .CardDescription {
-    justify-content: left;
+    display: block;
+    margin-left: 32px;
 }
 
 .ActivityBox {
     margin-top: 20px;
 }
 
-.ActivityLabel a {
-    margin-top: 10px;
-    margin-left: 65%;
+.ActivityLabel {
+    position: relative;
+    margin-left: 32px;
+}
+
+.ActivityLabel i {
+    position: absolute;
+    left: -40px;
+    font-size: 22px;
 }
 
 .InnerButtonBox {
@@ -478,18 +519,6 @@ textarea {
     color: #999;
 }
 
-.AddBox {
-    margin: 0px 0px 0px 0px;
-}
-
-.PowerUpBox {
-    margin: 0px 0px 0px 0px;
-}
-
-.ActionBox {
-    margin: 0px 0px 0px 0px;
-}
-
 .btn__comment-save--light {
     border: none;
     box-shadow: 0 1px 0 #959da1;
@@ -497,7 +526,7 @@ textarea {
     display: inline-block;
     font-weight: 700;
     line-height: 22px;
-    margin: 0px 4px 0 20px;
+    margin: 0 4px 0 0;
     padding: 5px 16px;
     text-align: center;
     background-color: #d6dadc;

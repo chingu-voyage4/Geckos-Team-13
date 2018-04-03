@@ -85,8 +85,8 @@ class Card extends Component {
                                 </div>
                             </div>
                             <div className="CardDescription">
-                                <p>Description</p>
-                                <a href="">Edit</a>
+                                <i className="fas fa-align-right"></i>
+                                <h3>Description</h3>
                                 <div className="Editable">
                                     <textarea>
                                         Please note your availability in the comments below.
@@ -94,15 +94,12 @@ class Card extends Component {
                                     <div className="DescriptionButtons">
                                         <button>Save</button>
                                         <button>X</button>
-                                        <div className="FormattingHelp">
-                                            <a href="">Formatting Help</a>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="CommentBox">
-                                <div className="AddLabel">
+                                <div className="AddComment">
                                     <i className="far fa-comment" />
                                     <h3>Add Comment</h3>
                                 </div>
@@ -111,12 +108,6 @@ class Card extends Component {
                                     onChange={this.typeComment}
                                     placeholder="Write a comment..."
                                 />
-                                <button
-                                    className="btn__comment-save--light"
-                                    onClick={this.addComment}
-                                >
-                                    Save
-                                </button>
                                 <div className="CommentButtons">
                                     <a href="">
                                         <i className="fas fa-paperclip" />
@@ -127,10 +118,13 @@ class Card extends Component {
                                     <a href="">
                                         <i className="fas fa-smile" />
                                     </a>
-                                    <a href="">
-                                        <i className="fab fa-trello" />
-                                    </a>
                                 </div>
+                                <button
+                                    className="btn__comment-save--light"
+                                    onClick={this.addComment}
+                                >
+                                    Save
+                                </button>
                             </div>
                             <div className="ActivityBox">
                                 <div className="ActivityLabel">
@@ -167,16 +161,16 @@ class Card extends Component {
                                 </button>
                             </div>
                             <div className="ActionBox">
-                                <button>
+                                <button disabled>
                                     <i className="fas fa-arrow-right" />Move
                                 </button>
-                                <button>
+                                <button disabled>
                                     <i className="fas fa-copy" />Copy
                                 </button>
-                                <button>
+                                <button disabled>
                                     <i className="fas fa-eye" />Subscribe
                                 </button>
-                                <button>
+                                <button disabled>
                                     <i className="fas fa-archive" />Archive
                                 </button>
                             </div>
