@@ -14,6 +14,7 @@ class QuickEditCard extends Component {
 
         this.changeCardTitle = this.changeCardTitle.bind(this);
         this.submitTitleChange = this.submitTitleChange.bind(this);
+        this.moveClicked = this.moveClicked.bind(this);
     }
 
     changeCardTitle(event) {
@@ -28,6 +29,10 @@ class QuickEditCard extends Component {
             cardTitle: ""
         });
         this.props.closeQuickEdit();
+    }
+
+    moveClicked() {
+        this.setState({ moveClicked: true });
     }
 
     render() {
