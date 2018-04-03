@@ -124,9 +124,10 @@ class Card extends Component {
             showMoveCard = (
                 <MoveCardSubmenu
                     style={style}
+                    setSubRef={this.props.setSubRef}
                     cardId={this.props.cardId}
                     listId={this.props.listId}
-                    setSubRef={this.props.setSubRef}
+                    position={this.props.position}
                 />
             );
         }
@@ -245,7 +246,7 @@ class Card extends Component {
                                     </button>
                                 </div>
                                 <div className="ActionBox">
-                                    <button>
+                                    <button onClick={this.openMoveSub}>
                                         <i className="fas fa-arrow-right" />Move
                                     </button>
                                     <button>
