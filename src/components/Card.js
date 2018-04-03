@@ -70,8 +70,8 @@ class Card extends Component {
                 <div className="OuterCardBox" ref={this.props.setWrapperRef}>
                     <div className="TitleOuter">
                         <div className="TitleBox">
-                            <i className="fab fa-trello" />
-                            <div className="CardTitle">Availability</div>
+                            <img src = "../marshmallow-toasted.png" />
+                            <span className="CardTitle">Availability</span>
                         </div>
                         <div className="CardList">in list Team Member Information</div>
                     </div>
@@ -150,19 +150,19 @@ class Card extends Component {
 
                         <div className="InnerButtonBox">
                             <div className="AddBox">
-                                <button>
+                                <button disabled>
                                     <i className="fas fa-user" />Members
                                 </button>
                                 <button>
                                     <i className="fas fa-tag" />Labels
                                 </button>
-                                <button>
+                                <button disabled>
                                     <i className="fas fa-check-square" />Checklist
                                 </button>
-                                <button>
+                                <button disabled>
                                     <i className="fas fa-clock" />Due Date
                                 </button>
-                                <button>
+                                <button disabled>
                                     <i className="fas fa-paperclip" />Attachment
                                 </button>
                             </div>

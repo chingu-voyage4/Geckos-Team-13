@@ -313,11 +313,6 @@ textarea {
 
 .OuterCardBox {
     position: absolute;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -ms-flex-pack: center;
     justify-content: center;
     background-color: #edeff0;
     padding: 0px 15px;
@@ -338,49 +333,31 @@ textarea {
 
 .TitleOuter {
     color: #333;
-    display: flex;
-    flex-direction: column;
     justify-content: center;
     margin: 0px 0px 20px 0px;
     width: 100%;
 }
 
 .TitleBox {
-    display: flex;
-    flex-direction: row;
     justify-content: left;
     margin: 20px 0px 8px 0px;
 }
 
-.CardList {
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-}
-
 .MainContent {
-    display: flex;
-    flex-direction: row;
-    justify-content: baseline;
     margin: 0px 0px 20px 0px;
-
 }
 
 .MainInfo {
-    display: flex;
-    flex-direction: column;
-    margin: 0px 50px 30px 10px;
-    width: 80%;
-}
 
-.TitleBox .fa-trello {
-    margin-right: 20px;
-    font-size: 30px;
+    margin: 0px 50px 30px 10px;
+    width: 70%;
+    float: left;
 }
 
 .CardTitle {
     margin-top: 20px;
     font-size: 20px;
+
 }
 
 .CardList {
@@ -400,17 +377,10 @@ textarea {
 
 .DescriptionButtons {
     margin-top: 10px;
-    display: flex;
-    flex-direction: row;
 }
 
 .FormattingHelp {
    padding-left: 55%;
-}
-
-.AddLabel {
-    display: flex;
-    flex-direction: row;
 }
 
 .fa-user-circle {
@@ -452,26 +422,16 @@ textarea {
 }
 
 .CardMemberList {
-    display: flex;
-    flex-direction: column;
     justify-content: left;
     margin-bottom: 0px;
 }
 
-.CardMemberList div{
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    margin-left: 10px;
-}
 
 .UserActivity a{
     margin-right: 10px;
 }
 
 .CardDescription {
-    display: flex;
-    flex-direction: column;
     justify-content: left;
 }
 
@@ -479,34 +439,15 @@ textarea {
     margin-top: 20px;
 }
 
-.ActivityLabel {
-    display: flex;
-    flex-direction: row;
-}
-
 .ActivityLabel a {
     margin-top: 10px;
     margin-left: 65%;
 }
 
-.Activities {
-    display: flex;
-    flex-direction: row;
-}
-
-.Editable {
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-}
-
 .InnerButtonBox {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
         margin: 0px 0px 0px 0px;
         width: 20%;
+        float: left;
   }
 
 .InnerButtonBox button {
@@ -516,12 +457,18 @@ textarea {
     box-shadow: 0 1px 0 0 #c4c9cc;
     cursor: pointer;
     margin-top: 8px;
-    max-width: 300px;
+    width: 168px;
+    height: 32px;
+    border-style: none;
     padding: 7px 7px 7px 11px;
     text-decoration: none;
  }
 
- .InnerButtonBox button:hover {
+ .InnerButtonBox button:disabled {
+     background-color: #cdd2df;
+     cursor: default;
+ }
+ .InnerButtonBox button:hover:enabled {
      background-color: #cdd2d4;
      box-shadow: 0 1px 0 0 #a5acb0;
      color: #4c4c4c
@@ -532,20 +479,14 @@ textarea {
 }
 
 .AddBox {
-    display: flex;
-    flex-direction: column;
     margin: 0px 0px 0px 0px;
 }
 
 .PowerUpBox {
-    display: flex;
-    flex-direction: column;
     margin: 0px 0px 0px 0px;
 }
 
 .ActionBox {
-    display: flex;
-    flex-direction: column;
     margin: 0px 0px 0px 0px;
 }
 
@@ -571,8 +512,6 @@ textarea {
 }
 
 .card-edit__user {
-    display: flex;
-    align-items: center;
     margin-top: 20px;
 }
 
@@ -595,8 +534,6 @@ textarea {
 }
 
 .card-edit__date-options-container {
-    display: flex;
-    justify-content: flex-start;
     margin-left: 36px;
     color: #838c91;
     align-items: center;
