@@ -15,12 +15,30 @@ class MoveCardSubmenu extends Component {
 
         this.renderPositions = this.renderPositions.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.positionChange = this.positionChange.bind(this);
     }
 
     handleChange(event) {
         const pos = parseInt(event.target.value);
         const oldpos = this.state.position;
+        console.log(pos, oldpos);
         this.setState({ position: pos, oldpos });
+    }
+
+    positionChange() {
+        if (this.state.oldpos >= 0) {
+            const cardId = this.props.cardId;
+            const listId = this.props.listId;
+            const newPosition = this.state.position;
+            const oldpos = this.state.oldpos;
+
+            this.props.moveCard(oldpos, cardId, listId, newPosition);
+            this.props.closeMove && this.props.closeMove();
+
+            this.props.closeQuickEdit && this.props.closeQuickEdit();
+        }
+        this.props.closeMove && this.props.closeMove();
+        this.props.closeQuickEdit && this.props.closeQuickEdit();
     }
 
     renderPositions() {
@@ -66,7 +84,9 @@ class MoveCardSubmenu extends Component {
                         </span>
                     </button>
                 </div>
-                <button className="confirm-button">Move</button>
+                <button onClick={this.positionChange} className="confirm-button">
+                    Move
+                </button>
             </div>
         );
     }
