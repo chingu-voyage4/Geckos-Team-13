@@ -88,7 +88,12 @@ class ListMenu extends Component {
                     </div>
                     {this.state.menu === "sortMenu" && <SortBySubmenu />}
                     {this.state.menu === "archiveAllMenu" && <ArchiveAllSubmenu />}
-                    {this.state.menu === "moveListMenu" && <MoveListSubmenu />}
+                    {this.state.menu === "moveListMenu" && (
+                        <MoveListSubmenu
+                            position={this.props.position}
+                            listId={this.props.listId}
+                        />
+                    )}
                 </div>
             );
         }
