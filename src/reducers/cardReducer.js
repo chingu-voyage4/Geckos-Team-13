@@ -92,6 +92,20 @@ function deleteComment(state, action) {
     };
 }
 
+function updateListId(state, action) {
+    const { payload } = action;
+    const { cardId, listId } = payload;
+
+    const card = state[cardId];
+    return {
+        ...state,
+        [cardId]: {
+            ...card,
+            listId
+        }
+    };
+}
+
 export default function(state = {}, action) {
     switch (action.type) {
         case C.ADD_CARD:
@@ -104,6 +118,8 @@ export default function(state = {}, action) {
             return cardComments(state, action);
         case C.DELETE_COMMENT:
             return deleteComment(state, action);
+        case C.CHANGE_LIST:
+            return updateListId(state, action);
         default:
             return state;
     }
