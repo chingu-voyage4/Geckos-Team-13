@@ -70,6 +70,11 @@ function moveCard(state, action) {
     };
 }
 
+function moveCardToList(state, action) {
+    const { payload } = action;
+    const { cardId, listId, selectedList, previousList, position } = payload;
+}
+
 export default function(state = {}, action) {
     switch (action.type) {
         case C.ADD_LIST:
@@ -80,6 +85,8 @@ export default function(state = {}, action) {
             return editTitle(state, action);
         case C.MOVE_CARD:
             return moveCard(state, action);
+        case C.CHANGE_LIST:
+            return moveCardToList(state, action);
         default:
             return state;
     }
