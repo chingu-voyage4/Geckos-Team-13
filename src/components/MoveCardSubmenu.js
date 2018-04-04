@@ -81,7 +81,6 @@ class MoveCardSubmenu extends Component {
 
     render() {
         //const card = this.props.cards[this.props.cardId];
-        const list = this.props.lists[this.props.listId];
         const selection = this.props.lists[this.state.selectedList].title;
         return (
             <div
