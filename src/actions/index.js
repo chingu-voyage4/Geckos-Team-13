@@ -110,3 +110,16 @@ export function moveCard(oldpos, cardId, listId, newPosition) {
         }
     };
 }
+
+export function moveCardToNewList(cardId, listId, selectedList, previousList, position) {
+    return {
+        type: C.CHANGE_LIST,
+        payload: {
+            cardId,
+            listId,
+            selectedList,
+            previousList,
+            position
+        }
+    };
+}
