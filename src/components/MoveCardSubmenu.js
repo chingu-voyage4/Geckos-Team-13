@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../styles/listmenucard.css";
 import { connect } from "react-redux";
 import * as actions from "../actions";
+import range from "lodash/range";
 
 class MoveCardSubmenu extends Component {
     constructor(props) {
@@ -12,7 +13,8 @@ class MoveCardSubmenu extends Component {
             selectOpen: false,
             oldpos: null,
             selectedList: this.props.listId,
-            previousList: null
+            previousList: null,
+            positions: null
         };
 
         this.renderPositions = this.renderPositions.bind(this);
@@ -31,15 +33,26 @@ class MoveCardSubmenu extends Component {
         console.log("yeags", event.target.value);
         const current = event.target.value;
         const previous = this.state.selectedList;
+        const lengthSelectedList = this.props.lists[event.target.value].cards.length;
+        if (event.target.value !== this.state.selectedList) {
+            const positions = lengthSelectedList;
+            this.setState({ positions });
+        }
         this.setState({ selectedList: current, previousList: previous });
     }
 
     listChange() {
         if (this.state.previousList) {
             const { cardId, listId } = this.props;
-            const { selectedList, previousList, position } = this.state;
+            const { selectedList, previousList } = this.state;
 
-            this.props.moveCardToNewList(cardId, listId, selectedList, previousList, position);
+            const lengthSelectedList = this.props.lists[this.state.selectedList].cards.length;
+            const positions = lengthSelectedList;
+            const position = positions;
+            console.log(positions, position, "confuse");
+            this.setState({ positions, position });
+
+            //this.props.moveCardToNewList(cardId, listId, selectedList, previousList);
         }
     }
 
@@ -58,15 +71,24 @@ class MoveCardSubmenu extends Component {
     }
 
     renderPositions() {
-        const cardArr = this.props.lists[this.props.listId].cards;
-
-        return cardArr.map((id, index) => {
-            return (
-                <option key={id} value={index} id={id}>
-                    {index}
-                </option>
-            );
-        });
+        const cardArr = this.props.lists[this.state.selectedList].cards;
+        if (this.state.selectedList !== this.props.listId) {
+            return range(this.state.positions + 1).map(i => {
+                return (
+                    <option key={i} value={i}>
+                        {i}
+                    </option>
+                );
+            });
+        } else {
+            return cardArr.map((id, index) => {
+                return (
+                    <option key={id} value={index}>
+                        {index}
+                    </option>
+                );
+            });
+        }
     }
 
     renderListOptions() {
@@ -80,6 +102,7 @@ class MoveCardSubmenu extends Component {
     }
 
     render() {
+        console.log(this.state.position, "positio");
         //const card = this.props.cards[this.props.cardId];
         const selection = this.props.lists[this.state.selectedList].title;
         return (
@@ -118,7 +141,7 @@ class MoveCardSubmenu extends Component {
                         {this.state.position}
                     </button>
                 </div>
-                <button onClick={this.positionChange} className="confirm-button">
+                <button onClick={this.submitActions} className="confirm-button">
                     Move
                 </button>
             </div>
