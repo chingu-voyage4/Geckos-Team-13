@@ -21,6 +21,7 @@ class MoveCardSubmenu extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.positionChange = this.positionChange.bind(this);
         this.handleListChange = this.handleListChange.bind(this);
+        this.submitActions = this.submitActions.bind(this);
     }
 
     handleChange(event) {
@@ -30,7 +31,6 @@ class MoveCardSubmenu extends Component {
     }
 
     handleListChange(event) {
-        console.log("yeags", event.target.value);
         const current = event.target.value;
         const previous = this.state.selectedList;
         const lengthSelectedList = this.props.lists[event.target.value].cards.length;
@@ -43,31 +43,37 @@ class MoveCardSubmenu extends Component {
 
     listChange() {
         if (this.state.previousList) {
-            const { cardId, listId } = this.props;
-            const { selectedList, previousList } = this.state;
-
             const lengthSelectedList = this.props.lists[this.state.selectedList].cards.length;
-            const positions = lengthSelectedList;
-            const position = positions;
-            console.log(positions, position, "confuse");
-            this.setState({ positions, position });
+            this.setState({ positions: lengthSelectedList, position: lengthSelectedList });
 
-            //this.props.moveCardToNewList(cardId, listId, selectedList, previousList);
+            const { cardId, listId } = this.props;
+            const { selectedList, previousList, position } = this.state;
+
+            this.props.moveCardToNewList(cardId, listId, selectedList, previousList, position);
         }
     }
 
     positionChange() {
         if (this.state.oldpos >= 0) {
             const { cardId, listId } = this.props;
-            const { newPosition, oldpos } = this.state;
+            const { position, oldpos } = this.state;
 
-            this.props.moveCard(oldpos, cardId, listId, newPosition);
+            this.props.moveCard(oldpos, cardId, listId, position);
             this.props.closeMove && this.props.closeMove();
 
             this.props.closeQuickEdit && this.props.closeQuickEdit();
         }
         this.props.closeMove && this.props.closeMove();
         this.props.closeQuickEdit && this.props.closeQuickEdit();
+    }
+
+    submitActions() {
+        if (this.props.listId !== this.state.selectedList) {
+            this.listChange();
+        } else if (this.props.listId === this.state.selectedList) {
+            console.log("test");
+            this.positionChange();
+        }
     }
 
     renderPositions() {
@@ -102,8 +108,6 @@ class MoveCardSubmenu extends Component {
     }
 
     render() {
-        console.log(this.state.position, "positio");
-        //const card = this.props.cards[this.props.cardId];
         const selection = this.props.lists[this.state.selectedList].title;
         return (
             <div
