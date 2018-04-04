@@ -42,6 +42,34 @@ function editTitle(state, action) {
     };
 }
 
+function insertItem(state, newIndex, cardId) {
+    return [...state.slice(0, newIndex), cardId, ...state.slice(newIndex)];
+}
+
+function removeItem(state, curr) {
+    return [...state.slice(0, curr), ...state.slice(curr + 1)];
+}
+
+function moveCard(state, action) {
+    const { payload } = action;
+    const { oldpos, cardId, listId, newPosition } = payload;
+    //bigger delete insert
+    const list = state[listId];
+    const current = oldpos;
+    const cardArray = list.cards;
+
+    const remove = removeItem(cardArray, current);
+    const newCardArray = insertItem(remove, newPosition, cardId);
+
+    return {
+        ...state,
+        [listId]: {
+            ...list,
+            cards: newCardArray
+        }
+    };
+}
+
 export default function(state = {}, action) {
     switch (action.type) {
         case C.ADD_LIST:
@@ -50,6 +78,8 @@ export default function(state = {}, action) {
             return cardArray(state, action);
         case C.EDIT_LIST_TITLE:
             return editTitle(state, action);
+        case C.MOVE_CARD:
+            return moveCard(state, action);
         default:
             return state;
     }

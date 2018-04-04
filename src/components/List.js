@@ -142,12 +142,6 @@ class List extends Component {
         this.setState({ inputOpen: true });
     }
 
-    showMenu() {
-        if (this.state.inputOpen) {
-            return <ListMenu />;
-        }
-    }
-
     renderTitle() {
         if (this.state.inputOpen) {
             return (
@@ -188,7 +182,13 @@ class List extends Component {
                             <i className="fas fa-ellipsis-h" />
                         </button>
                     </span>
-                    {this.state.menuDisplay && <ListMenu toggleMenu={this.toggleMenu} />}
+                    {this.state.menuDisplay && (
+                        <ListMenu
+                            toggleMenu={this.toggleMenu}
+                            listId={this.props.listId}
+                            position={this.props.position}
+                        />
+                    )}
                 </div>
                 <div className="card-container">
                     <ul className="cards">{this.renderCardList()}</ul>

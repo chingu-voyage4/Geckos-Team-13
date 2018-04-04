@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import QuickEditCard from "./QuickEditCard";
 import Card from "./Card";
-import "../styles/cardpreview.css";
 
-export default class extends Component {
+export default class CardPreview extends Component {
     constructor(props) {
         super(props);
 
@@ -22,6 +21,7 @@ export default class extends Component {
         this.openQuickEdit = this.openQuickEdit.bind(this);
         this.recalculateOffset = this.recalculateOffset.bind(this);
         this.handleClickOutside = this.handleClickOutside.bind(this);
+        this.setSubRef = this.setSubRef.bind(this);
     }
 
     componentDidMount() {
@@ -31,11 +31,13 @@ export default class extends Component {
 
     recalculateOffset() {
         var rect = ReactDOM.findDOMNode(this).getBoundingClientRect();
+
         this.setState({
             top: rect.top,
             left: rect.left,
             width: rect.width
         });
+        console.log(rect);
     }
 
     componentWillUnmount() {
@@ -46,8 +48,20 @@ export default class extends Component {
         this.wrapperRef = node;
     }
 
+    setSubRef(node) {
+        this.subRef = node;
+    }
+
     handleClickOutside(event) {
-        if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+        console.log(event.target);
+        const cardSelected = this.wrapperRef && this.wrapperRef.contains(event.target);
+        const subMenuSelected = this.subRef && this.subRef.contains(event.target);
+
+        if (this.wrapperRef && this.subRef && !subMenuSelected && !cardSelected) {
+            this.setState({ quickEditOpen: false, cardPopUpOpen: false });
+        }
+
+        if (this.wrapperRef && !this.subRef && !cardSelected) {
             this.setState({ quickEditOpen: false, cardPopUpOpen: false });
         }
     }
@@ -58,7 +72,7 @@ export default class extends Component {
         });
     }
 
-    openQuickEdit(event) {
+    openQuickEdit() {
         this.recalculateOffset();
         this.setState({
             quickEditOpen: true
@@ -84,6 +98,8 @@ export default class extends Component {
                     closeQuickEdit={this.closeQuickEdit}
                     setWrapperRef={this.setWrapperRef}
                     position={this.props.position}
+                    setSubRef={this.setSubRef}
+                    menuNode={this.subRef}
                 />
             );
         }
@@ -100,7 +116,6 @@ export default class extends Component {
                     position={this.props.position}
                     setWrapperRef={this.setWrapperRef}
                     closeQuickEdit={this.closeQuickEdit}
-                    recalculateOffset={this.recalculateOffset}
                 />
             );
         }

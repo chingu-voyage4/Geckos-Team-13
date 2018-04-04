@@ -2,8 +2,8 @@ import React from "react";
 
 class PhotoMenu extends React.Component {
     render() {
-        const photoArr = ["https://bit.ly/2Gvf6uT", "https://bit.ly/2E3DqOZ",
-            "https://bit.ly/2J27L4h", "https://bit.ly/2E3zu0D", "https://bit.ly/2GUaxIa", "https://bit.ly/2pRHwoa"];
+        const photoArr = ["https://bit.ly/2Gy7BzW", "https://bit.ly/2E3DqOZ",
+            "https://bit.ly/2GtjxqS", "https://bit.ly/2pZPJa4", "https://bit.ly/2GuOD19", "https://bit.ly/2Gv5EEn"];
         const photos = photoArr.map((photo) => (<img className="photo-button"
          src= {photo} id={photo} key={photo} alt="background from Unsplash" onClick={this.props.changeBackground}/>));
         return (

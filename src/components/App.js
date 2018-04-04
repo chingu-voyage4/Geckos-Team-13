@@ -8,7 +8,7 @@ class App extends Component {
     constructor(props) {
         super(props);
 
-        this.state = { color: "#0079bf", backgroundImage: "" };
+        this.state = { color: "#8E6F44", backgroundImage: "" };
         this.changeBackground = this.changeBackground.bind(this);
         this.changeColor = this.changeColor.bind(this);
     }
@@ -23,8 +23,8 @@ class App extends Component {
         this.setState({backgroundImage: ""});
         if (e.target.className === "color-button green") {
             this.setState({ color: "#519839"});
-        } else if (e.target.className === "color-button blue") {
-            this.setState({color: "#0079bf"});
+        } else if (e.target.className === "color-button brown") {
+            this.setState({ color: "#8E6F44"});
         } else if (e.target.className === "color-button red") {
             this.setState({ color: "#B04632"});
         } else if (e.target.className === "color-button orange") {

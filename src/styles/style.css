@@ -1,15 +1,16 @@
 /* All styles for Trello Clone live here */
 
 /* Index:
-    1. General Styles - line 15
-    2. Board Component Styles - line 74
-    3. BoardMenu Component (& submenu component) Styles - line 119
-    4. Card Component Styles - line 296
-    5. List Component Styles - line 612
-    6. ListMenu Styles - line 781
-    7. NavbarTop Component Styles - line 887
-    8. NavbarBottom Component Styles - line 955
-    9. Quick Edit Menu Styles - line 983
+    1. General Styles - line 18
+    2. Board Component Styles - line 79
+    3. BoardMenu Component (& submenu component) Styles - line 124
+    4. Card Component Styles - line 301
+    5. List Component Styles - line 602
+    6. ListMenu Styles - line 763
+    7. NavbarTop Component Styles - line 891
+    8. NavbarBottom Component Styles - line 961
+    9. Quick Edit Menu Styles - line 989
+    10. CardPreview Component Styles - 1075
 */
 
 /* General Styles */
@@ -28,7 +29,7 @@ body {
     
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
     font-size: 14px;
     width: 100vw;
     color: #333;
@@ -40,6 +41,10 @@ body {
     padding: 0;
 }
 
+textarea {
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    padding: 9px 11px;
+}
 .danger-button {
     background-color: #eb5a46;
     color: #fff;
@@ -241,8 +246,8 @@ body {
     opacity: .8;
 }
 
-.menu-body .blue {
-    background-color: #0079BF;
+.menu-body .brown {
+    background-color: #8E6F44;
 }
 
 .menu-body .orange {
@@ -300,19 +305,18 @@ body {
     color: #838c91;
     left: 0;
     position: fixed;
+    left: 0;
     right: 0;
     top: 0;
     z-index: 10;
-    overflow-y: scroll;
+    overflow-y: auto;
+    height: 100%;
+    align-items: flex-start;
 }
 
 .OuterCardBox {
-    position: absolute;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -ms-flex-pack: center;
+    overflow: hidden;
+    position: relative;
     justify-content: center;
     background-color: #edeff0;
     padding: 0px 15px;
@@ -321,199 +325,123 @@ body {
     margin-right: 0px;
     margin-bottom: 50px;
     margin-left: 0px;
-    min-width: 756px;
+    min-width: 726px;
     position: absolute;
     left: 50%;
     -webkit-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
     transform: translateX(-50%);
     border-radius: 3px;
-
+    z-index: 15;
   }
 
-.OuterCardBox i {
-    font-size: 30px;
-
-}
+  .OuterCardBox h3 {
+      color: #333;
+  }
 
 .TitleOuter {
-    display: flex;
-    flex-direction: column;
+    color: #333;
     justify-content: center;
     margin: 0px 0px 20px 0px;
-    width: 100%
+    width: 100%;
+    position: relative;
 }
 
 .TitleBox {
-    display: flex;
-    flex-direction: row;
     justify-content: left;
-    margin: 20px 0px 8px 0px;
+    margin: 20px 0px 8px 32px;
 }
 
-.CardList {
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
+.TitleOuter img {
+    position: absolute;
 }
 
 .MainContent {
-    display: flex;
-    flex-direction: row;
-    justify-content: baseline;
     margin: 0px 0px 20px 0px;
-
 }
 
 .MainInfo {
-    display: flex;
-    flex-direction: column;
-    margin: 0px 50px 30px 10px;
-    width: 80%;
-}
 
-.TitleBox .fa-trello {
-    margin-right: 20px;
-    font-size: 30px;
+    margin: 0px 50px 30px 10px;
+    width: 70%;
+    float: left;
 }
 
 .CardTitle {
     margin-top: 20px;
     font-size: 20px;
+
 }
 
 .CardList {
     color: #0099CC;
-    margin-left: 30px;
+    margin-left: 38px;
 }
 
 .CardDescription {
-    display:none;
+    position: relative;
+}
+
+.CardDescription i {
+    position: absolute;
+    left: -40px;
+    font-size: 22px;
 }
 
 .Editable textarea {
-    margin-top: 5px;
+    background: #E6E8E8;
     width: 100%;
     height: 60px;
+    border-radius: 3px;
+    box-shadow: inset 0 1px 6px rgba(0, 0, 0, .1);
+    color: #838c91;
+    margin: 4px 0px 12px 0;
+    border: 1px solid #cdd2d4;
 }
 
 .DescriptionButtons {
     margin-top: 10px;
-    display: flex;
-    flex-direction: row;
+    display: none;
 }
 
-.FormattingHelp {
-   padding-left: 55%;
-}
 
-.AddLabel {
-    display: flex;
-    flex-direction: row;
-}
-
-.fa-comment {
-     margin-top: 15px;
-     font-size: 20px;
- }
-
-.fa-at {
-    margin-top: 15px;
-    font-size: 20px;
-}
-
-.fa-smile {
-    margin-top: 15px;
-    font-size: 20px;
-}
-
-.fa-trello {
-     margin-top: 15px;
-     font-size: 20px;
- }
-
-
-.fa-user-circle {
+.fa-user-circle, .fa-plus-square {
     margin-top: 15px;
     margin-right: 10px;
     font-size: 30px;
-    color: red;
-}
-
-.fa-plus-square {
-    margin-top: 20px;
-    font-size: 20px;
-}
-
-
-.fa-trello {
-    margin-top: 15px;
-    font-size: 20px;
-}
-
-.fa-github {
-    margin-top: 10px;
-    margin-right: 5px;
-    font-size: 20px;
-}
-
-.fa-clock{
-    margin-right: 5px;
-    font-size: 20px;
-}
-
-.fa-paperclip{
-    margin-right: 5px;
-    font-size: 20px;
-}
-
-.AddBox .fa-user{
-    margin-right: 5px;
-    font-size: 20px;
-}
-
-.fa-tag{
-    margin-right: 5px;
-    font-size: 20px;
-}
-
-.fa-check-square{
-    margin-right: 5px;
-    font-size: 20px;
-}
-
-.fa-arrow-right {
-    margin-right: 5px;
-    font-size: 20px;
-}
-
-.fa-copy{
-    margin-right: 5px;
-    font-size: 20px;
-}
-
-.fa-eye{
-    margin-right: 5px;
-    font-size: 20px;
-}
-
-.fa-archive{
-    margin-right: 5px;
-    font-size: 20px;
+    color: #CDD2DF;
 }
 
 .ShareandMore {
     margin-top: 20px;
 }
 
+.AddComment {
+    position: relative;
+}
+.AddComment i {
+    position: absolute;
+    left: -40px;
+    font-size: 22px;
+}
 
-.AddLabel h3{
-    margin-left: 10px;
+.CommentBox {
+    position: relative;
+    margin-left: 32px;
 }
 
 .CommentBox textarea {
-      width: 100%;
-      height: 100px;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.23);
+    margin: 4px 0px 12px 0;
+    border: 0;
+    border-bottom: 30px solid transparent;
+    min-height: 60px;
+    padding: 9px 11px;
+    padding-bottom: 0;
+    width: 100%;
+    resize: none;
   }
 
 .CommentBox button {
@@ -521,31 +449,34 @@ body {
 }
 
 .CommentButtons{
-    text-align: right;
+    position: absolute;
+    right: -10px;
+    top: 110px;
+}
+
+.CommentButtons a {
+    color: #cdd2df;
+    margin-right: 10px;
 }
 
 .CardMemberList {
-    display: flex;
-    flex-direction: column;
     justify-content: left;
     margin-bottom: 0px;
+    margin-left: 32px;
 }
 
-.CardMemberList div{
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    margin-left: 10px;
+.CardMemberList p {
+    margin: 0;
 }
+
 
 .UserActivity a{
     margin-right: 10px;
 }
 
 .CardDescription {
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
+    display: block;
+    margin-left: 32px;
 }
 
 .ActivityBox {
@@ -553,69 +484,118 @@ body {
 }
 
 .ActivityLabel {
-    display: flex;
-    flex-direction: row;
+    position: relative;
+    margin-left: 32px;
 }
 
-.ActivityLabel a {
-    margin-top: 10px;
-    margin-left: 65%;
-}
-
-.fa-list-alt {
-    margin-right: 10px;
-    margin-top: 10px;
-    font-size: 30px;
-}
-
-.Activities {
-    display: flex;
-    flex-direction: row;
-}
-
-.Editable {
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
+.ActivityLabel i {
+    position: absolute;
+    left: -40px;
+    font-size: 22px;
 }
 
 .InnerButtonBox {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
         margin: 0px 0px 0px 0px;
         width: 20%;
+        float: left;
   }
 
 .InnerButtonBox button {
-    display: flex;
-    flex-direction: row;
-     background-color: #acb3b7;
-     padding: 10px 10px 10px 10px;
-     margin: 3px;
+    border-radius: 3px;
+    font-weight: 700;
+    background: #e2e4e6;
+    box-shadow: 0 1px 0 0 #c4c9cc;
+    cursor: pointer;
+    margin-top: 8px;
+    width: 150px;
+    height: 32px;
+    border-style: none;
+    padding: 7px 7px 7px 11px;
+    text-decoration: none;
+    text-align: left;
  }
 
+ .InnerButtonBox button:disabled {
+     background-color: #cdd2df;
+     cursor: default;
+ }
+ .InnerButtonBox button:hover:enabled {
+     background-color: #cdd2d4;
+     box-shadow: 0 1px 0 0 #a5acb0;
+     color: #4c4c4c
+ }
 .InnerButtonBox button i{
     margin-right: 15px;
+    color: #999;
 }
 
-.AddBox {
-    display: flex;
-    flex-direction: column;
-    margin: 0px 0px 0px 0px;
+.btn__comment-save--light {
+    border: none;
+    box-shadow: 0 1px 0 #959da1;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 700;
+    line-height: 22px;
+    margin: 0 4px 0 0;
+    padding: 5px 16px;
+    text-align: center;
+    background-color: #d6dadc;
+    color: #ffffff;
+    border-radius: 3px;
+    font-size: 16px;
+  }
+
+.card-edit__comment-list {
+    padding: 0px;
+    color: black;
 }
 
-.PowerUpBox {
-    display: flex;
-    flex-direction: column;
-    margin: 0px 0px 0px 0px;
+.card-edit__user {
+    margin-top: 20px;
 }
 
-.ActionBox {
-    display: flex;
-    flex-direction: column;
-    margin: 0px 0px 0px 0px;
+.card-edit__user-name {
+    margin: 0px 0px 0px 10px;
+}
+
+.card-edit__comment-text {
+    font-size: 14px;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.23);
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 6px 2px 6px 36px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    padding: 9px 11px;
+}
+
+.card-edit__date-options-container {
+    margin-left: 36px;
+    color: #838c91;
+    align-items: center;
+}
+
+.card-edit__comment-date {
+    margin-right: 10px;
+}
+
+.card-edit__delete-comment-btn {
+    color: black;
+    font-size: 14px;
+    background-color: transparent;
+    border: none;
+}
+.card-list__move-list-link {
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    border-bottom: solid 1px;
+    padding: 0px;
+    color:#838c91;
 }
 /*DONE styling Card Component*/
 
@@ -863,6 +843,9 @@ input:focus {
     position: relative;
     font-size: 1.2em;
     font-weight: 700;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .moveBtn .btnLabel {
@@ -884,11 +867,30 @@ input:focus {
 .list-menu ul {
   padding: 5px;
 }
+
+.position-select__full {
+    position: absolute;
+    top: -43%;
+    left: -14%;
+    opacity: 0;
+    height: 352%;
+    width: 531%;
+}
+
+.position-select {
+    position: absolute;
+    top: -43%;
+    left: -14%;
+    opacity: 0;
+    height: 352%;
+    width: 171%;
+}
+
 /* DONE styling ListMenu COmponent */
 
 /* NavbarTop Component Styles*/
 
-@import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url('https://fonts.googleapis.com/css?family=Chicle');
 
 .navbar {
     height: 32px;
@@ -904,20 +906,17 @@ input:focus {
 }
 
 .brand {
-    position: absolute;
-    right: 0;
-    left: 0;
     top: 5px;
     bottom: 0;
-    font-size: 1.6em;
-    font-family: 'Lobster', cursive;
+    font-size: 26px;
+    font-family: 'Chicle', cursive;
     color: rgb(224, 224, 223);
     opacity: .7;
     height:50px;
 }
 
 .brand img {
-    width: 22px;
+    height: 22px;
 }
 
 .search {
@@ -1072,3 +1071,48 @@ input:focus {
 
 
 /* Done styling Quick Edit component */
+
+/*  CardPreview Component Styles */
+.card-preview {
+    background-color: #ffffff;
+    margin-bottom: 6px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: space-between;
+}
+  
+.card-preview:hover {
+    background-color: #edeff0;
+}
+
+.card-preview__text {
+    flex-grow: 1;
+    margin: 8px;
+}
+
+.quick-edit-popout:hover {
+    background-color: #e3e4e6;
+    margin: -5px 0;
+    border-radius: 3px;
+}
+  
+.quick-edit-popout:hover .fas.fa-pencil-alt {
+    color: #4d4d4d;
+}
+.fas.fa-pencil-alt {
+    color: #999999;
+    font-size: 11px;
+    visibility: hidden;
+}
+  
+.card-preview:hover .fas.fa-pencil-alt {
+    visibility: visible;
+}
+
+.quick-edit-popout {
+    color: #E0E0DF;
+    background-color: transparent;
+    border: none;
+}
+
+/*  Done styling CardPreview Component Styles */
