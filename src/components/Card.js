@@ -93,7 +93,12 @@ class Card extends Component {
                         <a>Edit</a>
                         <button
                             className="card-edit__delete-comment-btn"
-                            onClick={() => this.deleteComment(id)}
+                            onClick={() => {
+                                if (window.confirm("Are you sure you want to delete this comment?")) {
+                                    this.deleteComment(id);
+}
+                                }
+                            }
                         >
                             Delete
                         </button>
@@ -124,9 +129,10 @@ class Card extends Component {
             showMoveCard = (
                 <MoveCardSubmenu
                     style={style}
+                    setSubRef={this.props.setSubRef}
                     cardId={this.props.cardId}
                     listId={this.props.listId}
-                    setSubRef={this.props.setSubRef}
+                    position={this.props.position}
                 />
             );
         }
@@ -250,7 +256,7 @@ class Card extends Component {
                                 </button>
                             </div>
                             <div className="ActionBox">
-                                <button disabled>
+                            <button onClick={this.openMoveSub}>
                                     <i className="fas fa-arrow-right" />Move
                                 </button>
                                 <button disabled>
