@@ -94,8 +94,9 @@ class Card extends Component {
                         <button
                             className="card-edit__delete-comment-btn"
                             onClick={() => {
-                                if(window.confirm('Are you sure you want to delete this comment?')) {
-                                    this.deleteComment(id)};
+                                if (window.confirm("Are you sure you want to delete this comment?")) {
+                                    this.deleteComment(id);
+}
                                 }
                             }
                         >
@@ -141,9 +142,9 @@ class Card extends Component {
                 <div className="BackgroundBox">
                     <div className="OuterCardBox" ref={this.props.setWrapperRef}>
                         <div className="TitleOuter">
+                            <img src="../marshmallow-toasted.png" />
                             <div className="TitleBox">
-                                <i className="fab fa-trello" />
-                                <div className="CardTitle">{card.title}</div>
+                                <span className="CardTitle">{card.title}</span>
                             </div>
                             <div className="CardList">
                                 <p>
@@ -162,15 +163,17 @@ class Card extends Component {
                         <div className="MainContent">
                             <div className="MainInfo">
                                 <div className="CardMemberList">
-                                    Members
+                                   <p> Members</p>
                                     <div>
                                         <i className="fas fa-user-circle" />
                                         <i className="fas fa-plus-square" />
                                     </div>
                                 </div>
+
                                 <div className="CardDescription">
-                                    <p>Description</p>
-                                    <a href="">Edit</a>
+                                    <i className="fas fa-align-right"></i>
+                                    <h3>Description</h3>
+
                                     <div className="Editable">
                                         <textarea>
                                             Please note your availability in the comments below.
@@ -186,7 +189,7 @@ class Card extends Component {
                                 </div>
 
                                 <div className="CommentBox">
-                                    <div className="AddLabel">
+                                    <div className="AddComment">
                                         <i className="far fa-comment" />
                                         <h3>Add Comment</h3>
                                     </div>
@@ -230,48 +233,50 @@ class Card extends Component {
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
-                            <div className="InnerButtonBox">
-                                <div className="AddBox">
-                                    <button>
-                                        <i className="fas fa-user" />Members
-                                    </button>
-                                    <button>
-                                        <i className="fas fa-tag" />Labels
-                                    </button>
-                                    <button>
-                                        <i className="fas fa-check-square" />Checklist
-                                    </button>
-                                    <button>
-                                        <i className="fas fa-clock" />Due Date
-                                    </button>
-                                    <button>
-                                        <i className="fas fa-paperclip" />Attachment
-                                    </button>
-                                </div>
-                                <div className="ActionBox">
-                                    <button onClick={this.openMoveSub}>
-                                        <i className="fas fa-arrow-right" />Move
-                                    </button>
-                                    <button>
-                                        <i className="fas fa-copy" />Copy
-                                    </button>
-                                    <button>
-                                        <i className="fas fa-eye" />Subscribe
-                                    </button>
-                                    <button>
-                                        <i className="fas fa-archive" />Archive
-                                    </button>
-                                </div>
-                                <div className="ShareandMore">
-                                    <a href="">Share and more...</a>
-                                </div>
+                        </div>
+
+                        <div className="InnerButtonBox">
+                            <div className="AddBox">
+                                <button disabled>
+                                    <i className="fas fa-user" />Members
+                                </button>
+                                <button>
+                                    <i className="fas fa-tag" />Labels
+                                </button>
+                                <button disabled>
+                                    <i className="fas fa-check-square" />Checklist
+                                </button>
+                                <button disabled>
+                                    <i className="fas fa-clock" />Due Date
+                                </button>
+                                <button disabled>
+                                    <i className="fas fa-paperclip" />Attachment
+                                </button>
+                            </div>
+                            <div className="ActionBox">
+                            <button onClick={this.openMoveSub}>
+                                    <i className="fas fa-arrow-right" />Move
+                                </button>
+                                <button disabled>
+                                    <i className="fas fa-copy" />Copy
+                                </button>
+                                <button disabled>
+                                    <i className="fas fa-eye" />Subscribe
+                                </button>
+                                <button disabled>
+                                    <i className="fas fa-archive" />Archive
+                                </button>
+                            </div>
+                            <div className="ShareandMore">
+                                <a href="">Share and more...</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 {showMoveCard}
-            </div>
+                </div>
         );
     }
 }
