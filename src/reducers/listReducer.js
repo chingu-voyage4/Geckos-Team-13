@@ -50,6 +50,11 @@ function removeItem(state, curr) {
     return [...state.slice(0, curr), ...state.slice(curr + 1)];
 }
 
+function removeItemById(state, id) {
+    const itemRemoved = state.filter(item => item !== id);
+    return itemRemoved;
+}
+
 function moveCard(state, action) {
     const { payload } = action;
     const { oldpos, cardId, listId, newPosition } = payload;
@@ -57,6 +62,7 @@ function moveCard(state, action) {
     const list = state[listId];
     const current = oldpos;
     const cardArray = list.cards;
+    console.log(oldpos, newPosition, cardId, listId);
 
     const remove = removeItem(cardArray, current);
     const newCardArray = insertItem(remove, newPosition, cardId);
@@ -72,7 +78,26 @@ function moveCard(state, action) {
 
 function moveCardToList(state, action) {
     const { payload } = action;
-    const { cardId, listId, selectedList, previousList, position } = payload;
+    const { cardId, selectedList, previousList, position } = payload;
+
+    const prevList = state[previousList];
+    const newList = state[selectedList];
+
+    const prevListCardArr = removeItemById(prevList.cards, cardId);
+
+    const newListCardArr = insertItem(state[selectedList].cards, position, cardId);
+
+    return {
+        ...state,
+        [previousList]: {
+            ...prevList,
+            cards: prevListCardArr
+        },
+        [selectedList]: {
+            ...newList,
+            cards: newListCardArr
+        }
+    };
 }
 
 export default function(state = {}, action) {
