@@ -315,7 +315,6 @@ textarea {
 }
 
 .OuterCardBox {
-    overflow: hidden;
     position: relative;
     justify-content: center;
     background-color: #edeff0;

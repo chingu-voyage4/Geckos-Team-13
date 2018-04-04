@@ -31,6 +31,8 @@ class Card extends Component {
         this.recalculateOffset = this.recalculateOffset.bind(this);
         this.setButtonRef = this.setButtonRef.bind(this);
         this.handleClickOutside = this.handleClickOutside.bind(this);
+
+        this.renderLabelMenu = this.renderLabelMenu.bind(this);
     }
 
     componentDidMount() {
@@ -40,6 +42,12 @@ class Card extends Component {
 
     componentWillUnmount() {
         document.removeEventListener("mousedown", this.handleClickOutside);
+    }
+
+    renderLabelMenu() {
+        if (this.state.cardAction === "labelAction") {
+        return <Labels addCardLabel={this.addCardLabel} toggleCardAction={this.toggleCardAction} />;
+        }
     }
 
     addCardLabel(color, text, e) {
@@ -162,7 +170,9 @@ class Card extends Component {
         return (
             <div className="outer-container">
                 <div className="BackgroundBox">
+
                     <div className="OuterCardBox" ref={this.props.setWrapperRef}>
+
                         <div className="TitleOuter">
                             <img src="../marshmallow-toasted.png" />
                             <div className="TitleBox">
@@ -191,10 +201,11 @@ class Card extends Component {
                                         <i className="fas fa-plus-square" />
                                     </div>
                                 </div>
-                                <div className="label-list">
+                                <div className="card-labels">
                                     Labels
+                                    <div>
                                     {cardLabels}
-                                    <button id="add-label" className="labelAction" onClick={this.toggleCardAction}>+</button>
+                                    </div>
                                 </div>
                                 <div className="CardDescription">
                                     <i className="fas fa-align-right"></i>
@@ -271,7 +282,7 @@ class Card extends Component {
                                 <button className="labelAction" onClick={this.toggleCardAction}>
                                     <i className="fas fa-tag" />Labels
                                 </button>
-                                {this.state.cardAction === "labelAction" && <Labels addCardLabel={this.addCardLabel} toggleCardAction={this.toggleCardAction}/>}
+                                {this.renderLabelMenu()}
                                 <button disabled>
                                     <i className="fas fa-check-square" />Checklist
                                 </button>

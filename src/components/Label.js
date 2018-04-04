@@ -11,12 +11,9 @@ class Label extends Component {
         const style = {backgroundColor: this.props.color,
             width: this.props.width, height: this.props.height};
         return (
-            <div>
                 <div className="label" id={this.props.color} style={style}
                 addCardLabel={this.props.addCardLabel}
                 onClick={this.props.addCardLabel}>{this.props.labelText}</div>
-            <LabelEditButton toggleLabelEdit={this.props.toggleLabelEdit} />
-                </div>
         );
     }
 }

@@ -15,11 +15,9 @@
     width: 300px;
     border: 1px solid #d6dadc;
     box-shadow: 0 1px 6px rgba(0,0,0,.15);
-    z-index: 15 !important;
+    z-index: 30 !important;
     padding: 8px;
     position: absolute;
-    left: 635px;
-    bottom: 210px;
     border-radius: 3px;
 }
 
@@ -33,15 +31,20 @@
     color: #999;
 }
 
-.label-list {
+.card-labels {
     text-align: left;
+    margin: 10px 0 10px 32px;
+    min-height: 65px;
 }
+
+
+
 .label {
     text-align: center;
     color: #fff;
-    margin: 0 0 4px;
+    margin: 4px;
     border-radius: 3px;
-    display: inline-block;
+    float: left;
     cursor: pointer;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -66,11 +69,11 @@
 .edit-button {
     cursor: pointer;
     border-style: none;
+    margin-top: 4px !important;
+    margin-bottom: 8px;
     background: #fff !important;
-    margin-left: 10px;
-    position: absolute;
-    top: -3px;
-    right: 3px;
+    width: 35px !important;
+    height: 35px !important;
     padding: 8px;
     border-radius: 3px;
 }
@@ -104,8 +107,8 @@
 
 .label-button {
     display: inline-block !important;
-    width: 40px;
-    height: 40px;
+    width: 40px !important;
+    height: 40px !important;
     margin: 5px;
     border-radius: 3px;
     border-style: none;

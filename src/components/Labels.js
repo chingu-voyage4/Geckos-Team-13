@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./labels.css";
 import LabelEditMenu from "./LabelEditMenu.js";
 import Label from "./Label.js";
+import LabelEditButton from "./LabelEditButton.js";
 
 class Labels extends Component {
 
@@ -31,6 +32,7 @@ class Labels extends Component {
                 <Label key={label.color} width="250px" height="20px" color={label.color}
                     addCardLabel={this.props.addCardLabel.bind(this, label.color, label.labelText)}
                     labelText={label.labelText} toggleLabelEdit={this.toggleLabelEdit}/>
+                <LabelEditButton toggleLabelEdit={this.toggleLabelEdit} />
             </div>
         ));
         return (
