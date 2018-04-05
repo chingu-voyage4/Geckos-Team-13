@@ -3,14 +3,16 @@ import cardReducer from "./cardReducer";
 import cardArrayReducer from "./cardArrayReducer";
 import listReducer from "./listReducer";
 import listArrayReducer from "./listArrayReducer";
-import archivedReducers from "./archivedReducers";
+import archivedLists from "./archivedLists";
+import archivedCards from "./archivedCards";
 
 const rootReducer = combineReducers({
     lists: listReducer,
     cardArray: cardArrayReducer,
     cards: cardReducer,
     listArray: listArrayReducer,
-    archive: archivedReducers
+    archivedLists: archivedLists,
+    archivedCards: archivedCards
 });
 
 export default rootReducer;
