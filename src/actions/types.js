@@ -10,7 +10,8 @@ const constants = {
     MOVE_LIST: "MOVE_LIST",
     MOVE_CARD: "MOVE_CARD",
     CHANGE_LIST: "CHANGE_LIST",
-    ARCHIVE_LIST: "ARCHIVE_LIST"
+    ARCHIVE_LIST: "ARCHIVE_LIST",
+    ARCHIVE_ALL_CARDS: "ARCHIVE_ALL_CARDS"
 };
 
 export default constants;
