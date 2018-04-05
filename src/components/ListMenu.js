@@ -78,9 +78,7 @@ class ListMenu extends Component {
                 position: index
             };
         });
-        this.props.archiveAllCardsInList(cardArrWithPositions);
-        // need an array of card Ids belonging to this list.
-        // listId
+        this.props.archiveAllCardsInList(cardArrWithPositions, this.props.listId);
     }
 
     render() {
