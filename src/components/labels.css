@@ -51,6 +51,7 @@
     white-space: nowrap;
     max-width: 80%;
     padding: 8px;
+    position: relative;
 }
 
 .label-list .label-button {
@@ -114,6 +115,10 @@
     border-style: none;
 }
 
+.label .fa-check {
+    position: absolute;
+    right: 10px;
+}
 .label-button-area {
     margin: 15px 0;
 }

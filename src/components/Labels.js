@@ -9,9 +9,10 @@ class Labels extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showLabelEdit: false, title: "Labels", labels: [{ color: "#61BD4F", labelText: "Test" }, { color: "#F2D600", labelText: "" },
-            { color: "#FFAB4A", labelText: "" }, { color: "#EB5A46", labelText: "" }, { color: "#C377E0", labelText: "" },
-            { color: "#0079BF", labelText: "" }]};
+            showLabelEdit: false, title: "Labels", labels: [{ color: "#61BD4F", labelText: "Test", active: false },
+            { color: "#F2D600", labelText: "", active: false },
+            { color: "#FFAB4A", labelText: "", active: false }, { color: "#EB5A46", labelText: "", active: false },
+            { color: "#C377E0", labelText: "", active: false }, { color: "#0079BF", labelText: "", active: false }]};
         this.toggleLabelEdit = this.toggleLabelEdit.bind(this);
 
     }
@@ -29,7 +30,7 @@ class Labels extends Component {
     render() {
         const labelDivs = this.state.labels.map((label) => (
             <div className="label-edit" key={label.color}>
-                <Label key={label.color} width="250px" height="20px" color={label.color}
+                <Label key={label.color} width="250px" height="20px" color={label.color} active={label.active}
                     addCardLabel={this.props.addCardLabel.bind(this, label.color, label.labelText)}
                     labelText={label.labelText} toggleLabelEdit={this.toggleLabelEdit}/>
                 <LabelEditButton toggleLabelEdit={this.toggleLabelEdit} />
