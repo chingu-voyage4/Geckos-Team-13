@@ -133,3 +133,13 @@ export function archiveList(listId, position) {
         }
     };
 }
+
+export function archiveAllCardsInList(cardArrWithPositions) {
+    console.log("fired?");
+    return {
+        type: C.ARCHIVE_ALL_CARDS,
+        payload: {
+            cardArrWithPositions
+        }
+    };
+}
