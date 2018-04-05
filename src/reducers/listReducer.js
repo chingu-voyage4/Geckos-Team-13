@@ -27,6 +27,21 @@ function cardArray(state, action) {
     };
 }
 
+function removeCardArr(state, action) {
+    const { payload } = action;
+    const { listId } = payload;
+
+    const list = state[listId];
+
+    return {
+        ...state,
+        [listId]: {
+            ...list,
+            cards: []
+        }
+    };
+}
+
 function editTitle(state, action) {
     const { payload } = action;
     const { title, listId } = payload;
@@ -111,6 +126,8 @@ export default function(state = {}, action) {
             return moveCard(state, action);
         case C.CHANGE_LIST:
             return moveCardToList(state, action);
+        case C.ARCHIVE_ALL_CARDS:
+            return removeCardArr(state, action);
         default:
             return state;
     }
