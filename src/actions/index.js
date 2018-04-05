@@ -123,3 +123,13 @@ export function moveCardToNewList(cardId, listId, selectedList, previousList, po
         }
     };
 }
+
+export function archiveList(listId, position) {
+    return {
+        type: C.ARCHIVE_LIST,
+        payload: {
+            listId,
+            position
+        }
+    };
+}
