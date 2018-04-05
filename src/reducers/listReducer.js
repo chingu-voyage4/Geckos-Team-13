@@ -62,7 +62,6 @@ function moveCard(state, action) {
     const list = state[listId];
     const current = oldpos;
     const cardArray = list.cards;
-    console.log(oldpos, newPosition, cardId, listId);
 
     const remove = removeItem(cardArray, current);
     const newCardArray = insertItem(remove, newPosition, cardId);
