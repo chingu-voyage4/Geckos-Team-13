@@ -31,6 +31,19 @@ function moveList(state, action) {
     }
 }
 
+function removeItemById(state, id) {
+    const itemRemoved = state.filter(item => item !== id);
+    return itemRemoved;
+}
+
+function removeList(state, action) {
+    const { payload } = action;
+    const { listId } = payload;
+
+    const listRemoved = removeItemById(state, listId);
+    return listRemoved;
+}
+
 export default function(state = [], action) {
     const { type } = action;
 
@@ -39,6 +52,9 @@ export default function(state = [], action) {
             return listArray(state, action);
         case C.MOVE_LIST:
             return moveList(state, action);
+        case C.ARCHIVE_LIST:
+            console.log(removeList(state, action));
+            return removeList(state, action);
         default:
             return state;
     }
