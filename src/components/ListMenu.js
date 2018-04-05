@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import "../styles/style.css";
+import * as actions from "../actions";
 import SortBySubmenu from "./SortBySubmenu.js";
 import ArchiveAllSubmenu from "./ArchiveAllSubmenu.js";
 import MoveListSubmenu from "./MoveListSubmenu.js";
@@ -17,6 +19,7 @@ class ListMenu extends Component {
         this.toggleFollow = this.toggleFollow.bind(this);
         this.setWrapperRef = this.setWrapperRef.bind(this);
         this.handleClickOutside = this.handleClickOutside.bind(this);
+        this.archiveList = this.archiveList.bind(this);
     }
 
     componentDidMount() {
@@ -51,6 +54,7 @@ class ListMenu extends Component {
         } else if (e.target.className === "sort") {
             this.setState({ menu: "sortMenu", listTitle: "Sort List" });
         } else if (e.target.className === "archive-cards") {
+            console.log("here?");
             this.setState({ menu: "archiveAllMenu", listTitle: "Archive All Cards in this List?" });
         }
     }
@@ -62,6 +66,10 @@ class ListMenu extends Component {
         } else {
             this.setState({ follow: false });
         }
+    }
+
+    archiveList() {
+        this.props.archiveList(this.props.listId, this.props.position);
     }
 
     render() {
@@ -91,7 +99,7 @@ class ListMenu extends Component {
                             <li className="archive-cards" onClick={this.showSubmenu}>
                                 Archive All Cards in This List...
                             </li>
-                            <li>Archive This List</li>
+                            <li onClick={this.archiveList}>Archive This List</li>
                         </ul>
                     </div>
                 </div>
@@ -123,4 +131,10 @@ class ListMenu extends Component {
     }
 }
 
-export default ListMenu;
+function mapStateToProps(state) {
+    return {
+        archived: state.archive
+    };
+}
+
+export default connect(mapStateToProps, actions)(ListMenu);
