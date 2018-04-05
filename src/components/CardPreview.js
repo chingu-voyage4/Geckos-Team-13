@@ -37,7 +37,6 @@ export default class CardPreview extends Component {
             left: rect.left,
             width: rect.width
         });
-        console.log(rect);
     }
 
     componentWillUnmount() {
@@ -53,7 +52,6 @@ export default class CardPreview extends Component {
     }
 
     handleClickOutside(event) {
-        console.log(event.target);
         const cardSelected = this.wrapperRef && this.wrapperRef.contains(event.target);
         const subMenuSelected = this.subRef && this.subRef.contains(event.target);
 
