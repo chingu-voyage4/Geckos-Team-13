@@ -34,9 +34,10 @@ class MoveCardSubmenu extends Component {
         const current = event.target.value;
         const previous = this.state.selectedList;
         const lengthSelectedList = this.props.lists[event.target.value].cards.length;
-        if (event.target.value !== this.state.selectedList) {
-            const positions = lengthSelectedList;
-            this.setState({ positions });
+        if (event.target.value !== this.props.listId) {
+            this.setState({ positions: lengthSelectedList, position: lengthSelectedList });
+        } else if (event.target.value === this.props.listId) {
+            this.setState({ position: this.props.position });
         }
         this.setState({ selectedList: current, previousList: previous });
     }
@@ -71,7 +72,6 @@ class MoveCardSubmenu extends Component {
         if (this.props.listId !== this.state.selectedList) {
             this.listChange();
         } else if (this.props.listId === this.state.selectedList) {
-            console.log("test");
             this.positionChange();
         }
     }
