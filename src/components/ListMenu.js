@@ -20,6 +20,7 @@ class ListMenu extends Component {
         this.setWrapperRef = this.setWrapperRef.bind(this);
         this.handleClickOutside = this.handleClickOutside.bind(this);
         this.archiveList = this.archiveList.bind(this);
+        this.archiveAllCards = this.archiveAllCards.bind(this);
     }
 
     componentDidMount() {
@@ -31,13 +32,11 @@ class ListMenu extends Component {
     }
 
     setWrapperRef(node) {
-        console.log(node);
         this.wrapperRef = node;
     }
 
     handleClickOutside(event) {
         if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
-            console.log("here");
             this.props.toggleMenu();
         }
     }
@@ -54,7 +53,6 @@ class ListMenu extends Component {
         } else if (e.target.className === "sort") {
             this.setState({ menu: "sortMenu", listTitle: "Sort List" });
         } else if (e.target.className === "archive-cards") {
-            console.log("here?");
             this.setState({ menu: "archiveAllMenu", listTitle: "Archive All Cards in this List?" });
         }
     }
@@ -70,6 +68,19 @@ class ListMenu extends Component {
 
     archiveList() {
         this.props.archiveList(this.props.listId, this.props.position);
+    }
+
+    archiveAllCards() {
+        const cardArr = this.props.lists[this.props.listId].cards;
+        const cardArrWithPositions = cardArr.map((item, index) => {
+            return {
+                cardId: item,
+                position: index
+            };
+        });
+        this.props.archiveAllCardsInList(cardArrWithPositions);
+        // need an array of card Ids belonging to this list.
+        // listId
     }
 
     render() {
@@ -117,7 +128,9 @@ class ListMenu extends Component {
                         </span>
                     </div>
                     {this.state.menu === "sortMenu" && <SortBySubmenu />}
-                    {this.state.menu === "archiveAllMenu" && <ArchiveAllSubmenu />}
+                    {this.state.menu === "archiveAllMenu" && (
+                        <ArchiveAllSubmenu archiveAll={this.archiveAllCards} />
+                    )}
                     {this.state.menu === "moveListMenu" && (
                         <MoveListSubmenu
                             position={this.props.position}
@@ -133,7 +146,8 @@ class ListMenu extends Component {
 
 function mapStateToProps(state) {
     return {
-        archived: state.archive
+        archived: state.archive,
+        lists: state.lists
     };
 }
 
