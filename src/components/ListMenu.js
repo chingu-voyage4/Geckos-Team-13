@@ -75,10 +75,13 @@ class ListMenu extends Component {
         const cardArrWithPositions = cardArr.map((item, index) => {
             return {
                 cardId: item,
-                position: index
+                position: index,
+                archived: true,
+                listId: this.props.listId
             };
         });
         this.props.archiveAllCardsInList(cardArrWithPositions, this.props.listId);
+        this.props.toggleMenu();
     }
 
     render() {
