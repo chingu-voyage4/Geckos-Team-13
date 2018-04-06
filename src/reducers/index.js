@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
     cards: cardReducer,
     listArray: listArrayReducer,
     archivedListsReducer: archivedListsReducer,
-    archivedCards: sarchivedCardsReducer
+    archivedCards: archivedCardsReducer
 });
 
 export default rootReducer;
