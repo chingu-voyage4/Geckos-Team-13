@@ -135,12 +135,18 @@ export function archiveList(listId, position) {
 }
 
 export function archiveAllCardsInList(cardArrWithPositions, listId) {
-    console.log("fired?");
     return {
         type: C.ARCHIVE_ALL_CARDS,
         payload: {
             cardArrWithPositions,
             listId
         }
+    };
+}
+
+export function archiveCard(card) {
+    return {
+        type: C.ARCHIVE_CARD,
+        payload: { card }
     };
 }
