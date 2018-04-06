@@ -317,7 +317,7 @@ class Card extends Component {
                                     }}
                                     onClick={this.sendToBoard}
                                 >
-                                    <i class="fas fa-undo-alt" />Send to Board
+                                    <i className="fas fa-undo-alt" />Send to Board
                                 </button>
                                 <button
                                     style={{
@@ -328,7 +328,7 @@ class Card extends Component {
                                     onClick={this.deleteCard}
                                 >
                                     <i
-                                        class="fas fa-minus"
+                                        className="fas fa-minus"
                                         style={{
                                             marginTop: 5,
                                             color: "white"
