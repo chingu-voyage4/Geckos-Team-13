@@ -35,6 +35,7 @@ class Card extends Component {
         this.changeCardDecription = this.changeCardDecription.bind(this);
         this.expandDescription = this.expandDescription.bind(this);
         this.saveDescription = this.saveDescription.bind(this);
+        this.cancelExpansion = this.cancelExpansion.bind(this);
     }
 
     componentDidMount() {
@@ -111,6 +112,10 @@ class Card extends Component {
 
     expandDescription() {
         this.setState({ descriptionVisible: true });
+    }
+
+    cancelExpansion() {
+        this.setState({ descriptionVisible: false });
     }
 
     saveDescription(event) {
