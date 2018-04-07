@@ -12,7 +12,6 @@ function archiveList(state, action) {
 export default function(state = {}, action) {
     switch (action.type) {
         case C.ARCHIVE_LIST:
-            console.log(archiveList(state, action));
             return archiveList(state, action);
         default:
             return state;

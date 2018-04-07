@@ -15,6 +15,7 @@ class QuickEditCard extends Component {
         this.changeCardTitle = this.changeCardTitle.bind(this);
         this.submitTitleChange = this.submitTitleChange.bind(this);
         this.moveClicked = this.moveClicked.bind(this);
+        this.archiveCard = this.archiveCard.bind(this);
     }
 
     changeCardTitle(event) {
@@ -33,6 +34,18 @@ class QuickEditCard extends Component {
 
     moveClicked() {
         this.setState({ moveClicked: true });
+    }
+
+    archiveCard() {
+        const archivedCard = {
+            cardId: this.props.cardId,
+            position: this.props.position,
+            archived: true,
+            listId: this.props.listId
+        };
+
+        this.props.archiveCard(archivedCard);
+        this.props.closeQuickEdit();
     }
 
     render() {
@@ -99,7 +112,7 @@ class QuickEditCard extends Component {
                             </a>
                         </li>
                         <li className="menu-item">
-                            <a className="menu-button">
+                            <a className="menu-button" onClick={this.archiveCard}>
                                 <i className="fas fa-archive" /> Archive
                             </a>
                         </li>
