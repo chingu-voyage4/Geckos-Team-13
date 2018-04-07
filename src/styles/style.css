@@ -610,7 +610,6 @@ textarea {
     margin-top: 8px;
     display: flex;
     align-items: center;
-    margin-left: 20px;
 }
   
 .u-gutter {
@@ -642,7 +641,7 @@ textarea {
 }
   
 .card-edit__text {
-    margin-left: 20px;
+    margin-left: 30px;
     color: black;
     font-size: 17px;
     margin-top: 15px;

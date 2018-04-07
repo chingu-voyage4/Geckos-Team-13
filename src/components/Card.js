@@ -17,6 +17,7 @@ class Card extends Component {
             commentText: "",
             showMoveCard: false,
             showArchiveBanner: false,
+            cardDescription: this.props.cards[this.props.cardId].description,
             descriptionVisible: false
         };
 
@@ -227,10 +228,6 @@ class Card extends Component {
     }
 
     render() {
-        console.log(this.props.cards[this.props.cardId].description);
-        console.log(this.props.cards[this.props.cardId]);
-        console.log(this.props.cards);
-        console.log(this.props.cardId);
         const card = this.props.cards[this.props.cardId];
         const list = this.props.lists[this.props.listId];
 
