@@ -189,7 +189,7 @@ class Card extends Component {
                         <button type="submit" onClick={this.saveDescription} className="btn--add">
                             Save
                         </button>
-                        <button className="btn--cancel">
+                        <button className="btn--cancel" style={{ backgroundColor: "transparent" }}>
                             <img
                                 src="../close-round.png"
                                 className="cancel"
@@ -227,6 +227,10 @@ class Card extends Component {
     }
 
     render() {
+        console.log(this.props.cards[this.props.cardId].description);
+        console.log(this.props.cards[this.props.cardId]);
+        console.log(this.props.cards);
+        console.log(this.props.cardId);
         const card = this.props.cards[this.props.cardId];
         const list = this.props.lists[this.props.listId];
 
