@@ -148,7 +148,7 @@ class ListMenu extends Component {
                         <MoveAllCardsSubmenu
                             position={this.props.position}
                             listId={this.props.listId}
-                            closeMoveSub={this.props.toggleMenu}
+                            closeMoveAllSub={this.props.toggleMenu}
                         />
                     )}
                 </div>
