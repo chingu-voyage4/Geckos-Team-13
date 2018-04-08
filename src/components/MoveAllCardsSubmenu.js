@@ -17,7 +17,6 @@ class MoveAllCardsSubmenu extends Component {
 
     renderLists() {
         const lists = this.props.lists;
-        console.log(lists);
         return this.props.listArr.map(list => {
             return (
                 <li
