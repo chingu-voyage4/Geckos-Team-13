@@ -12,6 +12,7 @@ class MoveAllCardsSubmenu extends Component {
 
     test(list) {
         this.props.moveAllCards(this.props.listId, list);
+        this.props.closeMoveAllSub();
     }
 
     renderLists() {
