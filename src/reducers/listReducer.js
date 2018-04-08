@@ -133,6 +133,29 @@ function removeCard(state, action) {
     };
 }
 
+function moveAllCards(state, action) {
+    const { payload } = action;
+    const { currListId, newListId } = payload;
+
+    const currList = state[currListId];
+    const newList = state[newListId];
+    const cardsToMove = currList.cards;
+    const currCards = newList.cards;
+    const newCards = currCards.concat(cardsToMove);
+
+    return {
+        ...state,
+        [currListId]: {
+            ...currList,
+            cards: []
+        },
+        [newListId]: {
+            ...newList,
+            cards: newCards
+        }
+    };
+}
+
 export default function(state = {}, action) {
     switch (action.type) {
         case C.ADD_LIST:
@@ -149,6 +172,9 @@ export default function(state = {}, action) {
             return removeCardArr(state, action);
         case C.ARCHIVE_CARD:
             return removeCard(state, action);
+        case C.MOVE_ALL_CARDS:
+            console.log(moveAllCards(state, action));
+            return moveAllCards(state, action);
         default:
             return state;
     }
