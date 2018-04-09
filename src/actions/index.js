@@ -150,3 +150,10 @@ export function archiveCard(card) {
         payload: { card }
     };
 }
+
+export function moveAllCards(currListId, newListId) {
+    return {
+        type: C.MOVE_ALL_CARDS,
+        payload: { currListId, newListId }
+    };
+}

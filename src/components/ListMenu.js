@@ -5,6 +5,8 @@ import * as actions from "../actions";
 import SortBySubmenu from "./SortBySubmenu.js";
 import ArchiveAllSubmenu from "./ArchiveAllSubmenu.js";
 import MoveListSubmenu from "./MoveListSubmenu.js";
+import MoveAllCardsSubmenu from "./MoveAllCardsSubmenu";
+import CopyListSubmenu from "./CopyListSubmenu";
 
 class ListMenu extends Component {
     constructor(props) {
@@ -54,6 +56,10 @@ class ListMenu extends Component {
             this.setState({ menu: "sortMenu", listTitle: "Sort List" });
         } else if (e.target.className === "archive-cards") {
             this.setState({ menu: "archiveAllMenu", listTitle: "Archive All Cards in this List?" });
+        } else if (e.target.className === "move-all-cards") {
+            this.setState({ menu: "moveAllCards", listTitle: "Move All Cards in List" });
+        } else if (e.target.className === "copy-list") {
+            this.setState({ menu: "copyList", listTitle: "Copy List" });
         }
     }
 
@@ -97,7 +103,9 @@ class ListMenu extends Component {
                     <div className="list-menu-options">
                         <ul>
                             <li>Add Card...</li>
-                            <li>Copy List...</li>
+                            <li className="copy-list" onClick={this.showSubmenu}>
+                                Copy List...
+                            </li>
                             <li className="move-list" onClick={this.showSubmenu}>
                                 Move List...
                             </li>
@@ -107,7 +115,9 @@ class ListMenu extends Component {
                             <li className="sort" onClick={this.showSubmenu}>
                                 Sort By...
                             </li>
-                            <li>Move All Cards in This List...</li>
+                            <li className="move-all-cards" onClick={this.showSubmenu}>
+                                Move All Cards in This List...
+                            </li>
                             <li className="archive-cards" onClick={this.showSubmenu}>
                                 Archive All Cards in This List...
                             </li>
@@ -137,6 +147,20 @@ class ListMenu extends Component {
                             position={this.props.position}
                             listId={this.props.listId}
                             closeMoveSub={this.props.toggleMenu}
+                        />
+                    )}
+                    {this.state.menu === "moveAllCards" && (
+                        <MoveAllCardsSubmenu
+                            position={this.props.position}
+                            listId={this.props.listId}
+                            closeMoveAllSub={this.props.toggleMenu}
+                        />
+                    )}
+                    {this.state.menu === "copyList" && (
+                        <CopyListSubmenu
+                            position={this.props.position}
+                            listId={this.props.listId}
+                            closeCopyListSub={this.props.toggleMenu}
                         />
                     )}
                 </div>
