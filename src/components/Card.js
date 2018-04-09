@@ -42,6 +42,9 @@ class Card extends Component {
     componentDidMount() {
         document.addEventListener("mousedown", this.handleClickOutside);
         this.recalculateOffset();
+        if (this.props.archived) {
+            this.setState({ showArchiveBanner: true });
+        }
     }
 
     componentWillUnmount() {
