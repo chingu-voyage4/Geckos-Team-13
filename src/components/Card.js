@@ -33,6 +33,7 @@ class Card extends Component {
         this.handleClickOutside = this.handleClickOutside.bind(this);
 
         this.renderLabelMenu = this.renderLabelMenu.bind(this);
+        this.removeCardLabel = this.removeCardLabel.bind(this);
     }
 
     componentDidMount() {
@@ -46,14 +47,21 @@ class Card extends Component {
 
     renderLabelMenu() {
         if (this.state.cardAction === "labelAction") {
-        return <Labels addCardLabel={this.addCardLabel} toggleCardAction={this.toggleCardAction} />;
+        return <Labels addCardLabel={this.addCardLabel} removeCardLabel={this.removeCardLabel} toggleCardAction={this.toggleCardAction} />;
         }
+    }
+
+    removeCardLabel(id, e) {
+        e.preventDefault();
+        this.setState({labels: this.state.labels.filter(function(label) {
+            return label !== e.target.id;
+        })});
     }
 
     addCardLabel(color, text, e) {
         e.preventDefault();
         this.setState({
-            labels: [...this.state.labels, { color: color, labelText: text }]});
+            labels: [...this.state.labels, { color: color, labelText: text, id: this.state.labels.length}]});
     }
 
     toggleCardAction(e) {

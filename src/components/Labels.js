@@ -32,6 +32,7 @@ class Labels extends Component {
             <div className="label-edit" key={label.color}>
                 <Label key={label.color} width="250px" height="20px" color={label.color} active={label.active}
                     addCardLabel={this.props.addCardLabel.bind(this, label.color, label.labelText)}
+                        removeCardLabel={this.props.removeCardLabel.bind(this)}
                     labelText={label.labelText} toggleLabelEdit={this.toggleLabelEdit}/>
                 <LabelEditButton toggleLabelEdit={this.toggleLabelEdit} />
             </div>
