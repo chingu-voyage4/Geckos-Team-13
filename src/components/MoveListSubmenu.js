@@ -32,7 +32,6 @@ class MoveListSubmenu extends Component {
 
     handleClickOutside(event) {
         if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
-            console.log("here");
             this.props.closeMoveSub();
         }
     }

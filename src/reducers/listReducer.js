@@ -27,6 +27,21 @@ function cardArray(state, action) {
     };
 }
 
+function removeCardArr(state, action) {
+    const { payload } = action;
+    const { listId } = payload;
+
+    const list = state[listId];
+
+    return {
+        ...state,
+        [listId]: {
+            ...list,
+            cards: []
+        }
+    };
+}
+
 function editTitle(state, action) {
     const { payload } = action;
     const { title, listId } = payload;
@@ -50,10 +65,15 @@ function removeItem(state, curr) {
     return [...state.slice(0, curr), ...state.slice(curr + 1)];
 }
 
+function removeItemById(state, id) {
+    const itemRemoved = state.filter(item => item !== id);
+    return itemRemoved;
+}
+
 function moveCard(state, action) {
     const { payload } = action;
     const { oldpos, cardId, listId, newPosition } = payload;
-    //bigger delete insert
+
     const list = state[listId];
     const current = oldpos;
     const cardArray = list.cards;
@@ -70,6 +90,49 @@ function moveCard(state, action) {
     };
 }
 
+function moveCardToList(state, action) {
+    const { payload } = action;
+    const { cardId, selectedList, previousList, position } = payload;
+
+    const prevList = state[previousList];
+    const newList = state[selectedList];
+
+    const prevListCardArr = removeItemById(prevList.cards, cardId);
+
+    const newListCardArr = insertItem(state[selectedList].cards, position, cardId);
+
+    return {
+        ...state,
+        [previousList]: {
+            ...prevList,
+            cards: prevListCardArr
+        },
+        [selectedList]: {
+            ...newList,
+            cards: newListCardArr
+        }
+    };
+}
+
+function removeCard(state, action) {
+    const { payload } = action;
+    const { card } = payload;
+
+    const { cardId, listId } = card;
+    const list = state[listId];
+    const cards = list.cards;
+
+    const cardRemoved = removeItemById(cards, cardId);
+
+    return {
+        ...state,
+        [listId]: {
+            ...list,
+            cards: cardRemoved
+        }
+    };
+}
+
 export default function(state = {}, action) {
     switch (action.type) {
         case C.ADD_LIST:
@@ -80,6 +143,12 @@ export default function(state = {}, action) {
             return editTitle(state, action);
         case C.MOVE_CARD:
             return moveCard(state, action);
+        case C.CHANGE_LIST:
+            return moveCardToList(state, action);
+        case C.ARCHIVE_ALL_CARDS:
+            return removeCardArr(state, action);
+        case C.ARCHIVE_CARD:
+            return removeCard(state, action);
         default:
             return state;
     }

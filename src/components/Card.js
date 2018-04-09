@@ -19,7 +19,10 @@ class Card extends Component {
             width: "",
             comment: {},
             commentText: "",
-            showMoveCard: false
+            showMoveCard: false,
+            showArchiveBanner: false,
+            cardDescription: this.props.cards[this.props.cardId].description,
+            descriptionVisible: false
         };
 
         this.toggleCardAction = this.toggleCardAction.bind(this);
@@ -31,9 +34,17 @@ class Card extends Component {
         this.recalculateOffset = this.recalculateOffset.bind(this);
         this.setButtonRef = this.setButtonRef.bind(this);
         this.handleClickOutside = this.handleClickOutside.bind(this);
-
         this.renderLabelMenu = this.renderLabelMenu.bind(this);
         this.removeCardLabel = this.removeCardLabel.bind(this);
+        this.sendToBoard = this.sendToBoard.bind(this);
+        this.archiveCard = this.archiveCard.bind(this);
+        this.deleteCard = this.deleteCard.bind(this);
+        this.openDescription = this.openDescription.bind(this);
+        this.confirmCardDescription = this.confirmCardDescription.bind(this);
+        this.changeCardDecription = this.changeCardDecription.bind(this);
+        this.expandDescription = this.expandDescription.bind(this);
+        this.saveDescription = this.saveDescription.bind(this);
+        this.cancelExpansion = this.cancelExpansion.bind(this);
     }
 
     componentDidMount() {
@@ -110,6 +121,49 @@ class Card extends Component {
         this.props.deleteComment(commentId, this.props.cardId);
     }
 
+    archiveCard() {
+        this.setState({ showArchiveBanner: true });
+        const archivedCard = {
+            cardId: this.props.cardId,
+            position: this.props.position,
+            archived: true,
+            listId: this.props.listId
+        };
+
+        this.props.archiveCard(archivedCard);
+    }
+
+    confirmCardDescription(event) {
+        event.preventDefault();
+        this.props.editCardDescription(this.state.cardDescription, this.props.cardId);
+    }
+
+    changeCardDecription(event) {
+        event.preventDefault();
+        this.setState({ cardDescription: event.target.value });
+    }
+
+    expandDescription() {
+        this.setState({ descriptionVisible: true });
+    }
+
+    cancelExpansion() {
+        this.setState({ descriptionVisible: false });
+    }
+
+    saveDescription(event) {
+        this.confirmCardDescription(event);
+        this.setState({ descriptionVisible: false });
+    }
+
+    sendToBoard() {
+        this.setState({ showArchiveBanner: false });
+    }
+
+    deleteCard() {
+        console.log("fill this in ");
+    }
+
     renderCommments() {
         const commentArray = this.props.cards[this.props.cardId].comments;
         return commentArray.map(comment => {
@@ -127,11 +181,12 @@ class Card extends Component {
                         <button
                             className="card-edit__delete-comment-btn"
                             onClick={() => {
-                                if (window.confirm("Are you sure you want to delete this comment?")) {
+                                if (
+                                    window.confirm("Are you sure you want to delete this comment?")
+                                ) {
                                     this.deleteComment(id);
-}
                                 }
-                            }
+                            }}
                         >
                             Delete
                         </button>
@@ -148,6 +203,60 @@ class Card extends Component {
 
     closeMoveSub() {
         this.setState({ showMoveCard: false });
+    }
+
+    openDescription() {
+        if (this.state.descriptionVisible) {
+            return (
+                <form
+                    className="CommentBox"
+                    ref={this.setWrapperRef}
+                    onSubmit={this.confirmCardDescription}
+                >
+                    <textarea
+                        value={this.state.cardDescription}
+                        onChange={this.changeCardDecription}
+                        onKeyPress={this.handleKeyPress}
+                    />
+                    <div className="card-btn-container">
+                        <button type="submit" onClick={this.saveDescription} className="btn--add">
+                            Save
+                        </button>
+                        <button className="btn--cancel" style={{ backgroundColor: "transparent" }}>
+                            <img
+                                src="../close-round.png"
+                                className="cancel"
+                                onClick={this.cancelExpansion}
+                                alt=""
+                            />
+                        </button>
+                    </div>
+                </form>
+            );
+        } else {
+            if (this.state.cardDescription) {
+                return (
+                    <div className="card-edit__description">
+                        <div className="card-edit__text">
+                            {this.props.cards[this.props.cardId].description}
+                        </div>
+                        <div className="u-gutter" onClick={this.expandDescription}>
+                            <i className="fas fa-align-left" />
+                            <a className="card__edit-description--btn">Edit Description</a>
+                        </div>
+                    </div>
+                );
+            } else {
+                return (
+                    <div className="card-edit__description">
+                        <div className="u-gutter" onClick={this.expandDescription}>
+                            <i className="fas fa-align-left" />
+                            <a className="card__edit-description--btn">Edit Description</a>
+                        </div>
+                    </div>
+                );
+            }
+        }
     }
 
     render() {
@@ -180,7 +289,20 @@ class Card extends Component {
                 <div className="BackgroundBox">
 
                     <div className="OuterCardBox" ref={this.props.setWrapperRef}>
-
+                        <div
+                            className="archived-border"
+                            style={{ display: this.state.showArchiveBanner ? "flex" : "none" }}
+                        >
+                            {" "}
+                            <i
+                                className="fas fa-archive archived-header-icon"
+                                style={{
+                                    fontSize: 15,
+                                    marginRight: 15
+                                }}
+                            />{" "}
+                            <span style={{ color: "black" }}>This card is archived</span>
+                        </div>
                         <div className="TitleOuter">
                             <img src="../marshmallow-toasted.png" />
                             <div className="TitleBox">
@@ -203,35 +325,19 @@ class Card extends Component {
                         <div className="MainContent">
                             <div className="MainInfo">
                                 <div className="CardMemberList">
-                                   <p> Members</p>
+                                    <p> Members</p>
                                     <div>
                                         <i className="fas fa-user-circle" />
                                         <i className="fas fa-plus-square" />
                                     </div>
                                 </div>
                                 <div className="card-labels">
-                                    Labels
+                                Labels
                                     <div>
                                     {cardLabels}
                                     </div>
                                 </div>
-                                <div className="CardDescription">
-                                    <i className="fas fa-align-right"></i>
-                                    <h3>Description</h3>
-
-                                    <div className="Editable">
-                                        <textarea>
-                                            Please note your availability in the comments below.
-                                        </textarea>
-                                        <div className="DescriptionButtons">
-                                            <button>Save</button>
-                                            <button>X</button>
-                                            <div className="FormattingHelp">
-                                                <a href="">Formatting Help</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div className="CardDescription">{this.openDescription()}</div>
 
                                 <div className="CommentBox">
                                     <div className="AddComment">
@@ -278,7 +384,6 @@ class Card extends Component {
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
 
@@ -302,7 +407,7 @@ class Card extends Component {
                                 </button>
                             </div>
                             <div className="ActionBox">
-                            <button onClick={this.openMoveSub}>
+                                <button onClick={this.openMoveSub}>
                                     <i className="fas fa-arrow-right" />Move
                                 </button>
                                 <button disabled>
@@ -311,8 +416,38 @@ class Card extends Component {
                                 <button disabled>
                                     <i className="fas fa-eye" />Subscribe
                                 </button>
-                                <button disabled>
+                                <button
+                                    style={{
+                                        display: this.state.showArchiveBanner ? "none" : "flex"
+                                    }}
+                                    onClick={this.archiveCard}
+                                >
                                     <i className="fas fa-archive" />Archive
+                                </button>
+                                <button
+                                    style={{
+                                        display: this.state.showArchiveBanner ? "flex" : "none"
+                                    }}
+                                    onClick={this.sendToBoard}
+                                >
+                                    <i className="fas fa-undo-alt" />Send to Board
+                                </button>
+                                <button
+                                    style={{
+                                        backgroundColor: "red",
+                                        display: this.state.showArchiveBanner ? "flex" : "none"
+                                    }}
+                                    className="danger-button"
+                                    onClick={this.deleteCard}
+                                >
+                                    <i
+                                        className="fas fa-minus"
+                                        style={{
+                                            marginTop: 5,
+                                            color: "white"
+                                        }}
+                                    />
+                                    Delete
                                 </button>
                             </div>
                             <div className="ShareandMore">
@@ -322,7 +457,7 @@ class Card extends Component {
                     </div>
                 </div>
                 {showMoveCard}
-                </div>
+            </div>
         );
     }
 }

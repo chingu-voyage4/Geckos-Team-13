@@ -377,16 +377,6 @@ textarea {
     margin-left: 38px;
 }
 
-.CardDescription {
-    position: relative;
-}
-
-.CardDescription i {
-    position: absolute;
-    left: -40px;
-    font-size: 22px;
-}
-
 .Editable textarea {
     background: #E6E8E8;
     width: 100%;
@@ -427,6 +417,7 @@ textarea {
 .CommentBox {
     position: relative;
     margin-left: 32px;
+    margin-top:11px;
 }
 
 .CommentBox textarea {
@@ -471,11 +462,6 @@ textarea {
 
 .UserActivity a{
     margin-right: 10px;
-}
-
-.CardDescription {
-    display: block;
-    margin-left: 32px;
 }
 
 .ActivityBox {
@@ -595,6 +581,76 @@ textarea {
     border-bottom: solid 1px;
     padding: 0px;
     color:#838c91;
+}
+
+.archived-border{
+    background-color: #fdfae5;
+    background-image: -webkit-gradient(linear,left top,right bottom,color-stop(25%,rgba(0,0,0,.05)),color-stop(25%,transparent),color-stop(50%,transparent),color-stop(50%,rgba(0,0,0,.05)),color-stop(75%,rgba(0,0,0,.05)),color-stop(75%,transparent),to(transparent));
+    background-image: linear-gradient(to bottom right,rgba(0,0,0,.05) 25%,transparent 0,transparent 50%,rgba(0,0,0,.05) 0,rgba(0,0,0,.05) 75%,transparent 0,transparent);
+    background-size: 14px 14px;
+    min-height: 30px;
+    padding: 12px 12px 12px 50px;
+    position: relative;
+    margin-right: -15px; 
+    margin-left: -15px; 
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 15px; 
+}
+
+.archived-header-icon {
+    font-size: 15px;
+    margin-right: 15px;
+}
+
+
+.card-btn-container {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+}
+  
+.u-gutter {
+    margin-left: 22px;
+    margin-bottom: 16px;
+    margin-top:11px;
+    display: flex;
+    align-items: center;
+    padding: 4px 8px;
+    border-radius: 3px;
+}
+
+.u-gutter:hover {
+    background: #d6dadc;
+}
+
+.u-gutter:hover .card__edit-description--btn {
+    color: #4d4d4d;
+}
+  
+.card__edit-description--btn {
+    border-radius: 3px;
+    color: #838c91;
+    display: block;
+    margin: 2px 0;
+    padding: 7px 16px;
+    position: relative;
+    user-select: none;
+}
+  
+.card-edit__text {
+    margin-left: 30px;
+    color: black;
+    font-size: 17px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+  
+.CardDescription {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
 }
 /*DONE styling Card Component*/
 

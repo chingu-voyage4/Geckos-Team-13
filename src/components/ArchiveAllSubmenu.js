@@ -8,7 +8,9 @@ class ArchiveAllSubmenu extends Component {
                     This will remove all the cards in this list from the board. To view archived
                     cards and bring them back to the board, click "Menu" > "Archived Items."
                 </p>
-                <button className="archive-all danger-button">Archive All</button>
+                <button onClick={this.props.archiveAll} className="archive-all danger-button">
+                    Archive All
+                </button>
             </div>
         );
     }
