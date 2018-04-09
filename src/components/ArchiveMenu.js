@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ReactDOM from "react-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import Card from "./Card";
@@ -10,16 +11,68 @@ class ArchiveMenu extends Component {
         this.state = {
             card: true,
             list: false,
-            popup: null
+            popup: null,
+            cardPopUpOpen: false
         };
 
         this.showCards = this.showCards.bind(this);
         this.openCardPopUp = this.openCardPopUp.bind(this);
     }
 
+    componentDidMount() {
+        document.addEventListener("mousedown", this.handleClickOutside);
+        this.recalculateOffset();
+    }
+
+    recalculateOffset() {
+        var rect = ReactDOM.findDOMNode(this).getBoundingClientRect();
+
+        this.setState({
+            top: rect.top,
+            left: rect.left,
+            width: rect.width
+        });
+
+        this.setWrapperRef = this.setWrapperRef.bind(this);
+        this.setSubRef = this.setSubRef.bind(this);
+        this.handleClickOutside = this.handleClickOutside.bind(this);
+        this.openCardPopUp = this.openCardPopUp.bind(this);
+        this.showCards = this.showCards.bind(this);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener("mousedown", this.handleClickOutside);
+    }
+
+    setWrapperRef(node) {
+        console.log(node);
+        this.wrapperRef = node;
+        console.log("why", this.wrapperRef);
+    }
+
+    setSubRef(node) {
+        this.subRef = node;
+    }
+
+    handleClickOutside(event) {
+        const cardSelected = this.wrapperRef && this.wrapperRef.contains(event.target);
+        const subMenuSelected = this.subRef && this.subRef.contains(event.target);
+        console.log("stuck", this.wrapperRef);
+
+        if (this.wrapperRef && this.subRef && !subMenuSelected && !cardSelected) {
+            console.log("firing first");
+            this.setState({ quickEditOpen: false, cardPopUpOpen: false });
+        }
+
+        if (this.wrapperRef && !this.subRef && !cardSelected) {
+            console.log("firing second");
+            this.setState({ quickEditOpen: false, cardPopUpOpen: false });
+        }
+    }
+
     openCardPopUp(item) {
-        console.log("pop");
-        this.setState({ popup: item });
+        console.log("firing openCardPopUp");
+        this.setState({ popup: item, cardPopUpOpen: true });
     }
 
     showCards() {
@@ -46,9 +99,18 @@ class ArchiveMenu extends Component {
             const cardId = this.state.popup.cardId;
             const listId = this.state.popup.listId;
             const position = this.state.popup.position;
-            return <Card cardId={cardId} listId={listId} position={position} archived={true} />;
+            return (
+                <Card
+                    cardId={cardId}
+                    listId={listId}
+                    position={position}
+                    archived={true}
+                    setWrapperRef={this.setWrapperRef}
+                    position={this.props.position}
+                    setSubRef={this.setSubRef}
+                />
+            );
         } else {
-            console.log(this.props.archivedCards);
             return (
                 <div className="board-menu">
                     <div className="board-menu-title">
