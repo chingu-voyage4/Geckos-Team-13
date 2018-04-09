@@ -15,9 +15,12 @@ class Label extends Component {
 
         if (this.state.active === true) {
             this.setState({ active: false });
+            this.props.removeCardLabel();
+            console.log("State was true");
         } else {
             this.setState({ active: true });
             this.props.addCardLabel(e);
+            console.log("State was false");
         }
     }
 
@@ -29,7 +32,7 @@ class Label extends Component {
                 addCardLabel={this.props.addCardLabel}
                 onClick={this.toggleActive}>{this.props.labelText}{this.state.active && <i className="fas fa-check"></i>}</div>
         );
-    }
+}
 }
 
 export default Label;

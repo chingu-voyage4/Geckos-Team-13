@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Labels from "./Labels.js";
 import Label from "./Label.js";
+import CardLabel from "./CardLabel.js";
 import ReactDOM from "react-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
@@ -62,17 +63,15 @@ class Card extends Component {
         }
     }
 
-    removeCardLabel(id, e) {
-        e.preventDefault();
-        this.setState({labels: this.state.labels.filter(function(label) {
-            return label !== e.target.id;
-        })});
+    removeCardLabel() {
+        console.log("remove card label running");
+
     }
 
-    addCardLabel(color, text, e) {
+    addCardLabel(color, text, id, e) {
         e.preventDefault();
         this.setState({
-            labels: [...this.state.labels, { color: color, labelText: text, id: this.state.labels.length}]});
+            labels: [...this.state.labels, { color: color, labelText: text, id: id}]});
     }
 
     toggleCardAction(e) {
@@ -263,9 +262,10 @@ class Card extends Component {
         const card = this.props.cards[this.props.cardId];
         const list = this.props.lists[this.props.listId];
 
-        const cardLabels = this.state.labels.map((label) => (
-            <Label key={label.color} color={label.color} labelText={label.labelText}
+        const cardLabels = this.state.labels.map((label, i) => (
+            <CardLabel key={i} color={label.color} active={label.active} labelText={label.labelText}
             width="40px" height="20px" className="card-label"  />
+
         ));
 
         const style = { top: this.state.top + 30, left: this.state.left };
