@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Labels from "./Labels.js";
-import Label from "./Label.js";
+//import Label from "./Label.js";
 import CardLabel from "./CardLabel.js";
 import ReactDOM from "react-dom";
 import { connect } from "react-redux";
@@ -15,6 +15,8 @@ class Card extends Component {
         this.state = {
             cardAction: "closed",
             labels: [],
+            activeLabels: [],
+            allLabels: {},
             top: "",
             left: "",
             width: "",
@@ -46,6 +48,7 @@ class Card extends Component {
         this.expandDescription = this.expandDescription.bind(this);
         this.saveDescription = this.saveDescription.bind(this);
         this.cancelExpansion = this.cancelExpansion.bind(this);
+        this.toggleActiveLabels = this.toggleActiveLabels.bind(this);
     }
 
     componentDidMount() {
@@ -59,24 +62,55 @@ class Card extends Component {
 
     renderLabelMenu() {
         if (this.state.cardAction === "labelAction") {
-        return <Labels addCardLabel={this.addCardLabel} removeCardLabel={this.removeCardLabel} toggleCardAction={this.toggleCardAction} />;
+            return (
+                <Labels
+                    toggleActiveLabels={this.toggleActiveLabels}
+                    addCardLabel={this.addCardLabel}
+                    removeCardLabel={this.removeCardLabel}
+                    toggleCardAction={this.toggleCardAction}
+                />
+            );
         }
     }
 
     removeCardLabel() {
         console.log("remove card label running");
-
     }
 
-    addCardLabel(color, text, id, e) {
-        e.preventDefault();
+    addCardLabel(color, text, id) {
+        // The state is slightly reorganized. The idea here is that you can store an array of "active" labels in one piece of state
+        // You can store all of your labels in another piece. Also, The structure of allLabels is a little different now
+        // This makes it easier to modify the state of a single label - when you toggle the active flag for example
+        const allLabels = {
+            ...this.state.allLabels,
+            [id]: {
+                id,
+                color,
+                labelText: text
+            }
+        };
         this.setState({
-            labels: [...this.state.labels, { color: color, labelText: text, id: id}]});
+            allLabels
+        });
     }
 
     toggleCardAction(e) {
         e.preventDefault();
-        this.setState({cardAction: e.target.className});
+        this.setState({ cardAction: e.target.className });
+    }
+
+    toggleActiveLabels(id) {
+        // We are either removing or adding the label to active, depending on whether it is there or not.
+        if (this.state.activeLabels.includes(id)) {
+            const index = this.state.activeLabels.indexOf(id);
+            const removed = this.state.activeLabels;
+            removed.splice(index, 1);
+            console.log(removed);
+            this.setState({ activeLabels: removed });
+        } else {
+            const added = this.state.activeLabels.concat(id);
+            this.setState({ activeLabels: added });
+        }
     }
 
     setButtonRef(node) {
@@ -261,12 +295,22 @@ class Card extends Component {
     render() {
         const card = this.props.cards[this.props.cardId];
         const list = this.props.lists[this.props.listId];
-
-        const cardLabels = this.state.labels.map((label, i) => (
-            <CardLabel key={i} color={label.color} active={label.active} labelText={label.labelText}
-            width="40px" height="20px" className="card-label"  />
-
-        ));
+        // Here we are only rendering active labels
+        let cardLabels = null;
+        if (this.state.activeLabels.length > 0) {
+            cardLabels = this.state.activeLabels.map((labelId, i) => {
+                return (
+                    <CardLabel
+                        key={i}
+                        color={this.state.allLabels[labelId].color}
+                        labelText={this.state.allLabels[labelId].labelText}
+                        width="40px"
+                        height="20px"
+                        className="card-label"
+                    />
+                );
+            });
+        }
 
         const style = { top: this.state.top + 30, left: this.state.left };
 
@@ -287,7 +331,6 @@ class Card extends Component {
         return (
             <div className="outer-container">
                 <div className="BackgroundBox">
-
                     <div className="OuterCardBox" ref={this.props.setWrapperRef}>
                         <div
                             className="archived-border"
@@ -332,10 +375,8 @@ class Card extends Component {
                                     </div>
                                 </div>
                                 <div className="card-labels">
-                                Labels
-                                    <div>
-                                    {cardLabels}
-                                    </div>
+                                    Labels
+                                    <div>{cardLabels}</div>
                                 </div>
                                 <div className="CardDescription">{this.openDescription()}</div>
 

@@ -5,16 +5,21 @@ import Label from "./Label.js";
 import LabelEditButton from "./LabelEditButton.js";
 
 class Labels extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
-            showLabelEdit: false, title: "Labels", labels: [{ color: "#61BD4F", labelText: "Test", id: 1 },
-            { color: "#F2D600", labelText: "", id: 2},
-            { color: "#FFAB4A", labelText: "", id: 3 }, { color: "#EB5A46", labelText: "", id: 4 },
-            { color: "#C377E0", labelText: "", id: 5 }, { color: "#0079BF", labelText: "", id: 6 }]};
+            showLabelEdit: false,
+            title: "Labels",
+            labels: [
+                { color: "#61BD4F", labelText: "Test", id: 1, active: false },
+                { color: "#F2D600", labelText: "", id: 2, active: false },
+                { color: "#FFAB4A", labelText: "", id: 3, active: false },
+                { color: "#EB5A46", labelText: "", id: 4, active: false },
+                { color: "#C377E0", labelText: "", id: 5, active: false },
+                { color: "#0079BF", labelText: "", id: 6, active: false }
+            ]
+        };
         this.toggleLabelEdit = this.toggleLabelEdit.bind(this);
-
     }
 
     toggleLabelEdit(e) {
@@ -24,32 +29,48 @@ class Labels extends Component {
         } else {
             this.setState({ showLabelEdit: true, title: "Change Label" });
         }
-
     }
 
     render() {
-        const labelDivs = this.state.labels.map((label) => (
+        const labelDivs = this.state.labels.map(label => (
             <div className="label-edit" key={label.color}>
-                <Label key={label.color} width="250px" height="20px" color={label.color} id={label.id}
-                    addCardLabel={this.props.addCardLabel.bind(this, label.color, label.labelText, label.id)}
-                        removeCardLabel={this.props.removeCardLabel}
-                    labelText={label.labelText} toggleLabelEdit={this.toggleLabelEdit}/>
+                <Label
+                    key={label.color}
+                    width="250px"
+                    height="20px"
+                    color={label.color}
+                    id={label.id}
+                    addCardLabel={this.props.addCardLabel.bind(
+                        this,
+                        label.color,
+                        label.labelText,
+                        label.id
+                    )}
+                    removeCardLabel={this.props.removeCardLabel}
+                    labelText={label.labelText}
+                    toggleLabelEdit={this.toggleLabelEdit}
+                    toggleActiveLabels={this.props.toggleActiveLabels}
+                />
                 <LabelEditButton toggleLabelEdit={this.toggleLabelEdit} />
             </div>
         ));
         return (
-            <div className = "label-menu">
-                <div className="label-menu-title">{ this.state.title }<span className="close" id="closed"
-                onClick={this.props.toggleCardAction}>
-                    <img src="../close-round.png" alt="close" />
-                </span>
-            </div>
-                { !this.state.showLabelEdit &&
-            <div className = "label-list">
-            { labelDivs }
-            <a href="#create-label">Create a new label</a>
-            </div> }
-                {this.state.showLabelEdit && < LabelEditMenu addCardLabel={this.props.addCardLabel} />}
+            <div className="label-menu">
+                <div className="label-menu-title">
+                    {this.state.title}
+                    <span className="close" id="closed" onClick={this.props.toggleCardAction}>
+                        <img src="../close-round.png" alt="close" />
+                    </span>
+                </div>
+                {!this.state.showLabelEdit && (
+                    <div className="label-list">
+                        {labelDivs}
+                        <a href="#create-label">Create a new label</a>
+                    </div>
+                )}
+                {this.state.showLabelEdit && (
+                    <LabelEditMenu addCardLabel={this.props.addCardLabel} />
+                )}
             </div>
         );
     }
