@@ -1,17 +1,21 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../actions";
+import MoveCardSubmenu from "./MoveCardSubmenu";
 
 class QuickEditCard extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            cardTitle: this.props.title
+            cardTitle: this.props.title,
+            moveClicked: false
         };
 
         this.changeCardTitle = this.changeCardTitle.bind(this);
         this.submitTitleChange = this.submitTitleChange.bind(this);
+        this.moveClicked = this.moveClicked.bind(this);
+        this.archiveCard = this.archiveCard.bind(this);
     }
 
     changeCardTitle(event) {
@@ -28,7 +32,36 @@ class QuickEditCard extends Component {
         this.props.closeQuickEdit();
     }
 
+    moveClicked() {
+        this.setState({ moveClicked: true });
+    }
+
+    archiveCard() {
+        const archivedCard = {
+            cardId: this.props.cardId,
+            position: this.props.position,
+            archived: true,
+            listId: this.props.listId
+        };
+
+        this.props.archiveCard(archivedCard);
+        this.props.closeQuickEdit();
+    }
+
     render() {
+        let showMoveMenu = null;
+        const moveOpened = this.state.moveClicked;
+        if (moveOpened) {
+            showMoveMenu = (
+                <MoveCardSubmenu
+                    cardId={this.props.cardId}
+                    listId={this.props.listId}
+                    position={this.props.position}
+                    closeQuickEdit={this.props.closeQuickEdit}
+                    style={{ top: 91, left: 15 }}
+                />
+            );
+        }
         return (
             <div className="quick-edit__screen">
                 <div
@@ -59,10 +92,12 @@ class QuickEditCard extends Component {
                             </a>
                         </li>
                         <li className="menu-item">
-                            <a className="menu-button">
+                            <a className="menu-button" onClick={this.moveClicked}>
                                 {" "}
-                                <i className="fas fa-arrow-right" /> Move
+                                <i className="fas fa-arrow-right" />
+                                Move
                             </a>
+                            {showMoveMenu}
                         </li>
                         <li className="menu-item">
                             <a className="menu-button">
@@ -77,7 +112,7 @@ class QuickEditCard extends Component {
                             </a>
                         </li>
                         <li className="menu-item">
-                            <a className="menu-button">
+                            <a className="menu-button" onClick={this.archiveCard}>
                                 <i className="fas fa-archive" /> Archive
                             </a>
                         </li>

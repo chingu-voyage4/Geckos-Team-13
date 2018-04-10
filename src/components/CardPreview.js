@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import QuickEditCard from "./QuickEditCard";
 import Card from "./Card";
 
-export default class extends Component {
+export default class CardPreview extends Component {
     constructor(props) {
         super(props);
 
@@ -37,7 +37,6 @@ export default class extends Component {
             left: rect.left,
             width: rect.width
         });
-        console.log(rect);
     }
 
     componentWillUnmount() {
@@ -53,7 +52,6 @@ export default class extends Component {
     }
 
     handleClickOutside(event) {
-        console.log(event.target);
         const cardSelected = this.wrapperRef && this.wrapperRef.contains(event.target);
         const subMenuSelected = this.subRef && this.subRef.contains(event.target);
 
@@ -72,7 +70,7 @@ export default class extends Component {
         });
     }
 
-    openQuickEdit(event) {
+    openQuickEdit() {
         this.recalculateOffset();
         this.setState({
             quickEditOpen: true

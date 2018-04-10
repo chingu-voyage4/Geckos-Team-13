@@ -15,7 +15,10 @@ class Card extends Component {
             width: "",
             comment: {},
             commentText: "",
-            showMoveCard: false
+            showMoveCard: false,
+            showArchiveBanner: false,
+            cardDescription: this.props.cards[this.props.cardId].description,
+            descriptionVisible: false
         };
 
         this.addComment = this.addComment.bind(this);
@@ -25,6 +28,15 @@ class Card extends Component {
         this.recalculateOffset = this.recalculateOffset.bind(this);
         this.setButtonRef = this.setButtonRef.bind(this);
         this.handleClickOutside = this.handleClickOutside.bind(this);
+        this.sendToBoard = this.sendToBoard.bind(this);
+        this.archiveCard = this.archiveCard.bind(this);
+        this.deleteCard = this.deleteCard.bind(this);
+        this.openDescription = this.openDescription.bind(this);
+        this.confirmCardDescription = this.confirmCardDescription.bind(this);
+        this.changeCardDecription = this.changeCardDecription.bind(this);
+        this.expandDescription = this.expandDescription.bind(this);
+        this.saveDescription = this.saveDescription.bind(this);
+        this.cancelExpansion = this.cancelExpansion.bind(this);
     }
 
     componentDidMount() {
@@ -77,6 +89,49 @@ class Card extends Component {
         this.props.deleteComment(commentId, this.props.cardId);
     }
 
+    archiveCard() {
+        this.setState({ showArchiveBanner: true });
+        const archivedCard = {
+            cardId: this.props.cardId,
+            position: this.props.position,
+            archived: true,
+            listId: this.props.listId
+        };
+
+        this.props.archiveCard(archivedCard);
+    }
+
+    confirmCardDescription(event) {
+        event.preventDefault();
+        this.props.editCardDescription(this.state.cardDescription, this.props.cardId);
+    }
+
+    changeCardDecription(event) {
+        event.preventDefault();
+        this.setState({ cardDescription: event.target.value });
+    }
+
+    expandDescription() {
+        this.setState({ descriptionVisible: true });
+    }
+
+    cancelExpansion() {
+        this.setState({ descriptionVisible: false });
+    }
+
+    saveDescription(event) {
+        this.confirmCardDescription(event);
+        this.setState({ descriptionVisible: false });
+    }
+
+    sendToBoard() {
+        this.setState({ showArchiveBanner: false });
+    }
+
+    deleteCard() {
+        console.log("fill this in ");
+    }
+
     renderCommments() {
         const commentArray = this.props.cards[this.props.cardId].comments;
         return commentArray.map(comment => {
@@ -93,7 +148,13 @@ class Card extends Component {
                         <a>Edit</a>
                         <button
                             className="card-edit__delete-comment-btn"
-                            onClick={() => this.deleteComment(id)}
+                            onClick={() => {
+                                if (
+                                    window.confirm("Are you sure you want to delete this comment?")
+                                ) {
+                                    this.deleteComment(id);
+                                }
+                            }}
                         >
                             Delete
                         </button>
@@ -112,6 +173,60 @@ class Card extends Component {
         this.setState({ showMoveCard: false });
     }
 
+    openDescription() {
+        if (this.state.descriptionVisible) {
+            return (
+                <form
+                    className="CommentBox"
+                    ref={this.setWrapperRef}
+                    onSubmit={this.confirmCardDescription}
+                >
+                    <textarea
+                        value={this.state.cardDescription}
+                        onChange={this.changeCardDecription}
+                        onKeyPress={this.handleKeyPress}
+                    />
+                    <div className="card-btn-container">
+                        <button type="submit" onClick={this.saveDescription} className="btn--add">
+                            Save
+                        </button>
+                        <button className="btn--cancel" style={{ backgroundColor: "transparent" }}>
+                            <img
+                                src="../close-round.png"
+                                className="cancel"
+                                onClick={this.cancelExpansion}
+                                alt=""
+                            />
+                        </button>
+                    </div>
+                </form>
+            );
+        } else {
+            if (this.state.cardDescription) {
+                return (
+                    <div className="card-edit__description">
+                        <div className="card-edit__text">
+                            {this.props.cards[this.props.cardId].description}
+                        </div>
+                        <div className="u-gutter" onClick={this.expandDescription}>
+                            <i className="fas fa-align-left" />
+                            <a className="card__edit-description--btn">Edit Description</a>
+                        </div>
+                    </div>
+                );
+            } else {
+                return (
+                    <div className="card-edit__description">
+                        <div className="u-gutter" onClick={this.expandDescription}>
+                            <i className="fas fa-align-left" />
+                            <a className="card__edit-description--btn">Edit Description</a>
+                        </div>
+                    </div>
+                );
+            }
+        }
+    }
+
     render() {
         const card = this.props.cards[this.props.cardId];
         const list = this.props.lists[this.props.listId];
@@ -124,9 +239,10 @@ class Card extends Component {
             showMoveCard = (
                 <MoveCardSubmenu
                     style={style}
+                    setSubRef={this.props.setSubRef}
                     cardId={this.props.cardId}
                     listId={this.props.listId}
-                    setSubRef={this.props.setSubRef}
+                    position={this.props.position}
                 />
             );
         }
@@ -135,10 +251,24 @@ class Card extends Component {
             <div className="outer-container">
                 <div className="BackgroundBox">
                     <div className="OuterCardBox" ref={this.props.setWrapperRef}>
+                        <div
+                            className="archived-border"
+                            style={{ display: this.state.showArchiveBanner ? "flex" : "none" }}
+                        >
+                            {" "}
+                            <i
+                                className="fas fa-archive archived-header-icon"
+                                style={{
+                                    fontSize: 15,
+                                    marginRight: 15
+                                }}
+                            />{" "}
+                            <span style={{ color: "black" }}>This card is archived</span>
+                        </div>
                         <div className="TitleOuter">
+                            <img src="../marshmallow-toasted.png" />
                             <div className="TitleBox">
-                                <i className="fab fa-trello" />
-                                <div className="CardTitle">{card.title}</div>
+                                <span className="CardTitle">{card.title}</span>
                             </div>
                             <div className="CardList">
                                 <p>
@@ -157,31 +287,17 @@ class Card extends Component {
                         <div className="MainContent">
                             <div className="MainInfo">
                                 <div className="CardMemberList">
-                                    Members
+                                    <p> Members</p>
                                     <div>
                                         <i className="fas fa-user-circle" />
                                         <i className="fas fa-plus-square" />
                                     </div>
                                 </div>
-                                <div className="CardDescription">
-                                    <p>Description</p>
-                                    <a href="">Edit</a>
-                                    <div className="Editable">
-                                        <textarea>
-                                            Please note your availability in the comments below.
-                                        </textarea>
-                                        <div className="DescriptionButtons">
-                                            <button>Save</button>
-                                            <button>X</button>
-                                            <div className="FormattingHelp">
-                                                <a href="">Formatting Help</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
+                                <div className="CardDescription">{this.openDescription()}</div>
 
                                 <div className="CommentBox">
-                                    <div className="AddLabel">
+                                    <div className="AddComment">
                                         <i className="far fa-comment" />
                                         <h3>Add Comment</h3>
                                     </div>
@@ -226,41 +342,72 @@ class Card extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="InnerButtonBox">
-                                <div className="AddBox">
-                                    <button>
-                                        <i className="fas fa-user" />Members
-                                    </button>
-                                    <button>
-                                        <i className="fas fa-tag" />Labels
-                                    </button>
-                                    <button>
-                                        <i className="fas fa-check-square" />Checklist
-                                    </button>
-                                    <button>
-                                        <i className="fas fa-clock" />Due Date
-                                    </button>
-                                    <button>
-                                        <i className="fas fa-paperclip" />Attachment
-                                    </button>
-                                </div>
-                                <div className="ActionBox">
-                                    <button>
-                                        <i className="fas fa-arrow-right" />Move
-                                    </button>
-                                    <button>
-                                        <i className="fas fa-copy" />Copy
-                                    </button>
-                                    <button>
-                                        <i className="fas fa-eye" />Subscribe
-                                    </button>
-                                    <button>
-                                        <i className="fas fa-archive" />Archive
-                                    </button>
-                                </div>
-                                <div className="ShareandMore">
-                                    <a href="">Share and more...</a>
-                                </div>
+                        </div>
+
+                        <div className="InnerButtonBox">
+                            <div className="AddBox">
+                                <button disabled>
+                                    <i className="fas fa-user" />Members
+                                </button>
+                                <button>
+                                    <i className="fas fa-tag" />Labels
+                                </button>
+                                <button disabled>
+                                    <i className="fas fa-check-square" />Checklist
+                                </button>
+                                <button disabled>
+                                    <i className="fas fa-clock" />Due Date
+                                </button>
+                                <button disabled>
+                                    <i className="fas fa-paperclip" />Attachment
+                                </button>
+                            </div>
+                            <div className="ActionBox">
+                                <button onClick={this.openMoveSub}>
+                                    <i className="fas fa-arrow-right" />Move
+                                </button>
+                                <button disabled>
+                                    <i className="fas fa-copy" />Copy
+                                </button>
+                                <button disabled>
+                                    <i className="fas fa-eye" />Subscribe
+                                </button>
+                                <button
+                                    style={{
+                                        display: this.state.showArchiveBanner ? "none" : "flex"
+                                    }}
+                                    onClick={this.archiveCard}
+                                >
+                                    <i className="fas fa-archive" />Archive
+                                </button>
+                                <button
+                                    style={{
+                                        display: this.state.showArchiveBanner ? "flex" : "none"
+                                    }}
+                                    onClick={this.sendToBoard}
+                                >
+                                    <i className="fas fa-undo-alt" />Send to Board
+                                </button>
+                                <button
+                                    style={{
+                                        backgroundColor: "red",
+                                        display: this.state.showArchiveBanner ? "flex" : "none"
+                                    }}
+                                    className="danger-button"
+                                    onClick={this.deleteCard}
+                                >
+                                    <i
+                                        className="fas fa-minus"
+                                        style={{
+                                            marginTop: 5,
+                                            color: "white"
+                                        }}
+                                    />
+                                    Delete
+                                </button>
+                            </div>
+                            <div className="ShareandMore">
+                                <a href="">Share and more...</a>
                             </div>
                         </div>
                     </div>

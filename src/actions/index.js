@@ -98,3 +98,62 @@ export function moveList(listId, newPosition) {
         }
     };
 }
+
+export function moveCard(oldpos, cardId, listId, newPosition) {
+    return {
+        type: C.MOVE_CARD,
+        payload: {
+            oldpos,
+            cardId,
+            listId,
+            newPosition
+        }
+    };
+}
+
+export function moveCardToNewList(cardId, listId, selectedList, previousList, position) {
+    return {
+        type: C.CHANGE_LIST,
+        payload: {
+            cardId,
+            listId,
+            selectedList,
+            previousList,
+            position
+        }
+    };
+}
+
+export function archiveList(listId, position) {
+    return {
+        type: C.ARCHIVE_LIST,
+        payload: {
+            listId,
+            position
+        }
+    };
+}
+
+export function archiveAllCardsInList(cardArrWithPositions, listId) {
+    return {
+        type: C.ARCHIVE_ALL_CARDS,
+        payload: {
+            cardArrWithPositions,
+            listId
+        }
+    };
+}
+
+export function archiveCard(card) {
+    return {
+        type: C.ARCHIVE_CARD,
+        payload: { card }
+    };
+}
+
+export function moveAllCards(currListId, newListId) {
+    return {
+        type: C.MOVE_ALL_CARDS,
+        payload: { currListId, newListId }
+    };
+}
