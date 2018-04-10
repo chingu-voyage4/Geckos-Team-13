@@ -29,15 +29,15 @@ class BackgroundMenu extends React.Component {
                     onClick={this.props.showMainMenu}>
                     <i className="fas fa-arrow-left"></i></span><h3>{this.props.menuTitle}</h3>
                     <span className="close" onClick={this.props.toggleBoardMenu}>
-                        <img src="../close-round.png" alt="close" /></span>
+                        <img src="images/close-round.png" alt="close" /></span>
                 </div>
             <div className = "menu-body">
                 <div className="color-menu" onClick={this.showBackgroundMenu}>
-                <img src="../colors.jpg" alt="Colors" className="color-menu-element"/>
+                <img src="images/colors.jpg" alt="Colors" className="color-menu-element"/>
             <p className="color-menu-element">Colors</p>
             </div>
                 <div className="photo-menu" onClick={this.showBackgroundMenu}>
-                <img src="../photos.jpg" alt="Photos" className="photo-menu-element" />
+                <img src="images/photos.jpg" alt="Photos" className="photo-menu-element" />
             <p className="photo-menu-element">Photos</p>
             </div>
             </div>
