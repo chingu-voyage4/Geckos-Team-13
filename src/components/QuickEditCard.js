@@ -41,7 +41,8 @@ class QuickEditCard extends Component {
             cardId: this.props.cardId,
             position: this.props.position,
             archived: true,
-            listId: this.props.listId
+            listId: this.props.listId,
+            archived: true
         };
 
         this.props.archiveCard(archivedCard);
