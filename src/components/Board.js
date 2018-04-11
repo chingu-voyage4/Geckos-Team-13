@@ -128,7 +128,7 @@ class Board extends Component {
                                 Add
                             </button>
                             <button className="btn--cancel">
-                                <img src="../close-round.png" className="cancel" alt="" />
+                                <img src="images/close-round.png" className="cancel" alt="" />
                             </button>
                         </div>
                     </div>

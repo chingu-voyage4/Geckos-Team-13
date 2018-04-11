@@ -28,7 +28,7 @@ class PhotoMenu extends React.Component {
                     </span>
                     <h3>{this.props.menuTitle}</h3>
                     <span className="close" onClick={this.props.toggleBoardMenu}>
-                        <img src="../close-round.png" alt="close" />
+                        <img src="images/close-round.png" alt="close" />
                     </span>
                 </div>
                 <div className="menu-body">{photos}</div>

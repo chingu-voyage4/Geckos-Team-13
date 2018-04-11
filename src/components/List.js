@@ -217,7 +217,7 @@ class List extends Component {
                             </button>
                             <button className="btn--cancel">
                                 <img
-                                    src="../close-round.png"
+                                    src="images/close-round.png"
                                     className="cancel"
                                     onClick={this.cancelExpansion}
                                     alt=""
