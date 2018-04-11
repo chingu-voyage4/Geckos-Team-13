@@ -14,7 +14,7 @@ class NavbarTop extends Component {
                     </span>
                 </span>
                 <li className="brand">
-                    <img src="../marshmallow.png" alt="marshmallow logo" /> Marshmallow
+                    <img src="images/marshmallow.png" alt="marshmallow logo" /> Marshmallow
                 </li>
                 <span className="rightbar">
                     <li>
