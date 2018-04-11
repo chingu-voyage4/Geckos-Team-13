@@ -79,7 +79,6 @@ class App extends Component {
     }
 
     render() {
-        console.log(this.state.cardPopupOpen, "on render");
         let showCardPopUp = null;
         if (this.state.cardPopupOpen === true) {
             showCardPopUp = (

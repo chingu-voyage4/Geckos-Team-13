@@ -84,7 +84,7 @@ class BoardMenu extends React.Component {
                             changeColor={this.props.changeColor}
                             changeBackground={this.props.changeBackground}
                         />
-                    )}kgro
+                    )}
                     {this.state.menu === "moreMenu" && (
                         <MoreMenu
                             toggleBoardMenu={this.props.toggleBoardMenu}
