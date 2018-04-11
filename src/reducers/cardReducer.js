@@ -11,7 +11,8 @@ function addCard(state, action) {
         labels,
         dueDate,
         comments,
-        listId
+        listId,
+        archived
     } = payload;
 
     // Create our new Comment object
@@ -24,7 +25,8 @@ function addCard(state, action) {
         labels,
         dueDate,
         comments,
-        listId
+        listId,
+        archived
     };
 
     // Insert the new Comment object into the updated lookup table

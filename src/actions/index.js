@@ -19,7 +19,8 @@ export function addCard(
     labels,
     dueDate,
     comments,
-    listId
+    listId,
+    archived
 ) {
     return {
         type: C.ADD_CARD,
@@ -32,7 +33,8 @@ export function addCard(
             labels,
             dueDate,
             comments,
-            listId
+            listId,
+            archived
         }
     };
 }

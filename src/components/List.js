@@ -86,6 +86,7 @@ class List extends Component {
             const dueDate = "";
             const comments = [];
             const listId = this.props.listId;
+            const archived = false;
 
             this.props.addCard(
                 cardId,
@@ -96,7 +97,8 @@ class List extends Component {
                 labels,
                 dueDate,
                 comments,
-                listId
+                listId,
+                archived
             );
             this.setState({ cardTitle: "" });
         }
@@ -132,6 +134,7 @@ class List extends Component {
                         listId={this.props.listId}
                         title={card.title}
                         position={index}
+                        openPopup={this.props.openPopup}
                     />
                 );
             });
