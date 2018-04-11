@@ -22,6 +22,7 @@ class ArchiveMenu extends Component {
         this.handleClickOutside = this.handleClickOutside.bind(this);
         this.openCardPopUp = this.openCardPopUp.bind(this);
         this.showCards = this.showCards.bind(this);
+        this.sendToBoard = this.sendToBoard.bind(this);
     }
 
     componentDidMount() {
@@ -67,19 +68,27 @@ class ArchiveMenu extends Component {
         this.setState({ popup: item, cardPopUpOpen: true });
     }
 
+    sendToBoard(item) {
+        const archived = false;
+        this.props.restoreCard(item.cardId, item.position, item.listId, archived);
+    }
+
     showCards() {
         return this.props.archivedCards.map(item => {
             return (
-                <li
-                    key={item.cardId}
-                    className="list-card"
-                    onClick={() => this.openCardPopUp(item)}
-                >
-                    <div className="list-card-title">{this.props.cards[item.cardId].title}</div>
+                <li key={item.cardId} className="list-card">
+                    <div className="list-card-title" onClick={() => this.openCardPopUp(item)}>
+                        {this.props.cards[item.cardId].title}
+                    </div>
                     <span style={{ color: "grey", fontSize: 11, paddingLeft: 5, paddingRight: 5 }}>
                         <i style={{ fontSize: 11 }} className="fas fa-archive" />Archived
                     </span>
-                    <button className="card-list__move-list-link">Send To Board</button>
+                    <button
+                        className="card-list__move-list-link"
+                        onClick={() => this.sendToBoard(item)}
+                    >
+                        Send To Board
+                    </button>
                     <button className="card-list__move-list-link">Delete</button>
                 </li>
             );
@@ -106,6 +115,15 @@ class ArchiveMenu extends Component {
                 );
             }
         }
+
+        let noCards = null;
+        if (this.props.archivedCards.length <= 0) {
+            noCards = (
+                <div className="no-cards">
+                    <p style={{ paddingTop: 15, paddingBottom: 15 }}>No archived cards</p>
+                </div>
+            );
+        }
         return (
             <div className="board-menu">
                 <div className="board-menu-title">
@@ -118,6 +136,7 @@ class ArchiveMenu extends Component {
                     </span>
                 </div>
                 <ul style={{ padding: 0 }}>{this.showCards()}</ul>
+                {noCards}
                 {showCard}
             </div>
         );
