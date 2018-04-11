@@ -44,9 +44,7 @@ class ArchiveMenu extends Component {
     }
 
     setWrapperRef(node) {
-        console.log("is this showing up ", node);
         this.wrapperRef = node;
-        console.log("why", this.wrapperRef);
     }
 
     setSubRef(node) {
@@ -61,13 +59,11 @@ class ArchiveMenu extends Component {
             this.setState({ quickEditOpen: false, cardPopUpOpen: false });
         }
         if (this.wrapperRef && !this.subRef && !cardSelected) {
-            console.log("firing second");
             this.setState({ cardPopUpOpen: false });
         }
     }
 
     openCardPopUp(item) {
-        console.log("firing openCardPopUp");
         this.setState({ popup: item, cardPopUpOpen: true });
     }
 

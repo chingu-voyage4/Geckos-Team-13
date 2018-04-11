@@ -35,7 +35,6 @@ class App extends Component {
     }
 
     setSubRef(node) {
-        console.log(node);
         this.subRef = node;
     }
 
