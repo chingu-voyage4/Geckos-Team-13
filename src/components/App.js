@@ -83,14 +83,13 @@ class App extends Component {
         if (this.state.cardPopupOpen === true) {
             showCardPopUp = (
                 <Card
-                    cardId={this.state.cardSelected.id} //redux
-                    listId={this.state.cardSelected.listId} //redux from cardReducer use cardId above
-                    // closeQuickEdit={this.closeQuickEdit}
+                    cardId={this.state.cardSelected.id}
+                    listId={this.state.cardSelected.listId}
                     setWrapperRef={this.setWrapperRef}
-                    position={this.state.cardSelected.position} //can i pass this over when the card is selected?
+                    position={this.state.cardSelected.position}
                     setSubRef={this.setSubRef}
                     menuNode={this.subRef}
-                    archived={false} //redux from cardReducer use cardId above
+                    archived={false}
                 />
             );
         }
