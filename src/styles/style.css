@@ -316,15 +316,10 @@ textarea {
 
 .OuterCardBox {
     overflow: hidden;
-    position: relative;
     justify-content: center;
     background-color: #edeff0;
-    padding: 0px 15px;
+    padding: 0px 15px 40px 15px;
     margin: 50px 0px;
-    margin-top: 50px;
-    margin-right: 0px;
-    margin-bottom: 50px;
-    margin-left: 0px;
     min-width: 726px;
     position: absolute;
     left: 50%;
