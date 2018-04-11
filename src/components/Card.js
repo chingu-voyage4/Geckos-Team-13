@@ -16,7 +16,7 @@ class Card extends Component {
             comment: {},
             commentText: "",
             showMoveCard: false,
-            showArchiveBanner: false,
+            showArchiveBanner: this.props.cards.archived,
             cardDescription: this.props.cards[this.props.cardId].description,
             descriptionVisible: false
         };
@@ -129,6 +129,13 @@ class Card extends Component {
 
     sendToBoard() {
         this.setState({ showArchiveBanner: false });
+        const archivedCardArr = this.props.archivedCardArr;
+        const card = archivedCardArr.filter(item => item.cardId === this.props.cardId);
+        const pos = card[0].position;
+        const listId = card[0].listId;
+        const archived = false;
+
+        this.props.restoreCard(this.props.cardId, pos, listId, archived);
     }
 
     deleteCard() {
@@ -424,7 +431,8 @@ class Card extends Component {
 function mapStateToProps(state) {
     return {
         cards: state.cards,
-        lists: state.lists
+        lists: state.lists,
+        archivedCardArr: state.archivedCards
     };
 }
 
