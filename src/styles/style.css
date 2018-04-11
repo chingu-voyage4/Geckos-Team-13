@@ -130,6 +130,7 @@ textarea {
     background-color: #edeff0;
     color: #333;
     width: 340px;
+    height: 91vh;
     box-shadow: 0 0 6px rgba(0,0,0, .4);
     padding: 10px;
     z-index: 5;
@@ -292,6 +293,19 @@ textarea {
     border-radius: 15px;
     width: 40%;
     cursor: pointer;
+}
+
+.no-cards { 
+    border-radius: 6px;
+    padding: 25px 6px;
+    background: #e2e4e6;
+    border: 1px dashed #c4c9cc;
+    border-radius: 3px;
+    color: #838c91;
+    display: block;
+    padding: 6px;
+    text-align: center;
+    margin-top: 8px
 }
 
 
