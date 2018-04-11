@@ -17,6 +17,11 @@ class ArchiveMenu extends Component {
 
         this.showCards = this.showCards.bind(this);
         this.openCardPopUp = this.openCardPopUp.bind(this);
+        this.setWrapperRef = this.setWrapperRef.bind(this);
+        this.setSubRef = this.setSubRef.bind(this);
+        this.handleClickOutside = this.handleClickOutside.bind(this);
+        this.openCardPopUp = this.openCardPopUp.bind(this);
+        this.showCards = this.showCards.bind(this);
     }
 
     componentDidMount() {
@@ -32,12 +37,6 @@ class ArchiveMenu extends Component {
             left: rect.left,
             width: rect.width
         });
-
-        this.setWrapperRef = this.setWrapperRef.bind(this);
-        this.setSubRef = this.setSubRef.bind(this);
-        this.handleClickOutside = this.handleClickOutside.bind(this);
-        this.openCardPopUp = this.openCardPopUp.bind(this);
-        this.showCards = this.showCards.bind(this);
     }
 
     componentWillUnmount() {
@@ -45,7 +44,7 @@ class ArchiveMenu extends Component {
     }
 
     setWrapperRef(node) {
-        console.log(node);
+        console.log("is this showing up ", node);
         this.wrapperRef = node;
         console.log("why", this.wrapperRef);
     }
@@ -57,16 +56,13 @@ class ArchiveMenu extends Component {
     handleClickOutside(event) {
         const cardSelected = this.wrapperRef && this.wrapperRef.contains(event.target);
         const subMenuSelected = this.subRef && this.subRef.contains(event.target);
-        console.log("stuck", this.wrapperRef);
 
         if (this.wrapperRef && this.subRef && !subMenuSelected && !cardSelected) {
-            console.log("firing first");
             this.setState({ quickEditOpen: false, cardPopUpOpen: false });
         }
-
         if (this.wrapperRef && !this.subRef && !cardSelected) {
             console.log("firing second");
-            this.setState({ quickEditOpen: false, cardPopUpOpen: false });
+            this.setState({ cardPopUpOpen: false });
         }
     }
 
@@ -94,38 +90,41 @@ class ArchiveMenu extends Component {
         });
     }
     render() {
+        let showCard = null;
         if (this.state.popup) {
-            console.log(this.state.popup);
             const cardId = this.state.popup.cardId;
             const listId = this.state.popup.listId;
             const position = this.state.popup.position;
-            return (
-                <Card
-                    cardId={cardId}
-                    listId={listId}
-                    position={position}
-                    archived={true}
-                    setWrapperRef={this.setWrapperRef}
-                    position={this.props.position}
-                    setSubRef={this.setSubRef}
-                />
-            );
-        } else {
-            return (
-                <div className="board-menu">
-                    <div className="board-menu-title">
-                        <span className="back" onClick={this.props.showMainMenu}>
-                            <i className="fas fa-arrow-left" />
-                        </span>
-                        <h3>{this.props.menuTitle}</h3>
-                        <span className="close" onClick={this.props.toggleBoardMenu}>
-                            <img src="../close-round.png" alt="close" />
-                        </span>
-                    </div>
-                    <ul style={{ padding: 0 }}>{this.showCards()}</ul>
-                </div>
-            );
+
+            const cardOpened = this.state.cardPopUpOpen;
+            if (cardOpened) {
+                showCard = (
+                    <Card
+                        cardId={cardId}
+                        listId={listId}
+                        position={position}
+                        archived={true}
+                        setWrapperRef={this.setWrapperRef}
+                        setSubRef={this.setSubRef}
+                    />
+                );
+            }
         }
+        return (
+            <div className="board-menu">
+                <div className="board-menu-title">
+                    <span className="back" onClick={this.props.showMainMenu}>
+                        <i className="fas fa-arrow-left" />
+                    </span>
+                    <h3>{this.props.menuTitle}</h3>
+                    <span className="close" onClick={this.props.toggleBoardMenu}>
+                        <img src="../close-round.png" alt="close" />
+                    </span>
+                </div>
+                <ul style={{ padding: 0 }}>{this.showCards()}</ul>
+                {showCard}
+            </div>
+        );
     }
 }
 
