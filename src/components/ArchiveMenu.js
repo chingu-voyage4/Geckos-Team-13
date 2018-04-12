@@ -12,7 +12,8 @@ class ArchiveMenu extends Component {
             card: true,
             list: false,
             popup: null,
-            cardPopUpOpen: false
+            cardPopUpOpen: false,
+            toggleCard: true
         };
 
         this.showCards = this.showCards.bind(this);
@@ -23,6 +24,7 @@ class ArchiveMenu extends Component {
         this.openCardPopUp = this.openCardPopUp.bind(this);
         this.showCards = this.showCards.bind(this);
         this.sendToBoard = this.sendToBoard.bind(this);
+        this.sendListToBoard = this.sendListToBoard.bind(this);
     }
 
     componentDidMount() {
@@ -64,6 +66,10 @@ class ArchiveMenu extends Component {
         }
     }
 
+    // toggleCardOpen() {
+    //     this.setState;
+    // }
+
     openCardPopUp(item) {
         this.setState({ popup: item, cardPopUpOpen: true });
     }
@@ -71,6 +77,11 @@ class ArchiveMenu extends Component {
     sendToBoard(item) {
         const archived = false;
         this.props.restoreCard(item.cardId, item.position, item.listId, archived);
+    }
+
+    sendListToBoard(item) {
+        console.log("wat, wat", item);
+        this.props.restoreList(item.listId, item.position);
     }
 
     showCards() {
@@ -94,6 +105,32 @@ class ArchiveMenu extends Component {
             );
         });
     }
+
+    showLists() {
+        return this.props.archivedLists.map(item => {
+            return (
+                <li key={item.listId}>
+                    <div
+                        style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            justifyContent: "space-between",
+                            marginLeft: 5
+                        }}
+                    >
+                        <span>
+                            <p>{this.props.lists[item.listId].title}</p>
+                        </span>
+
+                        <button id="send-to-board-btn" onClick={() => this.sendListToBoard(item)}>
+                            Send To Board
+                        </button>
+                    </div>
+                </li>
+            );
+        });
+    }
+
     render() {
         let showCard = null;
         if (this.state.popup) {
@@ -124,22 +161,68 @@ class ArchiveMenu extends Component {
                 </div>
             );
         }
-        return (
-            <div className="board-menu">
-                <div className="board-menu-title">
-                    <span className="back" onClick={this.props.showMainMenu}>
-                        <i className="fas fa-arrow-left" />
-                    </span>
-                    <h3>{this.props.menuTitle}</h3>
-                    <span className="close" onClick={this.props.toggleBoardMenu}>
-                        <img src="images/close-round.png" alt="close" />
-                    </span>
+
+        let noLists = null;
+        if (this.props.archivedLists.length <= 0) {
+            noLists = (
+                <div className="no-cards">
+                    <p style={{ paddingTop: 15, paddingBottom: 15 }}>No archived lists</p>
                 </div>
-                <ul style={{ padding: 0 }}>{this.showCards()}</ul>
-                {noCards}
-                {showCard}
-            </div>
-        );
+            );
+        }
+
+        if (this.state.toggleCard === true) {
+            return (
+                <div className="board-menu">
+                    <div className="board-menu-title">
+                        <span className="back" onClick={this.props.showMainMenu}>
+                            <i className="fas fa-arrow-left" />
+                        </span>
+                        <h3>{this.props.menuTitle}</h3>
+                        <span className="close" onClick={this.props.toggleBoardMenu}>
+                            <img src="images/close-round.png" alt="close" />
+                        </span>
+                    </div>
+                    <button
+                        style={{ marginTop: 15, marginBottom: 15 }}
+                        className="card-list__move-list-link"
+                        onClick={() => this.setState({ toggleCard: false })}
+                    >
+                        Switch To Lists
+                    </button>
+                    <ul style={{ padding: 0 }}>{this.showCards()}</ul>
+                    {noCards}
+                    {showCard}
+                </div>
+            );
+        } else {
+            return (
+                <div className="board-menu">
+                    <div className="board-menu-title">
+                        <span className="back" onClick={this.props.showMainMenu}>
+                            <i className="fas fa-arrow-left" />
+                        </span>
+                        <h3>{this.props.menuTitle}</h3>
+                        <span className="close" onClick={this.props.toggleBoardMenu}>
+                            <img src="images/close-round.png" alt="close" />
+                        </span>
+                    </div>
+                    <button
+                        style={{
+                            marginTop: 15,
+                            marginBottom: 15
+                        }}
+                        className="card-list__move-list-link"
+                        onClick={() => this.setState({ toggleCard: true })}
+                    >
+                        Switch To Cards
+                    </button>
+                    <ul style={{ padding: 0 }}>{this.showLists()}</ul>
+                    {noLists}
+                    {showCard}
+                </div>
+            );
+        }
     }
 }
 
