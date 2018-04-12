@@ -147,7 +147,6 @@ export function archiveAllCardsInList(cardArrWithPositions, listId) {
 }
 
 export function archiveCard(card) {
-    console.log("hello", card);
     return {
         type: C.ARCHIVE_CARD,
         payload: { card }
