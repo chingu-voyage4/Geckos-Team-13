@@ -20,7 +20,6 @@ export default function(state = [], action) {
         case C.ARCHIVE_LIST:
             return archiveList(state, action);
         case C.RESTORE_LIST:
-            console.log("wat", removeList(state, action));
             return removeList(state, action);
         default:
             return state;
