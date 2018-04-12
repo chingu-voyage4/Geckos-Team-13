@@ -161,9 +161,15 @@ export function moveAllCards(currListId, newListId) {
 }
 
 export function restoreCard(cardId, position, listId, archived) {
-    console.log(archived, "sdfs", "here!");
     return {
         type: C.RESTORE_CARD,
         payload: { cardId, position, listId, archived }
+    };
+}
+
+export function restoreList(listId, position) {
+    return {
+        type: C.RESTORE_LIST,
+        payload: { listId, position }
     };
 }

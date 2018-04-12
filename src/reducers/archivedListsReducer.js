@@ -9,10 +9,19 @@ function archiveList(state, action) {
     return [...state, listItem];
 }
 
-export default function(state = {}, action) {
+function removeList(state, action) {
+    const { listId } = action.payload;
+
+    return state.filter(item => item.listId !== listId);
+}
+
+export default function(state = [], action) {
     switch (action.type) {
         case C.ARCHIVE_LIST:
             return archiveList(state, action);
+        case C.RESTORE_LIST:
+            console.log("wat", removeList(state, action));
+            return removeList(state, action);
         default:
             return state;
     }
