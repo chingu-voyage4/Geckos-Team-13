@@ -308,6 +308,27 @@ textarea {
     margin-top: 8px
 }
 
+#send-to-board-btn {
+    border-radius: 3px;
+    font-weight: 700;
+    background: #e2e4e6;
+    box-shadow: 0 1px 0 0 #c4c9cc;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    height: 32px;
+    margin-top: 8px;
+    max-width: 300px;
+    overflow: hidden;
+    padding: 7px 7px 7px 11px;
+    position: relative;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    user-select: none;
+    white-space: nowrap;
+    color: #444;
+}
+
 
 /* DONE styling BoardMenu Component */
 
