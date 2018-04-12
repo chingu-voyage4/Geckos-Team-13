@@ -132,7 +132,7 @@ class ArchiveMenu extends Component {
                     </span>
                     <h3>{this.props.menuTitle}</h3>
                     <span className="close" onClick={this.props.toggleBoardMenu}>
-                        <img src="../close-round.png" alt="close" />
+                        <img src="images/close-round.png" alt="close" />
                     </span>
                 </div>
                 <ul style={{ padding: 0 }}>{this.showCards()}</ul>
