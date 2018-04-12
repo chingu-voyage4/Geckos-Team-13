@@ -66,10 +66,6 @@ class ArchiveMenu extends Component {
         }
     }
 
-    // toggleCardOpen() {
-    //     this.setState;
-    // }
-
     openCardPopUp(item) {
         this.setState({ popup: item, cardPopUpOpen: true });
     }
@@ -123,7 +119,7 @@ class ArchiveMenu extends Component {
                         </span>
 
                         <button id="send-to-board-btn" onClick={() => this.sendListToBoard(item)}>
-                            Send To Board
+                            <i className="fas fa-undo-alt" />Send To Board
                         </button>
                     </div>
                 </li>
