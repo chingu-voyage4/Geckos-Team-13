@@ -39,7 +39,7 @@ class BackgroundMenu extends React.Component {
                     <div className="menu-body">
                         <div className="color-menu" onClick={this.showBackgroundMenu}>
                             <img
-                                src="../images/colors.jpg"
+                                src="../public/images/colors.jpg"
                                 alt="Colors"
                                 className="color-menu-element"
                             />
@@ -47,7 +47,7 @@ class BackgroundMenu extends React.Component {
                         </div>
                         <div className="photo-menu" onClick={this.showBackgroundMenu}>
                             <img
-                                src="../images/photos.jpg"
+                                src="../public/images/photos.jpg"
                                 alt="Photos"
                                 className="photo-menu-element"
                             />
