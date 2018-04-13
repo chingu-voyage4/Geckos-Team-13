@@ -74,7 +74,6 @@ function editTitle(state, action) {
 }
 
 function insertItem(state, newIndex, cardId) {
-    console.log(state, newIndex, cardId);
     return [...state.slice(0, newIndex), cardId, ...state.slice(newIndex)];
 }
 
