@@ -59,7 +59,7 @@ textarea {
     cursor: pointer;
 }
 
-.confirm-button {
+#confirm-button {
     background-color: #5aac44;
     box-shadow: 0 1px 0 #519839;
     color: #fff;
@@ -70,6 +70,7 @@ textarea {
     border-radius: 3px;
     font-weight: 700;
     margin: 8px 0;
+    width: auto;
 }
 
 .danger-button:hover {
@@ -350,7 +351,6 @@ textarea {
 }
 
 .OuterCardBox {
-    overflow: hidden;
     justify-content: center;
     background-color: #edeff0;
     padding: 0px 15px 40px 15px;
