@@ -18,7 +18,9 @@ class Card extends Component {
             showMoveCard: false,
             showArchiveBanner: this.props.cards.archived,
             cardDescription: this.props.cards[this.props.cardId].description,
-            descriptionVisible: false
+            descriptionVisible: false,
+            inputOpen: false,
+            cardTitle: this.props.cards[this.props.cardId].title
         };
 
         this.addComment = this.addComment.bind(this);
@@ -37,10 +39,17 @@ class Card extends Component {
         this.expandDescription = this.expandDescription.bind(this);
         this.saveDescription = this.saveDescription.bind(this);
         this.cancelExpansion = this.cancelExpansion.bind(this);
+        this.enterTitle = this.enterTitle.bind(this);
+        this.changeCardTitle = this.changeCardTitle.bind(this);
+        this.divClicked = this.divClicked.bind(this);
+        this.renderTitle = this.renderTitle.bind(this);
+        this.setInputRef = this.setInputRef.bind(this);
+        this.handleClickOutsideInput = this.handleClickOutsideInput.bind(this);
     }
 
     componentDidMount() {
         document.addEventListener("mousedown", this.handleClickOutside);
+        document.addEventListener("mousedown", this.handleClickOutsideInput);
         this.recalculateOffset();
         if (this.props.archived) {
             this.setState({ showArchiveBanner: true });
@@ -49,6 +58,7 @@ class Card extends Component {
 
     componentWillUnmount() {
         document.removeEventListener("mousedown", this.handleClickOutside);
+        document.addEventListener("mousedown", this.handleClickOutsideInput);
     }
 
     setButtonRef(node) {
@@ -59,6 +69,12 @@ class Card extends Component {
         this.subref = this.props.menuNode;
         if (this.subref && !this.subref.contains(event.target)) {
             this.setState({ showMoveCard: false });
+        }
+    }
+
+    handleClickOutsideInput(event) {
+        if (this.inputRef && !this.inputRef.contains(event.target)) {
+            this.setState({ inputOpen: false });
         }
     }
 
@@ -140,6 +156,53 @@ class Card extends Component {
 
     deleteCard() {
         console.log("fill this in ");
+    }
+
+    enterTitle(event) {
+        if (event.key === "Enter") {
+            this.setState({ inputOpen: false });
+        }
+    }
+
+    changeCardTitle(event) {
+        event.preventDefault();
+        this.setState({ cardTitle: event.target.value });
+        this.props.editCardTitle(event.target.value, this.props.cardId);
+    }
+
+    divClicked() {
+        this.setState({ inputOpen: true });
+    }
+
+    setInputRef(node) {
+        console.log(node);
+        this.inputRef = node;
+    }
+
+    renderTitle() {
+        if (this.state.inputOpen) {
+            return (
+                <input
+                    onKeyPress={this.enterTitle}
+                    ref={this.setInputRef}
+                    className="list-title__edit--input"
+                    onChange={this.changeCardTitle}
+                    value={this.state.cardTitle}
+                    type="text"
+                    style={{ width: 600 }}
+                />
+            );
+        } else {
+            return (
+                <div
+                    onClick={this.divClicked}
+                    className="list-title__edit"
+                    style={{ fontSize: 18 }}
+                >
+                    {this.state.cardTitle}
+                </div>
+            );
+        }
     }
 
     renderCommments() {
@@ -238,7 +301,7 @@ class Card extends Component {
     }
 
     render() {
-        const card = this.props.cards[this.props.cardId];
+        //const card = this.props.cards[this.props.cardId];
         const list = this.props.lists[this.props.listId];
 
         const style = { top: this.state.top + 30, left: this.state.left };
@@ -278,7 +341,9 @@ class Card extends Component {
                         <div className="TitleOuter">
                             <img src="images/marshmallow-toasted.png" />
                             <div className="TitleBox">
-                                <span className="CardTitle">{card.title}</span>
+                                <span className="CardTitle" style={{ fontSize: 18 }}>
+                                    {this.renderTitle()}
+                                </span>
                             </div>
                             <div className="CardList">
                                 <p>
