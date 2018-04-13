@@ -72,6 +72,16 @@ class MoveCardSubmenu extends Component {
     }
 
     submitActions() {
+        if (this.props.cards[this.props.cardId].archived === true) {
+            this.props.updateArchived(
+                this.props.cardId,
+                this.state.selectedList,
+                this.state.position,
+                this.state.oldpos
+            );
+            this.props.close();
+            return;
+        }
         if (this.props.listId !== this.state.selectedList) {
             this.listChange();
         } else if (this.props.listId === this.state.selectedList) {
@@ -160,7 +170,8 @@ function mapStateToProps(state) {
     return {
         cards: state.cards,
         lists: state.lists,
-        listArray: state.listArray
+        listArray: state.listArray,
+        archivedCards: state.archivedCards
     };
 }
 
