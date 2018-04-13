@@ -175,7 +175,6 @@ class Card extends Component {
     }
 
     setInputRef(node) {
-        console.log(node);
         this.inputRef = node;
     }
 
