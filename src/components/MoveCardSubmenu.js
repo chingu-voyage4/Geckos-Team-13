@@ -51,6 +51,8 @@ class MoveCardSubmenu extends Component {
             const { selectedList, previousList, position } = this.state;
 
             this.props.moveCardToNewList(cardId, listId, selectedList, previousList, position);
+
+            this.props.close();
         }
     }
 
@@ -64,6 +66,7 @@ class MoveCardSubmenu extends Component {
 
             this.props.closeQuickEdit && this.props.closeQuickEdit();
         }
+        this.setState({ oldpos: null });
         this.props.closeMove && this.props.closeMove();
         this.props.closeQuickEdit && this.props.closeQuickEdit();
     }
@@ -145,7 +148,7 @@ class MoveCardSubmenu extends Component {
                         {this.state.position}
                     </button>
                 </div>
-                <button onClick={this.submitActions} className="confirm-button">
+                <button onClick={this.submitActions} id="confirm-button">
                     Move
                 </button>
             </div>
