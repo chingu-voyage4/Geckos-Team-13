@@ -9,7 +9,7 @@ class ColorMenu extends React.Component {
                     onClick={this.props.showBackgroundMenu}>
                     <i className="fas fa-arrow-left back"></i></span><h3>{this.props.menuTitle}</h3>
                     <span className="close" onClick={this.props.toggleBoardMenu}>
-                        <img src="../close-round.png" alt="close" /></span>
+                        <img src="images/close-round.png" alt="close" /></span>
                 </div>
             <div className = "menu-body">
                 <button className = "color-button brown" onClick={this.props.changeColor}></button>

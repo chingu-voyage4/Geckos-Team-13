@@ -97,7 +97,7 @@ class ListMenu extends Component {
                     <div className="list-menu-title">
                         <p>{this.state.listTitle}</p>
                         <span className="close" onClick={this.props.toggleMenu}>
-                            <img src="../close-round.png" alt="close" />
+                            <img src="images/close-round.png" alt="close" />
                         </span>
                     </div>
                     <div className="list-menu-options">
@@ -135,7 +135,7 @@ class ListMenu extends Component {
                         </span>
                         <p>{this.state.listTitle}</p>
                         <span className="close" onClick={this.props.toggleMenu}>
-                            <img src="../close-round.png" alt="close" />
+                            <img src="images/close-round.png" alt="close" />
                         </span>
                     </div>
                     {this.state.menu === "sortMenu" && <SortBySubmenu />}

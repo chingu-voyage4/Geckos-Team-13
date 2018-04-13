@@ -257,7 +257,7 @@ class Card extends Component {
                         </button>
                         <button className="btn--cancel" style={{ backgroundColor: "transparent" }}>
                             <img
-                                src="../close-round.png"
+                                src="images/close-round.png"
                                 className="cancel"
                                 onClick={this.cancelExpansion}
                                 alt=""
@@ -347,7 +347,7 @@ class Card extends Component {
                             <span style={{ color: "black" }}>This card is archived</span>
                         </div>
                         <div className="TitleOuter">
-                            <img src="../marshmallow-toasted.png" />
+                            <img src="images/marshmallow-toasted.png" />
                             <div className="TitleBox">
                                 <span className="CardTitle">{card.title}</span>
                             </div>
