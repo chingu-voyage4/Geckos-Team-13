@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import moment from "moment";
@@ -10,25 +9,23 @@ class Card extends Component {
         super(props);
 
         this.state = {
-            top: "",
-            left: "",
-            width: "",
             comment: {},
             commentText: "",
-            showMoveCard: false,
+            showMoveCardTop: false,
+            showMoveCardBottom: false,
             showArchiveBanner: this.props.cards.archived,
             cardDescription: this.props.cards[this.props.cardId].description,
             descriptionVisible: false,
             inputOpen: false,
-            cardTitle: this.props.cards[this.props.cardId].title
+            cardTitle: this.props.cards[this.props.cardId].title,
+            listId: this.props.cards[this.props.cardId].listId
         };
 
         this.addComment = this.addComment.bind(this);
         this.typeComment = this.typeComment.bind(this);
         this.deleteComment = this.deleteComment.bind(this);
-        this.openMoveSub = this.openMoveSub.bind(this);
-        this.recalculateOffset = this.recalculateOffset.bind(this);
-        this.setButtonRef = this.setButtonRef.bind(this);
+        this.openMoveSubFromTop = this.openMoveSubFromTop.bind(this);
+        this.openMoveSubFromBottom = this.openMoveSubFromBottom.bind(this);
         this.handleClickOutside = this.handleClickOutside.bind(this);
         this.sendToBoard = this.sendToBoard.bind(this);
         this.archiveCard = this.archiveCard.bind(this);
@@ -45,12 +42,13 @@ class Card extends Component {
         this.renderTitle = this.renderTitle.bind(this);
         this.setInputRef = this.setInputRef.bind(this);
         this.handleClickOutsideInput = this.handleClickOutsideInput.bind(this);
+        this.closeMoveSub = this.closeMoveSub.bind(this);
+        this.setSubRef = this.setSubRef.bind(this);
     }
 
     componentDidMount() {
         document.addEventListener("mousedown", this.handleClickOutside);
         document.addEventListener("mousedown", this.handleClickOutsideInput);
-        this.recalculateOffset();
         if (this.props.archived) {
             this.setState({ showArchiveBanner: true });
         }
@@ -61,14 +59,15 @@ class Card extends Component {
         document.addEventListener("mousedown", this.handleClickOutsideInput);
     }
 
-    setButtonRef(node) {
-        this.buttonRef = node;
+    setSubRef(node) {
+        this.subref = node;
     }
 
     handleClickOutside(event) {
-        this.subref = this.props.menuNode;
+        console.log(event.target);
         if (this.subref && !this.subref.contains(event.target)) {
-            this.setState({ showMoveCard: false });
+            console.log("ASKDGAKSGJAGJ");
+            this.setState({ showMoveCardTop: false, showMoveCardBottom: false });
         }
     }
 
@@ -76,15 +75,6 @@ class Card extends Component {
         if (this.inputRef && !this.inputRef.contains(event.target)) {
             this.setState({ inputOpen: false });
         }
-    }
-
-    recalculateOffset() {
-        var rect = ReactDOM.findDOMNode(this.buttonRef).getBoundingClientRect();
-        this.setState({
-            top: rect.top,
-            left: rect.left,
-            width: rect.width
-        });
     }
 
     addComment(event) {
@@ -114,7 +104,8 @@ class Card extends Component {
             cardId: this.props.cardId,
             position: this.props.position,
             archived: true,
-            listId: this.props.listId
+            listId: this.state.listId
+            // listId: this.props.listId
         };
 
         this.props.archiveCard(archivedCard);
@@ -236,9 +227,12 @@ class Card extends Component {
         });
     }
 
-    openMoveSub() {
-        this.recalculateOffset();
-        this.setState({ showMoveCard: true });
+    openMoveSubFromTop() {
+        this.setState({ showMoveCardTop: true, showMoveCardBottom: false });
+    }
+
+    openMoveSubFromBottom() {
+        this.setState({ showMoveCardTop: false, showMoveCardBottom: true });
     }
 
     closeMoveSub() {
@@ -300,21 +294,35 @@ class Card extends Component {
     }
 
     render() {
-        //const card = this.props.cards[this.props.cardId];
-        const list = this.props.lists[this.props.listId];
+        const card = this.props.cards[this.props.cardId];
+        const theListId = this.props.cards[this.props.cardId].listId;
 
-        const style = { top: this.state.top + 30, left: this.state.left };
+        let showMenuTop = null;
+        const moveCardOpenedTop = this.state.showMoveCardTop;
+        const moveCardOpenedBottom = this.state.showMoveCardBottom;
 
-        let showMoveCard = null;
-        const moveCardOpened = this.state.showMoveCard;
-        if (moveCardOpened) {
-            showMoveCard = (
+        if (moveCardOpenedTop) {
+            console.log("confuse");
+            showMenuTop = (
                 <MoveCardSubmenu
-                    style={style}
-                    setSubRef={this.props.setSubRef}
+                    setSubRef={this.setSubRef}
                     cardId={this.props.cardId}
-                    listId={this.props.listId}
+                    listId={theListId}
                     position={this.props.position}
+                    close={this.closeMoveSub}
+                />
+            );
+        }
+        let showMenuBottom = null;
+        if (moveCardOpenedBottom) {
+            console.log("confuse");
+            showMenuBottom = (
+                <MoveCardSubmenu
+                    setSubRef={this.setSubRef}
+                    cardId={this.props.cardId}
+                    listId={theListId}
+                    position={this.props.position}
+                    close={this.closeMoveSub}
                 />
             );
         }
@@ -349,13 +357,13 @@ class Card extends Component {
                                     in list
                                     <span> </span>
                                     <button
-                                        ref={this.setButtonRef}
-                                        onClick={this.openMoveSub}
+                                        onClick={this.openMoveSubFromTop}
                                         className="card-list__move-list-link"
                                     >
-                                        {list.title}
+                                        {this.props.lists[card.listId].title}
                                     </button>
                                 </p>
+                                {showMenuTop}
                             </div>
                         </div>
                         <div className="MainContent">
@@ -437,9 +445,10 @@ class Card extends Component {
                                 </button>
                             </div>
                             <div className="ActionBox">
-                                <button onClick={this.openMoveSub}>
+                                <button onClick={this.openMoveSubFromBottom}>
                                     <i className="fas fa-arrow-right" />Move
                                 </button>
+                                {showMenuBottom}
                                 <button disabled>
                                     <i className="fas fa-copy" />Copy
                                 </button>
@@ -486,7 +495,6 @@ class Card extends Component {
                         </div>
                     </div>
                 </div>
-                {showMoveCard}
             </div>
         );
     }
