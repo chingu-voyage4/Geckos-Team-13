@@ -13,7 +13,7 @@ class Card extends Component {
             commentText: "",
             showMoveCardTop: false,
             showMoveCardBottom: false,
-            showArchiveBanner: this.props.cards.archived,
+            showArchiveBanner: this.props.cards[this.props.cardId].archived,
             cardDescription: this.props.cards[this.props.cardId].description,
             descriptionVisible: false,
             inputOpen: false,
@@ -49,7 +49,7 @@ class Card extends Component {
     componentDidMount() {
         document.addEventListener("mousedown", this.handleClickOutside);
         document.addEventListener("mousedown", this.handleClickOutsideInput);
-        if (this.props.archived) {
+        if (this.props.archived === true) {
             this.setState({ showArchiveBanner: true });
         }
     }
@@ -64,9 +64,7 @@ class Card extends Component {
     }
 
     handleClickOutside(event) {
-        console.log(event.target);
         if (this.subref && !this.subref.contains(event.target)) {
-            console.log("ASKDGAKSGJAGJ");
             this.setState({ showMoveCardTop: false, showMoveCardBottom: false });
         }
     }
@@ -236,7 +234,7 @@ class Card extends Component {
     }
 
     closeMoveSub() {
-        this.setState({ showMoveCard: false });
+        this.setState({ showMoveCardTop: false, showMoveCardBottom: false });
     }
 
     openDescription() {
@@ -301,8 +299,18 @@ class Card extends Component {
         const moveCardOpenedTop = this.state.showMoveCardTop;
         const moveCardOpenedBottom = this.state.showMoveCardBottom;
 
+        const archivedCardObj = this.props.archivedCardArr.filter(
+            item => item.cardId === this.props.cardId
+        );
+
+        let listTitle = null;
+        if (this.props.cards[this.props.cardId].archived === true) {
+            listTitle = this.props.lists[archivedCardObj[0].listId].title;
+        } else {
+            listTitle = this.props.lists[card.listId].title;
+        }
+
         if (moveCardOpenedTop) {
-            console.log("confuse");
             showMenuTop = (
                 <MoveCardSubmenu
                     setSubRef={this.setSubRef}
@@ -315,7 +323,6 @@ class Card extends Component {
         }
         let showMenuBottom = null;
         if (moveCardOpenedBottom) {
-            console.log("confuse");
             showMenuBottom = (
                 <MoveCardSubmenu
                     setSubRef={this.setSubRef}
@@ -360,7 +367,7 @@ class Card extends Component {
                                         onClick={this.openMoveSubFromTop}
                                         className="card-list__move-list-link"
                                     >
-                                        {this.props.lists[card.listId].title}
+                                        {listTitle}
                                     </button>
                                 </p>
                                 {showMenuTop}
