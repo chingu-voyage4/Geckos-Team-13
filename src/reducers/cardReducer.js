@@ -96,14 +96,14 @@ function deleteComment(state, action) {
 
 function updateListId(state, action) {
     const { payload } = action;
-    const { cardId, listId } = payload;
+    const { cardId, selectedList } = payload;
 
     const card = state[cardId];
     return {
         ...state,
         [cardId]: {
             ...card,
-            listId
+            listId: selectedList
         }
     };
 }
