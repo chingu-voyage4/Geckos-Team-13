@@ -98,8 +98,6 @@ function updateListId(state, action) {
     const { payload } = action;
     const { cardId, selectedList } = payload;
 
-    console.log("this should always fire after a move button is touched", selectedList);
-
     const card = state[cardId];
     return {
         ...state,

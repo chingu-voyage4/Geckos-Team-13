@@ -303,10 +303,6 @@ class Card extends Component {
             item => item.cardId === this.props.cardId
         );
 
-        console.log(this.props.archivedCardArr, "A");
-        console.log(this.props.cards, "B=c");
-        console.log(this.props.listId, "c=B");
-
         let listTitle = null;
         if (this.props.cards[this.props.cardId].archived === true) {
             listTitle = this.props.lists[archivedCardObj[0].listId].title;
@@ -513,10 +509,12 @@ class Card extends Component {
 }
 
 function mapStateToProps(state) {
+    console.log("Called inCard!");
     return {
         cards: state.cards,
         lists: state.lists,
-        archivedCardArr: state.archivedCards
+        archivedCardArr: state.archivedCards,
+        listArrayReducer: state.listArrayReducer
     };
 }
 

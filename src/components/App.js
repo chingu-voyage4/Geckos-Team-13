@@ -4,6 +4,7 @@ import NavbarTop from "./NavbarTop.js";
 import NavbarBottom from "./NavbarBottom.js";
 import Board from "./Board";
 import Card from "./Card";
+import { connect } from "react-redux";
 
 class App extends Component {
     constructor(props) {
@@ -79,14 +80,20 @@ class App extends Component {
     }
 
     render() {
+        //const cards = this.props.lists[this.state.cardSelected.listId].cards;
+        //console.log(cards.indexOf(this.state.cardSelected.id));
+        console.log(this.state, "???");
         let showCardPopUp = null;
         if (this.state.cardPopupOpen === true) {
+            const cards = this.props.lists[this.state.cardSelected.listId].cards;
+            const position = cards.indexOf(this.state.cardSelected.id);
+            const listId = this.props.cards[this.state.cardSelected.id].listId;
             showCardPopUp = (
                 <Card
                     cardId={this.state.cardSelected.id}
-                    listId={this.state.cardSelected.listId}
+                    listId={listId}
                     setWrapperRef={this.setWrapperRef}
-                    position={this.state.cardSelected.position}
+                    position={position}
                     setSubRef={this.setSubRef}
                     menuNode={this.subRef}
                     archived={false}
@@ -114,4 +121,13 @@ class App extends Component {
     }
 }
 
-export default App;
+function mapStateToProps(state) {
+    return {
+        cards: state.cards,
+        lists: state.lists,
+        archivedCardArr: state.archivedCards,
+        listArrayReducer: state.listArrayReducer
+    };
+}
+
+export default connect(mapStateToProps, null)(App);

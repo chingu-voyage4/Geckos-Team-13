@@ -91,12 +91,7 @@ function moveCard(state, action) {
     const { oldpos, cardId, listId, newPosition } = payload;
 
     const list = state[listId];
-    const current = oldpos;
-    const cardArray = list.cards;
-
-    const remove = removeItem(cardArray, current);
-    const newCardArray = insertItem(remove, newPosition, cardId);
-
+    const newCardArray = insertItem(removeItem(list.cards, oldpos), newPosition, cardId);
     return {
         ...state,
         [listId]: {
@@ -181,6 +176,7 @@ export default function(state = {}, action) {
         case C.EDIT_LIST_TITLE:
             return editTitle(state, action);
         case C.MOVE_CARD:
+            console.log(moveCard(state, action), "SOOOOOO");
             return moveCard(state, action);
         case C.CHANGE_LIST:
             return moveCardToList(state, action);

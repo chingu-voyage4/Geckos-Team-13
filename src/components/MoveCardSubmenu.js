@@ -62,13 +62,9 @@ class MoveCardSubmenu extends Component {
             const { position, oldpos } = this.state;
 
             this.props.moveCard(oldpos, cardId, listId, position);
-            this.props.closeMove && this.props.closeMove();
-
-            this.props.closeQuickEdit && this.props.closeQuickEdit();
         }
-        this.setState({ oldpos: null });
-        this.props.closeMove && this.props.closeMove();
-        this.props.closeQuickEdit && this.props.closeQuickEdit();
+        console.log("called should appear below this!");
+        this.props.close();
     }
 
     submitActions() {
@@ -83,7 +79,6 @@ class MoveCardSubmenu extends Component {
             return;
         }
         if (this.props.listId !== this.state.selectedList) {
-            console.log("please be here");
             this.listChange();
         } else if (this.props.listId === this.state.selectedList) {
             this.positionChange();
