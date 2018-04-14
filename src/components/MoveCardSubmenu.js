@@ -98,7 +98,7 @@ class MoveCardSubmenu extends Component {
     }
 
     renderListOptions() {
-        return this.props.listArray.map((id, index) => {
+        return this.props.listArray.map(id => {
             return (
                 <option key={id} value={id}>
                     {this.props.lists[id].title}

@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
     cardArray: cardArrayReducer,
     cards: cardReducer,
     listArray: listArrayReducer,
-    archivedListsReducer: archivedListsReducer,
+    archivedLists: archivedListsReducer,
     archivedCards: archivedCardsReducer
 });
 

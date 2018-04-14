@@ -19,7 +19,8 @@ export function addCard(
     labels,
     dueDate,
     comments,
-    listId
+    listId,
+    archived
 ) {
     return {
         type: C.ADD_CARD,
@@ -32,7 +33,8 @@ export function addCard(
             labels,
             dueDate,
             comments,
-            listId
+            listId,
+            archived
         }
     };
 }
@@ -155,5 +157,19 @@ export function moveAllCards(currListId, newListId) {
     return {
         type: C.MOVE_ALL_CARDS,
         payload: { currListId, newListId }
+    };
+}
+
+export function restoreCard(cardId, position, listId, archived) {
+    return {
+        type: C.RESTORE_CARD,
+        payload: { cardId, position, listId, archived }
+    };
+}
+
+export function restoreList(listId, position) {
+    return {
+        type: C.RESTORE_LIST,
+        payload: { listId, position }
     };
 }

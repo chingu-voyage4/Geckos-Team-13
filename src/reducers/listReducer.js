@@ -27,6 +27,22 @@ function cardArray(state, action) {
     };
 }
 
+function addCard(state, action) {
+    const { cardId, position, listId } = action.payload;
+
+    const list = state[listId];
+    const cards = list.cards;
+    const newArr = insertItem(cards, position, cardId);
+
+    return {
+        ...state,
+        [listId]: {
+            ...list,
+            cards: newArr
+        }
+    };
+}
+
 function removeCardArr(state, action) {
     const { payload } = action;
     const { listId } = payload;
@@ -58,6 +74,7 @@ function editTitle(state, action) {
 }
 
 function insertItem(state, newIndex, cardId) {
+    console.log(state, newIndex, cardId);
     return [...state.slice(0, newIndex), cardId, ...state.slice(newIndex)];
 }
 
@@ -173,8 +190,9 @@ export default function(state = {}, action) {
         case C.ARCHIVE_CARD:
             return removeCard(state, action);
         case C.MOVE_ALL_CARDS:
-            console.log(moveAllCards(state, action));
             return moveAllCards(state, action);
+        case C.RESTORE_CARD:
+            return addCard(state, action);
         default:
             return state;
     }

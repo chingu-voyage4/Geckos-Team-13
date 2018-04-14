@@ -11,7 +11,8 @@ function addCard(state, action) {
         labels,
         dueDate,
         comments,
-        listId
+        listId,
+        archived
     } = payload;
 
     // Create our new Comment object
@@ -24,7 +25,8 @@ function addCard(state, action) {
         labels,
         dueDate,
         comments,
-        listId
+        listId,
+        archived
     };
 
     // Insert the new Comment object into the updated lookup table
@@ -106,6 +108,35 @@ function updateListId(state, action) {
     };
 }
 
+function archivedTrue(state, action) {
+    const { payload } = action;
+    const { cardId, archived } = payload;
+
+    const card = state[cardId];
+
+    return {
+        ...state,
+        [cardId]: {
+            ...card,
+            archived
+        }
+    };
+}
+
+function archivedFalse(state, action) {
+    const { payload } = action;
+    const { cardId, archived } = payload;
+    const card = state[cardId];
+
+    return {
+        ...state,
+        [cardId]: {
+            ...card,
+            archived
+        }
+    };
+}
+
 export default function(state = {}, action) {
     switch (action.type) {
         case C.ADD_CARD:
@@ -120,6 +151,10 @@ export default function(state = {}, action) {
             return deleteComment(state, action);
         case C.CHANGE_LIST:
             return updateListId(state, action);
+        case C.RESTORE_CARD:
+            return archivedFalse(state, action);
+        case C.ARCHIVE_CARD:
+            return archivedTrue(state, action);
         default:
             return state;
     }

@@ -130,6 +130,7 @@ textarea {
     background-color: #edeff0;
     color: #333;
     width: 340px;
+    height: 91vh;
     box-shadow: 0 0 6px rgba(0,0,0, .4);
     padding: 10px;
     z-index: 5;
@@ -294,6 +295,40 @@ textarea {
     cursor: pointer;
 }
 
+.no-cards { 
+    border-radius: 6px;
+    padding: 25px 6px;
+    background: #e2e4e6;
+    border: 1px dashed #c4c9cc;
+    border-radius: 3px;
+    color: #838c91;
+    display: block;
+    padding: 6px;
+    text-align: center;
+    margin-top: 8px
+}
+
+#send-to-board-btn {
+    border-radius: 3px;
+    font-weight: 700;
+    background: #e2e4e6;
+    box-shadow: 0 1px 0 0 #c4c9cc;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    height: 32px;
+    margin-top: 8px;
+    max-width: 300px;
+    overflow: hidden;
+    padding: 7px 7px 7px 11px;
+    position: relative;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    user-select: none;
+    white-space: nowrap;
+    color: #444;
+}
+
 
 /* DONE styling BoardMenu Component */
 
@@ -316,14 +351,11 @@ textarea {
 
 .OuterCardBox {
     position: relative;
+    overflow: hidden;
     justify-content: center;
     background-color: #edeff0;
-    padding: 0px 15px;
+    padding: 0px 15px 40px 15px;
     margin: 50px 0px;
-    margin-top: 50px;
-    margin-right: 0px;
-    margin-bottom: 50px;
-    margin-left: 0px;
     min-width: 726px;
     position: absolute;
     left: 50%;
@@ -1171,3 +1203,30 @@ input:focus {
 }
 
 /*  Done styling CardPreview Component Styles */
+
+.list-card{    
+    overflow: hidden;
+    padding: 6px 6px 2px 8px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    margin: 8px auto 16px;
+    max-width: 260px;
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+    min-height: 20px;
+    text-decoration: none;
+    z-index: 0;
+}
+
+.list-card-title {
+    clear: both;
+    display: block;
+    margin: 0 0 6px;
+    overflow: hidden;
+    text-decoration: none;
+    word-wrap: break-word;
+    color: #4d4d4d;
+}
