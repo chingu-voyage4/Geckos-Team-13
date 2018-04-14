@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 class LabelEditButton extends Component {
+
     render() {
         return (
             <button className="edit-button" onClick={this.props.toggleLabelEdit}>

@@ -38,7 +38,6 @@ class Card extends Component {
         this.setButtonRef = this.setButtonRef.bind(this);
         this.handleClickOutside = this.handleClickOutside.bind(this);
         this.renderLabelMenu = this.renderLabelMenu.bind(this);
-        this.removeCardLabel = this.removeCardLabel.bind(this);
         this.sendToBoard = this.sendToBoard.bind(this);
         this.archiveCard = this.archiveCard.bind(this);
         this.deleteCard = this.deleteCard.bind(this);
@@ -71,10 +70,6 @@ class Card extends Component {
                 />
             );
         }
-    }
-
-    removeCardLabel() {
-        console.log("remove card label running");
     }
 
     addCardLabel(color, text, id) {

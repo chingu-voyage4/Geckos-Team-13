@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./labels.css";
 import LabelEditMenu from "./LabelEditMenu.js";
 import Label from "./Label.js";
-import LabelEditButton from "./LabelEditButton.js";
+// import LabelEditButton from "./LabelEditButton.js";
 
 class Labels extends Component {
     constructor(props) {
@@ -10,6 +10,7 @@ class Labels extends Component {
         this.state = {
             showLabelEdit: false,
             title: "Labels",
+            currentLabelId: 0,
             labels: [
                 { color: "#61BD4F", labelText: "Test", id: 1, active: false },
                 { color: "#F2D600", labelText: "", id: 2, active: false },
@@ -20,14 +21,20 @@ class Labels extends Component {
             ]
         };
         this.toggleLabelEdit = this.toggleLabelEdit.bind(this);
+        // this.changeLabelColor = this.changeLabelColor.bind(this);
     }
 
-    toggleLabelEdit(e) {
-        e.preventDefault();
+    changeLabelColor() {
+        // e.preventDefault();
+        console.log("Change label color running");
+    }
+
+    toggleLabelEdit(id) {
         if (this.state.showLabelEdit) {
             this.setState({ showLabelEdit: false });
         } else {
-            this.setState({ showLabelEdit: true, title: "Change Label" });
+            this.setState({ showLabelEdit: true, title: "Change Label", currentLabelId: id });
+            console.log("editing label id: " + id);
         }
     }
 
@@ -51,7 +58,6 @@ class Labels extends Component {
                     toggleLabelEdit={this.toggleLabelEdit}
                     toggleActiveLabels={this.props.toggleActiveLabels}
                 />
-                <LabelEditButton toggleLabelEdit={this.toggleLabelEdit} />
             </div>
         ));
         return (
@@ -69,7 +75,7 @@ class Labels extends Component {
                     </div>
                 )}
                 {this.state.showLabelEdit && (
-                    <LabelEditMenu addCardLabel={this.props.addCardLabel} />
+                    <LabelEditMenu addCardLabel={this.props.addCardLabel} labels={this.state.labels} changeLabelColor={this.changeLabelColor} />
                 )}
             </div>
         );

@@ -14,12 +14,9 @@ class Label extends Component {
 
         if (this.state.active === true) {
             this.setState({ active: false });
-            this.props.removeCardLabel();
-            console.log("State was true");
         } else {
             this.setState({ active: true });
             this.props.addCardLabel(e);
-            console.log("State was false");
         }
 
         this.props.toggleActiveLabels(this.props.id);
@@ -32,15 +29,18 @@ class Label extends Component {
             height: this.props.height
         };
         return (
+            <div>
             <div
                 className="label"
-                id={this.props.color}
+                id={this.props.id}
                 style={style}
                 addCardLabel={this.props.addCardLabel}
                 onClick={this.toggleActive}
             >
                 {this.props.labelText}
                 {this.state.active && <i className="fas fa-check" />}
+            </div>
+                <LabelEditButton toggleLabelEdit={this.props.toggleLabelEdit.bind(this, this.props.id)} id={this.props.id} />
             </div>
         );
     }
