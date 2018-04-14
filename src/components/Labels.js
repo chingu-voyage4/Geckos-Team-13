@@ -65,7 +65,7 @@ class Labels extends Component {
                 <div className="label-menu-title">
                     {this.state.title}
                     <span className="close" id="closed" onClick={this.props.toggleCardAction}>
-                        <img src="../close-round.png" alt="close" />
+                        <img src="images/close-round.png" alt="close" />
                     </span>
                 </div>
                 {!this.state.showLabelEdit && (
