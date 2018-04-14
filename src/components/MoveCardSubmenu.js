@@ -83,6 +83,7 @@ class MoveCardSubmenu extends Component {
             return;
         }
         if (this.props.listId !== this.state.selectedList) {
+            console.log("please be here");
             this.listChange();
         } else if (this.props.listId === this.state.selectedList) {
             this.positionChange();
