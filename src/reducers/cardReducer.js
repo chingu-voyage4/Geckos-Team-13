@@ -152,10 +152,8 @@ export default function(state = {}, action) {
         case C.CHANGE_LIST:
             return updateListId(state, action);
         case C.RESTORE_CARD:
-            console.log("restore, false", archivedFalse(state, action));
             return archivedFalse(state, action);
         case C.ARCHIVE_CARD:
-            console.log("true", archivedTrue(state, action));
             return archivedTrue(state, action);
         default:
             return state;

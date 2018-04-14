@@ -27,7 +27,6 @@ export default function(state = [], action) {
         case C.ARCHIVE_CARD:
             return archiveCard(state, action);
         case C.RESTORE_CARD:
-            console.log(removeCard(state, action));
             return removeCard(state, action);
         default:
             return state;

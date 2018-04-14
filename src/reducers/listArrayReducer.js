@@ -44,6 +44,14 @@ function removeListFromArray(state, action) {
     return listRemoved;
 }
 
+function restoreListToArray(state, action) {
+    const { payload } = action;
+    const { listId, position } = payload;
+
+    const listRestored = insertItem(state, position, listId);
+    return listRestored;
+}
+
 export default function(state = [], action) {
     const { type } = action;
 
@@ -54,6 +62,8 @@ export default function(state = [], action) {
             return moveList(state, action);
         case C.ARCHIVE_LIST:
             return removeListFromArray(state, action);
+        case C.RESTORE_LIST:
+            return restoreListToArray(state, action);
         default:
             return state;
     }

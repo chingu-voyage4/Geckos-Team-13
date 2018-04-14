@@ -192,7 +192,6 @@ export default function(state = {}, action) {
         case C.MOVE_ALL_CARDS:
             return moveAllCards(state, action);
         case C.RESTORE_CARD:
-            console.log(addCard(state, action));
             return addCard(state, action);
         default:
             return state;
