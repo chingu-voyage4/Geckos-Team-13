@@ -80,14 +80,14 @@ class App extends Component {
     }
 
     render() {
-        //const cards = this.props.lists[this.state.cardSelected.listId].cards;
-        //console.log(cards.indexOf(this.state.cardSelected.id));
-        console.log(this.state, "???");
         let showCardPopUp = null;
         if (this.state.cardPopupOpen === true) {
-            const cards = this.props.lists[this.state.cardSelected.listId].cards;
-            const position = cards.indexOf(this.state.cardSelected.id);
             const listId = this.props.cards[this.state.cardSelected.id].listId;
+            const cards = this.props.lists[listId].cards;
+            const position = cards.indexOf(this.state.cardSelected.id);
+            console.log(this.props.cards, "card obj");
+            console.log();
+
             showCardPopUp = (
                 <Card
                     cardId={this.state.cardSelected.id}
