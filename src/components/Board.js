@@ -79,7 +79,15 @@ class Board extends Component {
         if (this.props.listArray) {
             return this.props.listArray.map((listId, index) => {
                 const list = this.props.allLists[listId];
-                return <List key={listId} listDetails={list} listId={listId} position={index} />;
+                return (
+                    <List
+                        key={listId}
+                        listDetails={list}
+                        listId={listId}
+                        position={index}
+                        openPopup={this.props.openPopup}
+                    />
+                );
             });
         }
     }

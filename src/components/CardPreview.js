@@ -65,9 +65,7 @@ export default class CardPreview extends Component {
     }
 
     openCard() {
-        this.setState({
-            cardPopUpOpen: true
-        });
+        this.props.openPopup(this.props.Id, this.props.listId, this.props.position);
     }
 
     openQuickEdit() {
@@ -119,16 +117,18 @@ export default class CardPreview extends Component {
         }
 
         return (
-            <li className="card-preview">
-                <div onClick={this.openCard} className="card-preview__text">
-                    {this.props.title}
-                </div>
-                <button className="quick-edit-popout" onClick={this.openQuickEdit}>
-                    <i className="fas fa-pencil-alt quick-edit-popout" />
-                </button>
-                {showMenu}
+            <div>
+                <li className="card-preview">
+                    <div onClick={this.openCard} className="card-preview__text">
+                        {this.props.title}
+                    </div>
+                    <button className="quick-edit-popout" onClick={this.openQuickEdit}>
+                        <i className="fas fa-pencil-alt quick-edit-popout" />
+                    </button>
+                    {showMenu}
+                </li>
                 {showCard}
-            </li>
+            </div>
         );
     }
 }
