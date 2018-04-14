@@ -96,22 +96,21 @@ function deleteComment(state, action) {
 
 function updateListId(state, action) {
     const { payload } = action;
-    const { cardId, listId } = payload;
+    const { cardId, selectedList } = payload;
 
     const card = state[cardId];
     return {
         ...state,
         [cardId]: {
             ...card,
-            listId
+            listId: selectedList
         }
     };
 }
 
 function archivedTrue(state, action) {
     const { payload } = action;
-    const { cardId, archived } = payload;
-
+    const { cardId, archived } = payload.card;
     const card = state[cardId];
 
     return {
@@ -155,6 +154,8 @@ export default function(state = {}, action) {
             return archivedFalse(state, action);
         case C.ARCHIVE_CARD:
             return archivedTrue(state, action);
+        case C.UPDATE_ARCHIVED_CARD:
+            return updateListId(state, action);
         default:
             return state;
     }

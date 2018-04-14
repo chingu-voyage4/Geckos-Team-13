@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import QuickEditCard from "./QuickEditCard";
-import Card from "./Card";
 
 export default class CardPreview extends Component {
     constructor(props) {
@@ -84,22 +83,6 @@ export default class CardPreview extends Component {
     render() {
         const style = { top: this.state.top, left: this.state.left };
 
-        let showCard = null;
-        const cardOpened = this.state.cardPopUpOpen;
-        if (cardOpened) {
-            showCard = (
-                <Card
-                    cardId={this.props.Id}
-                    listId={this.props.listId}
-                    closeQuickEdit={this.closeQuickEdit}
-                    setWrapperRef={this.setWrapperRef}
-                    position={this.props.position}
-                    setSubRef={this.setSubRef}
-                    menuNode={this.subRef}
-                />
-            );
-        }
-
         const isOpened = this.state.quickEditOpen;
         let showMenu = null;
         if (isOpened) {
@@ -127,7 +110,6 @@ export default class CardPreview extends Component {
                     </button>
                     {showMenu}
                 </li>
-                {showCard}
             </div>
         );
     }

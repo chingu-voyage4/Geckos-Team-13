@@ -173,3 +173,10 @@ export function restoreList(listId, position) {
         payload: { listId, position }
     };
 }
+
+export function updateArchived(cardId, selectedList, position, oldpos) {
+    return {
+        type: C.UPDATE_ARCHIVED_CARD,
+        payload: { cardId, selectedList, position, oldpos }
+    };
+}

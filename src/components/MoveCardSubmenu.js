@@ -51,6 +51,8 @@ class MoveCardSubmenu extends Component {
             const { selectedList, previousList, position } = this.state;
 
             this.props.moveCardToNewList(cardId, listId, selectedList, previousList, position);
+
+            this.props.close();
         }
     }
 
@@ -60,15 +62,22 @@ class MoveCardSubmenu extends Component {
             const { position, oldpos } = this.state;
 
             this.props.moveCard(oldpos, cardId, listId, position);
-            this.props.closeMove && this.props.closeMove();
-
-            this.props.closeQuickEdit && this.props.closeQuickEdit();
         }
-        this.props.closeMove && this.props.closeMove();
-        this.props.closeQuickEdit && this.props.closeQuickEdit();
+        console.log("called should appear below this!");
+        this.props.close();
     }
 
     submitActions() {
+        if (this.props.cards[this.props.cardId].archived === true) {
+            this.props.updateArchived(
+                this.props.cardId,
+                this.state.selectedList,
+                this.state.position,
+                this.state.oldpos
+            );
+            this.props.close();
+            return;
+        }
         if (this.props.listId !== this.state.selectedList) {
             this.listChange();
         } else if (this.props.listId === this.state.selectedList) {
@@ -145,7 +154,7 @@ class MoveCardSubmenu extends Component {
                         {this.state.position}
                     </button>
                 </div>
-                <button onClick={this.submitActions} className="confirm-button">
+                <button onClick={this.submitActions} id="confirm-button">
                     Move
                 </button>
             </div>
@@ -157,7 +166,8 @@ function mapStateToProps(state) {
     return {
         cards: state.cards,
         lists: state.lists,
-        listArray: state.listArray
+        listArray: state.listArray,
+        archivedCards: state.archivedCards
     };
 }
 

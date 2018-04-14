@@ -9,12 +9,13 @@ class QuickEditCard extends Component {
 
         this.state = {
             cardTitle: this.props.title,
-            moveClicked: false
+            moveOpen: false
         };
 
         this.changeCardTitle = this.changeCardTitle.bind(this);
         this.submitTitleChange = this.submitTitleChange.bind(this);
-        this.moveClicked = this.moveClicked.bind(this);
+        this.moveOpen = this.moveOpen.bind(this);
+        this.moveClose = this.moveClose.bind(this);
         this.archiveCard = this.archiveCard.bind(this);
     }
 
@@ -32,8 +33,12 @@ class QuickEditCard extends Component {
         this.props.closeQuickEdit();
     }
 
-    moveClicked() {
-        this.setState({ moveClicked: true });
+    moveOpen() {
+        this.setState({ moveOpen: true });
+    }
+
+    moveClose() {
+        this.setState({ moveOpen: false });
     }
 
     archiveCard() {
@@ -50,7 +55,7 @@ class QuickEditCard extends Component {
 
     render() {
         let showMoveMenu = null;
-        const moveOpened = this.state.moveClicked;
+        const moveOpened = this.state.moveOpen;
         if (moveOpened) {
             showMoveMenu = (
                 <MoveCardSubmenu
@@ -59,6 +64,7 @@ class QuickEditCard extends Component {
                     position={this.props.position}
                     closeQuickEdit={this.props.closeQuickEdit}
                     style={{ top: 91, left: 15 }}
+                    close={this.moveClose}
                 />
             );
         }
@@ -92,7 +98,7 @@ class QuickEditCard extends Component {
                             </a>
                         </li>
                         <li className="menu-item">
-                            <a className="menu-button" onClick={this.moveClicked}>
+                            <a className="menu-button" onClick={this.moveOpen}>
                                 {" "}
                                 <i className="fas fa-arrow-right" />
                                 Move
