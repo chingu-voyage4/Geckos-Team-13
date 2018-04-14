@@ -13,6 +13,7 @@ class LabelEditMenu extends Component {
                 key={label.color}
                 labelText={label.labelText}
                 color={label.color}
+                active={label.active}
             />
         ));
 
