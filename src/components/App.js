@@ -85,8 +85,6 @@ class App extends Component {
             const listId = this.props.cards[this.state.cardSelected.id].listId;
             const cards = this.props.lists[listId].cards;
             const position = cards.indexOf(this.state.cardSelected.id);
-            console.log(this.props.cards, "card obj");
-            console.log();
 
             showCardPopUp = (
                 <Card
