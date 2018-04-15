@@ -8,6 +8,7 @@ class LabelButton extends Component {
         return (
         <button className="label-button" style={style} id={this.props.id}
                 onClick={() => this.props.changeLabelColor(this.props.color, labels, this.props.currentLabelId)}>
+                {this.props.active && <i className="fas fa-check" />}
         </button>
         );
     }

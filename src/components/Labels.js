@@ -29,7 +29,6 @@ class Labels extends Component {
             this.setState({ showLabelEdit: false });
         } else {
             this.setState({ showLabelEdit: true, title: "Change Label", currentLabelId: id });
-            console.log("editing label id: " + this.state.currentLabelId);
         }
     }
 
@@ -38,9 +37,6 @@ class Labels extends Component {
 
         editedLabels[currentLabel - 1].color = color;
         this.setState({ labels: editedLabels });
-        console.log("Change label color running. Color is " + color);
-        console.log(editedLabels);
-        console.log(currentLabel);
     }
 
     render() {
@@ -81,7 +77,8 @@ class Labels extends Component {
                     </div>
                 )}
                 {this.state.showLabelEdit && (
-                    <LabelEditMenu addCardLabel={this.props.addCardLabel} currentLabelId = {this.state.currentLabelId} labels={this.state.labels} changeLabelColor={this.changeLabelColor} />
+                    <LabelEditMenu addCardLabel={this.props.addCardLabel} currentLabelId = {this.state.currentLabelId}
+                    labels={this.state.labels} changeLabelColor={this.changeLabelColor} />
                 )}
             </div>
         );

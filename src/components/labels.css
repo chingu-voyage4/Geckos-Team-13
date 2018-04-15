@@ -54,11 +54,6 @@
     position: relative;
 }
 
-.label-list .label-button {
-    width: 40px !important;
-
-}
-
 .label:hover {
     opacity: .7;
 }
@@ -107,7 +102,7 @@
 }
 
 .label-button {
-    display: inline-block !important;
+    display: inline-block;
     width: 40px !important;
     height: 40px !important;
     margin: 5px;
@@ -125,6 +120,22 @@
 
 .label-button-area p {
     margin: 5px 0;
+}
+
+.label-button-area .label-button {
+    padding: 3px !important;
+    text-align: center;
+    position: relative;
+    
+}
+
+.label-button-area .label-button i {
+    margin: 0 !important;
+    padding: 0 !important;
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    color: #fff !important;
 }
 
 .label-edit-menu .mini-danger-button {
