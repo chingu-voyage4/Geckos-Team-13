@@ -40,7 +40,7 @@ class Label extends Component {
                 {this.props.labelText}
                 {this.state.active && <i className="fas fa-check" />}
             </div>
-                <LabelEditButton toggleLabelEdit={this.props.toggleLabelEdit.bind(this, this.props.id)} id={this.props.id} />
+                <LabelEditButton toggleLabelEdit={() => this.props.toggleLabelEdit(this.props.id)} id={this.props.id} />
             </div>
         );
     }

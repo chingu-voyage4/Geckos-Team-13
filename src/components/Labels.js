@@ -36,7 +36,7 @@ class Labels extends Component {
     changeLabelColor(color, labels, currentLabel) {
         const editedLabels = labels;
 
-        editedLabels[currentLabel].color = color;
+        editedLabels[currentLabel - 1].color = color;
         this.setState({ labels: editedLabels });
         console.log("Change label color running. Color is " + color);
         console.log(editedLabels);
