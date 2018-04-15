@@ -1,19 +1,13 @@
 import React, { Component } from "react";
 
 class LabelButton extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = { active: this.props.active};
-    }
 
     render() {
         const style = {backgroundColor: this.props.color};
+        const labels = this.props.labels;
         return (
         <button className="label-button" style={style} id={this.props.id}
-        onClick = {this.props.changeLabelColor}
-        // onClick={this.props.addCardLabel.bind(this, this.props.color, this.props.labelText)}
-            >{this.state.active && <i className="fas fa-check" />}
+                onClick={() => this.props.changeLabelColor(this.props.color, labels, this.props.currentLabelId)}>
         </button>
         );
     }

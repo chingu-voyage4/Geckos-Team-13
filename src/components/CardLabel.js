@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 
 class CardLabel extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         const style = {

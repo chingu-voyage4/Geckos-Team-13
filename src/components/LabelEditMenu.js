@@ -3,12 +3,19 @@ import LabelButton from "./LabelButton.js";
 
 class LabelEditMenu extends Component {
     render() {
-        const labels = this.props.labels;
+        const labels = [{ color: "#61BD4F", id: 1, active: false },
+            { color: "#F2D600", id: 2, active: false },
+            { color: "#FFAB4A", id: 3, active: false },
+            { color: "#EB5A46", id: 4, active: false },
+            { color: "#C377E0", id: 5, active: false },
+            { color: "#0079BF", id: 6, active: false }];
 
         const labelButtons = labels.map(label => (
             <LabelButton
                // addCardLabel={this.props.addCardLabel}
                 changeLabelColor = {this.props.changeLabelColor}
+                labels = {this.props.labels}
+                currentLabelId = {this.props.currentLabelId}
                 // onClick={this.props.addCardLabel.bind(this, label.color, label.labelText)}
                 key={label.color}
                 labelText={label.labelText}

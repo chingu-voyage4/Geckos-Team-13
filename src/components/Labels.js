@@ -21,12 +21,7 @@ class Labels extends Component {
             ]
         };
         this.toggleLabelEdit = this.toggleLabelEdit.bind(this);
-        // this.changeLabelColor = this.changeLabelColor.bind(this);
-    }
-
-    changeLabelColor() {
-        // e.preventDefault();
-        console.log("Change label color running");
+        this.changeLabelColor = this.changeLabelColor.bind(this);
     }
 
     toggleLabelEdit(id) {
@@ -34,8 +29,18 @@ class Labels extends Component {
             this.setState({ showLabelEdit: false });
         } else {
             this.setState({ showLabelEdit: true, title: "Change Label", currentLabelId: id });
-            console.log("editing label id: " + id);
+            console.log("editing label id: " + this.state.currentLabelId);
         }
+    }
+
+    changeLabelColor(color, labels, currentLabel) {
+        const editedLabels = labels;
+
+        editedLabels[currentLabel].color = color;
+        this.setState({ labels: editedLabels });
+        console.log("Change label color running. Color is " + color);
+        console.log(editedLabels);
+        console.log(currentLabel);
     }
 
     render() {
@@ -63,6 +68,7 @@ class Labels extends Component {
         return (
             <div className="label-menu">
                 <div className="label-menu-title">
+                    {this.state.showLabelEdit && <span className="back"><i className="fas fa-arrow-left" onClick={this.toggleLabelEdit} /></span>}
                     {this.state.title}
                     <span className="close" id="closed" onClick={this.props.toggleCardAction}>
                         <img src="images/close-round.png" alt="close" />
@@ -75,7 +81,7 @@ class Labels extends Component {
                     </div>
                 )}
                 {this.state.showLabelEdit && (
-                    <LabelEditMenu addCardLabel={this.props.addCardLabel} labels={this.state.labels} changeLabelColor={this.changeLabelColor} />
+                    <LabelEditMenu addCardLabel={this.props.addCardLabel} currentLabelId = {this.state.currentLabelId} labels={this.state.labels} changeLabelColor={this.changeLabelColor} />
                 )}
             </div>
         );
