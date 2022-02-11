@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
-        "ajv": "^6.2.1",
+        "ajv": "^6.12.3",
         "b": "^2.0.1",
         "babel": "^6.23.0",
         "gh-pages": "^1.1.0",
